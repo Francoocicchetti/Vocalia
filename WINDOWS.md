@@ -2,7 +2,7 @@
 
 [Español](WINDOWS.es.md) · [Overview](README.md)
 
-**[Download Vocalia 1.0 for Windows](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.0/Vocalia-1.0-Windows-x64.zip)**
+**[Download Vocalia 1.0 for Windows](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.0/Vocalia-1.0-Windows-x64-Setup.exe)**
 
 Source: `Vocalia-Windows-source.zip`. Extract it before running the build script.
 
@@ -10,8 +10,8 @@ Vocalia 1.0 for Windows. Whisper recognition runs locally on your CPU. Model pre
 
 ## Install and use
 
-1. Extract the **entire ZIP**. Keep the `_internal` folder next to Vocalia.exe.
-2. Open **Vocalia.exe**. Python and administrator privileges are not required.
+1. Download and run **Vocalia-1.0-Windows-x64-Setup.exe**. Follow the English/Spanish installer.
+2. Open **Vocalia** from the Start menu. A desktop shortcut is optional. Python and administrator privileges are not required.
 3. Choose English or Español for the interface, and select the spoken language separately.
 4. Choose a model and click **Download / prepare model**. Start with `small`; `medium` and `large-v3-turbo` require more memory and processing time. For larger models, a computer with at least 16 GB RAM is a practical starting point, not a measured minimum or performance guarantee.
 5. Add multiple MP3, MP4, MOV, M4A or other supported files, or import a folder. Click **Transcribe pending**.
@@ -45,3 +45,9 @@ Tests cover history removal, interrupted workers, cancellation, Unicode import p
 Dependency notices and license files are included in the packaged application.
 
 Before retrying a partial transcription, a JSON revision is saved under `%LOCALAPPDATA%\Vocalia\Revisions`.
+
+## Installer and ZIP launch errors
+
+Use the Setup.exe installer to avoid missing `python312.dll` errors caused by opening Vocalia directly inside the ZIP. It installs the complete app under `%LOCALAPPDATA%\Programs\Vocalia` and creates a Start menu shortcut. Uninstall through Windows Settings → Apps; history and downloaded models under `%LOCALAPPDATA%\Vocalia` are retained. The portable ZIP remains available for experienced users who extract every file first.
+
+The installer remains unsigned and Windows may show a reputation warning. Do not disable system-wide protections. If the error persists after using Setup.exe, report the exact error and Windows version; missing dependencies or security software may require separate diagnosis. Installer source and automated checks are in `.github/workflows/windows-installer.yml`.

@@ -8,7 +8,7 @@
 
 ## Download the app
 
-### [↓ Download for Windows 11 — Intel / AMD](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.0/Vocalia-1.0-Windows-x64.zip)
+### [↓ Download for Windows 11 — Intel / AMD](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.0/Vocalia-1.0-Windows-x64-Setup.exe)
 
 ### [↓ Download for MacBook / Mac — Apple Silicon](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.0/Vocalia-1.0-macOS-AppleSilicon.zip)
 
@@ -16,14 +16,14 @@
 
 | Your computer | Download this file | Requirements |
 | --- | --- | --- |
-| Windows PC | `Vocalia-1.0-Windows-x64.zip` | Windows 11, Intel/AMD 64-bit |
+| Windows PC | `Vocalia-1.0-Windows-x64-Setup.exe` | Windows 11, Intel/AMD 64-bit |
 | MacBook or Mac | `Vocalia-1.0-macOS-AppleSilicon.zip` | Apple Silicon M1 or later, macOS 26+ |
 
-On the Release page, the files are under **Assets**. **Download the app ZIP for your computer, not “Source code”.** No Python, Xcode, transcription account or API key is required to run the downloaded app.
+On the Release page, the files are under **Assets**. **Download the Windows installer or the Mac ZIP, not “Source code”.** No Python, Xcode, transcription account or API key is required to run the downloaded app.
 
 ## Install and start
 
-- **Windows:** right-click the ZIP → **Extract All**, open the extracted Vocalia folder, then run **Vocalia.exe**. Keep `_internal` beside the executable. [Windows guide](WINDOWS.md).
+- **Windows:** download and run **Vocalia-1.0-Windows-x64-Setup.exe**, follow the installer, then open **Vocalia** from the Start menu. A desktop shortcut is optional. No manual extraction is needed. [Windows guide](WINDOWS.md).
 - **Mac:** extract the ZIP, drag **Vocalia.app** to **Applications**, then open it. The app is not notarized by Apple; macOS may block its first launch. **[Mac installation and “Open Anyway” instructions](INSTALL-MAC.md)**.
 
 Choose your interface language and the spoken language, prepare/download a model, add recordings and start the queue. Model downloads need internet; subsequent recognition is local. Copy the full transcript at once or review it with audio highlighting.
