@@ -1,4 +1,4 @@
-name: Vocalia 1.0.2 build and release checks
+name: Vocalia 1.0.3 build and release checks
 on:
   workflow_dispatch:
   push:
@@ -31,9 +31,9 @@ jobs:
         run: ./build-source/Vocalia-Windows/build_installer.ps1
       - uses: actions/upload-artifact@v4
         with:
-          name: Vocalia-1.0.2-Windows-x64
+          name: Vocalia-1.0.3-Windows-x64
           path: |
-            build-source/Vocalia-Windows/Vocalia-1.0.2-Windows-x64.zip
+            build-source/Vocalia-Windows/Vocalia-1.0.3-Windows-x64.zip
             build-source/Vocalia-Windows/SHA256SUMS-Windows.txt
             build-source/Vocalia-Windows/release/*
           if-no-files-found: error
@@ -46,7 +46,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
         with:
-          name: Vocalia-1.0.2-Windows-x64
+          name: Vocalia-1.0.3-Windows-x64
           path: release
       - name: Verify and assemble both platform downloads
         shell: bash
@@ -56,14 +56,14 @@ jobs:
           sed 's/\r$//' release/release/SHA256SUMS-Installer.txt | (cd release/release && sha256sum -c -)
           mv release/release/* release/
           rmdir release/release
-          cp Vocalia-1.0.2-macOS-AppleSilicon.zip Vocalia-1.0.2-source.zip release/
-          mv release/Windows-Installer-Validation.txt release/Windows-1.0.2-Validation.txt
+          cp Vocalia-1.0.3-macOS-AppleSilicon.zip Vocalia-1.0.3-source.zip release/
+          mv release/Windows-Installer-Validation.txt release/Windows-1.0.3-Validation.txt
           cd release
-          sha256sum Vocalia-1.0.2-*.zip Vocalia-1.0.2-*.exe > SHA256SUMS-1.0.2.txt
-      - name: Publish 1.0.2 only after all checks pass
+          sha256sum Vocalia-1.0.3-*.zip Vocalia-1.0.3-*.exe > SHA256SUMS-1.0.3.txt
+      - name: Publish 1.0.3 only after all checks pass
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
         shell: bash
         run: |
-          gh release create v1.0.2 --target "$GITHUB_SHA" --title "Vocalia 1.0.2 — six languages and Windows feature update" --notes-file RELEASE-1.0.2.md --latest release/Vocalia-1.0.2-*.zip release/Vocalia-1.0.2-*.exe release/SHA256SUMS-1.0.2.txt release/Windows-1.0.2-Validation.txt
+          gh release create v1.0.3 --target "$GITHUB_SHA" --title "Vocalia 1.0.3 — manual speakers and decimal formatting" --notes-file RELEASE-1.0.3.md --latest release/Vocalia-1.0.3-*.zip release/Vocalia-1.0.3-*.exe release/SHA256SUMS-1.0.3.txt release/Windows-1.0.3-Validation.txt
