@@ -1,4 +1,4 @@
-name: Vocalia 1.0.1 OPUS checks
+name: Vocalia 1.0.1 interactive tour checks
 on:
   workflow_dispatch:
   push:
@@ -23,7 +23,7 @@ jobs:
       - name: Extract release source
         shell: pwsh
         run: Expand-Archive Vocalia-Windows-source.zip -DestinationPath build-source
-      - name: Build and test OPUS import and transcription through the actual GUI
+      - name: Build and test coach marks, OPUS import and transcription through the actual GUI
         shell: pwsh
         run: ./build-source/Vocalia-Windows/build.ps1
       - name: Build and test installer, shortcuts, reinstall and data-preserving uninstall
@@ -33,7 +33,7 @@ jobs:
         with:
           name: Vocalia-1.0.1-Windows-x64
           path: |
-            build-source/Vocalia-Windows/Vocalia-1.0.1-Windows-x64-OPUS.zip
+            build-source/Vocalia-Windows/Vocalia-1.0.1-Windows-x64-Tour.zip
             build-source/Vocalia-Windows/SHA256SUMS-Windows.txt
             build-source/Vocalia-Windows/release/*
           if-no-files-found: error
@@ -56,15 +56,15 @@ jobs:
           sed 's/\r$//' release/release/SHA256SUMS-Installer.txt | (cd release/release && sha256sum -c -)
           mv release/release/* release/
           rmdir release/release
-          cp Vocalia-1.0.1-macOS-AppleSilicon-OPUS.zip Vocalia-1.0.1-OPUS-source.zip release/
-          mv release/Windows-Installer-Validation.txt release/Windows-OPUS-Validation.txt
+          cp Vocalia-1.0.1-macOS-AppleSilicon-Tour.zip Vocalia-1.0.1-Tour-source.zip release/
+          mv release/Windows-Installer-Validation.txt release/Windows-Tour-Validation.txt
           cd release
-          sha256sum Vocalia-1.0.1-*.zip Vocalia-1.0.1-*.exe > SHA256SUMS-OPUS.txt
-      - name: Add OPUS downloads to 1.0.1 after all tests pass
+          sha256sum Vocalia-1.0.1-*.zip Vocalia-1.0.1-*.exe > SHA256SUMS-Tour.txt
+      - name: Add interactive-tour downloads to 1.0.1 after all tests pass
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
         shell: bash
         run: |
           gh release view v1.0.1
-          gh release upload v1.0.1 release/Vocalia-1.0.1-*.zip release/Vocalia-1.0.1-*.exe release/SHA256SUMS-OPUS.txt release/Windows-OPUS-Validation.txt
+          gh release upload v1.0.1 release/Vocalia-1.0.1-*.zip release/Vocalia-1.0.1-*.exe release/SHA256SUMS-Tour.txt release/Windows-Tour-Validation.txt
