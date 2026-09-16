@@ -1,5 +1,6 @@
+Vocalia 0.0.4 — PRE-RELEASE / VERSIÓN PRELIMINAR
 Vocalia 1.0.2 downloads
-https://github.com/Francoocicchetti/Vocalia/releases/tag/v1.0.4
-Windows: choose Vocalia-1.0.4-Windows-x64-Setup.exe
-Mac: choose Vocalia-1.0.4-macOS-AppleSilicon.zip
+https://github.com/Francoocicchetti/Vocalia/releases/tag/v0.0.4
+Windows: choose Vocalia-0.0.4-Windows-x64-Setup.exe
+Mac: choose Vocalia-0.0.4-macOS-AppleSilicon.zip
 The automatic Source code downloads are not installers.

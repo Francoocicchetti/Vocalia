@@ -1,4 +1,6 @@
-# Vocalia 1.0.4
+# Vocalia 0.0.4
+
+**Versión preliminar 0.0.4 · En desarrollo.** Vocalia todavía no es una versión 1.0 estable. La numeración actual sustituye a la etiqueta anterior 1.0.4; conserva sus funciones y datos. Las entradas anteriores de la tabla son etiquetas históricas de prototipos.
 
 [Instalación y avisos de macOS](INSTALL-MAC.es.md)
 
@@ -78,14 +80,14 @@ El historial, las correcciones y las cuñas se guardan en `~/Library/Application
 
 ## Abrir y recompilar
 
-Abre la app de esta carpeta o descomprime **Vocalia-1.0.4-macOS-AppleSilicon.zip**. Puedes arrastrarla a Aplicaciones. Requiere Apple Silicon y macOS 26 o posterior. Está compilada localmente y firmada para uso local; no está notarizada para distribución pública. No necesita micrófono para transcribir archivos.
+Abre la app de esta carpeta o descomprime **Vocalia-0.0.4-macOS-AppleSilicon.zip**. Puedes arrastrarla a Aplicaciones. Requiere Apple Silicon y macOS 26 o posterior. Está compilada localmente y firmada para uso local; no está notarizada para distribución pública. No necesita micrófono para transcribir archivos.
 
 El código está en este repositorio. `build.sh` recompila con Swift Package Manager usando las bibliotecas incluidas, ejecuta las pruebas y genera el ZIP. Necesita las herramientas de desarrollo de Apple. Las licencias de las bibliotecas se incluyen en el código y dentro de la app.
 
 Fuentes técnicas: [SpeechAnalyzer de Apple](https://developer.apple.com/documentation/speech/speechanalyzer), [Argmax: WhisperKit y SpeakerKit](https://github.com/argmaxinc/argmax-oss-swift), [SpeakerKit](https://www.argmaxinc.com/blog/speakerkit).
 
 
-## Vocalia 1.0.4
+## Vocalia 0.0.4
 
 La interfaz ofrece seis idiomas. El tutorial interactivo se puede repetir. Se conserva la compatibilidad con OPUS y Ogg/Opus. Consulta la [tabla de versiones y funciones](README.es.md).
 
@@ -95,6 +97,6 @@ Separar voces requiere una acción manual. En Mac, marca «Voces: análisis manu
 
 La corrección de decimales usa el idioma del audio, no el de la interfaz. Reconoce cifras explícitas como «12 coma 75» y expresiones sencillas como «nueve coma cinco». Conserva los ceros decimales y el reconocimiento original para revisión. No cambia transcripciones anteriores ni interpreta fechas, listas o cantidades ambiguas. Las cifras se señalan para escucharlas y revisarlas: un formato correcto no demuestra que el motor haya oído el número correcto. No se ha medido una mejora global de precisión con entrevistas reales.
 
-## Transcripción automática en 1.0.4
+## Transcripción automática en 0.0.4
 
 Las grabaciones nuevas se transcriben automáticamente al agregarlas o arrastrarlas. Se procesan una a una; si falta el modelo, se descarga primero. Transcribir pendientes permite retomar archivos detenidos. No se reprocesan automáticamente el historial ni las ediciones. El análisis de voces sigue siendo manual.

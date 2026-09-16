@@ -1,4 +1,5 @@
-Vocalia 1.0.4 — Mac
+Vocalia 0.0.4 — PRE-RELEASE / VERSIÓN PRELIMINAR
+Vocalia 0.0.4 — Mac
 Extract the ZIP, move Vocalia.app to Applications, then open it.
 macOS 26+, Apple Silicon M1 or later.
 If blocked: System Settings > Privacy & Security > Open Anyway.

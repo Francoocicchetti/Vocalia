@@ -1,1 +1,1 @@
-fd5bd2948305c04384f970f793594d663321fc2e1a1cc90a6ad922a0ba6b8ae4  Vocalia-1.0.4-macOS-AppleSilicon.zip
+786d3b9efd4e51ba4c39f856a54fb39574ba5363b5273854ec25c83c974be252  Vocalia-0.0.4-macOS-AppleSilicon.zip

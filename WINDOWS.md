@@ -1,16 +1,18 @@
 # Vocalia for Windows 11 — Intel / AMD x64
 
+**Pre-release 0.0.4 · In development.** Vocalia is not a stable 1.0 release yet. This version replaces the previous 1.0.4 label while preserving features and data. Earlier table entries are historical prototype labels.
+
 [Español](WINDOWS.es.md) · [Overview](README.md)
 
-**[Download Vocalia 1.0.2 for Windows](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.4/Vocalia-1.0.4-Windows-x64-Setup.exe)**
+**[Download Vocalia 0.0.4 for Windows](https://github.com/Francoocicchetti/Vocalia/releases/download/v0.0.4/Vocalia-0.0.4-Windows-x64-Setup.exe)**
 
 Source: `Vocalia-Windows-source.zip`. Extract it before running the build script.
 
-Vocalia 1.0.2 for Windows. Whisper recognition runs locally on your CPU. Model preparation downloads model assets; subsequent transcription loads local files in offline mode. Recordings are not uploaded.
+Vocalia 0.0.4 for Windows. Whisper recognition runs locally on your CPU. Model preparation downloads model assets; subsequent transcription loads local files in offline mode. Recordings are not uploaded.
 
 ## Install and use
 
-1. Download and run **Vocalia-1.0.4-Windows-x64-Setup.exe**. Follow the English/Spanish installer.
+1. Download and run **Vocalia-0.0.4-Windows-x64-Setup.exe**. Follow the English/Spanish installer.
 2. Open **Vocalia** from the Start menu. A desktop shortcut is optional. Python and administrator privileges are not required.
 3. Choose English, Spanish, German, French, Simplified Chinese or Portuguese for the interface, and select the spoken language separately.
 4. Choose a model and click **Download / prepare model**. Start with `small`; `medium` and `large-v3-turbo` require more memory and processing time. For larger models, a computer with at least 16 GB RAM is a practical starting point, not a measured minimum or performance guarantee.
@@ -53,7 +55,7 @@ Use the Setup.exe installer to avoid missing `python312.dll` errors caused by op
 The installer remains unsigned and Windows may show a reputation warning. Do not disable system-wide protections. If the error persists after using Setup.exe, report the exact error and Windows version; missing dependencies or security software may require separate diagnosis. Installer source and automated checks are in `.github/workflows/windows.yml`.
 
 
-## Vocalia 1.0.4
+## Vocalia 0.0.4
 
 The interface offers six languages. The interactive tour can be replayed. OPUS and Ogg/Opus remain supported. See the [version table and feature matrix](README.md).
 
@@ -65,6 +67,6 @@ Speaker separation requires a manual action. On Mac, select “Speaker analysis:
 
 Decimal formatting follows the audio language, not the interface language. It handles explicit Spanish figures such as “12 coma 75” and simple spoken forms such as “nueve coma cinco”, preserving decimal zeros and original recognition for review. Existing transcripts are not rewritten; dates, lists and ambiguous quantities are not inferred. Figures are flagged for listening and review: correct formatting does not prove the recognizer heard the right number. No overall accuracy improvement on real interviews has been measured.
 
-## Automatic transcription in 1.0.4
+## Automatic transcription in 0.0.4
 
 New recordings start transcribing automatically when added or dropped. Files run sequentially; a missing model is downloaded first. Transcribe pending remains available to resume stopped files. Existing history and edits are not automatically reprocessed. Speaker analysis remains manual.

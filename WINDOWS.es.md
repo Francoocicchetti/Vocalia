@@ -1,16 +1,18 @@
 # Vocalia para Windows 11 · Intel / AMD x64
 
+**Versión preliminar 0.0.4 · En desarrollo.** Vocalia todavía no es una versión 1.0 estable. La numeración actual sustituye a la etiqueta anterior 1.0.4; conserva sus funciones y datos. Las entradas anteriores de la tabla son etiquetas históricas de prototipos.
+
 [English](WINDOWS.md) · [Inicio](README.es.md)
 
-**[Descargar Vocalia 1.0.2 para Windows](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.4/Vocalia-1.0.4-Windows-x64-Setup.exe)**
+**[Descargar Vocalia 0.0.4 para Windows](https://github.com/Francoocicchetti/Vocalia/releases/download/v0.0.4/Vocalia-0.0.4-Windows-x64-Setup.exe)**
 
 Código: `Vocalia-Windows-source.zip`. Descomprímelo antes de ejecutar el script de compilación.
 
-Vocalia 1.0.2 para Windows. Transcripción local con Whisper: no envía grabaciones a un servidor. La primera preparación descarga el modelo; después la transcripción usa únicamente archivos locales.
+Vocalia 0.0.4 para Windows. Transcripción local con Whisper: no envía grabaciones a un servidor. La primera preparación descarga el modelo; después la transcripción usa únicamente archivos locales.
 
 ## Uso
 
-1. Descarga y ejecuta **Vocalia-1.0.4-Windows-x64-Setup.exe**. Sigue el instalador en español o inglés; al abrir la app podrás elegir entre seis idiomas.
+1. Descarga y ejecuta **Vocalia-0.0.4-Windows-x64-Setup.exe**. Sigue el instalador en español o inglés; al abrir la app podrás elegir entre seis idiomas.
 2. Abre **Vocalia** desde Inicio. El acceso directo en el escritorio es opcional. No necesita Python ni permisos de administrador.
 3. Elige español, inglés, alemán, francés, chino simplificado o portugués para la interfaz y el idioma hablado para el audio.
 4. Elige el modelo y pulsa Descargar / preparar modelo. `small` es la opción inicial equilibrada; `medium` y `large-v3-turbo` consumen más memoria y tiempo. Se recomienda probar small primero; para los modelos mayores conviene tener al menos 16 GB de RAM disponibles en el equipo. Esto es una orientación, no un mínimo de rendimiento medido.
@@ -48,7 +50,7 @@ Usa Setup.exe para evitar el error de `python312.dll` causado por abrir Vocalia 
 El instalador no tiene firma comercial y Windows puede mostrar un aviso de reputación. No desactives las protecciones del sistema. Si el error persiste después de usar Setup.exe, informa el mensaje exacto y tu versión de Windows: puede requerir otro diagnóstico. El código y las pruebas del instalador están en `.github/workflows/windows.yml`.
 
 
-## Vocalia 1.0.4
+## Vocalia 0.0.4
 
 La interfaz ofrece seis idiomas. El tutorial interactivo se puede repetir. Se conserva la compatibilidad con OPUS y Ogg/Opus. Consulta la [tabla de versiones y funciones](README.es.md).
 
@@ -60,6 +62,6 @@ Separar voces requiere una acción manual. En Mac, marca «Voces: análisis manu
 
 La corrección de decimales usa el idioma del audio, no el de la interfaz. Reconoce cifras explícitas como «12 coma 75» y expresiones sencillas como «nueve coma cinco». Conserva los ceros decimales y el reconocimiento original para revisión. No cambia transcripciones anteriores ni interpreta fechas, listas o cantidades ambiguas. Las cifras se señalan para escucharlas y revisarlas: un formato correcto no demuestra que el motor haya oído el número correcto. No se ha medido una mejora global de precisión con entrevistas reales.
 
-## Transcripción automática en 1.0.4
+## Transcripción automática en 0.0.4
 
 Las grabaciones nuevas se transcriben automáticamente al agregarlas o arrastrarlas. Se procesan una a una; si falta el modelo, se descarga primero. Transcribir pendientes permite retomar archivos detenidos. No se reprocesan automáticamente el historial ni las ediciones. El análisis de voces sigue siendo manual.

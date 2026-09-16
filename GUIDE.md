@@ -1,5 +1,7 @@
 # Vocalia for Mac — user guide
 
+**Pre-release 0.0.4 · In development.** Vocalia is not a stable 1.0 release yet. This version replaces the previous 1.0.4 label while preserving features and data. Earlier table entries are historical prototype labels.
+
 [Installation and macOS security prompts](INSTALL-MAC.md)
 
 [English overview](README.md) · [Español](GUIA.md) · [Windows guide](WINDOWS.md)
@@ -53,7 +55,7 @@ Review names, figures, overlapping voices and publishable quotations against the
 To build from source, run `zsh build.sh` with compatible Apple development tools and the macOS 26 SDK. The script builds the bundled dependencies, runs checks and produces a ZIP with license notices.
 
 
-## Vocalia 1.0.4
+## Vocalia 0.0.4
 
 The interface offers six languages. The interactive tour can be replayed. OPUS and Ogg/Opus remain supported. See the [version table and feature matrix](README.md).
 
@@ -63,6 +65,6 @@ Speaker separation requires a manual action. On Mac, select “Speaker analysis:
 
 Decimal formatting follows the audio language, not the interface language. It handles explicit Spanish figures such as “12 coma 75” and simple spoken forms such as “nueve coma cinco”, preserving decimal zeros and original recognition for review. Existing transcripts are not rewritten; dates, lists and ambiguous quantities are not inferred. Figures are flagged for listening and review: correct formatting does not prove the recognizer heard the right number. No overall accuracy improvement on real interviews has been measured.
 
-## Automatic transcription in 1.0.4
+## Automatic transcription in 0.0.4
 
 New recordings start transcribing automatically when added or dropped. Files run sequentially; a missing model is downloaded first. Transcribe pending remains available to resume stopped files. Existing history and edits are not automatically reprocessed. Speaker analysis remains manual.

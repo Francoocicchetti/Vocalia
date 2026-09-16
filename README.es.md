@@ -1,6 +1,8 @@
 <p align="center"><img src="logo.png" width="128" alt="Icono de Vocalia"></p>
 
-# Vocalia 1.0.4
+# Vocalia 0.0.4
+
+**Versión preliminar 0.0.4 · En desarrollo.** Vocalia todavía no es una versión 1.0 estable. La numeración actual sustituye a la etiqueta anterior 1.0.4; conserva sus funciones y datos. Las entradas anteriores de la tabla son etiquetas históricas de prototipos.
 
 **Transcripción local para periodistas: texto completo, cuñas y reproducción con resaltado.**
 
@@ -8,16 +10,16 @@
 
 ## Descargar
 
-### [↓ Instalador para Windows 11 — Intel / AMD](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.4/Vocalia-1.0.4-Windows-x64-Setup.exe)
+### [↓ Instalador para Windows 11 — Intel / AMD](https://github.com/Francoocicchetti/Vocalia/releases/download/v0.0.4/Vocalia-0.0.4-Windows-x64-Setup.exe)
 
-### [↓ MacBook / Mac — Apple Silicon](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.4/Vocalia-1.0.4-macOS-AppleSilicon.zip)
+### [↓ MacBook / Mac — Apple Silicon](https://github.com/Francoocicchetti/Vocalia/releases/download/v0.0.4/Vocalia-0.0.4-macOS-AppleSilicon.zip)
 
-[Todos los archivos y verificaciones de la versión 1.0.3](https://github.com/Francoocicchetti/Vocalia/releases/tag/v1.0.4)
+[Todos los archivos y verificaciones de la versión 1.0.3](https://github.com/Francoocicchetti/Vocalia/releases/tag/v0.0.4)
 
 | Equipo | Requisitos | Archivo |
 | --- | --- | --- |
-| Windows | Windows 11, Intel/AMD de 64 bits | `Vocalia-1.0.4-Windows-x64-Setup.exe` |
-| MacBook / Mac | Apple Silicon M1 o posterior, macOS 26+ | `Vocalia-1.0.4-macOS-AppleSilicon.zip` |
+| Windows | Windows 11, Intel/AMD de 64 bits | `Vocalia-0.0.4-Windows-x64-Setup.exe` |
+| MacBook / Mac | Apple Silicon M1 o posterior, macOS 26+ | `Vocalia-0.0.4-macOS-AppleSilicon.zip` |
 
 Los archivos están en **Assets**, debajo de las notas de la versión. Descarga el instalador o el ZIP para Mac, no «Source code». No necesitas Python, Xcode, cuenta ni clave de API. Estos archivos no son compatibles con Mac Intel ni Windows ARM.
 
@@ -39,7 +41,7 @@ Internet se usa para descargar modelos. Las grabaciones y transcripciones se pro
 | **1.0.1** | Instalador de Windows y mejor guía para descargar el modelo e iniciar la transcripción; elección de idioma antes de entrar; OPUS y Ogg/Opus; tutorial con globos interactivos, repetir/omitir, restauración del selector inicial y corrección de superposición en Mac. Incluye las revisiones OPUS, Tour y GuideFix publicadas bajo 1.0.1. |
 | **1.0.2** | Seis idiomas de interfaz. Windows incorpora revisión de fragmentos, comparación con otro modelo, agrupación local de voces y nombres, escuchar/copiar/exportar cuñas, velocidad de reproducción y editor de diccionario. También permite arrastrar archivos, agregarlos al terminar una cola activa y volver a transcribir una selección guardando una copia previa. Documentación bilingüe y nuevas pruebas. |
 | **1.0.3** | Separación de voces solo manual, desactivada al iniciar Mac. Decimales explícitos en español como «9, coma, 5» pasan a «9,5»; se conserva el original, los tiempos y se marcan las cifras para revisión con audio. |
-| **1.0.4** | Las grabaciones nuevas se transcriben automáticamente al agregarlas o arrastrarlas. Se procesan una a una; si falta el modelo, se descarga primero. Transcribir pendientes permite retomar archivos detenidos. No se reprocesan automáticamente el historial ni las ediciones. El análisis de voces sigue siendo manual. |
+| **0.0.4** | Las grabaciones nuevas se transcriben automáticamente al agregarlas o arrastrarlas. Se procesan una a una; si falta el modelo, se descarga primero. Transcribir pendientes permite retomar archivos detenidos. No se reprocesan automáticamente el historial ni las ediciones. El análisis de voces sigue siendo manual. |
 
 [Historial detallado](CHANGELOG.es.md)
 
@@ -84,6 +86,6 @@ Separar voces requiere una acción manual. En Mac, marca «Voces: análisis manu
 
 La corrección de decimales usa el idioma del audio, no el de la interfaz. Reconoce cifras explícitas como «12 coma 75» y expresiones sencillas como «nueve coma cinco». Conserva los ceros decimales y el reconocimiento original para revisión. No cambia transcripciones anteriores ni interpreta fechas, listas o cantidades ambiguas. Las cifras se señalan para escucharlas y revisarlas: un formato correcto no demuestra que el motor haya oído el número correcto. No se ha medido una mejora global de precisión con entrevistas reales.
 
-## Transcripción automática en 1.0.4
+## Transcripción automática en 0.0.4
 
 Las grabaciones nuevas se transcriben automáticamente al agregarlas o arrastrarlas. Se procesan una a una; si falta el modelo, se descarga primero. Transcribir pendientes permite retomar archivos detenidos. No se reprocesan automáticamente el historial ni las ediciones. El análisis de voces sigue siendo manual.
