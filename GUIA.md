@@ -1,4 +1,4 @@
-# Vocalia 1.0.3
+# Vocalia 1.0.4
 
 [Instalación y avisos de macOS](INSTALL-MAC.es.md)
 
@@ -8,7 +8,7 @@ Transcripciones completas y editables, con herramientas para preparar cuñas. To
 
 ## Idiomas
 
-El selector **Interfaz** cambia los controles entre español e inglés al momento. **Idioma del audio** es independiente: muestra los idiomas compatibles con el motor local de Apple en tu Mac. Elige el idioma hablado y pulsa **Descargar idioma** para prepararlo antes de transcribir. Si ya está instalado, aparece **Idioma listo**. La descarga se realiza desde Apple y no envía tus grabaciones. Puedes cancelar y volver a intentarlo.
+El selector **Interfaz** cambia los controles entre los seis idiomas disponibles al momento. **Idioma del audio** es independiente: muestra los idiomas compatibles con el motor local de Apple en tu Mac. Elige el idioma hablado y pulsa **Descargar idioma** para prepararlo antes de transcribir. Si ya está instalado, aparece **Idioma listo**. La descarga se realiza desde Apple y no envía tus grabaciones. Puedes cancelar y volver a intentarlo.
 
 Whisper utiliza el idioma registrado en cada transcripción, aunque después cambies el selector para otra grabación. No traduce el audio a otro idioma. Los mensajes técnicos de macOS pueden aparecer en el idioma del sistema.
 
@@ -17,7 +17,7 @@ Whisper utiliza el idioma registrado en cada transcripción, aunque después cam
 1. Abre **Vocalia.app**.
 2. Pulsa **Agregar archivos / carpetas** o arrastra grabaciones a la ventana. Selecciona varios archivos con ⌘ o Mayúsculas; también puedes elegir carpetas completas, incluidas sus subcarpetas. No agrega nuevamente un archivo de la misma ubicación. Omite enlaces y archivos incompatibles. Máximo 10.000 archivos por carga.
 3. Deja **Español · Chile** para tus entrevistas. El motor Apple usa ese idioma cuando está disponible y, en su defecto, otro modelo de español compatible.
-4. Pulsa **Transcribir pendientes**: procesa la lista uno por uno. Puedes agregar archivos durante el proceso. Un error en una grabación no impide continuar con las demás; revisa el estado de cada fila.
+4. La transcripción comienza automáticamente y procesa los archivos uno por uno. Puedes agregar archivos durante el proceso. Un error en una grabación no impide continuar con las demás; revisa el estado de cada fila.
 5. En **Texto completo** puedes editar toda la transcripción y pulsar **Copiar todo el texto** para pegarla de una vez. **Exportar → Texto (.txt)** guarda esa misma versión. La lista también permite exportar todas las transcripciones a TXT, sin sobrescribir archivos existentes.
 
 ## Seguir la voz mientras escuchas
@@ -78,14 +78,14 @@ El historial, las correcciones y las cuñas se guardan en `~/Library/Application
 
 ## Abrir y recompilar
 
-Abre la app de esta carpeta o descomprime **Vocalia-1.0.3-macOS-AppleSilicon.zip**. Puedes arrastrarla a Aplicaciones. Requiere Apple Silicon y macOS 26 o posterior. Está compilada localmente y firmada para uso local; no está notarizada para distribución pública. No necesita micrófono para transcribir archivos.
+Abre la app de esta carpeta o descomprime **Vocalia-1.0.4-macOS-AppleSilicon.zip**. Puedes arrastrarla a Aplicaciones. Requiere Apple Silicon y macOS 26 o posterior. Está compilada localmente y firmada para uso local; no está notarizada para distribución pública. No necesita micrófono para transcribir archivos.
 
 El código está en este repositorio. `build.sh` recompila con Swift Package Manager usando las bibliotecas incluidas, ejecuta las pruebas y genera el ZIP. Necesita las herramientas de desarrollo de Apple. Las licencias de las bibliotecas se incluyen en el código y dentro de la app.
 
 Fuentes técnicas: [SpeechAnalyzer de Apple](https://developer.apple.com/documentation/speech/speechanalyzer), [Argmax: WhisperKit y SpeakerKit](https://github.com/argmaxinc/argmax-oss-swift), [SpeakerKit](https://www.argmaxinc.com/blog/speakerkit).
 
 
-## Vocalia 1.0.3
+## Vocalia 1.0.4
 
 La interfaz ofrece seis idiomas. El tutorial interactivo se puede repetir. Se conserva la compatibilidad con OPUS y Ogg/Opus. Consulta la [tabla de versiones y funciones](README.es.md).
 
@@ -94,3 +94,7 @@ La interfaz ofrece seis idiomas. El tutorial interactivo se puede repetir. Se co
 Separar voces requiere una acción manual. En Mac, marca «Voces: análisis manual» y pulsa «Analizar voces / comparar» sobre la grabación terminada; no se ejecuta después de transcribir. En Windows, pulsa «Analizar voces» cuando lo necesites. Las etiquetas existentes se conservan.
 
 La corrección de decimales usa el idioma del audio, no el de la interfaz. Reconoce cifras explícitas como «12 coma 75» y expresiones sencillas como «nueve coma cinco». Conserva los ceros decimales y el reconocimiento original para revisión. No cambia transcripciones anteriores ni interpreta fechas, listas o cantidades ambiguas. Las cifras se señalan para escucharlas y revisarlas: un formato correcto no demuestra que el motor haya oído el número correcto. No se ha medido una mejora global de precisión con entrevistas reales.
+
+## Transcripción automática en 1.0.4
+
+Las grabaciones nuevas se transcriben automáticamente al agregarlas o arrastrarlas. Se procesan una a una; si falta el modelo, se descarga primero. Transcribir pendientes permite retomar archivos detenidos. No se reprocesan automáticamente el historial ni las ediciones. El análisis de voces sigue siendo manual.

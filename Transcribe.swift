@@ -130,6 +130,7 @@ enum AudioPrep {
 @MainActor final class TranscriptionModel: ObservableObject {
     @Published var documents: [Transcript] = []
     @Published var selected: UUID?
+    var importGeneration = 0
     @Published var busy = false
     @Published var status = "Agrega una grabación para empezar."
     @Published var engineStatus = "Comprobando el modelo de voz…"
@@ -253,24 +254,42 @@ enum AudioPrep {
         if p.runModal() == .OK { add(p.urls) }
     }
     func add(_ urls: [URL]) {
-        guard !importing else { return }; importing = true
+        let generation = importGeneration
         Task {
+            while importing {try? await Task.sleep(for:.milliseconds(100))}
+            guard generation == importGeneration else{return}
+            importing = true
             let found = await Task.detached { BatchFiles.collect(urls) }.value
-            var known=Set(documents.map{URL(fileURLWithPath:$0.source).resolvingSymlinksInPath().standardizedFileURL.path}); var added=0
+            var known=Set(documents.map{URL(fileURLWithPath:$0.source).resolvingSymlinksInPath().standardizedFileURL.path}); var added=0;var importedIDs:[UUID]=[]
             for url in found.files where known.insert(url.path).inserted {
                 var doc=Transcript(source:url.path,name:url.lastPathComponent)
-                if processingQueue { doc.state="En cola";queue.append(doc.id);batchTotal += 1 }
+                if processingQueue && generation == importGeneration { doc.state="En cola";queue.append(doc.id);batchTotal += 1 }
+                else {importedIDs.append(doc.id)}
                 documents.append(doc);added += 1
                 if !busy {selected=doc.id}
             }
             importing=false;persist()
-            if !busy {status="\(added) archivos agregados. Selecciona Transcribir pendientes para procesarlos todos."}
+            if !busy && added > 0 {status=T("New recordings will be transcribed automatically.")}
+            if generation == importGeneration {startImported(importedIDs,generation:generation)}
             if found.omitted>0 || found.limitReached {error="Se agregaron \(added) archivos compatibles. Se omitieron \(found.omitted) elementos no compatibles, enlaces o carpetas sin acceso.\(found.limitReached ? " El límite por carga es 10.000 archivos; agrega el resto por separado." : "")"}
         }
     }
+    func startImported(_ ids:[UUID],generation:Int) {
+        guard !ids.isEmpty else{return}
+        Task {
+            while busy || checkingLanguage || importing {
+                guard generation == importGeneration else{return}
+                try? await Task.sleep(for:.milliseconds(100))
+            }
+            guard generation == importGeneration else{return}
+            begin(ids:ids.filter{id in documents.contains{$0.id == id && !$0.complete}})
+        }
+    }
     func begin(all: Bool = false) {
+        begin(ids:all ? documents.filter { !$0.complete }.map(\.id) : selected.map { [$0] } ?? [])
+    }
+    func begin(ids:[UUID]) {
         guard !busy,!checkingLanguage else { return }
-        let ids: [UUID] = all ? documents.filter { !$0.complete }.map(\.id) : selected.map { [$0] } ?? []
         guard !ids.isEmpty else { return }
         busy = true; processingQueue=true; queue=ids; batchTotal=ids.count;batchFinished=0; progress = 0; stopPlayback()
         for i in documents.indices where ids.contains(documents[i].id) {documents[i].state="En cola"}
@@ -384,7 +403,7 @@ enum AudioPrep {
         progress = 1; status = documents[index].state + ". Revisa nombres, cifras y fragmentos señalados."
         analyzer = nil; persist(); await checkEngine()
     }
-    func cancel() { status = "Cancelando…"; downloadProgress?.cancel(); task?.cancel(); if let analyzer { Task { await analyzer.cancelAndFinishNow() } } }
+    func cancel() { importGeneration += 1; status = "Cancelando…"; downloadProgress?.cancel(); task?.cancel(); if let analyzer { Task { await analyzer.cancelAndFinishNow() } } }
     func export(_ kind: String) {
         guard let doc = current, !doc.segments.isEmpty else { return }
         let p = NSSavePanel(); p.nameFieldStringValue = URL(fileURLWithPath: doc.name).deletingPathExtension().lastPathComponent + "." + kind
@@ -624,7 +643,7 @@ struct TranscribeView: View {
             } else if transcriptView == "completo" {
                 VStack(alignment: .leading, spacing: 12) {
                     if doc.segments.isEmpty {
-                        Text(model.busy ? L("La transcripción aparecerá aquí como un solo texto.") : L("Pulsa Transcribir para obtener el texto completo."))
+                        Text(model.busy ? L("La transcripción aparecerá aquí como un solo texto.") : T("New recordings start automatically. Use Transcribe pending to resume a stopped recording."))
                             .foregroundStyle(.secondary).frame(maxWidth: .infinity, maxHeight: .infinity)
                     } else {
                         HStack {
@@ -664,7 +683,7 @@ struct TranscribeView: View {
             ScrollView {
                 LazyVStack(alignment: .leading, spacing: 12) {
                     if doc.segments.isEmpty {
-                        VStack(spacing: 12) { Image(systemName: "text.alignleft").font(.largeTitle).foregroundStyle(.secondary); Text(model.busy ? L("El texto aparecerá aquí conforme se reconozca.") : L("Pulsa Transcribir para convertir esta grabación en texto.")).foregroundStyle(.secondary).multilineTextAlignment(.center) }.frame(maxWidth: .infinity).padding(.vertical, 65)
+                        VStack(spacing: 12) { Image(systemName: "text.alignleft").font(.largeTitle).foregroundStyle(.secondary); Text(model.busy ? L("El texto aparecerá aquí conforme se reconozca.") : T("New recordings start automatically. Use Transcribe pending to resume a stopped recording.")).foregroundStyle(.secondary).multilineTextAlignment(.center) }.frame(maxWidth: .infinity).padding(.vertical, 65)
                     }
                     ForEach(doc.segments) { segment in
                         let segmentBinding=model.segmentBinding(documentID:doc.id,snapshot:segment)
@@ -712,6 +731,9 @@ final class TranscribeDelegate: NSObject, NSApplicationDelegate {
             let source = CommandLine.arguments[index+1], output = CommandLine.arguments[index+2]
             Task { @MainActor in await OpusChecks.run(source: source, output: output) }
             RunLoop.main.run()
+        }
+        if CommandLine.arguments.contains("--auto-import-test") {
+            Task { @MainActor in await AdvancedTests.autoImport();exit(0) };RunLoop.main.run()
         }
         if CommandLine.arguments.contains("--self-test") { TranscribeTests.run(); AdvancedTests.run(); exit(0) } }
     var body: some Scene { WindowGroup("Vocalia") { if let config = Bundle.main.url(forResource: "opus-qa", withExtension: "json") { OpusValidationView(config: config) } else { VocaliaStartView() } }.defaultSize(width: 1100, height: 820).commands { CommandGroup(replacing: .newItem) {} } }

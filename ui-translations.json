@@ -1888,5 +1888,54 @@
     "fr": "Les marques indiquent une faible confiance de reconnaissance ou des chiffres à vérifier avec l’audio. Ce ne sont pas des scores de précision.",
     "pt": "As marcas indicam baixa confiança no reconhecimento ou números a verificar com o áudio. Não são pontuações de precisão.",
     "zh": "标记表示识别置信度较低，或有数字需要与音频核对。它们不是准确率评分。"
+  },
+  "New recordings will be transcribed automatically.": {
+    "es": "Las grabaciones nuevas se transcribirán automáticamente.",
+    "de": "Neue Aufnahmen werden automatisch transkribiert.",
+    "fr": "Les nouveaux enregistrements seront transcrits automatiquement.",
+    "pt": "As novas gravações serão transcritas automaticamente.",
+    "zh": "新录音将自动转写。"
+  },
+  "New recordings start automatically. Use Transcribe pending to resume a stopped recording.": {
+    "es": "Las grabaciones nuevas se transcriben automáticamente. Usa Transcribir pendientes para retomar una grabación detenida.",
+    "de": "Neue Aufnahmen starten automatisch. Mit Ausstehende transkribieren setzt du eine gestoppte Aufnahme fort.",
+    "fr": "Les nouveaux enregistrements démarrent automatiquement. Utilisez Transcrire les fichiers en attente pour reprendre un enregistrement arrêté.",
+    "pt": "As novas gravações começam automaticamente. Use Transcrever pendentes para retomar uma gravação interrompida.",
+    "zh": "新录音会自动开始转写。使用“转写待处理文件”继续已停止的录音。"
+  },
+  "Add or drop recordings to start transcription automatically. Multiple files are processed one at a time, including OPUS.": {
+    "es": "Agrega o arrastra grabaciones para iniciar la transcripción automáticamente. Los archivos se procesan uno a uno, incluidos OPUS.",
+    "de": "Füge Aufnahmen hinzu oder ziehe sie ins Fenster, um automatisch zu starten. Mehrere Dateien, auch OPUS, werden nacheinander verarbeitet.",
+    "fr": "Ajoutez ou déposez des enregistrements pour démarrer automatiquement. Les fichiers, dont OPUS, sont traités un par un.",
+    "pt": "Adicione ou arraste gravações para iniciar automaticamente. Vários arquivos, incluindo OPUS, são processados um de cada vez.",
+    "zh": "添加或拖入录音即可自动开始转写。多个文件将逐个处理，包括 OPUS。"
+  },
+  "Resume stopped recordings": {
+    "es": "Retoma grabaciones detenidas",
+    "de": "Gestoppte Aufnahmen fortsetzen",
+    "fr": "Reprendre les enregistrements arrêtés",
+    "pt": "Retomar gravações interrompidas",
+    "zh": "继续已停止的录音"
+  },
+  "New files start automatically. This button retries pending or stopped recordings. Cancel stops the queue; speaker analysis remains manual.": {
+    "es": "Los archivos nuevos empiezan automáticamente. Este botón reintenta grabaciones pendientes o detenidas. Cancelar detiene la cola; el análisis de voces sigue siendo manual.",
+    "de": "Neue Dateien starten automatisch. Diese Schaltfläche startet ausstehende oder gestoppte Aufnahmen erneut. Abbrechen stoppt die Warteschlange; die Sprecheranalyse bleibt manuell.",
+    "fr": "Les nouveaux fichiers démarrent automatiquement. Ce bouton relance les enregistrements en attente ou arrêtés. Annuler arrête la file ; l’analyse des voix reste manuelle.",
+    "pt": "Os novos arquivos começam automaticamente. Este botão retoma gravações pendentes ou interrompidas. Cancelar interrompe a fila; a análise de vozes continua manual.",
+    "zh": "新文件会自动开始转写。此按钮可重试待处理或已停止的录音。“取消”会停止队列；说话人分析仍需手动启动。"
+  },
+  "Choose the audio language before adding recordings. It is independent of the interface language.": {
+    "es": "Elige el idioma del audio antes de agregar grabaciones. Es independiente del idioma de la interfaz.",
+    "de": "Wähle vor dem Hinzufügen die Audiosprache. Sie ist unabhängig von der Sprache der Oberfläche.",
+    "fr": "Choisissez la langue audio avant d’ajouter des enregistrements. Elle est indépendante de la langue de l’interface.",
+    "pt": "Escolha o idioma do áudio antes de adicionar gravações. É independente do idioma da interface.",
+    "zh": "添加录音前请选择音频语言。此设置与界面语言相互独立。"
+  },
+  "If a model is missing, download it once; transcription continues when it is ready. Recordings stay on this computer.": {
+    "es": "Si falta un modelo, descárgalo una vez; la transcripción continúa cuando está listo. Las grabaciones se quedan en este equipo.",
+    "de": "Falls ein Modell fehlt, lade es einmal herunter; danach geht die Transkription weiter. Aufnahmen bleiben auf diesem Computer.",
+    "fr": "Si un modèle manque, téléchargez-le une fois ; la transcription reprend dès qu’il est prêt. Les enregistrements restent sur cet ordinateur.",
+    "pt": "Se faltar um modelo, baixe-o uma vez; a transcrição continua quando estiver pronto. As gravações ficam neste computador.",
+    "zh": "如果缺少模型，请先下载一次；模型准备好后会继续转写。录音始终保留在本机。"
   }
 }

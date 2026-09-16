@@ -1,4 +1,4 @@
-# Vocalia 1.0.3 for Windows
+# Vocalia 1.0.4 for Windows
 
 [Download the installer and read the Windows guide](WINDOWS.md).
 
@@ -9,3 +9,7 @@ Six interface languages, local Whisper transcription, segment review, comparison
 Seis idiomas de interfaz, transcripción local, revisión, comparación, voces, cuñas y reproducción sincronizada. Windows 11 Intel/AMD de 64 bits; grabaciones de menos de dos horas.
 
 Automated release tests use Windows Server x64; physical Windows 11 testing remains pending. The installer is not Authenticode-signed.
+
+## Automatic transcription in 1.0.4
+
+New recordings start transcribing automatically when added or dropped. Files run sequentially; a missing model is downloaded first. Transcribe pending remains available to resume stopped files. Existing history and edits are not automatically reprocessed. Speaker analysis remains manual.

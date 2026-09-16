@@ -2,7 +2,7 @@
 
 [Español](WINDOWS.es.md) · [Overview](README.md)
 
-**[Download Vocalia 1.0.2 for Windows](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.3/Vocalia-1.0.3-Windows-x64-Setup.exe)**
+**[Download Vocalia 1.0.2 for Windows](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.4/Vocalia-1.0.4-Windows-x64-Setup.exe)**
 
 Source: `Vocalia-Windows-source.zip`. Extract it before running the build script.
 
@@ -10,11 +10,11 @@ Vocalia 1.0.2 for Windows. Whisper recognition runs locally on your CPU. Model p
 
 ## Install and use
 
-1. Download and run **Vocalia-1.0.3-Windows-x64-Setup.exe**. Follow the English/Spanish installer.
+1. Download and run **Vocalia-1.0.4-Windows-x64-Setup.exe**. Follow the English/Spanish installer.
 2. Open **Vocalia** from the Start menu. A desktop shortcut is optional. Python and administrator privileges are not required.
 3. Choose English, Spanish, German, French, Simplified Chinese or Portuguese for the interface, and select the spoken language separately.
 4. Choose a model and click **Download / prepare model**. Start with `small`; `medium` and `large-v3-turbo` require more memory and processing time. For larger models, a computer with at least 16 GB RAM is a practical starting point, not a measured minimum or performance guarantee.
-5. Add multiple OPUS, MP3, MP4, MOV, M4A or other supported files, or import a folder. Click **Transcribe pending**.
+5. Add multiple OPUS, MP3, MP4, MOV, M4A or other supported files, or import a folder. Transcription starts automatically.
 6. Copy the complete transcript, follow the highlighted text while listening, or select a passage to save a quote. Export TXT, SRT or VTT.
 
 ## History, quotes and privacy
@@ -53,14 +53,18 @@ Use the Setup.exe installer to avoid missing `python312.dll` errors caused by op
 The installer remains unsigned and Windows may show a reputation warning. Do not disable system-wide protections. If the error persists after using Setup.exe, report the exact error and Windows version; missing dependencies or security software may require separate diagnosis. Installer source and automated checks are in `.github/workflows/windows.yml`.
 
 
-## Vocalia 1.0.3
+## Vocalia 1.0.4
 
 The interface offers six languages. The interactive tour can be replayed. OPUS and Ogg/Opus remain supported. See the [version table and feature matrix](README.md).
 
-Use **Review** to edit timed segments, mark them reviewed or restore their original wording. **Comparison** requires a second model different from the original; prepare it, then compare. **Speakers** downloads approximately 47 MB once; analyze a completed recording, listen to timed turns and assign names. Full text edited separately is preserved. The dictionary accepts up to 100 terms. Quote actions include plain copy, listening and TXT export. Speed can be changed from 0.75× to 2×. Drag files into the window; files added while processing are imported after the queue finishes and can then be transcribed. **Transcribe selected again** saves a JSON revision before replacing the text.
+Use **Review** to edit timed segments, mark them reviewed or restore their original wording. **Comparison** requires a second model different from the original; prepare it, then compare. **Speakers** downloads approximately 47 MB once; analyze a completed recording, listen to timed turns and assign names. Full text edited separately is preserved. The dictionary accepts up to 100 terms. Quote actions include plain copy, listening and TXT export. Speed can be changed from 0.75× to 2×. Drag files into the window; files added while processing are imported after the queue finishes and are then transcribed automatically. **Transcribe selected again** saves a JSON revision before replacing the text.
 
 ## Speakers and numbers in 1.0.3
 
 Speaker separation requires a manual action. On Mac, select “Speaker analysis: manual” and click “Analyze speakers / compare” on a completed recording; it never runs after transcription. On Windows, click “Analyze speakers” when needed. Existing speaker labels are preserved.
 
 Decimal formatting follows the audio language, not the interface language. It handles explicit Spanish figures such as “12 coma 75” and simple spoken forms such as “nueve coma cinco”, preserving decimal zeros and original recognition for review. Existing transcripts are not rewritten; dates, lists and ambiguous quantities are not inferred. Figures are flagged for listening and review: correct formatting does not prove the recognizer heard the right number. No overall accuracy improvement on real interviews has been measured.
+
+## Automatic transcription in 1.0.4
+
+New recordings start transcribing automatically when added or dropped. Files run sequentially; a missing model is downloaded first. Transcribe pending remains available to resume stopped files. Existing history and edits are not automatically reprocessed. Speaker analysis remains manual.

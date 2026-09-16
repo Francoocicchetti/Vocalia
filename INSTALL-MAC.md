@@ -1,6 +1,6 @@
 # Install Vocalia 1.0.1 on Mac
 
-[Español](INSTALL-MAC.es.md) · [Downloads](https://github.com/Francoocicchetti/Vocalia/releases/tag/v1.0.3)
+[Español](INSTALL-MAC.es.md) · [Downloads](https://github.com/Francoocicchetti/Vocalia/releases/tag/v1.0.4)
 
 ## Check compatibility
 
@@ -8,7 +8,7 @@ Requires **Apple Silicon (M1 or later) and macOS 26 or later**. Check Apple menu
 
 ## Download and install
 
-1. Download **Vocalia-1.0.3-macOS-AppleSilicon.zip** from the official Vocalia GitHub Release.
+1. Download **Vocalia-1.0.4-macOS-AppleSilicon.zip** from the official Vocalia GitHub Release.
 2. Open the ZIP and drag **Vocalia.app** to **Applications**.
 3. Open Vocalia from Applications.
 
@@ -25,10 +25,14 @@ This is Apple's per-app exception procedure; availability depends on the warning
 
 ## First transcription
 
-Choose **English** or **Español**, then select the spoken language. Use **Download language** to prepare Apple's local speech model. Optional Whisper comparison and speaker grouping have their own model preparation. Add recordings and transcribe pending files. Review the full text against the highlighted audio before publishing quotes.
+Choose one of the six interface languages, then select the spoken language. Use **Download language** to prepare Apple's local speech model. Optional Whisper comparison and speaker grouping have their own model preparation. Add recordings to start transcription automatically. Review the full text against the highlighted audio before publishing quotes.
 
 An internet connection is needed for initial model downloads. Recognition runs locally afterwards. Original recordings are preserved; model preparation does not upload them. [Full Mac guide](GUIDE.md) · [Privacy](PRIVACY.md).
 
 ## Updating an earlier development build
 
 Quit the old app, then replace Vocalia.app in Applications with this one. Keep your Application Support folder. The app identifier and history location are unchanged. **1.0 is the public release number**, replacing earlier development labels such as 2.2.1; it does not reset your history. Keep a backup of important exports before any upgrade.
+
+## Automatic transcription in 1.0.4
+
+New recordings start transcribing automatically when added or dropped. Files run sequentially; a missing model is downloaded first. Transcribe pending remains available to resume stopped files. Existing history and edits are not automatically reprocessed. Speaker analysis remains manual.

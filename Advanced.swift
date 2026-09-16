@@ -377,6 +377,37 @@ struct VoicesPane:View {
 }
 
 enum AdvancedTests {
+    @MainActor static func autoImport() async {
+        let root=FileManager.default.temporaryDirectory.appendingPathComponent("VocaliaAutoTests-\(UUID())")
+        defer{try? FileManager.default.removeItem(at:root)}
+        let model=TranscriptionModel(storageOverride:root)
+        var old=Transcript(source:"/missing-old.wav",name:"Edited history")
+        old.fullTextOverride="Keep my edited quote";model.documents=[old]
+        let first=root.appendingPathComponent("one.wav"),second=root.appendingPathComponent("two.opus")
+        try! Data().write(to:first);try! Data().write(to:second)
+        model.busy=true
+        model.add([first,first]);model.add([second])
+        for _ in 0..<100 where model.documents.count < 3 {try? await Task.sleep(for:.milliseconds(50))}
+        precondition(model.documents.count == 3,"Concurrent imports and duplicate paths")
+        // Missing sources exercise the real queue without a model download or audio data.
+        try! FileManager.default.removeItem(at:first);try! FileManager.default.removeItem(at:second)
+        model.busy=false
+        for _ in 0..<100 {
+            if model.documents.dropFirst().allSatisfy({$0.state.hasPrefix("Error:")}) && !model.busy {break}
+            try? await Task.sleep(for:.milliseconds(50))
+        }
+        precondition(model.documents.dropFirst().allSatisfy{$0.state.hasPrefix("Error:")},"Imported recordings start without a button; failure continues")
+        precondition(model.documents[0] == old,"Auto import preserves historical edits")
+        let stopped=Transcript(source:"/missing-stopped.wav",name:"Stopped")
+        model.documents.append(stopped);model.checkingLanguage=true
+        model.startImported([stopped.id],generation:model.importGeneration)
+        model.cancel();model.checkingLanguage=false
+        try? await Task.sleep(for:.milliseconds(250))
+        precondition(model.documents.last == stopped && !model.busy,"Cancel prevents deferred automatic restart")
+        precondition(!model.voicesEnabled,"Automatic transcription does not enable speakers")
+        print("PASS: Mac automatic concurrent imports, deduplication, history, failure continuation, cancellation and manual speakers")
+    }
+
     @MainActor static func run(){
         var n=0;func check(_ ok:Bool,_ label:String){if !ok{print("FAIL \(label)");exit(1)};n += 1;print("OK \(label)")}
         check(AppLanguage.translate("Texto completo",language:"en")=="Full text","Interfaz inglesa traduce controles")

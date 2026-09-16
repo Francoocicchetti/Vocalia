@@ -1,6 +1,6 @@
 # Instalar Vocalia 1.0.1 en Mac
 
-[English](INSTALL-MAC.md) · [Descargas](https://github.com/Francoocicchetti/Vocalia/releases/tag/v1.0.3)
+[English](INSTALL-MAC.md) · [Descargas](https://github.com/Francoocicchetti/Vocalia/releases/tag/v1.0.4)
 
 ## Compatibilidad
 
@@ -8,7 +8,7 @@ Requiere **Apple Silicon (M1 o posterior) y macOS 26 o posterior**. Compruébalo
 
 ## Descargar e instalar
 
-1. Descarga **Vocalia-1.0.3-macOS-AppleSilicon.zip** desde la Release oficial de Vocalia en GitHub.
+1. Descarga **Vocalia-1.0.4-macOS-AppleSilicon.zip** desde la Release oficial de Vocalia en GitHub.
 2. Abre el ZIP y arrastra **Vocalia.app** a **Aplicaciones**.
 3. Abre Vocalia desde Aplicaciones.
 
@@ -25,10 +25,14 @@ Es la excepción por aplicación que documenta Apple; depende del aviso y de las
 
 ## Primera transcripción
 
-Elige Español o English y después el idioma hablado. Pulsa **Descargar idioma** para preparar el modelo local de Apple. La comparación con Whisper y la separación de voces requieren sus propios modelos. Agrega grabaciones y transcribe los pendientes. Revisa el texto completo escuchando el original antes de publicar cuñas.
+Elige uno de los seis idiomas de interfaz y después el idioma hablado. Pulsa **Descargar idioma** para preparar el modelo local de Apple. La comparación con Whisper y la separación de voces requieren sus propios modelos. Agrega grabaciones para iniciar la transcripción automáticamente. Revisa el texto completo escuchando el original antes de publicar cuñas.
 
 La descarga inicial de modelos necesita internet. Después el reconocimiento funciona localmente. Se conservan los originales y no se suben al preparar modelos. [Guía completa](GUIA.md) · [Privacidad](PRIVACY.es.md).
 
 ## Actualizar una versión de desarrollo
 
 Cierra la app anterior y reemplaza Vocalia.app en Aplicaciones. Conserva la carpeta Application Support. El identificador y la ubicación del historial no cambian. **1.0 es la numeración pública**, que reemplaza etiquetas de desarrollo como 2.2.1; no borra tu historial. Conserva una copia de tus exportaciones importantes antes de actualizar.
+
+## Transcripción automática en 1.0.4
+
+Las grabaciones nuevas se transcriben automáticamente al agregarlas o arrastrarlas. Se procesan una a una; si falta el modelo, se descarga primero. Transcribir pendientes permite retomar archivos detenidos. No se reprocesan automáticamente el historial ni las ediciones. El análisis de voces sigue siendo manual.

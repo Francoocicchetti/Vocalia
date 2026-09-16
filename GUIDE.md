@@ -12,7 +12,7 @@ Choose English, Spanish, German, French, Simplified Chinese or Portuguese in **A
 
 ## Import and transcribe
 
-Add multiple files or folders, or drag recordings into the window. Subfolders are included. Duplicate paths, symbolic links and unsupported files are skipped; each import is limited to 10,000 files. Choose **Transcribe pending files** to process the queue sequentially. An individual failure does not stop the remaining recordings. Cancellation preserves recognized text, although a model may need to finish an internal operation first.
+Add multiple files or folders, or drag recordings into the window. Subfolders are included. Duplicate paths, symbolic links and unsupported files are skipped; each import is limited to 10,000 files. New recordings start automatically and are processed sequentially. An individual failure does not stop the remaining recordings. Cancellation preserves recognized text, although a model may need to finish an internal operation first.
 
 The main engine accepts recordings shorter than 24 hours. Whisper comparison and speaker analysis require recordings shorter than two hours. OPUS, MP3, MP4, MOV, M4A, WAV, AIFF, AAC, FLAC, CAF and M4V are accepted when macOS can decode them. The first audio track is used.
 
@@ -53,7 +53,7 @@ Review names, figures, overlapping voices and publishable quotations against the
 To build from source, run `zsh build.sh` with compatible Apple development tools and the macOS 26 SDK. The script builds the bundled dependencies, runs checks and produces a ZIP with license notices.
 
 
-## Vocalia 1.0.3
+## Vocalia 1.0.4
 
 The interface offers six languages. The interactive tour can be replayed. OPUS and Ogg/Opus remain supported. See the [version table and feature matrix](README.md).
 
@@ -62,3 +62,7 @@ The interface offers six languages. The interactive tour can be replayed. OPUS a
 Speaker separation requires a manual action. On Mac, select “Speaker analysis: manual” and click “Analyze speakers / compare” on a completed recording; it never runs after transcription. On Windows, click “Analyze speakers” when needed. Existing speaker labels are preserved.
 
 Decimal formatting follows the audio language, not the interface language. It handles explicit Spanish figures such as “12 coma 75” and simple spoken forms such as “nueve coma cinco”, preserving decimal zeros and original recognition for review. Existing transcripts are not rewritten; dates, lists and ambiguous quantities are not inferred. Figures are flagged for listening and review: correct formatting does not prove the recognizer heard the right number. No overall accuracy improvement on real interviews has been measured.
+
+## Automatic transcription in 1.0.4
+
+New recordings start transcribing automatically when added or dropped. Files run sequentially; a missing model is downloaded first. Transcribe pending remains available to resume stopped files. Existing history and edits are not automatically reprocessed. Speaker analysis remains manual.
