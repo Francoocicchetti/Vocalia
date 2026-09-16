@@ -1,0 +1,5 @@
+Fuentes Argmax OSS Swift de https://github.com/argmaxinc/argmax-oss-swift
+Revisión: ea872ffd35705aa757f33033500b9b0d40bd38df
+Se incluyen los módulos ArgmaxCore, WhisperKit y SpeakerKit sin cambios.
+Package.swift reducido a estos módulos para no incorporar la CLI ni dependencias de servidor.
+Licencia y avisos originales: LICENSE y NOTICES.

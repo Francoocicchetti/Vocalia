@@ -1,0 +1,14 @@
+.DS_Store
+.build/
+.swiftpm/
+dist/
+*.dSYM/
+*.caf
+*.mp3
+*.mp4
+*.mov
+*.m4a
+transcripciones.json
+revision-*.json
+Models/
+Vendor/
