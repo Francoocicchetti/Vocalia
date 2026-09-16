@@ -15,8 +15,8 @@ Whisper utiliza el idioma registrado en cada transcripción, aunque después cam
 ## Empezar y cargar muchos archivos
 
 1. Abre **Vocalia.app**.
-2. Pulsa **Agregar archivos / carpetas** o arrastra grabaciones a la ventana. Selecciona varios archivos con ⌘ o Mayúsculas; también puedes elegir carpetas completas, incluidas sus subcarpetas. No agrega nuevamente un archivo de la misma ubicación. Omite enlaces y archivos incompatibles. Máximo 10.000 archivos por carga.
-3. Deja **Español · Chile** para tus entrevistas. El motor Apple usa ese idioma cuando está disponible y, en su defecto, otro modelo de español compatible.
+2. Elige el idioma del audio antes de agregar archivos. Para entrevistas en español de Chile, usa **Español · Chile** cuando esté disponible.
+3. Pulsa **Agregar archivos / carpetas** o arrastra grabaciones a la ventana. Selecciona varios archivos con ⌘ o Mayúsculas; también puedes elegir carpetas completas, incluidas sus subcarpetas. No agrega nuevamente un archivo de la misma ubicación. Omite enlaces y archivos incompatibles. Máximo 10.000 archivos por carga.
 4. La transcripción comienza automáticamente y procesa los archivos uno por uno. Puedes agregar archivos durante el proceso. Un error en una grabación no impide continuar con las demás; revisa el estado de cada fila.
 5. En **Texto completo** puedes editar toda la transcripción y pulsar **Copiar todo el texto** para pegarla de una vez. **Exportar → Texto (.txt)** guarda esa misma versión. La lista también permite exportar todas las transcripciones a TXT, sin sobrescribir archivos existentes.
 

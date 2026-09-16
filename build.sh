@@ -27,6 +27,7 @@ xattr -cr "$APP_DIR"
 codesign --force --sign - "$APP_DIR/Contents/MacOS/opusdecode"
 codesign --force --sign - "$APP_DIR"
 "$APP_DIR/Contents/MacOS/Transcribe" --self-test
+"$APP_DIR/Contents/MacOS/Transcribe" --auto-import-test
 codesign --verify --deep --strict "$APP_DIR"
 ditto -c -k --norsrc --keepParent "$APP_DIR" "$OUTPUT_DIR/Vocalia-1.0.4-macOS-AppleSilicon.zip"
 cp "$SOURCE_DIR/START-HERE.txt" "$BUILD_DIR/START-HERE.txt"
