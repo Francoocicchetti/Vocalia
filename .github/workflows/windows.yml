@@ -1,4 +1,4 @@
-name: Vocalia 1.0.1 release checks
+name: Vocalia 1.0.1 OPUS checks
 on:
   workflow_dispatch:
   push:
@@ -23,7 +23,7 @@ jobs:
       - name: Extract release source
         shell: pwsh
         run: Expand-Archive Vocalia-Windows-source.zip -DestinationPath build-source
-      - name: Build and test actual GUI transcription from first model download to copied text
+      - name: Build and test OPUS import and transcription through the actual GUI
         shell: pwsh
         run: ./build-source/Vocalia-Windows/build.ps1
       - name: Build and test installer, shortcuts, reinstall and data-preserving uninstall
@@ -33,7 +33,7 @@ jobs:
         with:
           name: Vocalia-1.0.1-Windows-x64
           path: |
-            build-source/Vocalia-Windows/Vocalia-1.0.1-Windows-x64.zip
+            build-source/Vocalia-Windows/Vocalia-1.0.1-Windows-x64-OPUS.zip
             build-source/Vocalia-Windows/SHA256SUMS-Windows.txt
             build-source/Vocalia-Windows/release/*
           if-no-files-found: error
@@ -56,22 +56,15 @@ jobs:
           sed 's/\r$//' release/release/SHA256SUMS-Installer.txt | (cd release/release && sha256sum -c -)
           mv release/release/* release/
           rmdir release/release
-          cp Vocalia-1.0.1-macOS-AppleSilicon.zip DOWNLOAD-INSTRUCTIONS.txt release/
+          cp Vocalia-1.0.1-macOS-AppleSilicon-OPUS.zip Vocalia-1.0.1-OPUS-source.zip release/
+          mv release/Windows-Installer-Validation.txt release/Windows-OPUS-Validation.txt
           cd release
-          sha256sum Vocalia-1.0.1-*.zip Vocalia-1.0.1-*.exe > SHA256SUMS.txt
-      - name: Publish 1.0.1 only after all tests pass
+          sha256sum Vocalia-1.0.1-*.zip Vocalia-1.0.1-*.exe > SHA256SUMS-OPUS.txt
+      - name: Add OPUS downloads to 1.0.1 after all tests pass
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
         shell: bash
         run: |
-          state=$(gh release view v1.0.1 --json isDraft --jq .isDraft 2>/dev/null || echo missing)
-          if [ "$state" = false ]; then
-            echo 'Version already published; use a new version for future changes.'
-            exit 1
-          fi
-          if [ "$state" = missing ]; then
-            gh release create v1.0.1 --target "$GITHUB_SHA" --draft --title 'Vocalia 1.0.1 — Tutorial and guided transcription' --notes-file RELEASE-1.0.1.md
-          fi
-          gh release upload v1.0.1 release/Vocalia-1.0.1-*.zip release/Vocalia-1.0.1-*.exe release/SHA256SUMS.txt release/DOWNLOAD-INSTRUCTIONS.txt release/Windows-Installer-Validation.txt --clobber
-          gh release edit v1.0.1 --draft=false --latest
+          gh release view v1.0.1
+          gh release upload v1.0.1 release/Vocalia-1.0.1-*.zip release/Vocalia-1.0.1-*.exe release/SHA256SUMS-OPUS.txt release/Windows-OPUS-Validation.txt
