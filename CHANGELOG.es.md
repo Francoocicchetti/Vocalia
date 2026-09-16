@@ -38,3 +38,9 @@
 - Descarga explícita de idiomas; Whisper utiliza el idioma registrado en cada transcripción.
 - Nuevo logo y correcciones del seguimiento de audio.
 - 48 comprobaciones del núcleo y funciones adicionales.
+
+## Compatibilidad OPUS en 1.0.1
+
+Descarga los archivos que incluyen **OPUS** en el nombre. Ambas versiones aceptan `.opus` y archivos Ogg que contienen Opus (`.ogg`), también por lotes y carpetas. No necesitas convertirlos ni subir el audio a un servidor. Mac incorpora un decodificador local y usa una copia PCM temporal para transcribir y escuchar; se elimina al cerrar normalmente la app y se conserva el original. OPUS en Mac admite grabaciones de menos de diez horas; Windows mantiene el límite de dos horas. No incluye Ogg/Vorbis.
+
+Los nuevos archivos se verifican con **SHA256SUMS-OPUS.txt**. El código actualizado está en main y en **Vocalia-1.0.1-OPUS-source.zip** de Releases; el Source code automático de la etiqueta corresponde a la compilación inicial.

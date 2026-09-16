@@ -8,22 +8,22 @@
 
 ## Download the app
 
-### [↓ Download for Windows 11 — Intel / AMD](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.1/Vocalia-1.0.1-Windows-x64-Setup.exe)
+### [↓ Download for Windows 11 — Intel / AMD](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.1/Vocalia-1.0.1-Windows-x64-OPUS-Setup.exe)
 
-### [↓ Download for MacBook / Mac — Apple Silicon](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.1/Vocalia-1.0.1-macOS-AppleSilicon.zip)
+### [↓ Download for MacBook / Mac — Apple Silicon](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.1/Vocalia-1.0.1-macOS-AppleSilicon-OPUS.zip)
 
 **[View the official 1.0 Release and all downloads](https://github.com/Francoocicchetti/Vocalia/releases/tag/v1.0.1)**
 
 | Your computer | Download this file | Requirements |
 | --- | --- | --- |
-| Windows PC | `Vocalia-1.0.1-Windows-x64-Setup.exe` | Windows 11, Intel/AMD 64-bit |
-| MacBook or Mac | `Vocalia-1.0.1-macOS-AppleSilicon.zip` | Apple Silicon M1 or later, macOS 26+ |
+| Windows PC | `Vocalia-1.0.1-Windows-x64-OPUS-Setup.exe` | Windows 11, Intel/AMD 64-bit |
+| MacBook or Mac | `Vocalia-1.0.1-macOS-AppleSilicon-OPUS.zip` | Apple Silicon M1 or later, macOS 26+ |
 
 On the Release page, the files are under **Assets**. **Download the Windows installer or the Mac ZIP, not “Source code”.** No Python, Xcode, transcription account or API key is required to run the downloaded app.
 
 ## Install and start
 
-- **Windows:** download and run **Vocalia-1.0.1-Windows-x64-Setup.exe**, follow the installer, then open **Vocalia** from the Start menu. A desktop shortcut is optional. No manual extraction is needed. [Windows guide](WINDOWS.md).
+- **Windows:** download and run **Vocalia-1.0.1-Windows-x64-OPUS-Setup.exe**, follow the installer, then open **Vocalia** from the Start menu. A desktop shortcut is optional. No manual extraction is needed. [Windows guide](WINDOWS.md).
 - **Mac:** extract the ZIP, drag **Vocalia.app** to **Applications**, then open it. The app is not notarized by Apple; macOS may block its first launch. **[Mac installation and “Open Anyway” instructions](INSTALL-MAC.md)**.
 
 Choose your interface language and the spoken language, prepare/download a model, add recordings and start the queue. Model downloads need internet; subsequent recognition is local. Copy the full transcript at once or review it with audio highlighting.
@@ -44,7 +44,7 @@ This is the first unified public release number for both platforms. It does not 
 | Automatic speaker grouping | Optional | Not included; quote speakers are entered manually |
 | Recording duration | Main engine: under 24 h; extra engines: under 2 h | Under 2 h |
 
-MP3, MP4, MOV, M4A and other supported audio/video formats are accepted. Protected, corrupt or unsupported files may fail. Edited text can lose its alignment with the audio. Transcription accuracy is not guaranteed, and no measured error rate for Chilean interviews is claimed.
+OPUS, MP3, MP4, MOV, M4A and other supported audio/video formats are accepted. Protected, corrupt or unsupported files may fail. Edited text can lose its alignment with the audio. Transcription accuracy is not guaranteed, and no measured error rate for Chilean interviews is claimed.
 
 ## Guides, privacy and source
 
@@ -74,3 +74,9 @@ No general open-source license has been assigned to Vocalia's own code or suppli
 - Windows: **adding a recording does not transcribe it**. Click **Transcribe pending**. If the model is missing, accept its download; transcription then starts automatically.
 - Clear empty-queue, missing-model and worker-failure messages. Playback stops when transcription is requested and is unavailable while a job is running.
 
+
+## OPUS support in 1.0.1
+
+Use the downloads with **OPUS** in their filename. Both platforms accept `.opus` and Ogg files containing Opus (`.ogg`), including batch/folder import. No manual conversion or audio upload is needed. Windows uses its bundled decoder. Mac includes a local BSD-licensed Opus decoder and uses a temporary PCM copy for transcription and playback; normal app exit removes that copy and the original is preserved. Mac OPUS recordings must be under ten hours; Windows keeps its two-hour limit. Ogg/Vorbis is not included.
+
+New downloads have checksums in **SHA256SUMS-OPUS.txt**; the original 1.0.1 files remain available for reproducibility. The updated source is on the main branch and in **Vocalia-1.0.1-OPUS-source.zip** in Releases. The tag's automatic Source code archives describe the original 1.0.1 build.

@@ -4,6 +4,8 @@ import Foundation
 enum AppLanguage {
     static var current:String {UserDefaults.standard.string(forKey:"uiLanguage") ?? (Locale.preferredLanguages.first?.hasPrefix("es") == true ? "es" : "en")}
     static let english:[String:String]=[
+        "Falta el decodificador OPUS. Descarga de nuevo la aplicación completa.": "The OPUS decoder is missing. Download the complete application again.",
+        "No se pudo leer el archivo OPUS. Comprueba que no esté dañado y dure menos de diez horas.": "Could not read the OPUS file. Check that it is not damaged and is shorter than ten hours.",
         "¿Quitar esta transcripción del historial? El audio original se conserva.": "Remove this transcript from history? The original audio is kept.",
         "100 % local": "100% on device",
         "De la voz al texto. Dentro de tu Mac.": "From voice to text. On your Mac.",

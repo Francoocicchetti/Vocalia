@@ -14,7 +14,7 @@ Choose English or Español in **App language**. **Audio language** is independen
 
 Add multiple files or folders, or drag recordings into the window. Subfolders are included. Duplicate paths, symbolic links and unsupported files are skipped; each import is limited to 10,000 files. Choose **Transcribe pending files** to process the queue sequentially. An individual failure does not stop the remaining recordings. Cancellation preserves recognized text, although a model may need to finish an internal operation first.
 
-The main engine accepts recordings shorter than 24 hours. Whisper comparison and speaker analysis require recordings shorter than two hours. MP3, MP4, MOV, M4A, WAV, AIFF, AAC, FLAC, CAF and M4V are accepted when macOS can decode them. The first audio track is used.
+The main engine accepts recordings shorter than 24 hours. Whisper comparison and speaker analysis require recordings shorter than two hours. OPUS, MP3, MP4, MOV, M4A, WAV, AIFF, AAC, FLAC, CAF and M4V are accepted when macOS can decode them. The first audio track is used.
 
 ## Full text and playback
 
@@ -51,3 +51,9 @@ Temporary conversions are cleaned up after normal completion; a forced exit may 
 Review names, figures, overlapping voices and publishable quotations against the recording. Confidence indicators are review hints, not measured accuracy percentages. There is no verified benchmark for Chilean interviews. Tests cover application behavior, not perfect recognition.
 
 To build from source, run `zsh build.sh` with compatible Apple development tools and the macOS 26 SDK. The script builds the bundled dependencies, runs checks and produces a ZIP with license notices.
+
+## OPUS support in 1.0.1
+
+Use the downloads with **OPUS** in their filename. Both platforms accept `.opus` and Ogg files containing Opus (`.ogg`), including batch/folder import. No manual conversion or audio upload is needed. Windows uses its bundled decoder. Mac includes a local BSD-licensed Opus decoder and uses a temporary PCM copy for transcription and playback; normal app exit removes that copy and the original is preserved. Mac OPUS recordings must be under ten hours; Windows keeps its two-hour limit. Ogg/Vorbis is not included.
+
+New downloads have checksums in **SHA256SUMS-OPUS.txt**; the original 1.0.1 files remain available for reproducibility. The updated source is on the main branch and in **Vocalia-1.0.1-OPUS-source.zip** in Releases. The tag's automatic Source code archives describe the original 1.0.1 build.

@@ -169,7 +169,7 @@ struct SelectableTranscript: NSViewRepresentable {
 enum BatchFiles {
     struct Result:Sendable {var files:[URL];var omitted:Int;var limitReached:Bool}
     static func collect(_ inputs:[URL])->Result {
-        let supported=Set(["mp3","mp4","mov","m4a","wav","aiff","aif","caf","aac","flac","m4v"])
+        let supported=Set(["mp3","mp4","mov","m4a","wav","aiff","aif","caf","aac","flac","m4v","opus","ogg"])
         let keys:Set<URLResourceKey>=[.isDirectoryKey,.isRegularFileKey,.isSymbolicLinkKey,.isPackageKey]
         var files:[URL]=[];var omitted=0;var seen=Set<String>();var limit=false
         func accept(_ url:URL) {
@@ -446,6 +446,10 @@ enum AdvancedTests {
             for i in 0..<120{try Data("test".utf8).write(to:folder.appendingPathComponent("Sub/\(i).mp3"))}
             try Data("ignore".utf8).write(to:folder.appendingPathComponent("nota.txt"))
             try FileManager.default.createSymbolicLink(at:folder.appendingPathComponent("enlace"),withDestinationURL:folder)
+            let opus = folder.appendingPathComponent("voice.OPUS")
+            try Data("test".utf8).write(to: opus)
+            check(BatchFiles.collect([opus]).files.count == 1, "Importa OPUS sin distinguir mayúsculas")
+            try FileManager.default.removeItem(at: opus)
             let found=BatchFiles.collect([folder,folder.appendingPathComponent("Sub/1.mp3")])
             if found.files.count != 120 {print("DIAGNOSTICO archivos=\(found.files.count) omitidos=\(found.omitted) rutas=\(found.files.prefix(3)) carpeta=\(folder.path)")}
             check(found.files.count==120,"Carga 120 archivos recursivos sin duplicados")

@@ -42,3 +42,9 @@
 - Update icon using the image supplied for Vocalia.
 - Ignore stale playback seek completions after pause or selection change.
 - 48 synthetic checks, including deleted-history binding regressions and localization.
+
+## OPUS support in 1.0.1
+
+Use the downloads with **OPUS** in their filename. Both platforms accept `.opus` and Ogg files containing Opus (`.ogg`), including batch/folder import. No manual conversion or audio upload is needed. Windows uses its bundled decoder. Mac includes a local BSD-licensed Opus decoder and uses a temporary PCM copy for transcription and playback; normal app exit removes that copy and the original is preserved. Mac OPUS recordings must be under ten hours; Windows keeps its two-hour limit. Ogg/Vorbis is not included.
+
+New downloads have checksums in **SHA256SUMS-OPUS.txt**; the original 1.0.1 files remain available for reproducibility. The updated source is on the main branch and in **Vocalia-1.0.1-OPUS-source.zip** in Releases. The tag's automatic Source code archives describe the original 1.0.1 build.

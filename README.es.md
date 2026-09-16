@@ -8,15 +8,15 @@
 
 ## Descargar la aplicación
 
-### [↓ Descargar para Windows 11 — Intel / AMD](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.1/Vocalia-1.0.1-Windows-x64-Setup.exe)
+### [↓ Descargar para Windows 11 — Intel / AMD](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.1/Vocalia-1.0.1-Windows-x64-OPUS-Setup.exe)
 
-### [↓ Descargar para MacBook / Mac — Apple Silicon](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.1/Vocalia-1.0.1-macOS-AppleSilicon.zip)
+### [↓ Descargar para MacBook / Mac — Apple Silicon](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.1/Vocalia-1.0.1-macOS-AppleSilicon-OPUS.zip)
 
 **[Ver la Release oficial 1.0 y todas las descargas](https://github.com/Francoocicchetti/Vocalia/releases/tag/v1.0.1)**
 
 En la página de la Release, abre **Assets** y elige el instalador **Setup.exe** para Windows o el ZIP para Mac. **No descargues “Source code” para instalar la app.**
 
-- **Windows:** Windows 11 Intel/AMD de 64 bits. Descarga y ejecuta **Vocalia-1.0.1-Windows-x64-Setup.exe**, sigue el asistente y abre **Vocalia** desde Inicio. Puedes crear un acceso directo en el escritorio. [Guía Windows](WINDOWS.es.md).
+- **Windows:** Windows 11 Intel/AMD de 64 bits. Descarga y ejecuta **Vocalia-1.0.1-Windows-x64-OPUS-Setup.exe**, sigue el asistente y abre **Vocalia** desde Inicio. Puedes crear un acceso directo en el escritorio. [Guía Windows](WINDOWS.es.md).
 - **MacBook/Mac:** Apple Silicon M1 o posterior y macOS 26+. No admite Mac Intel. Descomprime y arrastra **Vocalia.app** a **Aplicaciones**. **[Cómo instalarla y usar “Abrir igualmente” si macOS la bloquea](INSTALL-MAC.es.md)**.
 
 No necesitas Python, Xcode, una cuenta de transcripción ni claves de API para usar las descargas. Elige el idioma de interfaz y audio, prepara los modelos y agrega tus archivos. Los modelos necesitan internet para descargarse; después el reconocimiento es local.
@@ -33,7 +33,7 @@ Las secciones siguientes describen las funciones de la edición nativa para Mac.
 
 ## Qué incluye
 
-- MP3, MP4, MOV, M4A, WAV y otros formatos compatibles con macOS.
+- OPUS, MP3, MP4, MOV, M4A, WAV y otros formatos compatibles con macOS.
 - Carga de muchos archivos o carpetas y procesamiento por cola.
 - Texto completo editable y exportación TXT, SRT y VTT.
 - Resaltado sincronizado y seguimiento de la reproducción.
@@ -85,3 +85,9 @@ Las bibliotecas de terceros, con sus fuentes completas y licencias, están en `V
 - Windows: **agregar un audio no lo transcribe**. Pulsa **Transcribir pendientes**. Si falta el modelo, acepta descargarlo; al terminar empieza la transcripción automáticamente.
 - Avisos claros si no hay pendientes, falta el modelo o falla el motor. Al solicitar una transcripción se detiene la reproducción; escuchar queda desactivado mientras hay un trabajo en curso.
 
+
+## Compatibilidad OPUS en 1.0.1
+
+Descarga los archivos que incluyen **OPUS** en el nombre. Ambas versiones aceptan `.opus` y archivos Ogg que contienen Opus (`.ogg`), también por lotes y carpetas. No necesitas convertirlos ni subir el audio a un servidor. Mac incorpora un decodificador local y usa una copia PCM temporal para transcribir y escuchar; se elimina al cerrar normalmente la app y se conserva el original. OPUS en Mac admite grabaciones de menos de diez horas; Windows mantiene el límite de dos horas. No incluye Ogg/Vorbis.
+
+Los nuevos archivos se verifican con **SHA256SUMS-OPUS.txt**. El código actualizado está en main y en **Vocalia-1.0.1-OPUS-source.zip** de Releases; el Source code automático de la etiqueta corresponde a la compilación inicial.

@@ -69,7 +69,7 @@ El historial, las correcciones y las cuñas se guardan en `~/Library/Application
 - El texto completo siempre se puede copiar como un solo documento. Puede contener párrafos y etiquetas de hablante.
 - Las correcciones del texto completo se aplican a TXT y al portapapeles. Los subtítulos SRT/VTT utilizan los fragmentos de **Revisar**, con sus propios tiempos y correcciones.
 - Los avisos de baja confianza de Apple son señales de revisión, no porcentajes de precisión medidos. Comprueba nombres, cifras y citas contra el audio antes de publicarlas.
-- Acepta MP3, MP4, MOV, M4A, WAV, AIFF, AAC, FLAC, CAF y M4V que macOS pueda decodificar. Analiza la primera pista de audio; un archivo sin audio o con protección puede fallar.
+- Acepta OPUS, MP3, MP4, MOV, M4A, WAV, AIFF, AAC, FLAC, CAF y M4V que macOS pueda decodificar. Analiza la primera pista de audio; un archivo sin audio o con protección puede fallar.
 - La transcripción principal admite archivos de menos de 24 horas. **Whisper y la separación de voces requieren archivos de menos de 2 horas**. Si una función adicional falla, se conserva la transcripción principal y se intenta la otra función activada.
 - **Cancelar** conserva lo reconocido hasta entonces y deja los pendientes sin procesar. Los modelos pueden tardar en responder a la cancelación mientras terminan una operación interna.
 - Antes de volver a transcribir o recalcular voces se guarda una revisión JSON local. Quitar una entrada del historial no elimina el audio ni esas revisiones.
@@ -78,8 +78,14 @@ El historial, las correcciones y las cuñas se guardan en `~/Library/Application
 
 ## Abrir y recompilar
 
-Abre la app de esta carpeta o descomprime **Vocalia-1.0.1-macOS-AppleSilicon.zip**. Puedes arrastrarla a Aplicaciones. Requiere Apple Silicon y macOS 26 o posterior. Está compilada localmente y firmada para uso local; no está notarizada para distribución pública. No necesita micrófono para transcribir archivos.
+Abre la app de esta carpeta o descomprime **Vocalia-1.0.1-macOS-AppleSilicon-OPUS.zip**. Puedes arrastrarla a Aplicaciones. Requiere Apple Silicon y macOS 26 o posterior. Está compilada localmente y firmada para uso local; no está notarizada para distribución pública. No necesita micrófono para transcribir archivos.
 
 El código está en este repositorio. `build.sh` recompila con Swift Package Manager usando las bibliotecas incluidas, ejecuta las pruebas y genera el ZIP. Necesita las herramientas de desarrollo de Apple. Las licencias de las bibliotecas se incluyen en el código y dentro de la app.
 
 Fuentes técnicas: [SpeechAnalyzer de Apple](https://developer.apple.com/documentation/speech/speechanalyzer), [Argmax: WhisperKit y SpeakerKit](https://github.com/argmaxinc/argmax-oss-swift), [SpeakerKit](https://www.argmaxinc.com/blog/speakerkit).
+
+## Compatibilidad OPUS en 1.0.1
+
+Descarga los archivos que incluyen **OPUS** en el nombre. Ambas versiones aceptan `.opus` y archivos Ogg que contienen Opus (`.ogg`), también por lotes y carpetas. No necesitas convertirlos ni subir el audio a un servidor. Mac incorpora un decodificador local y usa una copia PCM temporal para transcribir y escuchar; se elimina al cerrar normalmente la app y se conserva el original. OPUS en Mac admite grabaciones de menos de diez horas; Windows mantiene el límite de dos horas. No incluye Ogg/Vorbis.
+
+Los nuevos archivos se verifican con **SHA256SUMS-OPUS.txt**. El código actualizado está en main y en **Vocalia-1.0.1-OPUS-source.zip** de Releases; el Source code automático de la etiqueta corresponde a la compilación inicial.

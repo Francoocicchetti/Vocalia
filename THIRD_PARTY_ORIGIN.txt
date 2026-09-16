@@ -3,3 +3,5 @@ Revision: ea872ffd35705aa757f33033500b9b0d40bd38df
 ArgmaxCore, WhisperKit and SpeakerKit modules are included without source changes.
 Package.swift is limited to these modules to exclude the CLI and server dependencies.
 Original license and notices: LICENSE and NOTICES inside Vendor.zip.
+
+OPUS helper: libogg 1.3.5, libopus 1.5.2, libopusfile 0.12, from https://downloads.xiph.org/releases/. Full source, SHA-256 hashes and build script: OpusDecoder-source.zip. BSD licenses are included in the app.

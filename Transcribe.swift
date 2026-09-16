@@ -77,6 +77,10 @@ enum TextExport {
 struct PreparedAudio: Sendable { let url: URL; let duration: Double; let offset: Double; let multipleTracks: Bool }
 enum AudioPrep {
     static func convert(_ source: URL, into target: URL, progress: @escaping @Sendable (Double) async -> Void) async throws -> PreparedAudio {
+        if OpusAudio.needsDecoding(source) {
+            let decoded = try await OpusAudio.shared.playable(source)
+            return try await convert(decoded, into: target, progress: progress)
+        }
         let asset = AVURLAsset(url: source)
         let tracks = try await asset.loadTracks(withMediaType: .audio)
         guard let track = tracks.first else { throw TranscribeError.message("El archivo no contiene una pista de audio.") }
@@ -244,7 +248,7 @@ enum AudioPrep {
     }
     func pick() {
         let p = NSOpenPanel(); p.allowsMultipleSelection = true; p.canChooseDirectories = true
-        p.allowedContentTypes = [.audio, .movie, .folder]; p.prompt = L("Agregar a la cola")
+        p.allowedContentTypes = [.audio, .movie, .folder, UTType(filenameExtension:"opus") ?? .data, UTType(filenameExtension:"ogg") ?? .data]; p.prompt = L("Agregar a la cola")
         p.message = L("Selecciona varios archivos con ⌘ o Mayúsculas. También puedes elegir carpetas completas.")
         if p.runModal() == .OK { add(p.urls) }
     }
@@ -397,10 +401,14 @@ enum AudioPrep {
         guard FileManager.default.isReadableFile(atPath:source) else {error="No encuentro el audio original. Conecta el disco o usa Vincular original para elegirlo en su nueva ubicación.";return}
         stopPlayback()
         let request=playbackRequest
+        Task {
+          do {
+            let playable = try await OpusAudio.shared.playable(URL(fileURLWithPath: source))
+            guard self.current?.source == source, self.playbackRequest == request else { return }
         if loadedSource != source {
             playbackTime=0
             if let observation { player?.removeTimeObserver(observation) }
-            player = AVPlayer(url: URL(fileURLWithPath: source)); loadedSource = source
+            player = AVPlayer(url: playable); loadedSource = source
             observation = player?.addPeriodicTimeObserver(forInterval: CMTime(seconds: 0.1, preferredTimescale: 600), queue: .main) { [weak self] time in
                 MainActor.assumeIsolated {
                     guard self?.loadedSource==source else{return}
@@ -417,10 +425,14 @@ enum AudioPrep {
                 }
             }
         } else {playbackEnd=end;player?.playImmediately(atRate:playbackRate);isPlaying=true}
+          } catch {
+            if self.playbackRequest == request { self.error = error.localizedDescription; self.isPlaying = false }
+          }
+        }
     }
     func relinkOriginal() {
         guard !busy,let i=selectedIndex else{return}
-        let panel=NSOpenPanel();panel.allowedContentTypes=[.audio,.movie];panel.allowsMultipleSelection=false
+        let panel=NSOpenPanel();panel.allowedContentTypes=[.audio,.movie,UTType(filenameExtension:"opus") ?? .data,UTType(filenameExtension:"ogg") ?? .data];panel.allowsMultipleSelection=false
         panel.message=L("Elige el mismo audio o video en su nueva ubicación. Los tiempos guardados corresponden a esa grabación.");panel.prompt=L("Vincular original")
         if panel.runModal() == .OK,let url=panel.url {
             stopPlayback();documents[i].source=url.path;persist();status="Original vinculado. Tu texto y tus cuñas se conservan."
@@ -467,7 +479,7 @@ struct TranscribeView: View {
                             Text(L("Tus grabaciones, listas para leer.")).font(.system(size: 22, weight: .semibold, design: .rounded))
                             Text(L("Arrastra audios o videos. Obtén texto editable, marcas de tiempo y subtítulos.")).multilineTextAlignment(.center).foregroundStyle(.secondary).frame(maxWidth: 410)
                             Button(L("Elegir archivos…")) { model.pick() }.buttonStyle(.borderedProminent).tint(accent).controlSize(.large)
-                            Text(L("MP3 · MP4 · MOV · M4A · WAV · AIFF · FLAC")).font(.system(size: 11)).foregroundStyle(.secondary)
+                            Text(L("MP3 · MP4 · MOV · M4A · WAV · AIFF · FLAC · OPUS")).font(.system(size: 11)).foregroundStyle(.secondary)
                         }.frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
                 }
@@ -676,6 +688,7 @@ struct TranscribeView: View {
 
 final class TranscribeDelegate: NSObject, NSApplicationDelegate {
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool { true }
+    func applicationWillTerminate(_ notification: Notification) { try? FileManager.default.removeItem(at: OpusAudio.temporaryRoot) }
     func applicationDidFinishLaunching(_ notification: Notification) {
         if let icon = NSImage(named: "TranscribeIcon") { NSApp.applicationIconImage = icon }
         NSApp.setActivationPolicy(.regular); NSApp.activate(ignoringOtherApps: true)
@@ -684,8 +697,14 @@ final class TranscribeDelegate: NSObject, NSApplicationDelegate {
 #if !QA && !ENGINE_QA
 @main struct TranscribeApp: App {
     @NSApplicationDelegateAdaptor(TranscribeDelegate.self) var delegate
-    init() { if CommandLine.arguments.contains("--self-test") { TranscribeTests.run(); AdvancedTests.run(); exit(0) } }
-    var body: some Scene { WindowGroup("Vocalia") { VocaliaStartView() }.defaultSize(width: 1100, height: 820).commands { CommandGroup(replacing: .newItem) {} } }
+    init() {
+        if let index = CommandLine.arguments.firstIndex(of: "--opus-self-test"), CommandLine.arguments.count > index + 2 {
+            let source = CommandLine.arguments[index+1], output = CommandLine.arguments[index+2]
+            Task { @MainActor in await OpusChecks.run(source: source, output: output) }
+            RunLoop.main.run()
+        }
+        if CommandLine.arguments.contains("--self-test") { TranscribeTests.run(); AdvancedTests.run(); exit(0) } }
+    var body: some Scene { WindowGroup("Vocalia") { if let config = Bundle.main.url(forResource: "opus-qa", withExtension: "json") { OpusValidationView(config: config) } else { VocaliaStartView() } }.defaultSize(width: 1100, height: 820).commands { CommandGroup(replacing: .newItem) {} } }
 }
 #endif
 enum TranscribeTests {
