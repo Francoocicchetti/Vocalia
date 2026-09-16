@@ -1,0 +1,66 @@
+name: Windows build and regression tests
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'Vocalia-Windows-source.zip'
+      - '.github/workflows/windows.yml'
+permissions:
+  contents: read
+concurrency:
+  group: vocalia-windows
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: windows-2025
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          architecture: x64
+      - name: Extract reviewed source
+        shell: pwsh
+        run: Expand-Archive Vocalia-Windows-source.zip -DestinationPath build-source
+      - name: Build and test packaged application
+        shell: pwsh
+        run: ./build-source/Vocalia-Windows/build.ps1
+      - name: Save tested download
+        uses: actions/upload-artifact@v4
+        with:
+          name: Vocalia-Windows-11-x64-preview
+          path: |
+            build-source/Vocalia-Windows/Vocalia-Windows-11-x64-preview.zip
+            build-source/Vocalia-Windows/SHA256SUMS-Windows.txt
+          if-no-files-found: error
+      - name: Save build diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-build-diagnostics
+          path: |
+            build-source/Vocalia-Windows/build/Vocalia/warn-Vocalia.txt
+            build-source/Vocalia-Windows/gui-result.txt
+          if-no-files-found: ignore
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: Vocalia-Windows-11-x64-preview
+          path: release
+      - name: Publish tested Windows preview
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          if ! gh release view windows-v0.1.0-preview >/dev/null 2>&1; then
+            gh release create windows-v0.1.0-preview --target "$GITHUB_SHA" --prerelease --title 'Vocalia para Windows 11 x64 — versión preliminar' --notes 'Windows 11 Intel/AMD. Descomprime todo el ZIP y abre Vocalia.exe. Motor Whisper local, interfaz español/inglés, importación múltiple, texto completo, cuñas y seguimiento del audio. Descarga inicial del modelo desde la app. Sin motor Apple ni separación automática de voces. Pruebas del ejecutable en Windows Server x64: historial, interfaz y transcripción de audio público. Pendiente validación de uso en equipos Windows 11 reales. Ejecutable sin firma Authenticode. Consulta WINDOWS.md para instrucciones y límites.'
+          fi
+          gh release upload windows-v0.1.0-preview release/* --clobber
