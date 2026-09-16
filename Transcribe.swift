@@ -449,7 +449,7 @@ struct TranscribeView: View {
     @State var showRemove = false
     @State var showDictionary = false
     @State var showTutorial = false
-    @AppStorage("guidedTour101Fix") private var guidedTourCompleted = false
+    @AppStorage("guidedTour101Release") private var guidedTourCompleted = false
     @State var selection = NSRange(location: 0, length: 0)
     @State var quoteSpeaker = ""
     @State var followAudio = true

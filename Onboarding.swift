@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct VocaliaStartView: View {
-    @AppStorage("languageChoice101TourFix") private var completed = false
+    @AppStorage("languageChoice101Release") private var completed = false
     var body: some View {
         if completed { TranscribeView() }
         else { VocaliaLanguageChoice { completed = true } }
