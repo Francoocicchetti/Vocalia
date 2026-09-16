@@ -1,10 +1,12 @@
 # Vocalia for Mac — user guide
 
+[Installation and macOS security prompts](INSTALL-MAC.md)
+
 [English overview](README.md) · [Español](GUIA.md) · [Windows guide](WINDOWS.md)
 
 ## Install and choose languages
 
-Requires Apple Silicon and macOS 26 or later. Extract the Mac ZIP and move Vocalia.app to Applications. This preview is locally signed and not notarized. If macOS blocks it, consult [Apple's instructions for apps from unidentified developers](https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unknown-developer-mh40616/mac); do not disable system-wide protections. File transcription does not need microphone access.
+Requires Apple Silicon and macOS 26 or later. Extract the Mac ZIP and move Vocalia.app to Applications. This release is locally signed and not notarized. If macOS blocks it, consult [Apple's instructions for apps from unidentified developers](https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unknown-developer-mh40616/mac); do not disable system-wide protections. File transcription does not need microphone access.
 
 Choose English or Español in **App language**. **Audio language** is independent: it lists the speech locales supported on your Mac. Select the spoken language and use **Download language** before transcribing. Apple manages that download. Whisper uses the language stored with each transcript, even if you later select another language for another recording. This is transcription, not translation. Native system messages follow macOS settings.
 

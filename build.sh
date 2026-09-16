@@ -21,5 +21,7 @@ xattr -cr "$APP_DIR"
 codesign --force --sign - "$APP_DIR"
 "$APP_DIR/Contents/MacOS/Transcribe" --self-test
 codesign --verify --deep --strict "$APP_DIR"
-ditto -c -k --norsrc --keepParent "$APP_DIR" "$OUTPUT_DIR/Vocalia.zip"
-echo "Build ready: $OUTPUT_DIR/Vocalia.zip"
+ditto -c -k --norsrc --keepParent "$APP_DIR" "$OUTPUT_DIR/Vocalia-1.0-macOS-AppleSilicon.zip"
+cp "$SOURCE_DIR/START-HERE.txt" "$BUILD_DIR/START-HERE.txt"
+(cd "$BUILD_DIR" && /usr/bin/zip -q "$OUTPUT_DIR/Vocalia-1.0-macOS-AppleSilicon.zip" START-HERE.txt)
+echo "Build ready: $OUTPUT_DIR/Vocalia-1.0-macOS-AppleSilicon.zip"

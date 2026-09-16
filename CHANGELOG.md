@@ -1,5 +1,12 @@
 # Release notes
 
+## 1.0 — first unified public release
+
+- One Mac/Windows Release with direct downloads and bilingual installation guides.
+- Official Apple first-launch instructions.
+- Public version 1.0; existing history and preferences retained.
+- Windows: system-aware initial language, screen-aware window size, clearer errors and saved revisions before retrying.
+
 [Español](CHANGELOG.es.md)
 
 ## Mac 2.2.1 / Windows 0.1.1 preview

@@ -2,11 +2,11 @@
 
 [English](WINDOWS.md) · [Inicio](README.es.md)
 
-**[Descargar Windows 0.1.1 preliminar](https://github.com/Francoocicchetti/Vocalia/releases/tag/windows-v0.1.1-preview)**
+**[Descargar Vocalia 1.0 para Windows](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.0/Vocalia-1.0-Windows-x64.zip)**
 
 Código: `Vocalia-Windows-source.zip`. Descomprímelo antes de ejecutar el script de compilación.
 
-Versión de prueba independiente de la aplicación nativa de macOS. Transcripción local con Whisper: no envía grabaciones a un servidor. La primera preparación descarga el modelo; después la transcripción usa únicamente archivos locales.
+Vocalia 1.0 para Windows. Transcripción local con Whisper: no envía grabaciones a un servidor. La primera preparación descarga el modelo; después la transcripción usa únicamente archivos locales.
 
 ## Uso
 
@@ -29,7 +29,7 @@ Los nombres del diccionario sirven de contexto: no corrigen automáticamente. Lo
 - Máximo 10.000 archivos por importación y grabaciones de menos de 2 horas con duración legible. Los archivos protegidos, corruptos o sin pista de audio mostrarán un error.
 - La velocidad y el consumo de memoria dependen del procesador, el modelo y el audio. No se ha medido precisión sobre entrevistas chilenas verificadas.
 - Esta edición **no tiene el motor de Apple, comparación Apple/Whisper ni separación automática de hablantes**. Puedes nombrar manualmente a los hablantes de las cuñas.
-- Las pruebas automatizadas de Windows Server x64 verifican compilación y funcionamiento, pero no sustituyen una prueba en el Windows 11 de tus colegas. Se distribuye como preview, no como versión certificada estable.
+- Las pruebas automatizadas de Windows Server x64 verifican compilación y funcionamiento, pero no sustituyen una prueba en el Windows 11 de tus colegas. La numeración 1.0 no constituye una certificación de estabilidad en todos los equipos.
 - El ejecutable no está firmado con un certificado Authenticode: Windows puede mostrar un aviso de reputación. No desactives las protecciones generales del equipo.
 
 ## Compilar y probar
@@ -38,3 +38,5 @@ En Windows x64 con Python 3.12 de python.org, ejecuta `powershell -File build.ps
 
 `test-speech.flac` es un fragmento público del discurso de JFK de las pruebas oficiales de OpenAI Whisper. No contiene datos del usuario y no se incluye en la aplicación.
 
+
+Antes de reintentar una transcripción parcial, se conserva una revisión JSON en `%LOCALAPPDATA%\Vocalia\Revisions`.

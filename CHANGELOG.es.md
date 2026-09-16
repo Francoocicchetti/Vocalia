@@ -1,5 +1,12 @@
 # Notas de versión
 
+## 1.0 — primera versión pública unificada
+
+- Una Release para Mac y Windows, con descargas directas y guías bilingües.
+- Instrucciones oficiales de Apple para la primera apertura.
+- Numeración pública 1.0, conservando historial y preferencias.
+- Windows: idioma inicial según el sistema, ventana adaptable, mensajes más claros y copia de revisiones antes de reintentar.
+
 [English](CHANGELOG.md)
 
 ## Mac 2.2.1 / Windows 0.1.1 preliminar

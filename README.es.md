@@ -1,24 +1,35 @@
-<p align="center"><img src="logo.png" alt="Vocalia" width="180"></p>
+<p align="center"><img src="logo.png" width="128" alt="Icono de Vocalia"></p>
 
-# Vocalia
+# Vocalia 1.0
 
-**Transcripción local para periodistas, entrevistas y cuñas.**
+**Transcripción local para periodistas: texto completo, cuñas y audio resaltado.**
 
-[English](README.md) · [Guía completa](GUIA.md) · [Privacidad](PRIVACY.md)
+[English](README.md) · **Español**
 
-Vocalia convierte audio y video en un texto completo y editable en tu Mac. Puedes copiar toda una entrevista, escuchar el fragmento resaltado mientras avanza el audio y guardar citas con su fuente y tiempo.
+## Descargar la aplicación
 
-## Windows 11 (Intel / AMD)
+### [↓ Descargar para Windows 11 — Intel / AMD](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.0/Vocalia-1.0-Windows-x64.zip)
 
-Hay una versión independiente para Windows 11 x64: **[descargas e instrucciones](WINDOWS.es.md)**. Conserva la transcripción local, texto completo, cuñas y seguimiento del audio. Es preliminar y no incluye el motor Apple ni la separación automática de voces. Las secciones siguientes describen la app nativa para Mac.
+### [↓ Descargar para MacBook / Mac — Apple Silicon](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.0/Vocalia-1.0-macOS-AppleSilicon.zip)
 
-## Descargar para Mac
+**[Ver la Release oficial 1.0 y todas las descargas](https://github.com/Francoocicchetti/Vocalia/releases/tag/v1.0.0)**
 
-**Versión de prueba 2.2.1 — Apple Silicon y macOS 26 o posterior.**
+En la página de la Release, abre **Assets** y elige el ZIP de tu equipo. **No descargues “Source code” para instalar la app.**
 
-[Descargar Vocalia para Mac](https://github.com/Francoocicchetti/Vocalia/raw/refs/heads/main/Vocalia-2.2.1-macOS.zip)
+- **Windows:** Windows 11 Intel/AMD de 64 bits. Descomprime todo el ZIP con **Extraer todo**, abre la carpeta Vocalia y ejecuta **Vocalia.exe**. Conserva `_internal`. [Guía Windows](WINDOWS.es.md).
+- **MacBook/Mac:** Apple Silicon M1 o posterior y macOS 26+. No admite Mac Intel. Descomprime y arrastra **Vocalia.app** a **Aplicaciones**. **[Cómo instalarla y usar “Abrir igualmente” si macOS la bloquea](INSTALL-MAC.es.md)**.
 
-Descomprime el ZIP y arrastra Vocalia.app a Aplicaciones. La aplicación tiene firma local, pero **todavía no está notarizada por Apple**; macOS puede bloquear su primera apertura. Consulta el [procedimiento de Apple para apps de desarrolladores no identificados](https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unknown-developer-mh40616/mac). No requiere desactivar las protecciones generales del Mac. Si prefieres, puedes compilarla desde este código.
+No necesitas Python, Xcode, una cuenta de transcripción ni claves de API para usar las descargas. Elige el idioma de interfaz y audio, prepara los modelos y agrega tus archivos. Los modelos necesitan internet para descargarse; después el reconocimiento es local.
+
+## Estado de la versión
+
+1.0 unifica la numeración pública; las anteriores eran versiones de desarrollo. No implica certificación de Apple/Microsoft ni precisión perfecta. Mac tiene firma local sin notarización; Windows no tiene firma Authenticode. Las pruebas de Windows se ejecutan en Windows Server x64; falta validación de uso en Windows 11 real. Revisa nombres, cifras y citas contra el original.
+
+## Funciones según la plataforma
+
+Ambas versiones incluyen carga múltiple, texto completo, resaltado, cuñas, diccionario y exportación TXT/SRT/VTT. Windows utiliza Whisper en CPU, acepta archivos de menos de dos horas y no incluye separación automática de voces ni comparación con Apple. [Guía Windows](WINDOWS.es.md).
+
+Las secciones siguientes describen las funciones de la edición nativa para Mac.
 
 ## Qué incluye
 
@@ -60,12 +71,6 @@ zsh build.sh
 ```
 
 El script compila las bibliotecas incluidas, ejecuta las pruebas y genera `dist/Vocalia.zip`. Las pruebas usan datos sintéticos y no requieren grabaciones personales ni descargar modelos. No se incluyen modelos de aprendizaje automático en este repositorio.
-
-## Estado de la versión
-
-2.2 corrige el cierre al limpiar el historial, añade idioma de interfaz y descarga explícita de idiomas, y estrena el logo de Vocalia. Se ejecutaron 48 comprobaciones del núcleo y las funciones adicionales. Esta es una versión de prueba: esas comprobaciones no garantizan ausencia de otros errores ni miden precisión del reconocimiento.
-
-Para informar un fallo, abre un issue con los pasos, la versión de macOS y el formato y duración aproximada del archivo. **No publiques grabaciones, transcripciones, nombres de fuentes ni registros sin revisar su contenido.**
 
 ## Componentes y licencias
 

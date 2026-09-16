@@ -1,0 +1,21 @@
+VOCALIA 1.0 — DOWNLOADS / DESCARGAS
+
+Official release / Release oficial:
+https://github.com/Francoocicchetti/Vocalia/releases/tag/v1.0.0
+
+WINDOWS 11 (Intel / AMD x64)
+Download Vocalia-1.0-Windows-x64.zip. Extract All, open the Vocalia folder and run Vocalia.exe. Keep the _internal folder beside it. No Python required.
+Descarga Vocalia-1.0-Windows-x64.zip. Extrae todo, abre la carpeta Vocalia y ejecuta Vocalia.exe. Conserva _internal. No necesita Python.
+
+MAC / MACBOOK (Apple Silicon M1+, macOS 26+)
+Download Vocalia-1.0-macOS-AppleSilicon.zip. Extract, drag Vocalia.app to Applications and open it.
+Descarga Vocalia-1.0-macOS-AppleSilicon.zip. Descomprime, arrastra Vocalia.app a Aplicaciones y ábrela.
+
+First-launch security prompt / Aviso de seguridad al abrir por primera vez:
+English: https://github.com/Francoocicchetti/Vocalia/blob/v1.0.0/INSTALL-MAC.md
+Español: https://github.com/Francoocicchetti/Vocalia/blob/v1.0.0/INSTALL-MAC.es.md
+
+In both apps, choose the interface and spoken language, prepare the model and add recordings. Initial model downloads need internet. Recognition runs locally afterwards.
+En ambas apps, elige el idioma de interfaz y audio, prepara el modelo y agrega grabaciones. La descarga inicial de modelos necesita internet; después el reconocimiento es local.
+
+Download the app ZIP, not Source code. / Descarga el ZIP de la app, no Source code.

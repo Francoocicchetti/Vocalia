@@ -2,11 +2,11 @@
 
 [Español](WINDOWS.es.md) · [Overview](README.md)
 
-**[Download Windows 0.1.1 preview](https://github.com/Francoocicchetti/Vocalia/releases/tag/windows-v0.1.1-preview)**
+**[Download Vocalia 1.0 for Windows](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.0/Vocalia-1.0-Windows-x64.zip)**
 
 Source: `Vocalia-Windows-source.zip`. Extract it before running the build script.
 
-An independent preview of Vocalia for Windows. Whisper recognition runs locally on your CPU. Model preparation downloads model assets; subsequent transcription loads local files in offline mode. Recordings are not uploaded.
+Vocalia 1.0 for Windows. Whisper recognition runs locally on your CPU. Model preparation downloads model assets; subsequent transcription loads local files in offline mode. Recordings are not uploaded.
 
 ## Install and use
 
@@ -33,7 +33,7 @@ Exports go to your chosen folder. A cloud-synced destination may upload exported
 - Up to 10,000 files per import; recordings must have a readable duration below two hours. Protected, corrupt and audio-less files are rejected.
 - Speed and memory use depend on the processor, model and recording. No verified error rate for Chilean interviews is claimed.
 - No Apple Speech, Apple/Whisper comparison or automatic speaker separation in this edition.
-- Packaged tests run on Windows Server x64. They do not replace use testing on real Windows 11 hardware. This is a preview, not a certified stable release.
+- Packaged tests run on Windows Server x64. They do not replace use testing on real Windows 11 hardware. Version 1.0 is not a certification of universal stability.
 - The executable has no Authenticode signature; Windows may show a reputation warning. Do not disable system-wide protections.
 
 ## Build and test
@@ -43,3 +43,5 @@ On Windows x64 with Python 3.12 from python.org, run `powershell -File build.ps1
 Tests cover history removal, interrupted workers, cancellation, Unicode import paths, corrupt media and FLAC/MP3/MP4/MOV recognition with word timestamps. The public `test-speech.flac` fixture is the JFK speech excerpt from the official OpenAI Whisper tests. It is not a personal interview and is not bundled with the executable. Never use private recordings in public CI.
 
 Dependency notices and license files are included in the packaged application.
+
+Before retrying a partial transcription, a JSON revision is saved under `%LOCALAPPDATA%\Vocalia\Revisions`.
