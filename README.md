@@ -1,74 +1,63 @@
-<p align="center"><img src="logo.png" alt="Vocalia" width="180"></p>
+<p align="center"><img src="logo.png" width="128" alt="Vocalia app icon"></p>
 
 # Vocalia
 
-**Transcripción local para periodistas, entrevistas y cuñas.**
+**Local audio transcription for journalists. Full transcripts, source-linked quotes and synchronized playback.**
 
-[English](README.en.md) · [Guía completa](GUIA.md) · [Privacidad](PRIVACY.md)
+**English** · [Español](README.es.md)
 
-Vocalia convierte audio y video en un texto completo y editable en tu Mac. Puedes copiar toda una entrevista, escuchar el fragmento resaltado mientras avanza el audio y guardar citas con su fuente y tiempo.
+Turn interviews and recordings into one complete, editable document. Import multiple files, follow the highlighted transcript while listening, and collect quotations with source timestamps. Audio stays on your computer; models are downloaded separately.
 
-## Windows 11 (Intel / AMD)
+## Download
 
-Hay una versión independiente para Windows 11 x64: **[descargas e instrucciones](WINDOWS.md)**. Conserva la transcripción local, texto completo, cuñas y seguimiento del audio. Es preliminar y no incluye el motor Apple ni la separación automática de voces. Las secciones siguientes describen la app nativa para Mac.
+| Platform | Download | Requirements |
+| --- | --- | --- |
+| macOS | [Vocalia 2.2.1 for Mac](https://github.com/Francoocicchetti/Vocalia/raw/refs/heads/main/Vocalia-2.2.1-macOS.zip) | Apple Silicon, macOS 26 or later |
+| Windows | [Vocalia 0.1.1 preview for Windows](https://github.com/Francoocicchetti/Vocalia/releases/tag/windows-v0.1.1-preview) | Windows 11, Intel/AMD x64 |
 
-## Descargar para Mac
+Both are **preview releases**. The Mac app is locally signed but not notarized by Apple; the Windows app has no Authenticode signature. See the platform guides for installation and current limits.
 
-**Versión de prueba 2.2 — Apple Silicon y macOS 26 o posterior.**
+### Get started
 
-[Descargar Vocalia para Mac](https://github.com/Francoocicchetti/Vocalia/raw/refs/heads/main/Vocalia-2.2-macOS.zip)
+1. Download the package for your computer and extract it completely.
+2. **Mac:** move Vocalia.app to Applications. **Windows:** open Vocalia.exe and keep its `_internal` folder beside it.
+3. Choose **English** or **Español** for the interface. Select the spoken language separately.
+4. Prepare the language/model, add your recordings, then transcribe pending files.
+5. Copy or export the complete transcript. Check names, numbers and quotations against the original audio before publication.
 
-Descomprime el ZIP y arrastra Vocalia.app a Aplicaciones. La aplicación tiene firma local, pero **todavía no está notarizada por Apple**; macOS puede bloquear su primera apertura. Consulta el [procedimiento de Apple para apps de desarrolladores no identificados](https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unknown-developer-mh40616/mac). No requiere desactivar las protecciones generales del Mac. Si prefieres, puedes compilarla desde este código.
+No transcription account, API key or subscription is required. An internet connection is needed for the initial model downloads; recognition then runs locally.
 
-## Qué incluye
+## Features by platform
 
-- MP3, MP4, MOV, M4A, WAV y otros formatos compatibles con macOS.
-- Carga de muchos archivos o carpetas y procesamiento por cola.
-- Texto completo editable y exportación TXT, SRT y VTT.
-- Resaltado sincronizado y seguimiento de la reproducción.
-- Diccionario de nombres, instituciones y siglas.
-- Cuñas literales con fuente, hablante y tiempos.
-- Comparación opcional entre Apple Speech y Whisper.
-- Agrupación automática de voces con nombres editables.
-- Interfaz en español e inglés; selección independiente del idioma del audio.
-- Descarga del idioma antes de transcribir y modelos adicionales locales.
+| Feature | Mac | Windows preview |
+| --- | --- | --- |
+| Multiple files and folders; sequential queue | Yes | Yes |
+| Full editable transcript; TXT, SRT and VTT export | Yes | Yes |
+| Playback highlighting and source-linked quotations | Yes | Yes |
+| Personal vocabulary; English/Spanish interface | Yes | Yes |
+| Recognition engine | Apple Speech; optional Whisper comparison | Whisper on CPU |
+| Automatic speaker grouping | Optional | Not included; quote speakers are entered manually |
+| Recording duration | Main engine: under 24 h; extra engines: under 2 h | Under 2 h |
 
-## Primer uso
+MP3, MP4, MOV, M4A and other supported audio/video formats are accepted. Protected, corrupt or unsupported files may fail. Edited text can lose its alignment with the audio. Transcription accuracy is not guaranteed, and no measured error rate for Chilean interviews is claimed.
 
-1. Elige el idioma de los controles en **Interfaz**.
-2. Elige el idioma hablado en **Idioma del audio** y pulsa **Descargar idioma** si hace falta.
-3. Agrega archivos o carpetas y pulsa **Transcribir pendientes**.
-4. Revisa el texto y las citas contra el original antes de publicarlas.
+## Guides, privacy and source
 
-Los modelos se descargan una vez cuando sean necesarios. Las grabaciones no se envían a servicios de transcripción. La app no necesita una cuenta ni una clave de API. Compartir este repositorio no comparte tu historial local.
+- [Mac guide](GUIDE.md) · [Windows guide](WINDOWS.md)
+- [Privacy](PRIVACY.md) · [Release notes](CHANGELOG.md)
+- [Guía para Mac en español](GUIA.md) · [Guía para Windows en español](WINDOWS.es.md)
+- [Windows build and regression tests](https://github.com/Francoocicchetti/Vocalia/actions/workflows/windows.yml)
 
-## Límites claros
+Mac source is in the Swift files; run `zsh build.sh` with Apple's development tools and a macOS 26 SDK. The script extracts the bundled dependencies, builds the app and runs its checks. Windows source is in `Vocalia-Windows-source.zip`; extract it and run `powershell -File build.ps1` on Windows x64 with Python 3.12. Builds include dependency notices.
 
-- La app nativa para Mac requiere Apple Silicon y macOS 26; no admite Mac Intel. La edición Windows tiene sus propios [requisitos y límites](WINDOWS.md).
-- La transcripción principal acepta grabaciones de menos de 24 horas; comparación y voces, de menos de 2 horas.
-- No promete precisión perfecta: revisa especialmente nombres, cifras y voces superpuestas.
-- Los fragmentos antiguos sin tiempos por palabra se resaltan por fragmento.
-- El texto completamente reescrito puede perder su correspondencia con el audio.
-- Los mensajes del sistema y sus menús nativos siguen el idioma de macOS.
+Windows automated checks run on Windows Server x64 and cover the packaged interface, history handling, worker failures, Unicode paths and offline MP3/MP4/MOV/FLAC recognition. They do not replace testing on real Windows 11 hardware. The Mac app has 48 core and feature checks. Tests demonstrate specific behavior, not universal stability or perfect recognition.
 
-## Compilar
+## Report a problem
 
-Necesitas las herramientas de desarrollo de Apple con SDK de macOS 26 o posterior y Swift 6.3 o compatible.
+Open an issue with your OS, app version, steps to reproduce and the file format/approximate duration. **Do not post private recordings, transcripts, source names or unreviewed logs.**
 
-```sh
-zsh build.sh
-```
+## Components and licensing
 
-El script compila las bibliotecas incluidas, ejecuta las pruebas y genera `dist/Vocalia.zip`. Las pruebas usan datos sintéticos y no requieren grabaciones personales ni descargar modelos. No se incluyen modelos de aprendizaje automático en este repositorio.
+Mac uses Apple SpeechAnalyzer, WhisperKit and SpeakerKit; dependency sources are in `Vendor.zip`, with [license](THIRD_PARTY_LICENSE), [notices](THIRD_PARTY_NOTICES) and [origin](THIRD_PARTY_ORIGIN.txt). Windows uses PySide6, faster-whisper, CTranslate2, PyAV and ONNX Runtime; its package includes `licenses/` and third-party notices. Model providers retain their respective terms.
 
-## Estado de la versión
-
-2.2 corrige el cierre al limpiar el historial, añade idioma de interfaz y descarga explícita de idiomas, y estrena el logo de Vocalia. Se ejecutaron 48 comprobaciones del núcleo y las funciones adicionales. Esta es una versión de prueba: esas comprobaciones no garantizan ausencia de otros errores ni miden precisión del reconocimiento.
-
-Para informar un fallo, abre un issue con los pasos, la versión de macOS y el formato y duración aproximada del archivo. **No publiques grabaciones, transcripciones, nombres de fuentes ni registros sin revisar su contenido.**
-
-## Componentes y licencias
-
-Usa Apple SpeechAnalyzer, WhisperKit y SpeakerKit. Las fuentes de Argmax se incluyen con su [licencia](THIRD_PARTY_LICENSE), [avisos](THIRD_PARTY_NOTICES) y [revisión de origen](THIRD_PARTY_ORIGIN.txt). Los modelos conservan las condiciones de sus respectivos proveedores. No se ha asignado una licencia de código abierto al código propio ni al logo de Vocalia.
-
-Las bibliotecas de terceros, con sus fuentes completas y licencias, están en `Vendor.zip`. El script de compilación las extrae en una carpeta temporal. El código propio se puede consultar directamente en los archivos Swift de este repositorio.
+No general open-source license has been assigned to Vocalia's own code or supplied logo. Third-party licenses apply to their respective components.

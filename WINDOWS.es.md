@@ -1,0 +1,40 @@
+# Vocalia para Windows 11 · Intel / AMD x64
+
+[English](WINDOWS.md) · [Inicio](README.es.md)
+
+**[Descargar Windows 0.1.1 preliminar](https://github.com/Francoocicchetti/Vocalia/releases/tag/windows-v0.1.1-preview)**
+
+Código: `Vocalia-Windows-source.zip`. Descomprímelo antes de ejecutar el script de compilación.
+
+Versión de prueba independiente de la aplicación nativa de macOS. Transcripción local con Whisper: no envía grabaciones a un servidor. La primera preparación descarga el modelo; después la transcripción usa únicamente archivos locales.
+
+## Uso
+
+1. Descomprime **toda la carpeta** del ZIP. No separes Vocalia.exe de `_internal`.
+2. Abre Vocalia.exe. No necesita instalar Python ni permisos de administrador.
+3. Elige Español o English para la interfaz y el idioma hablado para el audio.
+4. Elige el modelo y pulsa Descargar / preparar modelo. `small` es la opción inicial equilibrada; `medium` y `large-v3-turbo` consumen más memoria y tiempo. Se recomienda probar small primero; para los modelos mayores conviene tener al menos 16 GB de RAM disponibles en el equipo. Esto es una orientación, no un mínimo de rendimiento medido.
+5. Agrega varios MP3, MP4, MOV, M4A u otros archivos, o una carpeta. Pulsa Transcribir pendientes.
+6. Copia el texto completo, revísalo escuchando el original con resaltado o selecciona una frase para guardar una cuña. Puedes exportar TXT, SRT y VTT.
+
+El historial y los modelos están en `%LOCALAPPDATA%\Vocalia`. Quitar una entrada es recuperable con **Recuperar última eliminada**; el original nunca se elimina. La app impide abrir dos instancias contra el mismo historial. Al cancelar se conserva lo que ya se reconoció. Puedes volver a procesar los pendientes desde el comienzo.
+
+Los nombres del diccionario sirven de contexto: no corrigen automáticamente. Los tiempos se corresponden con el texto reconocido; si reescribes una frase puede dejar de ser posible localizarla. TXT conserva las ediciones completas, mientras que SRT/VTT usan los fragmentos reconocidos con tiempos.
+
+## Estabilidad y límites
+
+- Motor CPU: no depende de una tarjeta NVIDIA ni de controladores CUDA.
+- El motor se ejecuta en un proceso independiente; un fallo o cancelación no debe cerrar el editor.
+- Guardado transaccional en SQLite y recuperación de entradas quitadas del historial.
+- Máximo 10.000 archivos por importación y grabaciones de menos de 2 horas con duración legible. Los archivos protegidos, corruptos o sin pista de audio mostrarán un error.
+- La velocidad y el consumo de memoria dependen del procesador, el modelo y el audio. No se ha medido precisión sobre entrevistas chilenas verificadas.
+- Esta edición **no tiene el motor de Apple, comparación Apple/Whisper ni separación automática de hablantes**. Puedes nombrar manualmente a los hablantes de las cuñas.
+- Las pruebas automatizadas de Windows Server x64 verifican compilación y funcionamiento, pero no sustituyen una prueba en el Windows 11 de tus colegas. Se distribuye como preview, no como versión certificada estable.
+- El ejecutable no está firmado con un certificado Authenticode: Windows puede mostrar un aviso de reputación. No desactives las protecciones generales del equipo.
+
+## Compilar y probar
+
+En Windows x64 con Python 3.12 de python.org, ejecuta `powershell -File build.ps1` desde esta carpeta. Se instalan las versiones fijadas, corren las pruebas del núcleo, se empaqueta la app, se prueban la interfaz y el reconocimiento con un audio público de prueba, y se crea un ZIP. Nunca uses una grabación privada para las pruebas públicas de GitHub.
+
+`test-speech.flac` es un fragmento público del discurso de JFK de las pruebas oficiales de OpenAI Whisper. No contiene datos del usuario y no se incluye en la aplicación.
+

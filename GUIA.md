@@ -1,4 +1,6 @@
-# Vocalia 2.2
+# Vocalia 2.2.1
+
+[English guide](GUIDE.md) · [Inicio en español](README.es.md)
 
 Transcripciones completas y editables, con herramientas para preparar cuñas. Todo el reconocimiento se realiza en tu Mac. Los originales se conservan.
 
@@ -54,7 +56,7 @@ Los tramos superpuestos o sin correspondencia suficiente requieren revisión. No
 
 ## Modelos locales y privacidad
 
-Apple SpeechAnalyzer realiza la transcripción principal. WhisperKit ejecuta Whisper large-v3-turbo cuantizado como segunda lectura; SpeakerKit ejecuta los modelos de separación de voces. **Preparar modelos** descarga los dos complementos una vez. Ya se descargaron y probaron en este Mac; ocupan aproximadamente 619 MB, además del modelo de idioma de Apple y posibles cachés del sistema. Preparar o ejecutar por primera vez puede tardar.
+Apple SpeechAnalyzer realiza la transcripción principal. WhisperKit ejecuta Whisper large-v3-turbo cuantizado como segunda lectura; SpeakerKit ejecuta los modelos de separación de voces. **Preparar modelos** descarga los dos complementos una vez. El tamaño depende de las versiones de los modelos, además del modelo de idioma de Apple y posibles cachés del sistema. Preparar o ejecutar por primera vez puede tardar.
 
 Los archivos no se envían a servicios de transcripción. Las conexiones se utilizan para descargar modelos; una vez disponibles localmente, el reconocimiento funciona sin conexión. No requiere cuentas, claves ni suscripciones. Los modelos se guardan en `~/Library/Application Support/Franco Transcribe/Models`.
 
@@ -74,7 +76,7 @@ El historial, las correcciones y las cuñas se guardan en `~/Library/Application
 
 ## Abrir y recompilar
 
-Abre la app de esta carpeta o descomprime **Vocalia.zip**. Puedes arrastrarla a Aplicaciones. Requiere Apple Silicon y macOS 26 o posterior. Está compilada localmente y firmada para uso local; no está notarizada para distribución pública. No necesita micrófono para transcribir archivos.
+Abre la app de esta carpeta o descomprime **Vocalia-2.2.1-macOS.zip**. Puedes arrastrarla a Aplicaciones. Requiere Apple Silicon y macOS 26 o posterior. Está compilada localmente y firmada para uso local; no está notarizada para distribución pública. No necesita micrófono para transcribir archivos.
 
 El código está en este repositorio. `build.sh` recompila con Swift Package Manager usando las bibliotecas incluidas, ejecuta las pruebas y genera el ZIP. Necesita las herramientas de desarrollo de Apple. Las licencias de las bibliotecas se incluyen en el código y dentro de la app.
 

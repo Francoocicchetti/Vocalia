@@ -2,8 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CFBundleDevelopmentRegion</key><string>es</string>
-	<key>CFBundleLocalizations</key><array><string>es</string><string>en</string></array>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>es</string>
 	<key>CFBundleDisplayName</key>
 	<string>Vocalia</string>
 	<key>CFBundleExecutable</key>
@@ -12,14 +12,19 @@
 	<string>TranscribeIcon</string>
 	<key>CFBundleIdentifier</key>
 	<string>cl.franco.transcribe</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>es</string>
+		<string>en</string>
+	</array>
 	<key>CFBundleName</key>
 	<string>Vocalia</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.2</string>
+	<string>2.2.1</string>
 	<key>CFBundleVersion</key>
-	<string>6</string>
+	<string>7</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>26.0</string>
 	<key>NSDesktopFolderUsageDescription</key>

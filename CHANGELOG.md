@@ -1,3 +1,22 @@
+# Release notes
+
+[Español](CHANGELOG.es.md)
+
+## Mac 2.2.1 / Windows 0.1.1 preview
+
+- Replace oversized rectangular logo margins with a clean, rounded application icon, with native macOS and Windows size variants.
+- Make English the primary repository language, with separate Spanish documentation.
+- Include English-first Windows package instructions and updated download guidance.
+- Recognition engines and existing user histories are unchanged by this branding/documentation update.
+
+## Windows 0.1.0 preview
+
+- Local CPU Whisper recognition in a separate worker process.
+- Multiple-file import, full text, playback highlighting, quotes and TXT/SRT/VTT export.
+- Transactional SQLite history with recoverable removal and ID-based editing.
+- Packaged Windows regression tests: history, interrupted workers, Unicode paths, corrupt audio and offline FLAC/MP3/MP4/MOV recognition.
+- Fix Windows file locking when a damaged history cannot be opened; read JSON consistently as UTF-8.
+
 # 2.2 — Preview
 
 - Fix retained SwiftUI text and segment bindings after deleting or reordering history entries. Bindings resolve recording and segment IDs instead of retaining array positions.
