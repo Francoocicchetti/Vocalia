@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct VocaliaStartView: View {
-    @AppStorage("onboarding101") private var completed = false
+    @AppStorage("languageChoice101TourFix") private var completed = false
     var body: some View {
         if completed { TranscribeView() }
         else { VocaliaLanguageChoice { completed = true } }
@@ -82,7 +82,7 @@ struct VocaliaCoachMarks: View {
                         }.buttonStyle(.borderedProminent).keyboardShortcut(.defaultAction)
                     }
                 }.padding(18).frame(width:width,height:height)
-                    .background(.regularMaterial,in:RoundedRectangle(cornerRadius:16))
+                    .background(Color.white,in:RoundedRectangle(cornerRadius:16))
                     .overlay(RoundedRectangle(cornerRadius:16).stroke(.indigo.opacity(0.6)))
                     .shadow(color:.black.opacity(0.15),radius:12,y:4)
                     .position(x:x+width/2,y:y+height/2)

@@ -8,15 +8,15 @@
 
 ## Descargar la aplicación
 
-### [↓ Descargar para Windows 11 — Intel / AMD](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.1/Vocalia-1.0.1-Windows-x64-Tour-Setup.exe)
+### [↓ Descargar para Windows 11 — Intel / AMD](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.1/Vocalia-1.0.1-Windows-x64-GuideFix-Setup.exe)
 
-### [↓ Descargar para MacBook / Mac — Apple Silicon](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.1/Vocalia-1.0.1-macOS-AppleSilicon-Tour.zip)
+### [↓ Descargar para MacBook / Mac — Apple Silicon](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.1/Vocalia-1.0.1-macOS-AppleSilicon-GuideFix.zip)
 
 **[Ver la Release oficial 1.0 y todas las descargas](https://github.com/Francoocicchetti/Vocalia/releases/tag/v1.0.1)**
 
 En la página de la Release, abre **Assets** y elige el instalador **Setup.exe** para Windows o el ZIP para Mac. **No descargues “Source code” para instalar la app.**
 
-- **Windows:** Windows 11 Intel/AMD de 64 bits. Descarga y ejecuta **Vocalia-1.0.1-Windows-x64-Tour-Setup.exe**, sigue el asistente y abre **Vocalia** desde Inicio. Puedes crear un acceso directo en el escritorio. [Guía Windows](WINDOWS.es.md).
+- **Windows:** Windows 11 Intel/AMD de 64 bits. Descarga y ejecuta **Vocalia-1.0.1-Windows-x64-GuideFix-Setup.exe**, sigue el asistente y abre **Vocalia** desde Inicio. Puedes crear un acceso directo en el escritorio. [Guía Windows](WINDOWS.es.md).
 - **MacBook/Mac:** Apple Silicon M1 o posterior y macOS 26+. No admite Mac Intel. Descomprime y arrastra **Vocalia.app** a **Aplicaciones**. **[Cómo instalarla y usar “Abrir igualmente” si macOS la bloquea](INSTALL-MAC.es.md)**.
 
 No necesitas Python, Xcode, una cuenta de transcripción ni claves de API para usar las descargas. Elige el idioma de interfaz y audio, prepara los modelos y agrega tus archivos. Los modelos necesitan internet para descargarse; después el reconocimiento es local.
@@ -90,8 +90,12 @@ Las bibliotecas de terceros, con sus fuentes completas y licencias, están en `V
 
 Descarga los archivos que incluyen **OPUS** en el nombre. Ambas versiones aceptan `.opus` y archivos Ogg que contienen Opus (`.ogg`), también por lotes y carpetas. No necesitas convertirlos ni subir el audio a un servidor. Mac incorpora un decodificador local y usa una copia PCM temporal para transcribir y escuchar; se elimina al cerrar normalmente la app y se conserva el original. OPUS en Mac admite grabaciones de menos de diez horas; Windows mantiene el límite de dos horas. No incluye Ogg/Vorbis.
 
-Los nuevos archivos se verifican con **SHA256SUMS-Tour.txt**. El código actualizado está en main y en **Vocalia-1.0.1-Tour-source.zip** de Releases; el Source code automático de la etiqueta corresponde a la compilación inicial.
+Los nuevos archivos se verifican con **SHA256SUMS-GuideFix.txt**. El código actualizado está en main y en **Vocalia-1.0.1-GuideFix-source.zip** de Releases; el Source code automático de la etiqueta corresponde a la compilación inicial.
 
 ## Guía interactiva
 
-Al entrar verás globos junto a los controles reales. Usa Siguiente, Atrás u Omitir; vuelve a abrirla con **Cómo usar Vocalia**. El idioma se elige antes de entrar la primera vez. La guía no inicia transcripciones ni modifica archivos. Las descargas con **Tour** incluyen también OPUS.
+Al entrar verás globos junto a los controles reales. Usa Siguiente, Atrás u Omitir; vuelve a abrirla con **Cómo usar Vocalia**. El idioma se elige antes de entrar la primera vez. La guía no inicia transcripciones ni modifica archivos. Las descargas con **GuideFix** incluyen también OPUS.
+
+## Corrección del inicio y la guía
+
+Las descargas **GuideFix** vuelven a mostrar la elección de idioma una vez al abrir esta actualización, también en instalaciones anteriores. Después se recuerda tu elección y puedes cambiarla dentro de la app. En Mac, los globos tienen fondo opaco y retiran el foco de los controles inferiores para impedir que sus bordes atraviesen el tutorial. La edición del fondo se pausa durante el recorrido y vuelve a activarse al cerrarlo.

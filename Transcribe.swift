@@ -449,7 +449,7 @@ struct TranscribeView: View {
     @State var showRemove = false
     @State var showDictionary = false
     @State var showTutorial = false
-    @AppStorage("guidedTour101") private var guidedTourCompleted = false
+    @AppStorage("guidedTour101Fix") private var guidedTourCompleted = false
     @State var selection = NSRange(location: 0, length: 0)
     @State var quoteSpeaker = ""
     @State var followAudio = true
@@ -500,10 +500,15 @@ struct TranscribeView: View {
                 }
             }.padding(16).tourTarget("status")
         }
+        .disabled(showTutorial)
+        .allowsHitTesting(!showTutorial)
         .overlayPreferenceValue(TourAnchors.self) { anchors in
             if showTutorial { VocaliaCoachMarks(anchors: anchors, language: uiLanguage) { showTutorial = false; guidedTourCompleted = true } }
         }
         .onAppear { if !guidedTourCompleted { showTutorial = true } }
+        .onChange(of: showTutorial, initial: true) {
+            if showTutorial { NSApp.keyWindow?.makeFirstResponder(nil) }
+        }
         .frame(minWidth: 1100, minHeight: 800).background(Color(red: 0.975, green: 0.975, blue: 0.99)).preferredColorScheme(.light)
         .overlay { if targeted { RoundedRectangle(cornerRadius: 15).stroke(accent, lineWidth: 4).padding(5).allowsHitTesting(false) } }
         .onDrop(of: [UTType.fileURL.identifier], isTargeted: $targeted) { providers in
@@ -628,7 +633,7 @@ struct TranscribeView: View {
                             Toggle(L("Seguir audio"),isOn:$followAudio).toggleStyle(.checkbox).font(.system(size:11))
                             Button(L("Guardar TXT")) { model.export("txt") }
                         }
-                        SelectableTranscript(text: model.textBinding(for:doc),selection:$selection,editable:!model.busy,document:doc,playbackTime:model.loadedSource==doc.source ? model.playbackTime : nil,playing:model.isPlaying,followAudio:followAudio)
+                        SelectableTranscript(text: model.textBinding(for:doc),selection:$selection,editable:!model.busy && !showTutorial,document:doc,playbackTime:model.loadedSource==doc.source ? model.playbackTime : nil,playing:model.isPlaying,followAudio:followAudio)
                         .font(.system(size: 16)).lineSpacing(7).scrollContentBackground(.hidden)
                         .padding(16).background(.white, in: RoundedRectangle(cornerRadius: 12))
                         .overlay(RoundedRectangle(cornerRadius: 12).stroke(accent.opacity(0.10)))

@@ -4,12 +4,12 @@ Official release / Release oficial:
 https://github.com/Francoocicchetti/Vocalia/releases/tag/v1.0.1
 
 WINDOWS 11 (Intel / AMD x64)
-Download and run Vocalia-1.0.1-Windows-x64-Tour-Setup.exe. Follow the installer and open Vocalia from the Start menu. No manual extraction or Python required.
-Descarga y ejecuta Vocalia-1.0.1-Windows-x64-Tour-Setup.exe. Sigue el asistente y abre Vocalia desde Inicio. No necesita descomprimir ni instalar Python.
+Download and run Vocalia-1.0.1-Windows-x64-GuideFix-Setup.exe. Follow the installer and open Vocalia from the Start menu. No manual extraction or Python required.
+Descarga y ejecuta Vocalia-1.0.1-Windows-x64-GuideFix-Setup.exe. Sigue el asistente y abre Vocalia desde Inicio. No necesita descomprimir ni instalar Python.
 
 MAC / MACBOOK (Apple Silicon M1+, macOS 26+)
-Download Vocalia-1.0.1-macOS-AppleSilicon-Tour.zip. Extract, drag Vocalia.app to Applications and open it.
-Descarga Vocalia-1.0.1-macOS-AppleSilicon-Tour.zip. Descomprime, arrastra Vocalia.app a Aplicaciones y ábrela.
+Download Vocalia-1.0.1-macOS-AppleSilicon-GuideFix.zip. Extract, drag Vocalia.app to Applications and open it.
+Descarga Vocalia-1.0.1-macOS-AppleSilicon-GuideFix.zip. Descomprime, arrastra Vocalia.app a Aplicaciones y ábrela.
 
 First-launch security prompt / Aviso de seguridad al abrir por primera vez:
 English: https://github.com/Francoocicchetti/Vocalia/blob/v1.0.1/INSTALL-MAC.md
