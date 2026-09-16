@@ -2,10 +2,18 @@
 
 ## Download
 
-### [↓ Windows 11 Intel/AMD — installer](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.1/Vocalia-1.0.1-Windows-x64-Setup.exe)
-### [↓ Mac Apple Silicon, macOS 26+](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.1/Vocalia-1.0.1-macOS-AppleSilicon.zip)
+### [↓ Windows 11 Intel/AMD — installer](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.1/Vocalia-1.0.1-Windows-x64-OPUS-Setup.exe)
+### [↓ Mac Apple Silicon, macOS 26+](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.1/Vocalia-1.0.1-macOS-AppleSilicon-OPUS.zip)
 
 Windows: run Setup.exe and follow the installer. Mac: extract the ZIP, move Vocalia.app to Applications and open it. [Mac first-launch guide](https://github.com/Francoocicchetti/Vocalia/blob/main/INSTALL-MAC.md). Do not download Source code to install the app.
+
+## OPUS support added to 1.0.1
+
+**Download the files with OPUS in their name above.** Both platforms now import and transcribe `.opus`, including batch/folder import, plus `.ogg` files containing Opus. Mac bundles a local decoder for transcription and playback; no manual conversion or recording upload is required. Originals stay intact. Mac OPUS recordings must be under ten hours; Windows keeps its two-hour limit. Ogg/Vorbis is not supported.
+
+Mac validation used real OPUS audio: import, local decoding, playable audio, native transcription and aligned timestamps passed. Windows checks use real OPUS through the Transcribe button and offline recognition tests. Windows checks run on Windows Server x64; physical Windows 11 confirmation remains pending.
+
+Original 1.0.1 assets remain available. Updated source is in **Vocalia-1.0.1-OPUS-source.zip** and the main branch; automatic Source code archives belong to the original tag. **SHA256SUMS-OPUS.txt** verifies the updated packages.
 
 ## New in 1.0.1
 
@@ -20,13 +28,19 @@ Windows checks exercise the actual Transcribe button from an unprepared model th
 
 Mac has core checks and a new first-run guide. Recordings stay on your computer. Downloading models needs internet. No Apple notarization or Windows Authenticode certificate; security prompts may remain. Recognition can make mistakes; review names, numbers and quotes. Windows supports recordings under two hours; Mac main engine under 24 hours, optional engines under two hours. Windows ARM and Intel Macs are unsupported. Existing history and models are retained.
 
-SHA256SUMS.txt contains checksums for the three application downloads. [English guide](https://github.com/Francoocicchetti/Vocalia/blob/main/README.md).
+SHA256SUMS-OPUS.txt contains checksums for the updated OPUS downloads and their source bundle. SHA256SUMS.txt refers to the original downloads. [English guide](https://github.com/Francoocicchetti/Vocalia/blob/main/README.md).
 
 ---
 
 ## Español
 
-**[Instalador Windows](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.1/Vocalia-1.0.1-Windows-x64-Setup.exe)** · **[Mac](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.1/Vocalia-1.0.1-macOS-AppleSilicon.zip)**
+**[Instalador Windows](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.1/Vocalia-1.0.1-Windows-x64-OPUS-Setup.exe)** · **[Mac](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.1/Vocalia-1.0.1-macOS-AppleSilicon-OPUS.zip)**
+
+## OPUS añadido a 1.0.1
+
+**Descarga los archivos que incluyen OPUS en el nombre.** Mac y Windows ahora admiten archivos `.opus` y Ogg con Opus (`.ogg`), individualmente o por lotes y carpetas. Mac incluye un decodificador local para transcribir y escuchar, sin conversión manual ni envío de grabaciones. Los originales se conservan. OPUS en Mac admite menos de diez horas; Windows mantiene menos de dos horas. No admite Ogg/Vorbis.
+
+El código actualizado está en **Vocalia-1.0.1-OPUS-source.zip** y main. Los archivos originales siguen disponibles; **SHA256SUMS-OPUS.txt** corresponde a las descargas nuevas.
 
 ## Novedades de 1.0.1
 
