@@ -6,7 +6,11 @@
 
 Vocalia turns audio and video into a complete, editable transcript on your Mac. Follow playback with synchronized highlighting, save verbatim quotes with source timestamps, and export TXT, SRT or VTT.
 
-## Download
+## Windows 11 (Intel / AMD)
+
+A separate Windows x64 preview is available: **[downloads and instructions](WINDOWS.md)**. It includes local transcription, full text, quotations and playback highlighting. It does not include Apple Speech or automatic speaker separation. The following sections describe the native Mac app.
+
+## Download for Mac
 
 [Download Vocalia 2.2 for Mac](https://github.com/Francoocicchetti/Vocalia/raw/refs/heads/main/Vocalia-2.2-macOS.zip)
 

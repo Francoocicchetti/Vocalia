@@ -8,7 +8,11 @@
 
 Vocalia convierte audio y video en un texto completo y editable en tu Mac. Puedes copiar toda una entrevista, escuchar el fragmento resaltado mientras avanza el audio y guardar citas con su fuente y tiempo.
 
-## Descargar
+## Windows 11 (Intel / AMD)
+
+Hay una versión independiente para Windows 11 x64: **[descargas e instrucciones](WINDOWS.md)**. Conserva la transcripción local, texto completo, cuñas y seguimiento del audio. Es preliminar y no incluye el motor Apple ni la separación automática de voces. Las secciones siguientes describen la app nativa para Mac.
+
+## Descargar para Mac
 
 **Versión de prueba 2.2 — Apple Silicon y macOS 26 o posterior.**
 
@@ -40,7 +44,7 @@ Los modelos se descargan una vez cuando sean necesarios. Las grabaciones no se e
 
 ## Límites claros
 
-- Requiere Apple Silicon; no hay versión para Intel, Windows ni versiones anteriores a macOS 26.
+- La app nativa para Mac requiere Apple Silicon y macOS 26; no admite Mac Intel. La edición Windows tiene sus propios [requisitos y límites](WINDOWS.md).
 - La transcripción principal acepta grabaciones de menos de 24 horas; comparación y voces, de menos de 2 horas.
 - No promete precisión perfecta: revisa especialmente nombres, cifras y voces superpuestas.
 - Los fragmentos antiguos sin tiempos por palabra se resaltan por fragmento.
