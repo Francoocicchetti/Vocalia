@@ -1,4 +1,4 @@
-name: Vocalia 1.0.1 interactive tour checks
+name: Vocalia 1.0.1 startup and tour fix checks
 on:
   workflow_dispatch:
   push:
@@ -33,7 +33,7 @@ jobs:
         with:
           name: Vocalia-1.0.1-Windows-x64
           path: |
-            build-source/Vocalia-Windows/Vocalia-1.0.1-Windows-x64-Tour.zip
+            build-source/Vocalia-Windows/Vocalia-1.0.1-Windows-x64-GuideFix.zip
             build-source/Vocalia-Windows/SHA256SUMS-Windows.txt
             build-source/Vocalia-Windows/release/*
           if-no-files-found: error
@@ -56,10 +56,10 @@ jobs:
           sed 's/\r$//' release/release/SHA256SUMS-Installer.txt | (cd release/release && sha256sum -c -)
           mv release/release/* release/
           rmdir release/release
-          cp Vocalia-1.0.1-macOS-AppleSilicon-Tour.zip Vocalia-1.0.1-Tour-source.zip release/
-          mv release/Windows-Installer-Validation.txt release/Windows-Tour-Validation.txt
+          cp Vocalia-1.0.1-macOS-AppleSilicon-GuideFix.zip Vocalia-1.0.1-GuideFix-source.zip release/
+          mv release/Windows-Installer-Validation.txt release/Windows-GuideFix-Validation.txt
           cd release
-          sha256sum Vocalia-1.0.1-*.zip Vocalia-1.0.1-*.exe > SHA256SUMS-Tour.txt
+          sha256sum Vocalia-1.0.1-*.zip Vocalia-1.0.1-*.exe > SHA256SUMS-GuideFix.txt
       - name: Add interactive-tour downloads to 1.0.1 after all tests pass
         env:
           GH_TOKEN: ${{ github.token }}
@@ -67,4 +67,4 @@ jobs:
         shell: bash
         run: |
           gh release view v1.0.1
-          gh release upload v1.0.1 release/Vocalia-1.0.1-*.zip release/Vocalia-1.0.1-*.exe release/SHA256SUMS-Tour.txt release/Windows-Tour-Validation.txt
+          gh release upload v1.0.1 release/Vocalia-1.0.1-*.zip release/Vocalia-1.0.1-*.exe release/SHA256SUMS-GuideFix.txt release/Windows-GuideFix-Validation.txt
