@@ -1867,5 +1867,26 @@
     "fr": "Les fichiers seront ajoutés à la fin de la file de transcription actuelle.",
     "pt": "Os ficheiros serão adicionados quando a fila de transcrição atual terminar.",
     "zh": "当前转写队列完成后将添加文件。"
+  },
+  "Speaker analysis: manual": {
+    "es": "Voces: análisis manual",
+    "de": "Sprecheranalyse: manuell",
+    "fr": "Voix : analyse manuelle",
+    "pt": "Vozes: análise manual",
+    "zh": "说话人：手动分析"
+  },
+  "Speaker separation only runs when you select it and click Analyze speakers / compare. It never runs after transcription.": {
+    "es": "La separación de voces solo se ejecuta al seleccionarla y pulsar Analizar voces / comparar. No se ejecuta al terminar una transcripción.",
+    "de": "Die Sprechertrennung startet nur, wenn du sie auswählst und auf Sprecher analysieren / vergleichen klickst. Sie startet nie nach einer Transkription.",
+    "fr": "La séparation des voix démarre uniquement après votre sélection et un clic sur Analyser les voix / comparer. Elle ne démarre jamais après une transcription.",
+    "pt": "A separação de vozes só é executada quando a seleciona e clica em Analisar vozes / comparar. Nunca é executada após a transcrição.",
+    "zh": "只有选择此项并点击“分析说话人 / 对比”后才会区分说话人。转写结束后不会自动运行。"
+  },
+  "Review flags indicate low recognition confidence or figures to check against the audio. They are not accuracy scores.": {
+    "es": "Las marcas señalan baja confianza del reconocimiento o cifras que conviene comprobar con el audio. No son porcentajes de precisión.",
+    "de": "Markierungen zeigen geringe Erkennungssicherheit oder Zahlen, die anhand der Aufnahme geprüft werden sollten. Sie sind keine Genauigkeitswerte.",
+    "fr": "Les marques indiquent une faible confiance de reconnaissance ou des chiffres à vérifier avec l’audio. Ce ne sont pas des scores de précision.",
+    "pt": "As marcas indicam baixa confiança no reconhecimento ou números a verificar com o áudio. Não são pontuações de precisão.",
+    "zh": "标记表示识别置信度较低，或有数字需要与音频核对。它们不是准确率评分。"
   }
 }

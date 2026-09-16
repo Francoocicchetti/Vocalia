@@ -1,6 +1,6 @@
 <p align="center"><img src="logo.png" width="128" alt="Vocalia app icon"></p>
 
-# Vocalia 1.0.2
+# Vocalia 1.0.3
 
 **Local transcription for journalists: complete transcripts, quotes and highlighted playback.**
 
@@ -8,16 +8,16 @@
 
 ## Download
 
-### [↓ Windows 11 — Intel / AMD installer](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.2/Vocalia-1.0.2-Windows-x64-Setup.exe)
+### [↓ Windows 11 — Intel / AMD installer](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.3/Vocalia-1.0.3-Windows-x64-Setup.exe)
 
-### [↓ MacBook / Mac — Apple Silicon](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.2/Vocalia-1.0.2-macOS-AppleSilicon.zip)
+### [↓ MacBook / Mac — Apple Silicon](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.3/Vocalia-1.0.3-macOS-AppleSilicon.zip)
 
-[All 1.0.2 downloads and checksums](https://github.com/Francoocicchetti/Vocalia/releases/tag/v1.0.2)
+[All 1.0.3 downloads and checksums](https://github.com/Francoocicchetti/Vocalia/releases/tag/v1.0.3)
 
 | Computer | Requirements | What to download |
 | --- | --- | --- |
-| Windows PC | Windows 11, Intel/AMD 64-bit | `Vocalia-1.0.2-Windows-x64-Setup.exe` |
-| MacBook / Mac | Apple Silicon M1 or later, macOS 26+ | `Vocalia-1.0.2-macOS-AppleSilicon.zip` |
+| Windows PC | Windows 11, Intel/AMD 64-bit | `Vocalia-1.0.3-Windows-x64-Setup.exe` |
+| MacBook / Mac | Apple Silicon M1 or later, macOS 26+ | `Vocalia-1.0.3-macOS-AppleSilicon.zip` |
 
 Find the downloads under **Assets**, below the release notes. **Use the installer or Mac ZIP, not “Source code”.** No Python, Xcode, account or API key is needed to run the app. Windows ARM and Intel Macs are not supported by these builds.
 
@@ -25,7 +25,7 @@ Find the downloads under **Assets**, below the release notes. **Use the installe
 
 1. **Windows:** run the installer and open Vocalia from the Start menu. A desktop shortcut is optional. If you use the portable ZIP instead, extract **the whole folder** before opening `Vocalia.exe`; keep `_internal` beside it. [Windows instructions](WINDOWS.md).
 2. **Mac:** unzip, drag Vocalia.app to Applications and open it. This release is not Apple-notarized. If macOS blocks first launch, follow [System Settings → Privacy & Security → Open Anyway](INSTALL-MAC.md). Do not disable system-wide protection.
-3. Choose one of **six interface languages before entering the workspace**: English, Spanish, German, French, Simplified Chinese or Portuguese. The choice appears once after this update and can be changed inside the app later.
+3. Choose one of **six interface languages before entering the workspace**: English, Spanish, German, French, Simplified Chinese or Portuguese. The choice appears before the workspace on first launch and can be changed inside the app later.
 4. Choose the **spoken language**, prepare/download a recognition model, add recordings, then click **Transcribe pending**. Adding a file or playing it does not transcribe it.
 5. Follow the anchored tutorial bubbles. Reopen the tour from **How to use Vocalia**. Copy the whole transcript at once, or listen and review it before saving quotes.
 
@@ -38,6 +38,7 @@ The interface language and recording language are independent. Initial model dow
 | **1.0** | First unified Mac/Windows public release; local recognition, multiple files, complete editable text, highlighted playback, source-linked quotes, TXT/SRT/VTT export and saved history. |
 | **1.0.1** | Windows installer and missing-model/transcription guidance; language selection before the workspace; OPUS and Ogg/Opus import; interactive tutorial bubbles, replay/skip, restored startup language choice and Mac focus/overlay fixes. Includes the OPUS, Tour and GuideFix updates published under 1.0.1. |
 | **1.0.2** | Six interface languages on both platforms. Windows gains segment review, a second-model comparison, optional local speaker grouping and naming, quote listening/plain copy/export, playback speed and dictionary editor. Also adds drag-and-drop, deferred imports while the queue runs, and retranscription of a selected recording with a saved revision. Updated bilingual guides and regression checks. |
+| **1.0.3** | Speaker separation is manual only, disabled at startup on Mac. Explicit spoken Spanish decimals such as “9, coma, 5” become “9,5”; original recognition is retained, timing is preserved and figures are flagged for listening/review. |
 
 [Detailed changelog](CHANGELOG.md) · [Historial en español](CHANGELOG.es.md)
 
@@ -81,3 +82,9 @@ Mac uses an ad-hoc local signature, without Apple notarization. Windows has no A
 Mac includes WhisperKit/SpeakerKit and a local Opus decoder; dependency source, licenses and notices are included. Windows includes PySide6, faster-whisper, CTranslate2, PyAV, ONNX Runtime and sherpa-onnx. Optional speaker models use pyannote segmentation (MIT) and 3D-Speaker embeddings (Apache-2.0); their notices and exact model download hashes are included in the source/package.
 
 No general open-source license has been assigned to Vocalia's own code or supplied logo. Third-party licenses apply to their respective components.
+
+## Speakers and numbers in 1.0.3
+
+Speaker separation requires a manual action. On Mac, select “Speaker analysis: manual” and click “Analyze speakers / compare” on a completed recording; it never runs after transcription. On Windows, click “Analyze speakers” when needed. Existing speaker labels are preserved.
+
+Decimal formatting follows the audio language, not the interface language. It handles explicit Spanish figures such as “12 coma 75” and simple spoken forms such as “nueve coma cinco”, preserving decimal zeros and original recognition for review. Existing transcripts are not rewritten; dates, lists and ambiguous quantities are not inferred. Figures are flagged for listening and review: correct formatting does not prove the recognizer heard the right number. No overall accuracy improvement on real interviews has been measured.

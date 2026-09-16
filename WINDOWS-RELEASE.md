@@ -1,4 +1,4 @@
-# Vocalia 1.0.2 for Windows
+# Vocalia 1.0.3 for Windows
 
 [Download the installer and read the Windows guide](WINDOWS.md).
 

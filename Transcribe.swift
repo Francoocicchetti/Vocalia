@@ -15,7 +15,7 @@ struct Segment: Identifiable, Codable, Equatable, Sendable {
     var speaker = ""
     var reviewed = false
     var wordTimings: [TimedToken]? = nil
-    var uncertain: Bool { !reviewed && (confidence.map { $0 < 0.75 } ?? false) }
+    var uncertain: Bool { !reviewed && ((confidence.map { $0 < 0.75 } ?? false) || text.unicodeScalars.contains { CharacterSet.decimalDigits.contains($0) }) }
 }
 struct Transcript: Identifiable, Codable, Equatable, Sendable {
     var id = UUID()
@@ -144,7 +144,7 @@ enum AudioPrep {
     @Published var localeID = UserDefaults.standard.string(forKey: "locale") ?? "es-CL"
     @Published var dictionary: [String] = UserDefaults.standard.stringArray(forKey: "personalDictionary") ?? []
     @Published var compareEnabled = UserDefaults.standard.object(forKey: "compareEnabled") as? Bool ?? false
-    @Published var voicesEnabled = UserDefaults.standard.object(forKey: "voicesEnabled") as? Bool ?? true
+    @Published var voicesEnabled = false // Speaker analysis requires a fresh, explicit manual request.
     @Published var expectedSpeakers = 0
     @Published var advancedModelStatus = "Modelos adicionales: comprobando…"
     @Published var queue: [UUID] = []
@@ -348,11 +348,12 @@ enum AudioPrep {
                 let start = result.range.start.seconds + prepared.offset
                 let end = CMTimeRangeGetEnd(result.range).seconds + prepared.offset
                 guard start.isFinite, end.isFinite else { continue }
-                var segment = Segment(start: max(0, start), end: max(start + 0.05, end), text: text, original: text, confidence: conf, alternatives: result.alternatives.prefix(3).map { String($0.characters).trimmingCharacters(in: .whitespacesAndNewlines) }.filter { $0 != text })
+                var segment = Segment(start: max(0, start), end: max(start + 0.05, end), text: NumberFormatting.format(text,language:locale.identifier), original: text, confidence: conf, alternatives: result.alternatives.prefix(3).map { String($0.characters).trimmingCharacters(in: .whitespacesAndNewlines) }.filter { $0 != text })
                 segment.wordTimings = result.text.runs.compactMap { run in
                     guard let r=run.audioTimeRange,r.start.seconds.isFinite,CMTimeRangeGetEnd(r).seconds.isFinite else{return nil}
                     return TimedToken(text:String(result.text[run.range].characters),start:r.start.seconds+prepared.offset,end:CMTimeRangeGetEnd(r).seconds+prepared.offset)
                 }
+                if let timing=segment.wordTimings {segment.wordTimings=NumberFormatting.tokens(timing,language:locale.identifier)}
                 if let i = self.documents.firstIndex(where: { $0.id == id }) {
                     self.documents[i].segments.append(segment)
                     self.progress = min(0.99, 0.15 + 0.85 * max(0, end) / prepared.duration)
@@ -372,7 +373,7 @@ enum AudioPrep {
             await engine.cancelAndFinishNow(); collector.cancel(); _ = await collector.result; throw error
         }
         documents[index].complete = true
-        if (compareEnabled || voicesEnabled) && !documents[index].segments.isEmpty {
+        if compareEnabled && !documents[index].segments.isEmpty {
             do { try await analyzeAdvanced(id,prepared:prepared) }
             catch {
                 if Task.isCancelled {throw error}
@@ -581,7 +582,7 @@ struct TranscribeView: View {
             Text(L("Separa términos con comas. Ayudan al reconocimiento; revisa nombres y cifras al terminar.")).font(.system(size: 10)).foregroundStyle(.secondary)
             HStack(spacing:14) {
                 Toggle(L("Comparar con Whisper"),isOn:$model.compareEnabled).toggleStyle(.checkbox)
-                Toggle(L("Separar voces"),isOn:$model.voicesEnabled).toggleStyle(.checkbox)
+                Toggle(T("Speaker analysis: manual"),isOn:$model.voicesEnabled).help(T("Speaker separation only runs when you select it and click Analyze speakers / compare. It never runs after transcription.")).toggleStyle(.checkbox)
                 Spacer()
                 Button(L("Preparar modelos")) {model.prepareAdvancedModels()}
             }.font(.system(size:11)).disabled(model.busy)
@@ -689,7 +690,7 @@ struct TranscribeView: View {
                     }
                 }.padding(16)
             }
-            Text(L("Las marcas señalan baja confianza del motor, no una medición de precisión. Las etiquetas de voz se pueden revisar y renombrar.")).font(.system(size: 9)).foregroundStyle(.secondary).padding(12)
+            Text(T("Review flags indicate low recognition confidence or figures to check against the audio. They are not accuracy scores.")).font(.system(size: 9)).foregroundStyle(.secondary).padding(12)
             }
         }
     }

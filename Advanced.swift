@@ -203,7 +203,7 @@ enum BatchFiles {
         UserDefaults.standard.set(dictionary,forKey:"personalDictionary")
     }
     func removeTerm(_ term:String){dictionary.removeAll{$0==term};UserDefaults.standard.set(dictionary,forKey:"personalDictionary")}
-    func saveOptions(){UserDefaults.standard.set(compareEnabled,forKey:"compareEnabled");UserDefaults.standard.set(voicesEnabled,forKey:"voicesEnabled")}
+    func saveOptions(){UserDefaults.standard.set(compareEnabled,forKey:"compareEnabled")}
     func prepareAdvancedModels(){
         guard !busy else{return};busy=true;saveOptions()
         task=Task {
@@ -212,12 +212,12 @@ enum BatchFiles {
             busy=false;task=nil;await refreshAdvancedStatus()
         }
     }
-    func analyzeAdvanced(_ id:UUID,prepared:PreparedAudio) async throws {
+    func analyzeAdvanced(_ id:UUID,prepared:PreparedAudio,voicesRequested:Bool=false) async throws {
         guard let i=documents.firstIndex(where:{$0.id==id}) else{return}
         saveOptions()
         let update:@Sendable(String,Double)->Void={s,p in Task{@MainActor in self.status=s;self.progress=p}}
         var failures:[String]=[]
-        if voicesEnabled {
+        if voicesRequested {
           do {
             let intervals=try await LocalEngines.shared.voices(audio:prepared.url,offset:prepared.offset,expected:expectedSpeakers>0 ? expectedSpeakers : nil,update:update)
             documents[i].voiceIntervals=intervals
@@ -249,7 +249,7 @@ enum BatchFiles {
                 status="Preparando audio para comparación y voces…"
                 let converter=Task.detached{try await AudioPrep.convert(URL(fileURLWithPath:doc.source),into:temp){p in await MainActor.run{self.progress=p}}}
                 let prepared=try await withTaskCancellationHandler{try await converter.value}onCancel:{converter.cancel()}
-                try Task.checkCancellation();try await analyzeAdvanced(doc.id,prepared:prepared)
+                try Task.checkCancellation();try await analyzeAdvanced(doc.id,prepared:prepared,voicesRequested:voicesEnabled)
                 status="Análisis adicional terminado. Abre Comparación o Voces."
             }catch{
                 status=Task.isCancelled ? L("Análisis adicional cancelado; tu transcripción se conserva.") : "No se pudo completar el análisis adicional."
@@ -387,6 +387,7 @@ enum AdvancedTests {
         let testStore=FileManager.default.temporaryDirectory.appendingPathComponent("VocaliaRegression-\(UUID())")
         defer{try? FileManager.default.removeItem(at:testStore)}
         let model=TranscriptionModel(storageOverride:testStore)
+        check(!model.voicesEnabled,"Separación de voces desactivada al iniciar")
         var first=Transcript(source:"/first.mp3",name:"first.mp3")
         first.segments=[Segment(start:0,end:2,text:"Primera",original:"Primera",confidence:1)]
         let second=Transcript(source:"/second.mp3",name:"second.mp3")
@@ -459,6 +460,30 @@ enum AdvancedTests {
             check(AppLanguage.translate("Texto completo", language:language)==expected, "Interfaz \(language) carga su catálogo")
             check(!AppLanguage.translate("Archivo 2 de 4",language:language).contains("%@"), "Interfaz \(language) conserva valores dinámicos")
         }
+        check(NumberFormatting.format("Fue 9, coma, 5 por ciento.",language:"es-CL")=="Fue 9,5 por ciento.","Formato numérico 0")
+        check(NumberFormatting.format("nueve coma cinco",language:"es-CL")=="9,5","Formato numérico 1")
+        check(NumberFormatting.format("El 0 coma 05 %",language:"es-CL")=="El 0,05 %","Formato numérico 2")
+        check(NumberFormatting.format("cero coma cero cinco",language:"es-CL")=="0,05","Formato numérico 3")
+        check(NumberFormatting.format("treinta y nueve coma cincuenta y cinco",language:"es-CL")=="39,55","Formato numérico 4")
+        check(NumberFormatting.format("-9 coma 5",language:"es-CL")=="-9,5","Formato numérico 5")
+        check(NumberFormatting.format("9,5 y 10,25",language:"es-CL")=="9,5 y 10,25","Formato numérico 6")
+        check(NumberFormatting.format("9, 5 y 3",language:"es-CL")=="9, 5 y 3","Formato numérico 7")
+        check(NumberFormatting.format("Ponga una coma entre 9 y 5.",language:"es-CL")=="Ponga una coma entre 9 y 5.","Formato numérico 8")
+        check(NumberFormatting.format("ciento nueve coma cinco",language:"es-CL")=="ciento nueve coma cinco","Formato numérico 9")
+        check(NumberFormatting.format("mil nueve coma cinco",language:"es-CL")=="mil nueve coma cinco","Formato numérico 10")
+        check(NumberFormatting.format("9 coma\n5",language:"es-CL")=="9 coma\n5","Formato numérico 11")
+        check(NumberFormatting.format("9 coma 5 y después 10 coma 2",language:"es-CL")=="9,5 y después 10,2","Formato numérico 12")
+        check(NumberFormatting.format("9 coma cinco y medio",language:"es-CL")=="9 coma cinco y medio","Formato numérico 13")
+        check(NumberFormatting.format("dieciséis coma veintidós",language:"es-CL")=="16,22","Formato numérico 14")
+        check(NumberFormatting.format("9 coma 5",language:"en")=="9 coma 5","La normalización usa el idioma del audio")
+        let digits=NumberFormatting.tokens([TimedToken(text:" 9,",start:1,end:2),TimedToken(text:" coma,",start:2,end:3),TimedToken(text:" 5",start:3,end:4),TimedToken(text:" pesos",start:4,end:5)],language:"es")
+        check(digits.count==2 && digits[0].text==" 9,5" && digits[0].start==1 && digits[0].end==4,"Decimal conserva el intervalo completo del audio")
+        var numeric=Segment(start:0,end:1,text:"9,5 %",original:"9 coma 5 %",confidence:0.99)
+        check(numeric.uncertain,"Las cifras se ofrecen para revisión aunque la confianza sea alta")
+        numeric.reviewed=true;check(!numeric.uncertain,"La revisión humana de cifras se respeta")
+        check(NumberFormatting.format("Subió 12 coma 75 por ciento.",language:"es")=="Subió 12,75 por ciento.","Decimales en porcentajes")
+        check(NumberFormatting.format("$1234567, coma, 005",language:"es")=="$1234567,005","Montos grandes y ceros significativos")
+        check(NumberFormatting.format("16/09/2026; 12:30; 1.500 pesos",language:"es")=="16/09/2026; 12:30; 1.500 pesos","Fechas, horas y miles conservan su formato")
         print("\(n) pruebas avanzadas correctas")
     }
 }

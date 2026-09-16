@@ -69,8 +69,9 @@ actor LocalEngines {
         return output.flatMap(\.segments).compactMap { s in
             let text = s.text.trimmingCharacters(in:.whitespacesAndNewlines)
             guard !text.isEmpty else { return nil }
-            var segment = Segment(start:Double(s.start)+offset,end:Double(s.end)+offset,text:text,original:text,confidence:nil)
+            var segment = Segment(start:Double(s.start)+offset,end:Double(s.end)+offset,text:NumberFormatting.format(text,language:language),original:text,confidence:nil)
             segment.wordTimings = s.words?.map { TimedToken(text:$0.word,start:Double($0.start)+offset,end:Double($0.end)+offset) }
+            if let timing=segment.wordTimings {segment.wordTimings=NumberFormatting.tokens(timing,language:language)}
             return segment
         }
     }
