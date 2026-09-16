@@ -1,0 +1,142 @@
+name: Windows 1.0 installer fix
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: vocalia-windows-installer
+  cancel-in-progress: false
+jobs:
+  installer:
+    runs-on: windows-2025
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download and verify the published application
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          gh release download v1.0.0 --pattern Vocalia-1.0-Windows-x64.zip --dir payload
+          if ($LASTEXITCODE) { throw 'Download failed' }
+          $hash = (Get-FileHash payload/Vocalia-1.0-Windows-x64.zip -Algorithm SHA256).Hash
+          if ($hash -ne '07490bead638f790083fd634910bcfb2f96a6cee1053d23f185c56ad7d11a1e4') { throw 'Published package checksum mismatch' }
+          Expand-Archive payload/Vocalia-1.0-Windows-x64.zip payload/app
+          if (!(Test-Path payload/app/Vocalia/_internal/python312.dll)) { throw 'Missing Python runtime' }
+      - name: Build English and Spanish installer
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $compiler = "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe"
+          if (!(Test-Path $compiler)) { throw 'Inno Setup compiler missing from runner' }
+          Expand-Archive Vocalia-Windows-source.zip installer-source
+          Copy-Item installer-source/Vocalia-Windows/Vocalia.ico Vocalia.ico
+          @'
+          [Setup]
+          AppId=Vocalia.Windows
+          AppName=Vocalia
+          AppVersion=1.0
+          AppVerName=Vocalia 1.0
+          AppPublisher=Francoocicchetti
+          AppPublisherURL=https://github.com/Francoocicchetti/Vocalia
+          AppSupportURL=https://github.com/Francoocicchetti/Vocalia/issues
+          DefaultDirName={localappdata}\Programs\Vocalia
+          DefaultGroupName=Vocalia
+          DisableProgramGroupPage=yes
+          PrivilegesRequired=lowest
+          ArchitecturesAllowed=x64os
+          ArchitecturesInstallIn64BitMode=x64os
+          MinVersion=10.0.22000
+          UninstallDisplayIcon={app}\Vocalia.exe
+          SetupIconFile=Vocalia.ico
+          OutputDir=release
+          OutputBaseFilename=Vocalia-1.0-Windows-x64-Setup
+          Compression=lzma2
+          SolidCompression=yes
+          WizardStyle=modern
+          CloseApplications=yes
+          RestartApplications=no
+          [Languages]
+          Name: "english"; MessagesFile: "compiler:Default.isl"
+          Name: "spanish"; MessagesFile: "compiler:Languages\Spanish.isl"
+          [Tasks]
+          Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
+          [Files]
+          Source: "payload\app\Vocalia\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+          [Icons]
+          Name: "{userprograms}\Vocalia"; Filename: "{app}\Vocalia.exe"; WorkingDir: "{app}"
+          Name: "{userdesktop}\Vocalia"; Filename: "{app}\Vocalia.exe"; WorkingDir: "{app}"; Tasks: desktopicon
+          [Run]
+          Filename: "{app}\Vocalia.exe"; Description: "{cm:LaunchProgram,Vocalia}"; Flags: nowait postinstall skipifsilent
+          '@ | Set-Content installer.iss -Encoding utf8
+          & $compiler installer.iss
+          if ($LASTEXITCODE) { throw 'Installer build failed' }
+      - name: Test installation, all runtime files, shortcuts, reinstall and uninstall
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $setup = (Resolve-Path release/Vocalia-1.0-Windows-x64-Setup.exe).Path
+          $target = Join-Path $env:LOCALAPPDATA 'Programs\Vocalia'
+          $data = Join-Path $env:LOCALAPPDATA 'Vocalia'
+          New-Item -ItemType Directory -Path $data -Force | Out-Null
+          $marker = Join-Path $data 'installer-preservation-test.txt'
+          'preserve history and models' | Set-Content $marker
+          function Install-App {
+            $process = Start-Process $setup -ArgumentList '/VERYSILENT /SUPPRESSMSGBOXES /NORESTART /SP- /TASKS=desktopicon /LOG=install.log' -Wait -PassThru
+            if ($process.ExitCode -ne 0) { throw "Installation failed: $($process.ExitCode)" }
+          }
+          Install-App
+          $source = (Resolve-Path payload/app/Vocalia).Path
+          $files = Get-ChildItem $source -Recurse -File
+          foreach ($file in $files) {
+            $relative = [IO.Path]::GetRelativePath($source, $file.FullName)
+            $installed = Join-Path $target $relative
+            if (!(Test-Path $installed)) { throw "Missing installed file: $relative" }
+            if ((Get-FileHash $file.FullName).Hash -ne (Get-FileHash $installed).Hash) { throw "Installed file mismatch: $relative" }
+          }
+          $shell = New-Object -ComObject WScript.Shell
+          foreach ($folder in @([Environment]::GetFolderPath('Programs'), [Environment]::GetFolderPath('Desktop'))) {
+            $shortcut = Join-Path $folder 'Vocalia.lnk'
+            if (!(Test-Path $shortcut)) { throw "Missing shortcut: $shortcut" }
+            if ($shell.CreateShortcut($shortcut).TargetPath -ne (Join-Path $target 'Vocalia.exe')) { throw 'Incorrect shortcut target' }
+          }
+          $env:QT_QPA_PLATFORM = 'offscreen'
+          $env:VOCALIA_SMOKE_RESULT = Join-Path $env:RUNNER_TEMP 'installed-gui-result.txt'
+          $gui = Start-Process (Join-Path $target 'Vocalia.exe') -ArgumentList '--smoke-test' -PassThru
+          if (!$gui.WaitForExit(180000)) { $gui.Kill(); throw 'Installed app test timed out' }
+          if ($gui.ExitCode -ne 0 -or !(Test-Path $env:VOCALIA_SMOKE_RESULT)) { throw 'Installed app failed to start or pass GUI tests' }
+          if ((Get-Content $env:VOCALIA_SMOKE_RESULT -Raw).Trim() -ne 'PASS') { throw 'Installed GUI tests failed' }
+          Install-App
+          if ((Get-Content $marker -Raw).Trim() -ne 'preserve history and models') { throw 'Reinstall changed user data' }
+          $uninstall = Start-Process (Join-Path $target 'unins000.exe') -ArgumentList '/VERYSILENT /SUPPRESSMSGBOXES /NORESTART' -Wait -PassThru
+          if ($uninstall.ExitCode -ne 0) { throw 'Uninstall failed' }
+          if (Test-Path (Join-Path $target 'Vocalia.exe')) { throw 'Uninstall left application executable' }
+          if (!(Test-Path $marker)) { throw 'Uninstall removed user data' }
+          if (Test-Path (Join-Path ([Environment]::GetFolderPath('Programs')) 'Vocalia.lnk')) { throw 'Uninstall left Start menu shortcut' }
+          "PASS: $($files.Count) installed files match the published ZIP; installed GUI, shortcuts, reinstall and data-preserving uninstall." | Set-Content release/Windows-Installer-Validation.txt
+          (Get-FileHash $setup -Algorithm SHA256).Hash.ToLower() + '  Vocalia-1.0-Windows-x64-Setup.exe' | Set-Content release/SHA256SUMS-Installer.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Vocalia-Windows-Installer
+          path: release/*
+          if-no-files-found: error
+  publish:
+    needs: installer
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: Vocalia-Windows-Installer
+          path: release
+      - name: Add tested installer to release without replacing existing downloads
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          cd release
+          sed 's/\r$//' SHA256SUMS-Installer.txt | sha256sum -c -
+          gh release upload v1.0.0 Vocalia-1.0-Windows-x64-Setup.exe SHA256SUMS-Installer.txt Windows-Installer-Validation.txt
