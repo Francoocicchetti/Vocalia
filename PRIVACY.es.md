@@ -11,3 +11,5 @@ Los originales no se modifican. Los temporales se eliminan al terminar normalmen
 El repositorio y las descargas no contienen historial, entrevistas personales, transcripciones del usuario ni modelos descargados. Las pruebas de Windows usan un fragmento público de JFK de las pruebas oficiales de OpenAI Whisper. Ese audio no se incluye en el ejecutable.
 
 No publiques grabaciones sensibles, identidades de fuentes, transcripciones ni registros sin revisar en los issues.
+
+Los modelos opcionales de voces de Windows se descargan de las versiones públicas de sherpa-onnx en GitHub. El análisis y la comparación se ejecutan localmente. La prueba de voces usa una grabación pública de cuatro hablantes del mismo proveedor, nunca entrevistas privadas.

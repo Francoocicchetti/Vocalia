@@ -1,6 +1,6 @@
 # Install Vocalia 1.0.1 on Mac
 
-[Español](INSTALL-MAC.es.md) · [Downloads](https://github.com/Francoocicchetti/Vocalia/releases/tag/v1.0.1)
+[Español](INSTALL-MAC.es.md) · [Downloads](https://github.com/Francoocicchetti/Vocalia/releases/tag/v1.0.2)
 
 ## Check compatibility
 
@@ -8,7 +8,7 @@ Requires **Apple Silicon (M1 or later) and macOS 26 or later**. Check Apple menu
 
 ## Download and install
 
-1. Download **Vocalia-1.0.1-macOS-AppleSilicon-GuideFix.zip** from the official Vocalia GitHub Release.
+1. Download **Vocalia-1.0.2-macOS-AppleSilicon.zip** from the official Vocalia GitHub Release.
 2. Open the ZIP and drag **Vocalia.app** to **Applications**.
 3. Open Vocalia from Applications.
 

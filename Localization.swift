@@ -2,7 +2,16 @@ import Foundation
 
 // UI text only. User transcripts, filenames and quotations are never translated.
 enum AppLanguage {
-    static var current:String {UserDefaults.standard.string(forKey:"uiLanguage") ?? (Locale.preferredLanguages.first?.hasPrefix("es") == true ? "es" : "en")}
+    static let options: [(code:String,name:String)] = [("es","Español"),("en","English"),("de","Deutsch"),("fr","Français"),("zh","简体中文"),("pt","Português")]
+    static func normalize(_ value:String)->String { let code=String(value.replacingOccurrences(of:"_",with:"-").split(separator:"-").first ?? "en"); return options.contains{$0.code==code} ? code : "en" }
+    static var system:String { normalize(Locale.preferredLanguages.first ?? "en") }
+    static var current:String {normalize(UserDefaults.standard.string(forKey:"uiLanguage") ?? system)}
+    static let catalog:[String:[String:String]] = {
+        let url=Bundle.main.url(forResource:"ui-translations",withExtension:"json") ?? URL(fileURLWithPath:#filePath).deletingLastPathComponent().appendingPathComponent("ui-translations.json")
+        guard let data=try? Data(contentsOf:url),let result=try? JSONDecoder().decode([String:[String:String]].self,from:data) else{return [:]}
+        return result
+    }()
+    static func interface(_ value:String,language:String)->String {catalog[value]?[normalize(language)] ?? value}
     static let english:[String:String]=[
         "Falta el decodificador OPUS. Descarga de nuevo la aplicación completa.": "The OPUS decoder is missing. Download the complete application again.",
         "No se pudo leer el archivo OPUS. Comprueba que no esté dañado y dure menos de diez horas.": "Could not read the OPUS file. Check that it is not damaged and is shorter than ten hours.",
@@ -180,12 +189,12 @@ enum AppLanguage {
         return (regex,value)
     }
     static func translate(_ value:String,language:String)->String {
-        guard language=="en" else{return value}
-        if let exact=english[value]{return exact}
+        guard language != "es" else{return value}
+        if let exact=english[value]{return interface(exact,language:language)}
         let ns=value as NSString
         for (regex,target) in templates {
             guard let match=regex.firstMatch(in:value,range:NSRange(location:0,length:ns.length)) else{continue}
-            let pieces=target.components(separatedBy:"%@")
+            let pieces=interface(target,language:language).components(separatedBy:"%@")
             guard pieces.count==match.numberOfRanges else{continue}
             var output=pieces[0]
             for i in 1..<pieces.count {output += ns.substring(with:match.range(at:i))+pieces[i]}
@@ -195,3 +204,5 @@ enum AppLanguage {
     }
 }
 func L(_ value:String)->String {AppLanguage.translate(value,language:AppLanguage.current)}
+
+func T(_ value:String)->String {AppLanguage.interface(value,language:AppLanguage.current)}

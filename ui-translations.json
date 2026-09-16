@@ -1,0 +1,1871 @@
+{
+  "The OPUS decoder is missing. Download the complete application again.": {
+    "es": "Falta el decodificador OPUS. Descarga de nuevo la aplicación completa.",
+    "de": "Der OPUS-Decoder fehlt. Lade die vollständige Anwendung erneut herunter.",
+    "fr": "Le décodeur OPUS est absent. Téléchargez à nouveau l’application complète.",
+    "pt": "O descodificador OPUS está em falta. Transfira novamente a aplicação completa.",
+    "zh": "缺少 OPUS 解码器。请重新下载完整应用。"
+  },
+  "Could not read the OPUS file. Check that it is not damaged and is shorter than ten hours.": {
+    "es": "No se pudo leer el archivo OPUS. Comprueba que no esté dañado y dure menos de diez horas.",
+    "de": "Die OPUS-Datei konnte nicht gelesen werden. Prüfe, ob sie beschädigt oder länger als zehn Stunden ist.",
+    "fr": "Impossible de lire le fichier OPUS. Vérifiez qu’il n’est pas endommagé et dure moins de dix heures.",
+    "pt": "Não foi possível ler o ficheiro OPUS. Verifique se está intacto e tem menos de dez horas.",
+    "zh": "无法读取 OPUS 文件。请确认文件未损坏且时长少于十小时。"
+  },
+  "Remove this transcript from history? The original audio is kept.": {
+    "es": "¿Quitar esta transcripción del historial? El audio original se conserva.",
+    "de": "Transkript aus dem Verlauf entfernen? Die Originalaufnahme bleibt erhalten.",
+    "fr": "Retirer cette transcription de l’historique ? L’audio original est conservé.",
+    "pt": "Remover esta transcrição do histórico? O áudio original será mantido.",
+    "zh": "从历史记录中移除此转写？原始音频将被保留。"
+  },
+  "100% on device": {
+    "es": "100 % local",
+    "de": "100 % auf diesem Gerät",
+    "fr": "100 % sur cet appareil",
+    "pt": "100% neste dispositivo",
+    "zh": "100% 本地处理"
+  },
+  "From voice to text. On your Mac.": {
+    "es": "De la voz al texto. Dentro de tu Mac.",
+    "de": "Von der Stimme zum Text. Auf deinem Mac.",
+    "fr": "De la voix au texte. Sur votre Mac.",
+    "pt": "Da voz ao texto. No seu Mac.",
+    "zh": "将语音转为文字。在您的 Mac 上完成。"
+  },
+  "Audio language": {
+    "es": "Idioma del audio",
+    "de": "Audiosprache",
+    "fr": "Langue de l’audio",
+    "pt": "Idioma do áudio",
+    "zh": "音频语言"
+  },
+  "App language": {
+    "es": "Interfaz",
+    "de": "App-Sprache",
+    "fr": "Langue de l’application",
+    "pt": "Idioma da aplicação",
+    "zh": "界面语言"
+  },
+  "Language ready": {
+    "es": "Idioma listo",
+    "de": "Sprache bereit",
+    "fr": "Langue prête",
+    "pt": "Idioma pronto",
+    "zh": "语言已就绪"
+  },
+  "Download language": {
+    "es": "Descargar idioma",
+    "de": "Sprache herunterladen",
+    "fr": "Télécharger la langue",
+    "pt": "Transferir idioma",
+    "zh": "下载语言"
+  },
+  "Dictionary (%@)": {
+    "es": "Diccionario (%@)",
+    "de": "Wörterbuch (%@)",
+    "fr": "Dictionnaire (%@)",
+    "pt": "Dicionário (%@)",
+    "zh": "词典（%@）"
+  },
+  "RECORDINGS · %@": {
+    "es": "GRABACIONES · %@",
+    "de": "AUFNAHMEN · %@",
+    "fr": "ENREGISTREMENTS · %@",
+    "pt": "GRAVAÇÕES · %@",
+    "zh": "录音 · %@"
+  },
+  "Add files or folders…": {
+    "es": "Agregar archivos o carpetas…",
+    "de": "Dateien oder Ordner hinzufügen…",
+    "fr": "Ajouter des fichiers ou dossiers…",
+    "pt": "Adicionar ficheiros ou pastas…",
+    "zh": "添加文件或文件夹…"
+  },
+  "Finding files…": {
+    "es": "Buscando archivos…",
+    "de": "Dateien suchen…",
+    "fr": "Recherche de fichiers…",
+    "pt": "A procurar ficheiros…",
+    "zh": "正在查找文件…"
+  },
+  "Add a recording to get started.": {
+    "es": "Agrega una grabación para empezar.",
+    "de": "Füge zum Starten eine Aufnahme hinzu.",
+    "fr": "Ajoutez un enregistrement pour commencer.",
+    "pt": "Adicione uma gravação para começar.",
+    "zh": "添加录音以开始。"
+  },
+  "Names and acronyms: people, places, institutions…": {
+    "es": "Nombres y siglas: Contraloría, COMPIN, Javiera Rodríguez…",
+    "de": "Namen und Kürzel: Personen, Orte, Einrichtungen…",
+    "fr": "Noms et sigles : personnes, lieux, institutions…",
+    "pt": "Nomes e siglas: pessoas, locais, instituições…",
+    "zh": "名称和缩写：人名、地名、机构…"
+  },
+  "Separate terms with commas. They help recognition; check names and figures when finished.": {
+    "es": "Separa términos con comas. Ayudan al reconocimiento; revisa nombres y cifras al terminar.",
+    "de": "Begriffe durch Kommas trennen. Sie helfen bei der Erkennung; Namen und Zahlen anschließend prüfen.",
+    "fr": "Séparez les termes par des virgules. Ils aident la reconnaissance ; vérifiez ensuite les noms et les chiffres.",
+    "pt": "Separe os termos por vírgulas. Ajudam no reconhecimento; reveja nomes e números no final.",
+    "zh": "请用逗号分隔词语。这些词语有助于识别；完成后请核对名称和数字。"
+  },
+  "Compare with Whisper": {
+    "es": "Comparar con Whisper",
+    "de": "Mit Whisper vergleichen",
+    "fr": "Comparer avec Whisper",
+    "pt": "Comparar com Whisper",
+    "zh": "与 Whisper 对比"
+  },
+  "Separate speakers": {
+    "es": "Separar voces",
+    "de": "Sprecher trennen",
+    "fr": "Séparer les voix",
+    "pt": "Separar vozes",
+    "zh": "区分说话人"
+  },
+  "Prepare models": {
+    "es": "Preparar modelos",
+    "de": "Modelle vorbereiten",
+    "fr": "Préparer les modèles",
+    "pt": "Preparar modelos",
+    "zh": "准备模型"
+  },
+  "Your recordings, ready to read.": {
+    "es": "Tus grabaciones, listas para leer.",
+    "de": "Deine Aufnahmen, bereit zum Lesen.",
+    "fr": "Vos enregistrements, prêts à être lus.",
+    "pt": "As suas gravações, prontas para ler.",
+    "zh": "让录音成为可阅读的文字。"
+  },
+  "Drop audio or video files. Get editable text, timestamps and subtitles.": {
+    "es": "Arrastra audios o videos. Obtén texto editable, marcas de tiempo y subtítulos.",
+    "de": "Audio- oder Videodateien ablegen. Erhalte bearbeitbaren Text, Zeitmarken und Untertitel.",
+    "fr": "Déposez des fichiers audio ou vidéo. Obtenez du texte modifiable, des repères temporels et des sous-titres.",
+    "pt": "Arraste áudio ou vídeo. Obtenha texto editável, marcações de tempo e legendas.",
+    "zh": "拖入音频或视频，生成可编辑文本、时间戳和字幕。"
+  },
+  "Choose files…": {
+    "es": "Elegir archivos…",
+    "de": "Dateien auswählen…",
+    "fr": "Choisir des fichiers…",
+    "pt": "Escolher ficheiros…",
+    "zh": "选择文件…"
+  },
+  "Transcribe pending files": {
+    "es": "Transcribir pendientes",
+    "de": "Ausstehende Dateien transkribieren",
+    "fr": "Transcrire les fichiers en attente",
+    "pt": "Transcrever ficheiros pendentes",
+    "zh": "转写待处理文件"
+  },
+  "Export all TXT files": {
+    "es": "Exportar todos los TXT",
+    "de": "Alle TXT-Dateien exportieren",
+    "fr": "Exporter tous les fichiers TXT",
+    "pt": "Exportar todos os ficheiros TXT",
+    "zh": "导出全部 TXT 文件"
+  },
+  "Remove from history…": {
+    "es": "Quitar del historial…",
+    "de": "Aus Verlauf entfernen…",
+    "fr": "Retirer de l’historique…",
+    "pt": "Remover do histórico…",
+    "zh": "从历史记录中移除…"
+  },
+  "Remove from history": {
+    "es": "Quitar del historial",
+    "de": "Aus Verlauf entfernen",
+    "fr": "Retirer de l’historique",
+    "pt": "Remover do histórico",
+    "zh": "从历史记录中移除"
+  },
+  "Cancel": {
+    "es": "Cancelar",
+    "de": "Abbrechen",
+    "fr": "Annuler",
+    "pt": "Cancelar",
+    "zh": "取消"
+  },
+  "Transcribe": {
+    "es": "Transcribir",
+    "de": "Transkribieren",
+    "fr": "Transcrire",
+    "pt": "Transcrever",
+    "zh": "转写"
+  },
+  "Transcribe again": {
+    "es": "Volver a transcribir",
+    "de": "Erneut transkribieren",
+    "fr": "Transcrire à nouveau",
+    "pt": "Transcrever novamente",
+    "zh": "重新转写"
+  },
+  "OK": {
+    "es": "Entendido",
+    "de": "OK",
+    "fr": "OK",
+    "pt": "OK",
+    "zh": "确定"
+  },
+  "Add multiple files or folders at once, even while the queue is running.\nOriginal files are kept.": {
+    "es": "Puedes agregar muchos archivos o carpetas de una vez, incluso mientras se procesa la cola.\nLos originales se conservan.",
+    "de": "Mehrere Dateien oder Ordner gleichzeitig hinzufügen, auch während die Warteschlange läuft. Originaldateien bleiben erhalten.",
+    "fr": "Ajoutez plusieurs fichiers ou dossiers à la fois, même pendant le traitement. Les originaux sont conservés.",
+    "pt": "Adicione vários ficheiros ou pastas de uma vez, mesmo durante o processamento da fila. Os originais são mantidos.",
+    "zh": "可同时添加多个文件或文件夹，即使队列正在处理中。原始文件将被保留。"
+  },
+  "Speed": {
+    "es": "Velocidad",
+    "de": "Geschwindigkeit",
+    "fr": "Vitesse",
+    "pt": "Velocidade",
+    "zh": "速度"
+  },
+  "Transcript view": {
+    "es": "Vista de la transcripción",
+    "de": "Transkriptansicht",
+    "fr": "Vue de la transcription",
+    "pt": "Vista da transcrição",
+    "zh": "转写视图"
+  },
+  "Full text": {
+    "es": "Texto completo",
+    "de": "Vollständiger Text",
+    "fr": "Texte intégral",
+    "pt": "Texto completo",
+    "zh": "完整文本"
+  },
+  "Review": {
+    "es": "Revisar",
+    "de": "Prüfen",
+    "fr": "Révision",
+    "pt": "Rever",
+    "zh": "校对"
+  },
+  "Quotes": {
+    "es": "Cuñas",
+    "de": "Zitate",
+    "fr": "Citations",
+    "pt": "Citações",
+    "zh": "引文"
+  },
+  "Comparison": {
+    "es": "Comparación",
+    "de": "Vergleich",
+    "fr": "Comparaison",
+    "pt": "Comparação",
+    "zh": "对比"
+  },
+  "Speakers": {
+    "es": "Voces",
+    "de": "Sprecher",
+    "fr": "Voix",
+    "pt": "Vozes",
+    "zh": "说话人"
+  },
+  "Analyze speakers / compare": {
+    "es": "Analizar voces / comparar",
+    "de": "Sprecher analysieren / vergleichen",
+    "fr": "Analyser les voix / comparer",
+    "pt": "Analisar vozes / comparar",
+    "zh": "分析说话人 / 对比"
+  },
+  "Copy full text": {
+    "es": "Copiar texto completo",
+    "de": "Gesamten Text kopieren",
+    "fr": "Copier tout le texte",
+    "pt": "Copiar todo o texto",
+    "zh": "复制完整文本"
+  },
+  "Export": {
+    "es": "Exportar",
+    "de": "Exportieren",
+    "fr": "Exporter",
+    "pt": "Exportar",
+    "zh": "导出"
+  },
+  "Relink original…": {
+    "es": "Vincular original…",
+    "de": "Original neu verknüpfen…",
+    "fr": "Relier l’original…",
+    "pt": "Associar original…",
+    "zh": "重新关联原文件…"
+  },
+  "Text (.txt)": {
+    "es": "Texto (.txt)",
+    "de": "Text (.txt)",
+    "fr": "Texte (.txt)",
+    "pt": "Texto (.txt)",
+    "zh": "文本（.txt）"
+  },
+  "Subtitles (.srt)": {
+    "es": "Subtítulos (.srt)",
+    "de": "Untertitel (.srt)",
+    "fr": "Sous-titres (.srt)",
+    "pt": "Legendas (.srt)",
+    "zh": "字幕（.srt）"
+  },
+  "FULL TRANSCRIPT": {
+    "es": "TRANSCRIPCIÓN COMPLETA",
+    "de": "VOLLSTÄNDIGES TRANSKRIPT",
+    "fr": "TRANSCRIPTION COMPLÈTE",
+    "pt": "TRANSCRIÇÃO COMPLETA",
+    "zh": "完整转写"
+  },
+  "PARTIAL TEXT · transcription unfinished": {
+    "es": "TEXTO PARCIAL · transcripción sin terminar",
+    "de": "TEILTEXT · Transkription nicht abgeschlossen",
+    "fr": "TEXTE PARTIEL · transcription inachevée",
+    "pt": "TEXTO PARCIAL · transcrição incompleta",
+    "zh": "部分文本 · 转写未完成"
+  },
+  "Follow audio": {
+    "es": "Seguir audio",
+    "de": "Audio folgen",
+    "fr": "Suivre l’audio",
+    "pt": "Seguir áudio",
+    "zh": "跟随音频"
+  },
+  "Save TXT": {
+    "es": "Guardar TXT",
+    "de": "TXT speichern",
+    "fr": "Enregistrer en TXT",
+    "pt": "Guardar TXT",
+    "zh": "保存 TXT"
+  },
+  "Yellow follows the voice. Pause, edit or select a quote. Copy full text includes the entire transcript.": {
+    "es": "El amarillo sigue la voz. Puedes pausar, editar o seleccionar una cuña. Copiar todo incluye el texto entero.",
+    "de": "Gelb folgt der Stimme. Du kannst pausieren, bearbeiten oder ein Zitat auswählen. Gesamten Text kopieren umfasst das ganze Transkript.",
+    "fr": "Le jaune suit la voix. Vous pouvez mettre en pause, modifier ou sélectionner une citation. Copier tout le texte inclut la transcription entière.",
+    "pt": "O amarelo acompanha a voz. Pode pausar, editar ou selecionar uma citação. Copiar todo o texto inclui a transcrição inteira.",
+    "zh": "黄色高亮跟随语音。您可以暂停、编辑或选取引文。“复制完整文本”会复制全部转写内容。"
+  },
+  "Listen to selection": {
+    "es": "Escuchar selección",
+    "de": "Auswahl anhören",
+    "fr": "Écouter la sélection",
+    "pt": "Ouvir seleção",
+    "zh": "播放所选内容"
+  },
+  "Speaker name": {
+    "es": "Nombre del hablante",
+    "de": "Name des Sprechers",
+    "fr": "Nom de la personne",
+    "pt": "Nome da pessoa",
+    "zh": "说话人姓名"
+  },
+  "Save quote": {
+    "es": "Guardar cuña",
+    "de": "Zitat speichern",
+    "fr": "Enregistrer la citation",
+    "pt": "Guardar citação",
+    "zh": "保存引文"
+  },
+  "This selection cannot be located reliably. Choose text matching the original transcript or review it with audio.": {
+    "es": "No puedo ubicar esa selección con certeza. Elige una frase que coincida con el reconocimiento o revísala con audio.",
+    "de": "Diese Auswahl lässt sich nicht sicher zuordnen. Wähle Text aus der ursprünglichen Erkennung oder prüfe ihn mit Audio.",
+    "fr": "Cette sélection ne peut pas être située avec certitude. Choisissez du texte correspondant à la reconnaissance initiale ou vérifiez avec l’audio.",
+    "pt": "Não é possível localizar esta seleção com segurança. Escolha texto do reconhecimento original ou verifique com o áudio.",
+    "zh": "无法准确定位所选内容。请选择与原始识别结果一致的文本，或对照音频校对。"
+  },
+  "Your edits are saved in TXT. Subtitles use the text from the Review tab.": {
+    "es": "Tus cambios en este texto se guardan en el TXT. Los subtítulos conservan el texto de Revisar con audio.",
+    "de": "Deine Änderungen werden in TXT gespeichert. Untertitel verwenden den Text aus Prüfen.",
+    "fr": "Vos modifications sont enregistrées en TXT. Les sous-titres utilisent le texte de Révision.",
+    "pt": "As suas alterações são guardadas no TXT. As legendas usam o texto de Rever.",
+    "zh": "您的编辑会保存到 TXT。字幕使用“校对”中的文本。"
+  },
+  "Only unreviewed": {
+    "es": "Solo sin revisar",
+    "de": "Nur ungeprüfte",
+    "fr": "Non révisés uniquement",
+    "pt": "Apenas por rever",
+    "zh": "仅显示未校对内容"
+  },
+  "You have edited the full text. Changes to these segments affect subtitles; they do not replace your edited full text.": {
+    "es": "Tienes una versión editada en Texto completo. Los cambios de estos fragmentos se aplican a los subtítulos; no reemplazan tu versión editada.",
+    "de": "Du hast den vollständigen Text bearbeitet. Änderungen an Fragmenten wirken sich auf Untertitel aus und ersetzen nicht deinen bearbeiteten Gesamttext.",
+    "fr": "Vous avez modifié le texte intégral. Les modifications des segments affectent les sous-titres sans remplacer votre texte intégral modifié.",
+    "pt": "Editou o texto completo. As alterações dos segmentos afetam as legendas, sem substituir o texto completo editado.",
+    "zh": "您已编辑完整文本。对片段的修改会影响字幕，但不会替换您编辑过的完整文本。"
+  },
+  "Listen and review": {
+    "es": "Escucha y revisa",
+    "de": "Anhören und prüfen",
+    "fr": "Écouter et réviser",
+    "pt": "Ouvir e rever",
+    "zh": "收听并校对"
+  },
+  "Speaker (optional)": {
+    "es": "Hablante (opcional)",
+    "de": "Sprecher (optional)",
+    "fr": "Personne (facultatif)",
+    "pt": "Pessoa (opcional)",
+    "zh": "说话人（可选）"
+  },
+  "Reviewed": {
+    "es": "Revisado",
+    "de": "Geprüft",
+    "fr": "Révisé",
+    "pt": "Revisto",
+    "zh": "已校对"
+  },
+  "Other readings": {
+    "es": "Otras lecturas",
+    "de": "Andere Lesarten",
+    "fr": "Autres propositions",
+    "pt": "Outras interpretações",
+    "zh": "其他识别结果"
+  },
+  "Restore original": {
+    "es": "Restaurar original",
+    "de": "Original wiederherstellen",
+    "fr": "Restaurer l’original",
+    "pt": "Restaurar original",
+    "zh": "恢复原文"
+  },
+  "Marks indicate low recognition confidence, not measured accuracy. Speaker labels can be reviewed and renamed.": {
+    "es": "Las marcas señalan baja confianza del motor, no una medición de precisión. Las etiquetas de voz se pueden revisar y renombrar.",
+    "de": "Markierungen zeigen geringe Erkennungssicherheit, keine gemessene Genauigkeit. Sprecherbezeichnungen können geprüft und umbenannt werden.",
+    "fr": "Les marques indiquent une faible confiance de reconnaissance, pas une précision mesurée. Les voix peuvent être vérifiées et renommées.",
+    "pt": "As marcas indicam baixa confiança do reconhecimento, não precisão medida. Pode rever e renomear as vozes.",
+    "zh": "标记表示识别置信度较低，并非准确率测量结果。说话人标签可校对和重命名。"
+  },
+  "Your personal dictionary": {
+    "es": "Tu diccionario personal",
+    "de": "Dein persönliches Wörterbuch",
+    "fr": "Votre dictionnaire personnel",
+    "pt": "O seu dicionário pessoal",
+    "zh": "您的个人词典"
+  },
+  "Save names, places and institutions. They provide context without automatically replacing words.": {
+    "es": "Guarda autoridades, comunas, apellidos e instituciones. Se usan como contexto, sin reemplazar palabras automáticamente.",
+    "de": "Namen, Orte und Einrichtungen speichern. Sie liefern Kontext, ohne Wörter automatisch zu ersetzen.",
+    "fr": "Enregistrez noms, lieux et institutions. Ils fournissent du contexte sans remplacer automatiquement les mots.",
+    "pt": "Guarde nomes, locais e instituições. Fornecem contexto sem substituir palavras automaticamente.",
+    "zh": "保存人名、地名和机构名称。它们用于提供上下文，不会自动替换词语。"
+  },
+  "Names or acronyms separated by commas": {
+    "es": "Nombres o siglas separados por comas",
+    "de": "Namen oder Kürzel durch Kommas getrennt",
+    "fr": "Noms ou sigles séparés par des virgules",
+    "pt": "Nomes ou siglas separados por vírgulas",
+    "zh": "用逗号分隔名称或缩写"
+  },
+  "Save": {
+    "es": "Guardar",
+    "de": "Speichern",
+    "fr": "Enregistrer",
+    "pt": "Guardar",
+    "zh": "保存"
+  },
+  "Up to 100 terms are passed to the local engine per recording. Whisper uses as much context as fits its prompt window.": {
+    "es": "Se envían hasta 100 términos al motor en cada grabación. Whisper usa el contexto que cabe en su ventana de indicaciones.",
+    "de": "Pro Aufnahme werden bis zu 100 Begriffe an das lokale Modell übergeben. Whisper nutzt so viel Kontext, wie in sein Eingabefenster passt.",
+    "fr": "Jusqu’à 100 termes sont transmis au moteur local par enregistrement. Whisper utilise le contexte permis par sa fenêtre d’instructions.",
+    "pt": "São fornecidos até 100 termos ao motor local por gravação. O Whisper usa o contexto que cabe na sua janela de instruções.",
+    "zh": "每段录音最多向本地引擎提供 100 个词语。Whisper 使用其提示窗口能够容纳的上下文。"
+  },
+  "Done": {
+    "es": "Listo",
+    "de": "Fertig",
+    "fr": "Terminer",
+    "pt": "Concluir",
+    "zh": "完成"
+  },
+  "Saved quotes": {
+    "es": "Cuñas guardadas",
+    "de": "Gespeicherte Zitate",
+    "fr": "Citations enregistrées",
+    "pt": "Citações guardadas",
+    "zh": "已保存引文"
+  },
+  "Export quotes": {
+    "es": "Exportar cuñas",
+    "de": "Zitate exportieren",
+    "fr": "Exporter les citations",
+    "pt": "Exportar citações",
+    "zh": "导出引文"
+  },
+  "Select text in Full text and choose Save quote. The exact selection is kept with its source and timing.": {
+    "es": "Selecciona la cita en Texto completo y pulsa Guardar cuña. Se conserva exactamente lo seleccionado, con su origen y tiempo.",
+    "de": "Wähle Text im vollständigen Transkript und drücke Zitat speichern. Die genaue Auswahl bleibt mit Quelle und Zeit erhalten.",
+    "fr": "Sélectionnez un passage du texte intégral et choisissez Enregistrer la citation. Le texte exact, sa source et son minutage sont conservés.",
+    "pt": "Selecione texto em Texto completo e escolha Guardar citação. A seleção exata é mantida com a origem e o tempo.",
+    "zh": "在“完整文本”中选取内容并点击“保存引文”。将保留原样文本、来源和时间信息。"
+  },
+  "Listen": {
+    "es": "Escuchar",
+    "de": "Anhören",
+    "fr": "Écouter",
+    "pt": "Ouvir",
+    "zh": "播放"
+  },
+  "Copy quote": {
+    "es": "Copiar cita",
+    "de": "Zitat kopieren",
+    "fr": "Copier la citation",
+    "pt": "Copiar citação",
+    "zh": "复制引文"
+  },
+  "Copy with source": {
+    "es": "Copiar con fuente",
+    "de": "Mit Quelle kopieren",
+    "fr": "Copier avec la source",
+    "pt": "Copiar com a origem",
+    "zh": "复制引文及来源"
+  },
+  "No quotes have been saved for this recording yet.": {
+    "es": "Todavía no hay cuñas guardadas para esta grabación.",
+    "de": "Für diese Aufnahme sind noch keine Zitate gespeichert.",
+    "fr": "Aucune citation n’a encore été enregistrée pour cet audio.",
+    "pt": "Ainda não há citações guardadas para esta gravação.",
+    "zh": "此录音尚未保存引文。"
+  },
+  "Differences only": {
+    "es": "Solo diferencias",
+    "de": "Nur Unterschiede",
+    "fr": "Différences uniquement",
+    "pt": "Apenas diferenças",
+    "zh": "仅显示差异"
+  },
+  "Compare two local transcripts of the same audio. Blocks of about 20 seconds highlight differences; neither version is assumed correct.": {
+    "es": "Compara dos reconocimientos locales del mismo audio. Los bloques de unos 20 segundos resaltan diferencias; ninguna versión se considera automáticamente correcta.",
+    "de": "Vergleiche zwei lokale Erkennungen desselben Audios. Etwa 20 Sekunden lange Blöcke zeigen Unterschiede; keine Version gilt automatisch als richtig.",
+    "fr": "Comparez deux reconnaissances locales du même audio. Les blocs d’environ 20 secondes montrent les différences ; aucune version n’est automatiquement considérée correcte.",
+    "pt": "Compare dois reconhecimentos locais do mesmo áudio. Blocos de cerca de 20 segundos destacam diferenças; nenhuma versão é considerada automaticamente correta.",
+    "zh": "对比同一音频的两次本地识别。每约 20 秒显示一组差异；不预设任何版本一定正确。"
+  },
+  "Copy full Whisper transcript": {
+    "es": "Copiar versión completa de Whisper",
+    "de": "Vollständiges Whisper-Transkript kopieren",
+    "fr": "Copier la transcription Whisper complète",
+    "pt": "Copiar transcrição completa do Whisper",
+    "zh": "复制完整 Whisper 转写"
+  },
+  "Enable Compare with Whisper and choose Analyze speakers / compare. A model is downloaded once, then runs offline.": {
+    "es": "Activa Comparar con Whisper y pulsa Analizar voces / comparar. La primera vez se descarga un modelo; luego funciona sin conexión.",
+    "de": "Aktiviere Mit Whisper vergleichen und wähle Sprecher analysieren / vergleichen. Das Modell wird einmal heruntergeladen und funktioniert danach offline.",
+    "fr": "Activez Comparer avec Whisper, puis Analyser les voix / comparer. Le modèle est téléchargé une fois, puis fonctionne hors ligne.",
+    "pt": "Ative Comparar com Whisper e escolha Analisar vozes / comparar. O modelo é transferido uma vez e depois funciona sem ligação.",
+    "zh": "启用“与 Whisper 对比”，再点击“分析说话人 / 对比”。模型首次下载后即可离线运行。"
+  },
+  "Voices and speakers": {
+    "es": "Voces y hablantes",
+    "de": "Stimmen und Sprecher",
+    "fr": "Voix et personnes",
+    "pt": "Vozes e pessoas",
+    "zh": "声音与说话人"
+  },
+  "The model groups speakers as Voz 1, Voz 2… You can name them. Labels belong to this recording and may be incorrect with noise or overlapping speech.": {
+    "es": "El modelo agrupa voces como Voz 1, Voz 2… Tú les asignas nombres. Las etiquetas son propias de esta grabación y pueden confundirse si hay ruido o voces superpuestas.",
+    "de": "Das Modell gruppiert Stimmen als Stimme 1, Stimme 2… Du kannst Namen zuweisen. Die Bezeichnungen gelten nur für diese Aufnahme und können bei Rauschen oder überlappenden Stimmen falsch sein.",
+    "fr": "Le modèle regroupe les voix : Voix 1, Voix 2… Vous pouvez les nommer. Ces étiquettes concernent cet enregistrement et peuvent être erronées avec du bruit ou des voix superposées.",
+    "pt": "O modelo agrupa as vozes como Voz 1, Voz 2… Pode atribuir nomes. As etiquetas pertencem a esta gravação e podem estar erradas com ruído ou vozes sobrepostas.",
+    "zh": "模型将声音分组为说话人 1、说话人 2 等，您可以为其命名。标签仅适用于当前录音，在有噪声或声音重叠时可能出错。"
+  },
+  "Number of speakers": {
+    "es": "Cantidad de voces",
+    "de": "Anzahl der Sprecher",
+    "fr": "Nombre de voix",
+    "pt": "Número de vozes",
+    "zh": "说话人数"
+  },
+  "Count": {
+    "es": "Cantidad",
+    "de": "Anzahl",
+    "fr": "Nombre",
+    "pt": "Quantidade",
+    "zh": "数量"
+  },
+  "Automatic": {
+    "es": "Automática",
+    "de": "Automatisch",
+    "fr": "Automatique",
+    "pt": "Automática",
+    "zh": "自动"
+  },
+  "If you know the number of speakers, set it before analysis. Running speaker analysis again may change the labels.": {
+    "es": "Si conoces cuántas personas hablan, indícalo antes de analizar. Recalcular voces puede cambiar las etiquetas.",
+    "de": "Wenn du die Sprecheranzahl kennst, gib sie vor der Analyse an. Eine erneute Analyse kann die Bezeichnungen ändern.",
+    "fr": "Si vous connaissez le nombre de personnes, indiquez-le avant l’analyse. Une nouvelle analyse peut modifier les étiquettes.",
+    "pt": "Se souber quantas pessoas falam, indique antes de analisar. Uma nova análise pode alterar as etiquetas.",
+    "zh": "如果知道说话人数，请在分析前设置。重新分析可能改变标签。"
+  },
+  "Enable Separate speakers and choose Analyze speakers / compare.": {
+    "es": "Activa Separar voces y pulsa Analizar voces / comparar.",
+    "de": "Aktiviere Sprecher trennen und wähle Sprecher analysieren / vergleichen.",
+    "fr": "Activez Séparer les voix, puis Analyser les voix / comparer.",
+    "pt": "Ative Separar vozes e escolha Analisar vozes / comparar.",
+    "zh": "启用“区分说话人”，再点击“分析说话人 / 对比”。"
+  },
+  "Speaker": {
+    "es": "Voz",
+    "de": "Sprecher",
+    "fr": "Personne",
+    "pt": "Pessoa",
+    "zh": "说话人"
+  },
+  "Choose a speaker": {
+    "es": "Elige una voz",
+    "de": "Sprecher auswählen",
+    "fr": "Choisir une voix",
+    "pt": "Escolher uma voz",
+    "zh": "选择说话人"
+  },
+  "Person’s name": {
+    "es": "Nombre de la persona",
+    "de": "Name der Person",
+    "fr": "Nom de la personne",
+    "pt": "Nome da pessoa",
+    "zh": "姓名"
+  },
+  "Assign name": {
+    "es": "Asignar nombre",
+    "de": "Namen zuweisen",
+    "fr": "Attribuer un nom",
+    "pt": "Atribuir nome",
+    "zh": "指定姓名"
+  },
+  "Your edited full text is preserved. Names apply to segments and saved quotes.": {
+    "es": "Tu texto completo editado se conserva. Los nombres se aplican a los fragmentos y las cuñas guardadas.",
+    "de": "Dein bearbeiteter Gesamttext bleibt erhalten. Namen werden auf Fragmente und gespeicherte Zitate angewendet.",
+    "fr": "Votre texte intégral modifié est conservé. Les noms s’appliquent aux segments et aux citations enregistrées.",
+    "pt": "O texto completo editado é mantido. Os nomes aplicam-se aos segmentos e às citações guardadas.",
+    "zh": "您编辑过的完整文本将保留。姓名会应用于片段和已保存的引文。"
+  },
+  "Transcription complete": {
+    "es": "Transcripción terminada",
+    "de": "Transkription abgeschlossen",
+    "fr": "Transcription terminée",
+    "pt": "Transcrição concluída",
+    "zh": "转写完成"
+  },
+  "Pending": {
+    "es": "Pendiente",
+    "de": "Ausstehend",
+    "fr": "En attente",
+    "pt": "Pendente",
+    "zh": "待处理"
+  },
+  "Queued": {
+    "es": "En cola",
+    "de": "In Warteschlange",
+    "fr": "Dans la file",
+    "pt": "Na fila",
+    "zh": "已加入队列"
+  },
+  "Preparing audio": {
+    "es": "Preparando audio",
+    "de": "Audio wird vorbereitet",
+    "fr": "Préparation de l’audio",
+    "pt": "A preparar áudio",
+    "zh": "正在准备音频"
+  },
+  "Transcribing": {
+    "es": "Transcribiendo",
+    "de": "Transkription läuft",
+    "fr": "Transcription en cours",
+    "pt": "A transcrever",
+    "zh": "正在转写"
+  },
+  "Interrupted · you can transcribe again": {
+    "es": "Interrumpido · puedes volver a transcribir",
+    "de": "Unterbrochen · erneute Transkription möglich",
+    "fr": "Interrompu · vous pouvez relancer la transcription",
+    "pt": "Interrompida · pode transcrever novamente",
+    "zh": "已中断 · 可重新转写"
+  },
+  "No recognizable speech detected": {
+    "es": "No se detectó voz reconocible",
+    "de": "Keine erkennbare Sprache gefunden",
+    "fr": "Aucune parole reconnaissable détectée",
+    "pt": "Não foi detetada fala reconhecível",
+    "zh": "未检测到可识别的语音"
+  },
+  "Canceled · partial text kept": {
+    "es": "Cancelado · se conserva el texto parcial",
+    "de": "Abgebrochen · Teiltext gespeichert",
+    "fr": "Annulé · texte partiel conservé",
+    "pt": "Cancelada · texto parcial mantido",
+    "zh": "已取消 · 已保留部分文本"
+  },
+  "Model %@ · ready on your Mac": {
+    "es": "Modelo %@ · listo en tu Mac",
+    "de": "Modell %@ · auf deinem Mac bereit",
+    "fr": "Modèle %@ · prêt sur votre Mac",
+    "pt": "Modelo %@ · pronto no seu Mac",
+    "zh": "模型 %@ · 已在 Mac 上就绪"
+  },
+  "Model %@ · one-time language download needed": {
+    "es": "Modelo %@ · requiere descargar el idioma una vez",
+    "de": "Modell %@ · einmaliger Sprachdownload erforderlich",
+    "fr": "Modèle %@ · téléchargement initial de la langue requis",
+    "pt": "Modelo %@ · requer transferência inicial do idioma",
+    "zh": "模型 %@ · 需要首次下载语言"
+  },
+  "Whisper: downloaded · Speakers: downloaded": {
+    "es": "Whisper: descargado · Voces: descargado",
+    "de": "Whisper: heruntergeladen · Sprecher: heruntergeladen",
+    "fr": "Whisper : téléchargé · Voix : téléchargé",
+    "pt": "Whisper: transferido · Vozes: transferido",
+    "zh": "Whisper：已下载 · 说话人：已下载"
+  },
+  "Whisper: not downloaded · Speakers: not downloaded": {
+    "es": "Whisper: por descargar · Voces: por descargar",
+    "de": "Whisper: nicht heruntergeladen · Sprecher: nicht heruntergeladen",
+    "fr": "Whisper : non téléchargé · Voix : non téléchargé",
+    "pt": "Whisper: não transferido · Vozes: não transferido",
+    "zh": "Whisper：未下载 · 说话人：未下载"
+  },
+  "Whisper: downloaded · Speakers: not downloaded": {
+    "es": "Whisper: descargado · Voces: por descargar",
+    "de": "Whisper: heruntergeladen · Sprecher: nicht heruntergeladen",
+    "fr": "Whisper : téléchargé · Voix : non téléchargé",
+    "pt": "Whisper: transferido · Vozes: não transferido",
+    "zh": "Whisper：已下载 · 说话人：未下载"
+  },
+  "Whisper: not downloaded · Speakers: downloaded": {
+    "es": "Whisper: por descargar · Voces: descargado",
+    "de": "Whisper: nicht heruntergeladen · Sprecher: heruntergeladen",
+    "fr": "Whisper : non téléchargé · Voix : téléchargé",
+    "pt": "Whisper: não transferido · Vozes: transferido",
+    "zh": "Whisper：未下载 · 说话人：已下载"
+  },
+  "Checking speech model…": {
+    "es": "Comprobando el modelo de voz…",
+    "de": "Sprachmodell wird geprüft…",
+    "fr": "Vérification du modèle vocal…",
+    "pt": "A verificar o modelo de voz…",
+    "zh": "正在检查语音模型…"
+  },
+  "Additional models: checking…": {
+    "es": "Modelos adicionales: comprobando…",
+    "de": "Zusätzliche Modelle werden geprüft…",
+    "fr": "Vérification des modèles supplémentaires…",
+    "pt": "A verificar modelos adicionais…",
+    "zh": "正在检查附加模型…"
+  },
+  "Local speech recognition is unavailable on this Mac.": {
+    "es": "El reconocimiento local no está disponible en este Mac.",
+    "de": "Lokale Spracherkennung ist auf diesem Mac nicht verfügbar.",
+    "fr": "La reconnaissance vocale locale n’est pas disponible sur ce Mac.",
+    "pt": "O reconhecimento de voz local não está disponível neste Mac.",
+    "zh": "此 Mac 无法使用本地语音识别。"
+  },
+  "This language is unavailable in the local engine.": {
+    "es": "Este idioma no está disponible en el motor local.",
+    "de": "Diese Sprache ist im lokalen Modell nicht verfügbar.",
+    "fr": "Cette langue n’est pas disponible dans le moteur local.",
+    "pt": "Este idioma não está disponível no motor local.",
+    "zh": "本地引擎不支持此语言。"
+  },
+  "Downloading the language model. Your recordings are not uploaded.": {
+    "es": "Descargando el modelo de idioma. Tus grabaciones no se envían.",
+    "de": "Sprachmodell wird heruntergeladen. Deine Aufnahmen werden nicht hochgeladen.",
+    "fr": "Téléchargement du modèle de langue. Vos enregistrements ne sont pas envoyés.",
+    "pt": "A transferir o modelo do idioma. As suas gravações não são enviadas.",
+    "zh": "正在下载语言模型。不会上传您的录音。"
+  },
+  "Language ready. You can now transcribe offline.": {
+    "es": "Idioma listo. Ya puedes transcribir sin conexión.",
+    "de": "Sprache bereit. Du kannst jetzt offline transkribieren.",
+    "fr": "Langue prête. Vous pouvez maintenant transcrire hors ligne.",
+    "pt": "Idioma pronto. Já pode transcrever sem ligação.",
+    "zh": "语言已就绪。现在可以离线转写。"
+  },
+  "The language is not ready yet. Try downloading it again.": {
+    "es": "El idioma aún no está listo. Intenta descargarlo de nuevo.",
+    "de": "Die Sprache ist noch nicht bereit. Versuche den Download erneut.",
+    "fr": "La langue n’est pas encore prête. Réessayez le téléchargement.",
+    "pt": "O idioma ainda não está pronto. Tente transferi-lo novamente.",
+    "zh": "语言尚未就绪。请重新下载。"
+  },
+  "Download canceled.": {
+    "es": "Descarga cancelada.",
+    "de": "Download abgebrochen.",
+    "fr": "Téléchargement annulé.",
+    "pt": "Transferência cancelada.",
+    "zh": "下载已取消。"
+  },
+  "Could not prepare the language.": {
+    "es": "No se pudo preparar el idioma.",
+    "de": "Sprache konnte nicht vorbereitet werden.",
+    "fr": "Impossible de préparer la langue.",
+    "pt": "Não foi possível preparar o idioma.",
+    "zh": "无法准备语言。"
+  },
+  "The selected language is unavailable for local transcription.": {
+    "es": "El idioma elegido no está disponible para transcripción local.",
+    "de": "Die gewählte Sprache ist für lokale Transkription nicht verfügbar.",
+    "fr": "La langue sélectionnée n’est pas disponible pour la transcription locale.",
+    "pt": "O idioma selecionado não está disponível para transcrição local.",
+    "zh": "所选语言无法用于本地转写。"
+  },
+  "No room to reserve another language. Check the speech languages installed in macOS.": {
+    "es": "No hay espacio para reservar otro idioma. Revisa los idiomas de voz instalados en macOS.",
+    "de": "Kein Platz für eine weitere Sprache. Prüfe die in macOS installierten Sprachmodelle.",
+    "fr": "Impossible de réserver une autre langue. Vérifiez les langues vocales installées dans macOS.",
+    "pt": "Não há espaço para reservar outro idioma. Verifique os idiomas de voz instalados no macOS.",
+    "zh": "无法再预留语言。请检查 macOS 中已安装的语音语言。"
+  },
+  "Original audio not found. Connect the drive or use Relink original to choose its new location.": {
+    "es": "No encuentro el audio original. Conecta el disco o usa Vincular original para elegirlo en su nueva ubicación.",
+    "de": "Originalaufnahme nicht gefunden. Verbinde das Laufwerk oder wähle den neuen Speicherort über Original neu verknüpfen.",
+    "fr": "Audio original introuvable. Connectez le disque ou utilisez Relier l’original pour choisir son nouvel emplacement.",
+    "pt": "Áudio original não encontrado. Ligue o disco ou use Associar original para escolher a nova localização.",
+    "zh": "找不到原始音频。请连接磁盘，或使用“重新关联原文件”选择新位置。"
+  },
+  "Full transcript copied. Ready to paste in one go.": {
+    "es": "Transcripción completa copiada. Lista para pegar de una vez.",
+    "de": "Gesamtes Transkript kopiert. Zum Einfügen in einem Stück bereit.",
+    "fr": "Transcription complète copiée. Prête à être collée en une fois.",
+    "pt": "Transcrição completa copiada. Pronta para colar de uma vez.",
+    "zh": "已复制完整转写，可一次性粘贴。"
+  },
+  "Original relinked. Your text and saved quotes are preserved.": {
+    "es": "Original vinculado. Tu texto y tus cuñas se conservan.",
+    "de": "Original neu verknüpft. Dein Text und deine gespeicherten Zitate bleiben erhalten.",
+    "fr": "Original relié. Votre texte et vos citations enregistrées sont conservés.",
+    "pt": "Original associado. O texto e as citações guardadas são mantidos.",
+    "zh": "原文件已重新关联。您的文本和已保存引文均被保留。"
+  },
+  "Quote saved with its exact text, source file and time.": {
+    "es": "Cuña guardada con su texto literal, archivo y tiempo.",
+    "de": "Zitat mit genauem Text, Quelldatei und Zeit gespeichert.",
+    "fr": "Citation enregistrée avec son texte exact, sa source et son minutage.",
+    "pt": "Citação guardada com o texto exato, o ficheiro de origem e o tempo.",
+    "zh": "已保存引文的原样文本、来源文件和时间。"
+  },
+  "Quote copied.": {
+    "es": "Cuña copiada.",
+    "de": "Zitat kopiert.",
+    "fr": "Citation copiée.",
+    "pt": "Citação copiada.",
+    "zh": "引文已复制。"
+  },
+  "Quotes exported.": {
+    "es": "Cuñas exportadas.",
+    "de": "Zitate exportiert.",
+    "fr": "Citations exportées.",
+    "pt": "Citações exportadas.",
+    "zh": "引文已导出。"
+  },
+  "Preparing local recognition…": {
+    "es": "Preparando el reconocimiento local…",
+    "de": "Lokale Erkennung wird vorbereitet…",
+    "fr": "Préparation de la reconnaissance locale…",
+    "pt": "A preparar o reconhecimento local…",
+    "zh": "正在准备本地识别…"
+  },
+  "Canceling…": {
+    "es": "Cancelando…",
+    "de": "Abbrechen…",
+    "fr": "Annulation…",
+    "pt": "A cancelar…",
+    "zh": "正在取消…"
+  },
+  "Both additional models are ready to work offline.": {
+    "es": "Los dos modelos adicionales están listos para trabajar sin conexión.",
+    "de": "Beide Zusatzmodelle sind offline einsatzbereit.",
+    "fr": "Les deux modèles supplémentaires sont prêts à fonctionner hors ligne.",
+    "pt": "Os dois modelos adicionais estão prontos para funcionar sem ligação.",
+    "zh": "两个附加模型均已就绪，可离线使用。"
+  },
+  "Preparation canceled.": {
+    "es": "Preparación cancelada.",
+    "de": "Vorbereitung abgebrochen.",
+    "fr": "Préparation annulée.",
+    "pt": "Preparação cancelada.",
+    "zh": "准备已取消。"
+  },
+  "Could not prepare models.": {
+    "es": "No se pudieron preparar los modelos.",
+    "de": "Modelle konnten nicht vorbereitet werden.",
+    "fr": "Impossible de préparer les modèles.",
+    "pt": "Não foi possível preparar os modelos.",
+    "zh": "无法准备模型。"
+  },
+  "Speakers separated automatically; review the labels.": {
+    "es": "Voces separadas automáticamente; revisa las etiquetas.",
+    "de": "Sprecher automatisch getrennt; bitte Bezeichnungen prüfen.",
+    "fr": "Voix séparées automatiquement ; vérifiez les étiquettes.",
+    "pt": "Vozes separadas automaticamente; reveja as etiquetas.",
+    "zh": "已自动区分说话人；请核对标签。"
+  },
+  "Comparison complete. Differences are points to review, not proven errors.": {
+    "es": "Comparación terminada. Las diferencias son puntos para revisar, no errores demostrados.",
+    "de": "Vergleich abgeschlossen. Unterschiede müssen geprüft werden und sind keine bestätigten Fehler.",
+    "fr": "Comparaison terminée. Les différences sont à vérifier et ne sont pas des erreurs prouvées.",
+    "pt": "Comparação concluída. As diferenças são pontos a rever, não erros comprovados.",
+    "zh": "对比完成。差异是待校对的内容，并非已确认的错误。"
+  },
+  "Preparing audio for comparison and speakers…": {
+    "es": "Preparando audio para comparación y voces…",
+    "de": "Audio für Vergleich und Sprecheranalyse vorbereiten…",
+    "fr": "Préparation de l’audio pour la comparaison et les voix…",
+    "pt": "A preparar áudio para comparação e vozes…",
+    "zh": "正在为对比和说话人分析准备音频…"
+  },
+  "Additional analysis complete. Open Comparison or Speakers.": {
+    "es": "Análisis adicional terminado. Abre Comparación o Voces.",
+    "de": "Zusatzanalyse abgeschlossen. Öffne Vergleich oder Sprecher.",
+    "fr": "Analyse supplémentaire terminée. Ouvrez Comparaison ou Voix.",
+    "pt": "Análise adicional concluída. Abra Comparação ou Vozes.",
+    "zh": "附加分析完成。请打开“对比”或“说话人”。"
+  },
+  "Additional analysis canceled; your transcript is preserved.": {
+    "es": "Análisis adicional cancelado; tu transcripción se conserva.",
+    "de": "Zusatzanalyse abgebrochen; dein Transkript bleibt erhalten.",
+    "fr": "Analyse supplémentaire annulée ; votre transcription est conservée.",
+    "pt": "Análise adicional cancelada; a transcrição é mantida.",
+    "zh": "附加分析已取消；转写文本已保留。"
+  },
+  "Could not complete additional analysis.": {
+    "es": "No se pudo completar el análisis adicional.",
+    "de": "Zusatzanalyse konnte nicht abgeschlossen werden.",
+    "fr": "Impossible de terminer l’analyse supplémentaire.",
+    "pt": "Não foi possível concluir a análise adicional.",
+    "zh": "无法完成附加分析。"
+  },
+  "Downloading Whisper to compare on your Mac…": {
+    "es": "Descargando Whisper para comparar dentro del Mac…",
+    "de": "Whisper für den Vergleich auf deinem Mac herunterladen…",
+    "fr": "Téléchargement de Whisper pour comparer sur votre Mac…",
+    "pt": "A transferir Whisper para comparar no seu Mac…",
+    "zh": "正在下载 Whisper，以在 Mac 上进行对比…"
+  },
+  "Downloading Whisper: %@ %": {
+    "es": "Descargando Whisper: %@ %",
+    "de": "Whisper herunterladen: %@ %",
+    "fr": "Téléchargement de Whisper : %@ %",
+    "pt": "A transferir Whisper: %@ %",
+    "zh": "正在下载 Whisper：%@ %"
+  },
+  "Preparing Whisper for this Mac…": {
+    "es": "Preparando Whisper para este Mac…",
+    "de": "Whisper für diesen Mac vorbereiten…",
+    "fr": "Préparation de Whisper pour ce Mac…",
+    "pt": "A preparar Whisper para este Mac…",
+    "zh": "正在为此 Mac 准备 Whisper…"
+  },
+  "Downloading the speaker separation model…": {
+    "es": "Descargando el modelo para separar voces…",
+    "de": "Modell zur Sprechertrennung herunterladen…",
+    "fr": "Téléchargement du modèle de séparation des voix…",
+    "pt": "A transferir o modelo de separação de vozes…",
+    "zh": "正在下载说话人区分模型…"
+  },
+  "Preparing speaker separation…": {
+    "es": "Preparando la separación de voces…",
+    "de": "Sprechertrennung vorbereiten…",
+    "fr": "Préparation de la séparation des voix…",
+    "pt": "A preparar a separação de vozes…",
+    "zh": "正在准备区分说话人…"
+  },
+  "Preparing speaker models…": {
+    "es": "Preparando los modelos de voces…",
+    "de": "Sprechermodelle vorbereiten…",
+    "fr": "Préparation des modèles de voix…",
+    "pt": "A preparar modelos de vozes…",
+    "zh": "正在准备说话人模型…"
+  },
+  "Local models ready": {
+    "es": "Modelos locales listos",
+    "de": "Lokale Modelle bereit",
+    "fr": "Modèles locaux prêts",
+    "pt": "Modelos locais prontos",
+    "zh": "本地模型已就绪"
+  },
+  "Comparing with Whisper on your Mac…": {
+    "es": "Comparando con Whisper en tu Mac…",
+    "de": "Mit Whisper auf deinem Mac vergleichen…",
+    "fr": "Comparaison avec Whisper sur votre Mac…",
+    "pt": "A comparar com Whisper no seu Mac…",
+    "zh": "正在 Mac 上与 Whisper 对比…"
+  },
+  "Separating speakers: %@ %": {
+    "es": "Separando voces: %@ %",
+    "de": "Sprecher trennen: %@ %",
+    "fr": "Séparation des voix : %@ %",
+    "pt": "A separar vozes: %@ %",
+    "zh": "正在区分说话人：%@ %"
+  },
+  "Batch complete: %@ files processed. Check each recording’s status.": {
+    "es": "Lote terminado: %@ archivos procesados. Revisa el estado de cada grabación.",
+    "de": "Stapel abgeschlossen: %@ Dateien verarbeitet. Prüfe den Status jeder Aufnahme.",
+    "fr": "Lot terminé : %@ fichiers traités. Vérifiez l’état de chaque enregistrement.",
+    "pt": "Lote concluído: %@ ficheiros processados. Verifique o estado de cada gravação.",
+    "zh": "批次完成：已处理 %@ 个文件。请查看每段录音的状态。"
+  },
+  "%@ files added. Choose Transcribe pending files to process them all.": {
+    "es": "%@ archivos agregados. Selecciona Transcribir pendientes para procesarlos todos.",
+    "de": "%@ Dateien hinzugefügt. Wähle Ausstehende Dateien transkribieren, um alle zu verarbeiten.",
+    "fr": "%@ fichiers ajoutés. Choisissez Transcrire les fichiers en attente pour les traiter tous.",
+    "pt": "%@ ficheiros adicionados. Escolha Transcrever ficheiros pendentes para processar todos.",
+    "zh": "已添加 %@ 个文件。点击“转写待处理文件”处理全部文件。"
+  },
+  "File %@ of %@": {
+    "es": "Archivo %@ de %@",
+    "de": "Datei %@ von %@",
+    "fr": "Fichier %@ sur %@",
+    "pt": "Ficheiro %@ de %@",
+    "zh": "第 %@ 个文件，共 %@ 个"
+  },
+  "%@ words · %@": {
+    "es": "%@ palabras · %@",
+    "de": "%@ Wörter · %@",
+    "fr": "%@ mots · %@",
+    "pt": "%@ palavras · %@",
+    "zh": "%@ 个词 · %@"
+  },
+  "Selection: %@–%@ · source segment timing": {
+    "es": "Selección: %@–%@ · tiempos del fragmento de origen",
+    "de": "Auswahl: %@–%@ · Zeitmarken des Quellsegments",
+    "fr": "Sélection : %@–%@ · minutage du segment source",
+    "pt": "Seleção: %@–%@ · tempo do segmento de origem",
+    "zh": "所选内容：%@–%@ · 原始片段时间"
+  },
+  "%@ differing blocks out of %@": {
+    "es": "%@ bloques con diferencias de %@",
+    "de": "%@ Blöcke mit Unterschieden von %@",
+    "fr": "%@ blocs différents sur %@",
+    "pt": "%@ blocos diferentes de %@",
+    "zh": "%@ 组存在差异，共 %@ 组"
+  },
+  "Extracting audio from %@…": {
+    "es": "Extrayendo el audio de %@…",
+    "de": "Audio aus %@ extrahieren…",
+    "fr": "Extraction de l’audio de %@…",
+    "pt": "A extrair áudio de %@…",
+    "zh": "正在从 %@ 提取音频…"
+  },
+  "Transcribing on your Mac · %@": {
+    "es": "Transcribiendo en tu Mac · %@",
+    "de": "Auf deinem Mac transkribieren · %@",
+    "fr": "Transcription sur votre Mac · %@",
+    "pt": "A transcrever no seu Mac · %@",
+    "zh": "正在 Mac 上转写 · %@"
+  },
+  "Transcription complete. Review names, figures and marked segments.": {
+    "es": "Transcripción terminada. Revisa nombres, cifras y fragmentos señalados.",
+    "de": "Transkription abgeschlossen. Prüfe Namen, Zahlen und markierte Fragmente.",
+    "fr": "Transcription terminée. Vérifiez les noms, les chiffres et les segments marqués.",
+    "pt": "Transcrição concluída. Reveja nomes, números e segmentos marcados.",
+    "zh": "转写完成。请核对名称、数字和已标记的片段。"
+  },
+  "Saved: %@": {
+    "es": "Guardado: %@",
+    "de": "Gespeichert: %@",
+    "fr": "Enregistré : %@",
+    "pt": "Guardado: %@",
+    "zh": "已保存：%@"
+  },
+  "Save transcript": {
+    "es": "Guardar transcripción",
+    "de": "Transkript speichern",
+    "fr": "Enregistrer la transcription",
+    "pt": "Guardar transcrição",
+    "zh": "保存转写"
+  },
+  "Save all TXT files": {
+    "es": "Guardar todos los TXT",
+    "de": "Alle TXT-Dateien speichern",
+    "fr": "Enregistrer tous les fichiers TXT",
+    "pt": "Guardar todos os ficheiros TXT",
+    "zh": "保存全部 TXT 文件"
+  },
+  "Add to queue": {
+    "es": "Agregar a la cola",
+    "de": "Zur Warteschlange hinzufügen",
+    "fr": "Ajouter à la file",
+    "pt": "Adicionar à fila",
+    "zh": "加入队列"
+  },
+  "Select multiple files with Command or Shift. You can also select entire folders.": {
+    "es": "Selecciona varios archivos con ⌘ o Mayúsculas. También puedes elegir carpetas completas.",
+    "de": "Wähle mehrere Dateien mit Befehlstaste oder Umschalttaste. Ganze Ordner sind ebenfalls möglich.",
+    "fr": "Sélectionnez plusieurs fichiers avec Commande ou Majuscule. Vous pouvez aussi choisir des dossiers entiers.",
+    "pt": "Selecione vários ficheiros com Command ou Shift. Também pode escolher pastas inteiras.",
+    "zh": "使用 Command 或 Shift 选择多个文件，也可以选择整个文件夹。"
+  },
+  "Relink original": {
+    "es": "Vincular original",
+    "de": "Original neu verknüpfen",
+    "fr": "Relier l’original",
+    "pt": "Associar original",
+    "zh": "重新关联原文件"
+  },
+  "Choose the same audio or video in its new location. Saved timestamps refer to that recording.": {
+    "es": "Elige el mismo audio o video en su nueva ubicación. Los tiempos guardados corresponden a esa grabación.",
+    "de": "Wähle dieselbe Aufnahme an ihrem neuen Speicherort. Die gespeicherten Zeiten beziehen sich auf diese Aufnahme.",
+    "fr": "Choisissez le même audio ou la même vidéo à son nouvel emplacement. Les temps enregistrés correspondent à cet enregistrement.",
+    "pt": "Escolha o mesmo áudio ou vídeo na nova localização. Os tempos guardados correspondem a essa gravação.",
+    "zh": "请选择位于新位置的同一音频或视频。已保存的时间信息对应原来的录音。"
+  },
+  "Listen to original": {
+    "es": "Escuchar el original",
+    "de": "Original anhören",
+    "fr": "Écouter l’original",
+    "pt": "Ouvir original",
+    "zh": "播放原音频"
+  },
+  "Editable full transcript": {
+    "es": "Transcripción completa editable",
+    "de": "Bearbeitbares vollständiges Transkript",
+    "fr": "Transcription complète modifiable",
+    "pt": "Transcrição completa editável",
+    "zh": "可编辑的完整转写"
+  },
+  "Remove term": {
+    "es": "Quitar término",
+    "de": "Begriff entfernen",
+    "fr": "Retirer le terme",
+    "pt": "Remover termo",
+    "zh": "移除词语"
+  },
+  "No text in this section": {
+    "es": "Sin texto en este tramo",
+    "de": "Kein Text in diesem Abschnitt",
+    "fr": "Aucun texte dans cette partie",
+    "pt": "Sem texto neste trecho",
+    "zh": "此区间无文本"
+  },
+  "Unassigned": {
+    "es": "Sin asignar",
+    "de": "Nicht zugewiesen",
+    "fr": "Non attribué",
+    "pt": "Não atribuído",
+    "zh": "未分配"
+  },
+  "Text will appear here as it is recognized.": {
+    "es": "El texto aparecerá aquí conforme se reconozca.",
+    "de": "Text erscheint hier während der Erkennung.",
+    "fr": "Le texte apparaît ici au fur et à mesure de la reconnaissance.",
+    "pt": "O texto aparece aqui à medida que é reconhecido.",
+    "zh": "识别出的文本将逐步显示在此处。"
+  },
+  "Choose Transcribe to convert this recording to text.": {
+    "es": "Pulsa Transcribir para convertir esta grabación en texto.",
+    "de": "Wähle Transkribieren, um diese Aufnahme in Text umzuwandeln.",
+    "fr": "Choisissez Transcrire pour convertir cet enregistrement en texte.",
+    "pt": "Escolha Transcrever para converter esta gravação em texto.",
+    "zh": "点击“转写”将此录音转换为文本。"
+  },
+  "The transcript will appear here as a single text.": {
+    "es": "La transcripción aparecerá aquí como un solo texto.",
+    "de": "Das Transkript erscheint hier als zusammenhängender Text.",
+    "fr": "La transcription apparaîtra ici en un seul texte.",
+    "pt": "A transcrição aparecerá aqui como um texto único.",
+    "zh": "转写结果将以完整文本的形式显示在此处。"
+  },
+  "Choose Transcribe to get the full text.": {
+    "es": "Pulsa Transcribir para obtener el texto completo.",
+    "de": "Wähle Transkribieren, um den vollständigen Text zu erhalten.",
+    "fr": "Choisissez Transcrire pour obtenir le texte intégral.",
+    "pt": "Escolha Transcrever para obter o texto completo.",
+    "zh": "点击“转写”生成完整文本。"
+  },
+  "The transcript and its edits will be removed from history. The original file is not deleted.": {
+    "es": "Se quitará la transcripción y sus correcciones del historial. El archivo original no se elimina.",
+    "de": "Das Transkript und seine Korrekturen werden aus dem Verlauf entfernt. Die Originaldatei wird nicht gelöscht.",
+    "fr": "La transcription et ses corrections seront retirées de l’historique. Le fichier original ne sera pas supprimé.",
+    "pt": "A transcrição e as correções serão removidas do histórico. O ficheiro original não será eliminado.",
+    "zh": "转写及其修改将从历史记录中移除，但不会删除原始文件。"
+  },
+  "How to use Vocalia": {
+    "es": "Cómo usar Vocalia",
+    "de": "Vocalia verwenden",
+    "fr": "Comment utiliser Vocalia",
+    "pt": "Como usar o Vocalia",
+    "zh": "如何使用 Vocalia"
+  },
+  "No pending files. Add a new recording to transcribe.": {
+    "es": "No hay archivos pendientes. Agrega una grabación nueva para transcribir.",
+    "de": "Keine ausstehenden Dateien. Füge eine neue Aufnahme zum Transkribieren hinzu.",
+    "fr": "Aucun fichier en attente. Ajoutez un nouvel enregistrement à transcrire.",
+    "pt": "Não há ficheiros pendentes. Adicione uma nova gravação para transcrever.",
+    "zh": "没有待处理文件。请添加新录音进行转写。"
+  },
+  "The speech model needs to be downloaded first. Download it now and transcribe pending files when it is ready? Only the model is downloaded; your recordings are not uploaded.": {
+    "es": "Primero hay que descargar el modelo de voz. ¿Descargarlo ahora y transcribir los archivos pendientes al terminar? Solo se descarga el modelo; tus grabaciones no se envían.",
+    "de": "Zuerst muss das Sprachmodell heruntergeladen werden. Jetzt herunterladen und anschließend die ausstehenden Dateien transkribieren? Es wird nur das Modell geladen; deine Aufnahmen werden nicht hochgeladen.",
+    "fr": "Le modèle vocal doit d’abord être téléchargé. Le télécharger maintenant puis transcrire les fichiers en attente ? Seul le modèle est téléchargé ; vos enregistrements ne sont pas envoyés.",
+    "pt": "É necessário transferir primeiro o modelo de voz. Transferir agora e transcrever os ficheiros pendentes quando estiver pronto? Apenas o modelo é transferido; as gravações não são enviadas.",
+    "zh": "需要先下载语音模型。是否立即下载并在完成后转写待处理文件？仅下载模型，不会上传录音。"
+  },
+  "No new supported files were added. Check whether they are already in your history.": {
+    "es": "No se agregaron archivos nuevos compatibles. Comprueba si ya están en el historial.",
+    "de": "Keine neuen unterstützten Dateien hinzugefügt. Prüfe, ob sie bereits im Verlauf sind.",
+    "fr": "Aucun nouveau fichier compatible ajouté. Vérifiez s’ils figurent déjà dans l’historique.",
+    "pt": "Não foram adicionados novos ficheiros compatíveis. Verifique se já estão no histórico.",
+    "zh": "未添加新的受支持文件。请检查它们是否已在历史记录中。"
+  },
+  "No speech detected. Check the recording and selected audio language.": {
+    "es": "No se detectó voz. Revisa el audio y el idioma seleccionado.",
+    "de": "Keine Sprache erkannt. Prüfe die Aufnahme und die gewählte Audiosprache.",
+    "fr": "Aucune parole détectée. Vérifiez l’enregistrement et la langue audio choisie.",
+    "pt": "Não foi detetada fala. Verifique a gravação e o idioma do áudio selecionado.",
+    "zh": "未检测到语音。请检查录音及所选音频语言。"
+  },
+  "Add files": {
+    "es": "Agregar archivos",
+    "de": "Dateien hinzufügen",
+    "fr": "Ajouter des fichiers",
+    "pt": "Adicionar ficheiros",
+    "zh": "添加文件"
+  },
+  "Add folder": {
+    "es": "Agregar carpeta",
+    "de": "Ordner hinzufügen",
+    "fr": "Ajouter un dossier",
+    "pt": "Adicionar pasta",
+    "zh": "添加文件夹"
+  },
+  "Transcribe pending": {
+    "es": "Transcribir pendientes",
+    "de": "Ausstehende transkribieren",
+    "fr": "Transcrire la file",
+    "pt": "Transcrever pendentes",
+    "zh": "转写待处理文件"
+  },
+  "Restore last removed": {
+    "es": "Recuperar última eliminada",
+    "de": "Entfernen rückgängig",
+    "fr": "Annuler la suppression",
+    "pt": "Restaurar última remoção",
+    "zh": "恢复最近移除的记录"
+  },
+  "Change language": {
+    "es": "Cambiar idioma",
+    "de": "Sprache ändern",
+    "fr": "Changer de langue",
+    "pt": "Alterar idioma",
+    "zh": "更改语言"
+  },
+  "Local model": {
+    "es": "Modelo local",
+    "de": "Lokales Modell",
+    "fr": "Modèle local",
+    "pt": "Modelo local",
+    "zh": "本地模型"
+  },
+  "Download / prepare model": {
+    "es": "Descargar / preparar modelo",
+    "de": "Modell laden / vorbereiten",
+    "fr": "Télécharger / préparer le modèle",
+    "pt": "Transferir / preparar modelo",
+    "zh": "下载 / 准备模型"
+  },
+  "Model ready": {
+    "es": "Modelo listo",
+    "de": "Modell bereit",
+    "fr": "Modèle prêt",
+    "pt": "Modelo pronto",
+    "zh": "模型已就绪"
+  },
+  "Dictionary: names, places and acronyms separated by commas": {
+    "es": "Diccionario: nombres, lugares y siglas separados por comas",
+    "de": "Wörterbuch: Namen, Orte und Kürzel durch Kommas getrennt",
+    "fr": "Dictionnaire : noms, lieux et sigles séparés par des virgules",
+    "pt": "Dicionário: nomes, locais e siglas separados por vírgulas",
+    "zh": "词典：用逗号分隔人名、地名和缩写"
+  },
+  "Play / pause": {
+    "es": "Reproducir / pausar",
+    "de": "Wiedergabe / Pause",
+    "fr": "Lecture / pause",
+    "pt": "Reproduzir / pausar",
+    "zh": "播放 / 暂停"
+  },
+  "Copy quote with source": {
+    "es": "Copiar cuña con fuente",
+    "de": "Zitat mit Quelle kopieren",
+    "fr": "Copier la citation avec sa source",
+    "pt": "Copiar citação com a origem",
+    "zh": "复制引文及来源"
+  },
+  "Add recordings. Processing stays on this computer; originals are preserved.": {
+    "es": "Agrega grabaciones. Todo se procesa en este equipo; los originales se conservan.",
+    "de": "Aufnahmen hinzufügen. Die Verarbeitung erfolgt auf diesem Gerät; Originale bleiben erhalten.",
+    "fr": "Ajoutez des enregistrements. Le traitement reste sur cet ordinateur ; les originaux sont conservés.",
+    "pt": "Adicione gravações. O processamento fica neste computador; os originais são mantidos.",
+    "zh": "添加录音。处理在本机完成，原文件会保留。"
+  },
+  "Complete": {
+    "es": "Terminada",
+    "de": "Abgeschlossen",
+    "fr": "Terminé",
+    "pt": "Concluída",
+    "zh": "已完成"
+  },
+  "Error · retry available": {
+    "es": "Error · puedes reintentar",
+    "de": "Fehler · erneuter Versuch möglich",
+    "fr": "Erreur · nouvelle tentative possible",
+    "pt": "Erro · pode tentar novamente",
+    "zh": "错误 · 可重试"
+  },
+  "Partial · canceled or interrupted": {
+    "es": "Parcial · cancelada o interrumpida",
+    "de": "Teilweise · abgebrochen oder unterbrochen",
+    "fr": "Partiel · annulé ou interrompu",
+    "pt": "Parcial · cancelada ou interrompida",
+    "zh": "部分完成 · 已取消或中断"
+  },
+  "Preparing the local model…": {
+    "es": "Preparando el modelo local…",
+    "de": "Lokales Modell vorbereiten…",
+    "fr": "Préparation du modèle local…",
+    "pt": "A preparar o modelo local…",
+    "zh": "正在准备本地模型…"
+  },
+  "Transcribing on this computer…": {
+    "es": "Transcribiendo en este equipo…",
+    "de": "Auf diesem Gerät transkribieren…",
+    "fr": "Transcription sur cet ordinateur…",
+    "pt": "A transcrever neste computador…",
+    "zh": "正在本机转写…"
+  },
+  "Prepare the model first. Downloads do not upload your recordings.": {
+    "es": "Prepara primero el modelo. La descarga no envía tus grabaciones.",
+    "de": "Bereite zuerst das Modell vor. Downloads laden deine Aufnahmen nicht hoch.",
+    "fr": "Préparez d’abord le modèle. Les téléchargements n’envoient pas vos enregistrements.",
+    "pt": "Prepare primeiro o modelo. As transferências não enviam as suas gravações.",
+    "zh": "请先准备模型。下载模型不会上传您的录音。"
+  },
+  "Original not found. Connect the drive or choose Relink original.": {
+    "es": "No encuentro el original. Conecta el disco o pulsa Vincular original.",
+    "de": "Original nicht gefunden. Verbinde das Laufwerk oder wähle Original neu verknüpfen.",
+    "fr": "Original introuvable. Connectez le disque ou choisissez Relier l’original.",
+    "pt": "Original não encontrado. Ligue o disco ou escolha Associar original.",
+    "zh": "找不到原文件。请连接磁盘或选择“重新关联原文件”。"
+  },
+  "Select unchanged transcript text to preserve its source timing.": {
+    "es": "Selecciona una frase intacta de la transcripción para conservar sus tiempos.",
+    "de": "Wähle unveränderten Transkripttext, um seine ursprünglichen Zeiten zu erhalten.",
+    "fr": "Sélectionnez du texte non modifié pour conserver son minutage d’origine.",
+    "pt": "Selecione texto não alterado para manter o tempo da origem.",
+    "zh": "请选择未改动的转写文本，以保留原始时间信息。"
+  },
+  "Remove this transcript? Original audio is kept and the entry can be restored.": {
+    "es": "¿Quitar esta transcripción del historial? El audio se conserva y puedes recuperar la entrada.",
+    "de": "Dieses Transkript entfernen? Die Originalaufnahme bleibt erhalten und der Eintrag kann wiederhergestellt werden.",
+    "fr": "Retirer cette transcription ? L’audio original est conservé et l’entrée peut être restaurée.",
+    "pt": "Remover esta transcrição? O áudio original é mantido e a entrada pode ser restaurada.",
+    "zh": "移除此转写？原始音频会保留，记录可以恢复。"
+  },
+  "A job is running. Cancel it and close? Partial text will be preserved.": {
+    "es": "Hay un trabajo en curso. ¿Cancelarlo y cerrar? Se conserva el texto parcial.",
+    "de": "Ein Auftrag läuft. Abbrechen und schließen? Der Teiltext bleibt erhalten.",
+    "fr": "Une tâche est en cours. L’annuler et fermer ? Le texte partiel sera conservé.",
+    "pt": "Há uma tarefa em curso. Cancelar e fechar? O texto parcial será mantido.",
+    "zh": "有任务正在运行。是否取消并关闭？部分文本会保留。"
+  },
+  "small: balanced · medium: more resources · large-v3-turbo: higher accuracy, more memory": {
+    "es": "small: equilibrado · medium: mayor consumo · large-v3-turbo: más precisión, más memoria",
+    "de": "small: ausgewogen · medium: mehr Ressourcen · large-v3-turbo: höhere Genauigkeit, mehr Speicher",
+    "fr": "small : équilibré · medium : plus de ressources · large-v3-turbo : plus précis, plus de mémoire",
+    "pt": "small: equilibrado · medium: mais recursos · large-v3-turbo: mais precisão, mais memória",
+    "zh": "small：均衡 · medium：需要更多资源 · large-v3-turbo：精度更高、内存更多"
+  },
+  "Windows: local recognition and speaker analysis. Check labels and quotes against the original.": {
+    "es": "Windows: reconocimiento y voces locales. Revisa las etiquetas y las citas con el original.",
+    "de": "Windows: lokale Erkennung und Sprecheranalyse. Prüfe Bezeichnungen und Zitate anhand des Originals.",
+    "fr": "Windows : reconnaissance et analyse des voix locales. Vérifiez les étiquettes et les citations avec l’original.",
+    "pt": "Windows: reconhecimento e análise de vozes locais. Confira as etiquetas e citações com o original.",
+    "zh": "Windows：本地识别与说话人分析。请对照原音频核对标签和引文。"
+  },
+  "Saved.": {
+    "es": "Guardado.",
+    "de": "Gespeichert.",
+    "fr": "Enregistré.",
+    "pt": "Guardado.",
+    "zh": "已保存。"
+  },
+  "Copied.": {
+    "es": "Copiado.",
+    "de": "Kopiert.",
+    "fr": "Copié.",
+    "pt": "Copiado.",
+    "zh": "已复制。"
+  },
+  "Queue complete. Review names, numbers and quotes.": {
+    "es": "Cola terminada. Revisa nombres, cifras y citas.",
+    "de": "Warteschlange abgeschlossen. Prüfe Namen, Zahlen und Zitate.",
+    "fr": "File terminée. Vérifiez les noms, les chiffres et les citations.",
+    "pt": "Fila concluída. Reveja nomes, números e citações.",
+    "zh": "队列已完成。请核对名称、数字和引文。"
+  },
+  "Downloading / preparing the model. You can cancel.": {
+    "es": "Descargando / preparando el modelo. Puedes cancelar.",
+    "de": "Modell herunterladen / vorbereiten. Abbrechen ist möglich.",
+    "fr": "Téléchargement / préparation du modèle. Vous pouvez annuler.",
+    "pt": "A transferir / preparar o modelo. Pode cancelar.",
+    "zh": "正在下载 / 准备模型。您可以取消。"
+  },
+  "TXT preserves your edits. SRT/VTT use segments from Review.": {
+    "es": "TXT conserva tus ediciones. SRT/VTT usan los fragmentos de Revisar.",
+    "de": "TXT erhält deine Änderungen. SRT/VTT verwenden die Fragmente aus Prüfen.",
+    "fr": "TXT conserve vos modifications. SRT/VTT utilisent les segments de Révision.",
+    "pt": "TXT mantém as suas alterações. SRT/VTT usam os segmentos de Rever.",
+    "zh": "TXT 保留您的编辑。SRT/VTT 使用“校对”中的片段。"
+  },
+  "The process could not finish. The rest of your history is preserved.": {
+    "es": "El proceso no pudo terminar. El resto del historial se conserva.",
+    "de": "Der Vorgang konnte nicht abgeschlossen werden. Der übrige Verlauf bleibt erhalten.",
+    "fr": "Le processus n’a pas pu se terminer. Le reste de l’historique est conservé.",
+    "pt": "O processo não pôde terminar. O restante histórico é mantido.",
+    "zh": "处理未能完成。其他历史记录已保留。"
+  },
+  "Review each segment against the audio. A flag indicates low confidence, not measured accuracy. Changes update subtitles; independently edited full text is preserved.": {
+    "es": "Revisa cada fragmento con el audio. La bandera indica baja confianza, no una medición de precisión. Los cambios actualizan los subtítulos; el texto completo editado se conserva.",
+    "de": "Prüfe jedes Fragment anhand des Audios. Eine Flagge zeigt geringe Sicherheit, keine gemessene Genauigkeit. Änderungen aktualisieren Untertitel; unabhängig bearbeiteter Gesamttext bleibt erhalten.",
+    "fr": "Vérifiez chaque segment avec l’audio. Un drapeau indique une faible confiance, pas une précision mesurée. Les modifications mettent à jour les sous-titres ; le texte intégral modifié séparément est conservé.",
+    "pt": "Reveja cada segmento com o áudio. A marca indica baixa confiança, não precisão medida. As alterações atualizam as legendas; o texto completo editado separadamente é mantido.",
+    "zh": "请对照音频校对每个片段。旗标表示置信度较低，并非准确率测量。修改会更新字幕，但保留单独编辑过的完整文本。"
+  },
+  "Compare two local Whisper models. Differences are highlighted; neither reading is automatically correct. Download the second model before comparing.": {
+    "es": "Compara dos modelos locales de Whisper. Se resaltan las diferencias; ninguna lectura se considera automáticamente correcta. Descarga el segundo modelo antes de comparar.",
+    "de": "Vergleiche zwei lokale Whisper-Modelle. Unterschiede werden hervorgehoben; keine Lesart ist automatisch richtig. Lade vor dem Vergleich das zweite Modell herunter.",
+    "fr": "Comparez deux modèles Whisper locaux. Les différences sont mises en évidence ; aucune lecture n’est automatiquement correcte. Téléchargez le second modèle avant de comparer.",
+    "pt": "Compare dois modelos locais do Whisper. As diferenças são destacadas; nenhuma leitura é automaticamente correta. Transfira o segundo modelo antes de comparar.",
+    "zh": "对比两个本地 Whisper 模型。差异会被突出显示；不预设任何结果一定正确。请先下载第二个模型。"
+  },
+  "Prepare second model": {
+    "es": "Preparar segundo modelo",
+    "de": "Zweites Modell vorbereiten",
+    "fr": "Préparer le second modèle",
+    "pt": "Preparar segundo modelo",
+    "zh": "准备第二个模型"
+  },
+  "Compare recording": {
+    "es": "Comparar grabación",
+    "de": "Aufnahme vergleichen",
+    "fr": "Comparer l’enregistrement",
+    "pt": "Comparar gravação",
+    "zh": "对比录音"
+  },
+  "Copy second transcript": {
+    "es": "Copiar segunda transcripción",
+    "de": "Zweites Transkript kopieren",
+    "fr": "Copier la seconde transcription",
+    "pt": "Copiar segunda transcrição",
+    "zh": "复制第二份转写"
+  },
+  "Group speakers automatically, then assign names. Labels belong to this recording and may be wrong with noise or overlapping speech. Set the count if you know it.": {
+    "es": "Agrupa voces automáticamente y después asígnales nombres. Las etiquetas corresponden a esta grabación y pueden confundirse con ruido o voces superpuestas. Indica la cantidad si la conoces.",
+    "de": "Stimmen automatisch gruppieren und anschließend Namen zuweisen. Bezeichnungen gelten für diese Aufnahme und können bei Rauschen oder überlappenden Stimmen falsch sein. Gib die Anzahl an, falls bekannt.",
+    "fr": "Regroupez les voix automatiquement, puis attribuez des noms. Les étiquettes concernent cet enregistrement et peuvent être erronées avec du bruit ou des voix superposées. Indiquez le nombre si vous le connaissez.",
+    "pt": "Agrupe as vozes automaticamente e atribua nomes. As etiquetas pertencem a esta gravação e podem estar erradas com ruído ou vozes sobrepostas. Indique a quantidade se a souber.",
+    "zh": "自动对说话人分组后，可指定姓名。标签只适用于当前录音，有噪声或声音重叠时可能出错。如果知道人数，请设置人数。"
+  },
+  "Download speaker models": {
+    "es": "Descargar modelos de voces",
+    "de": "Sprechermodelle herunterladen",
+    "fr": "Télécharger les modèles de voix",
+    "pt": "Transferir modelos de vozes",
+    "zh": "下载说话人模型"
+  },
+  "Analyze speakers": {
+    "es": "Analizar voces",
+    "de": "Sprecher analysieren",
+    "fr": "Analyser les voix",
+    "pt": "Analisar vozes",
+    "zh": "分析说话人"
+  },
+  "Listen to quote": {
+    "es": "Escuchar cuña",
+    "de": "Zitat anhören",
+    "fr": "Écouter la citation",
+    "pt": "Ouvir citação",
+    "zh": "播放引文"
+  },
+  "Personal dictionary": {
+    "es": "Diccionario personal",
+    "de": "Persönliches Wörterbuch",
+    "fr": "Dictionnaire personnel",
+    "pt": "Dicionário pessoal",
+    "zh": "个人词典"
+  },
+  "Speaker count": {
+    "es": "Cantidad de voces",
+    "de": "Sprecheranzahl",
+    "fr": "Nombre de voix",
+    "pt": "Quantidade de vozes",
+    "zh": "说话人数"
+  },
+  "Playback speed": {
+    "es": "Velocidad de reproducción",
+    "de": "Wiedergabegeschwindigkeit",
+    "fr": "Vitesse de lecture",
+    "pt": "Velocidade de reprodução",
+    "zh": "播放速度"
+  },
+  "Speaker models ready. Analysis works offline.": {
+    "es": "Modelos de voces listos. El análisis funciona sin conexión.",
+    "de": "Sprechermodelle bereit. Die Analyse funktioniert offline.",
+    "fr": "Modèles de voix prêts. L’analyse fonctionne hors ligne.",
+    "pt": "Modelos de vozes prontos. A análise funciona sem ligação.",
+    "zh": "说话人模型已就绪。分析可离线运行。"
+  },
+  "Download the speaker models first. Only models are downloaded; recordings are not uploaded.": {
+    "es": "Descarga primero los modelos de voces. Solo se descargan modelos; tus audios no se envían.",
+    "de": "Lade zuerst die Sprechermodelle herunter. Es werden nur Modelle geladen; Aufnahmen werden nicht hochgeladen.",
+    "fr": "Téléchargez d’abord les modèles de voix. Seuls les modèles sont téléchargés ; les enregistrements ne sont pas envoyés.",
+    "pt": "Transfira primeiro os modelos de vozes. Apenas os modelos são transferidos; as gravações não são enviadas.",
+    "zh": "请先下载说话人模型。仅下载模型，不会上传录音。"
+  },
+  "Choose a model different from the original transcript model.": {
+    "es": "Elige un modelo diferente al usado en la transcripción original.",
+    "de": "Wähle ein anderes Modell als das des ursprünglichen Transkripts.",
+    "fr": "Choisissez un modèle différent de celui de la transcription initiale.",
+    "pt": "Escolha um modelo diferente do usado na transcrição original.",
+    "zh": "请选择与原转写使用的模型不同的模型。"
+  },
+  "Choose Prepare second model before comparing.": {
+    "es": "Pulsa Preparar segundo modelo antes de comparar.",
+    "de": "Wähle vor dem Vergleich Zweites Modell vorbereiten.",
+    "fr": "Choisissez Préparer le second modèle avant de comparer.",
+    "pt": "Escolha Preparar segundo modelo antes de comparar.",
+    "zh": "对比前请点击“准备第二个模型”。"
+  },
+  "One term per line, up to 100. Terms provide transcription context without automatically replacing words.": {
+    "es": "Un término por línea, hasta 100. Se usan como contexto al transcribir, sin reemplazar palabras automáticamente.",
+    "de": "Ein Begriff pro Zeile, höchstens 100. Begriffe liefern Kontext, ohne Wörter automatisch zu ersetzen.",
+    "fr": "Un terme par ligne, jusqu’à 100. Ils fournissent du contexte sans remplacer automatiquement les mots.",
+    "pt": "Um termo por linha, até 100. Fornecem contexto sem substituir palavras automaticamente.",
+    "zh": "每行一个词语，最多 100 个。词语提供识别上下文，不会自动替换文字。"
+  },
+  "Analyzing speakers on this computer…": {
+    "es": "Analizando voces en este equipo…",
+    "de": "Sprecher auf diesem Gerät analysieren…",
+    "fr": "Analyse des voix sur cet ordinateur…",
+    "pt": "A analisar vozes neste computador…",
+    "zh": "正在本机分析说话人…"
+  },
+  "Add your recordings": {
+    "es": "Agrega tus grabaciones",
+    "de": "Aufnahmen hinzufügen",
+    "fr": "Ajoutez vos enregistrements",
+    "pt": "Adicione as suas gravações",
+    "zh": "添加录音"
+  },
+  "Select several audio or video files, including OPUS. Adding them puts them in the queue; it does not generate text yet.": {
+    "es": "Este botón permite elegir varios audios y videos, incluidos OPUS. Agregarlos los deja pendientes: todavía no genera texto.",
+    "de": "Wähle mehrere Audio- oder Videodateien, auch OPUS. Sie werden zunächst in die Warteschlange aufgenommen; Text wird noch nicht erzeugt.",
+    "fr": "Sélectionnez plusieurs fichiers audio ou vidéo, y compris OPUS. Ils sont ajoutés à la file ; cela ne génère pas encore de texte.",
+    "pt": "Selecione vários ficheiros de áudio ou vídeo, incluindo OPUS. Ficam na fila; ainda não é gerado texto.",
+    "zh": "选择多个音频或视频文件，包括 OPUS。添加后会进入队列，暂时不会生成文本。"
+  },
+  "Recording language": {
+    "es": "Idioma de la grabación",
+    "de": "Sprache der Aufnahme",
+    "fr": "Langue de l’enregistrement",
+    "pt": "Idioma da gravação",
+    "zh": "录音语言"
+  },
+  "Choose the language the person speaks. This is separate from the language of the buttons.": {
+    "es": "Elige el idioma que habla la persona. Este ajuste es independiente del idioma de los botones.",
+    "de": "Wähle die Sprache der sprechenden Person. Sie ist unabhängig von der Sprache der Schaltflächen.",
+    "fr": "Choisissez la langue parlée. Ce réglage est indépendant de la langue des boutons.",
+    "pt": "Escolha o idioma falado pela pessoa. É independente do idioma dos botões.",
+    "zh": "请选择录音中使用的语言。此设置与按钮的界面语言相互独立。"
+  },
+  "Prepare speech recognition": {
+    "es": "Prepara el reconocimiento",
+    "de": "Spracherkennung vorbereiten",
+    "fr": "Préparez la reconnaissance vocale",
+    "pt": "Prepare o reconhecimento de voz",
+    "zh": "准备语音识别"
+  },
+  "Download the model once using the internet. Then you can transcribe offline. Your recordings stay on this computer.": {
+    "es": "Descarga el modelo una vez con internet. Después puedes transcribir sin conexión. Tus grabaciones se quedan en este equipo.",
+    "de": "Lade das Modell einmal über das Internet herunter. Danach kannst du offline transkribieren. Deine Aufnahmen bleiben auf diesem Gerät.",
+    "fr": "Téléchargez le modèle une fois avec Internet. Vous pourrez ensuite transcrire hors ligne. Vos enregistrements restent sur cet ordinateur.",
+    "pt": "Transfira o modelo uma vez com Internet. Depois pode transcrever sem ligação. As gravações ficam neste computador.",
+    "zh": "首次使用时通过互联网下载模型，之后即可离线转写。您的录音保留在本机。"
+  },
+  "Start transcription here": {
+    "es": "Aquí comienza la transcripción",
+    "de": "Hier die Transkription starten",
+    "fr": "Lancez la transcription ici",
+    "pt": "Inicie a transcrição aqui",
+    "zh": "在此开始转写"
+  },
+  "Click Transcribe pending after adding files. If the model is missing, Vocalia offers to download it and continues when it is ready.": {
+    "es": "Pulsa Transcribir pendientes después de agregar archivos. Si falta el modelo, Vocalia te ofrecerá descargarlo y continuará al terminar.",
+    "de": "Klicke nach dem Hinzufügen auf Ausstehende transkribieren. Fehlt das Modell, bietet Vocalia den Download an und fährt danach fort.",
+    "fr": "Après avoir ajouté des fichiers, cliquez sur Transcrire la file. Si le modèle manque, Vocalia propose de le télécharger puis poursuit le traitement.",
+    "pt": "Depois de adicionar ficheiros, clique em Transcrever pendentes. Se faltar o modelo, o Vocalia propõe transferi-lo e continua quando estiver pronto.",
+    "zh": "添加文件后，点击“转写待处理文件”。如果缺少模型，Vocalia 会提示下载，并在完成后继续处理。"
+  },
+  "Follow progress": {
+    "es": "Sigue el progreso",
+    "de": "Fortschritt verfolgen",
+    "fr": "Suivez la progression",
+    "pt": "Acompanhe o progresso",
+    "zh": "查看进度"
+  },
+  "This area shows preparation, transcription and any problems. Wait for completion before copying the full result.": {
+    "es": "Aquí verás si Vocalia está preparando el modelo, transcribiendo o ha encontrado un problema. Espera a que termine para copiar el resultado completo.",
+    "de": "Hier siehst du Vorbereitung, Transkription und mögliche Probleme. Warte vor dem Kopieren des vollständigen Ergebnisses auf den Abschluss.",
+    "fr": "Cette zone affiche la préparation, la transcription et les problèmes éventuels. Attendez la fin avant de copier le résultat complet.",
+    "pt": "Esta área mostra preparação, transcrição e eventuais problemas. Aguarde a conclusão antes de copiar o resultado completo.",
+    "zh": "此区域显示准备、转写及可能出现的问题。请等待完成后再复制完整结果。"
+  },
+  "Play only plays the recording; it does not transcribe. Once text is available, Follow audio highlights your position as you listen.": {
+    "es": "Reproducir solo permite escuchar; no transcribe. Cuando haya texto, Seguir audio resaltará la posición mientras escuchas.",
+    "de": "Wiedergabe spielt nur die Aufnahme ab und transkribiert nicht. Sobald Text vorliegt, markiert Audio folgen beim Hören die aktuelle Stelle.",
+    "fr": "Lecture sert uniquement à écouter, pas à transcrire. Une fois le texte disponible, Suivre l’audio surligne votre position pendant l’écoute.",
+    "pt": "Reproduzir apenas permite ouvir, não transcreve. Quando houver texto, Seguir áudio destaca a posição durante a reprodução.",
+    "zh": "“播放”仅播放录音，不会转写。生成文本后，“跟随音频”会在收听时高亮当前位置。"
+  },
+  "Full text and quotes": {
+    "es": "Texto completo y cuñas",
+    "de": "Volltext und Zitate",
+    "fr": "Texte intégral et citations",
+    "pt": "Texto completo e citações",
+    "zh": "完整文本与引文"
+  },
+  "Your editable transcript appears here. Check names and numbers. Select a passage and use Save quote to keep a quote.": {
+    "es": "Aquí aparecerá el texto editable. Revisa nombres y cifras. Selecciona una frase y usa Guardar cuña para conservar una cita.",
+    "de": "Hier erscheint dein bearbeitbares Transkript. Prüfe Namen und Zahlen. Wähle einen Abschnitt und speichere ihn als Zitat.",
+    "fr": "Votre transcription modifiable apparaît ici. Vérifiez les noms et les chiffres. Sélectionnez un passage et utilisez Enregistrer la citation.",
+    "pt": "A transcrição editável aparece aqui. Confira nomes e números. Selecione uma passagem e use Guardar citação.",
+    "zh": "可编辑的转写文本会显示在此处。请核对名称和数字。选取文字并点击“保存引文”以保留引用。"
+  },
+  "Copy or export": {
+    "es": "Copia o exporta",
+    "de": "Kopieren oder exportieren",
+    "fr": "Copiez ou exportez",
+    "pt": "Copie ou exporte",
+    "zh": "复制或导出"
+  },
+  "Copy the full text in one go. Export also saves the result for use outside Vocalia.": {
+    "es": "Copia todo el texto de una vez. El botón Exportar también permite guardar el resultado para trabajar fuera de Vocalia.",
+    "de": "Kopiere den gesamten Text auf einmal. Exportieren speichert das Ergebnis für die Arbeit außerhalb von Vocalia.",
+    "fr": "Copiez tout le texte en une fois. Exporter permet aussi de l’enregistrer pour travailler en dehors de Vocalia.",
+    "pt": "Copie o texto completo de uma vez. Exportar também guarda o resultado para trabalhar fora do Vocalia.",
+    "zh": "一次复制完整文本。“导出”也可保存结果，方便在 Vocalia 之外使用。"
+  },
+  "Change language any time": {
+    "es": "Cambia el idioma cuando quieras",
+    "de": "Sprache jederzeit ändern",
+    "fr": "Changez de langue à tout moment",
+    "pt": "Altere o idioma quando quiser",
+    "zh": "随时更改语言"
+  },
+  "Choose several recordings, videos or folders, including OPUS. Adding them puts them in the queue; it does not generate text yet.": {
+    "es": "Elige varios audios, videos o carpetas, incluidos OPUS. Agregarlos los deja pendientes: todavía no genera texto.",
+    "de": "Wähle mehrere Aufnahmen, Videos oder Ordner, auch OPUS. Sie kommen in die Warteschlange; Text wird noch nicht erzeugt.",
+    "fr": "Choisissez plusieurs enregistrements, vidéos ou dossiers, y compris OPUS. Ils sont ajoutés à la file ; le texte n’est pas encore généré.",
+    "pt": "Escolha várias gravações, vídeos ou pastas, incluindo OPUS. Ficam na fila; ainda não é gerado texto.",
+    "zh": "选择多段录音、视频或文件夹，包括 OPUS。它们会进入队列，但暂时不会生成文本。"
+  },
+  "If the language is not ready, download it here using the internet. Then you can transcribe offline. Your recordings stay on your Mac.": {
+    "es": "Si el idioma no está listo, descárgalo aquí con internet. Después puedes transcribir sin conexión. Tus grabaciones se quedan en tu Mac.",
+    "de": "Ist die Sprache noch nicht bereit, lade sie hier über das Internet herunter. Danach funktioniert die Transkription offline. Deine Aufnahmen bleiben auf deinem Mac.",
+    "fr": "Si la langue n’est pas prête, téléchargez-la ici avec Internet. Vous pourrez ensuite transcrire hors ligne. Vos enregistrements restent sur votre Mac.",
+    "pt": "Se o idioma não estiver pronto, transfira-o aqui com Internet. Depois pode transcrever sem ligação. As gravações ficam no seu Mac.",
+    "zh": "如果语言尚未就绪，请在此联网下载。之后即可离线转写，录音保留在您的 Mac 上。"
+  },
+  "After adding files and preparing the language, click Transcribe pending files. Vocalia processes the queue and generates text.": {
+    "es": "Después de agregar archivos y preparar el idioma, pulsa Transcribir pendientes. Vocalia procesará la cola y generará el texto.",
+    "de": "Füge Dateien hinzu, bereite die Sprache vor und klicke auf Ausstehende Dateien transkribieren. Vocalia verarbeitet die Warteschlange und erzeugt Text.",
+    "fr": "Après l’ajout des fichiers et la préparation de la langue, cliquez sur Transcrire les fichiers en attente. Vocalia traite la file et génère le texte.",
+    "pt": "Depois de adicionar ficheiros e preparar o idioma, clique em Transcrever ficheiros pendentes. O Vocalia processa a fila e gera o texto.",
+    "zh": "添加文件并准备好语言后，点击“转写待处理文件”。Vocalia 会处理队列并生成文本。"
+  },
+  "This area shows preparation, progress and recognition status. Wait for completion before copying the full result.": {
+    "es": "Aquí verás la preparación, el progreso y el estado del reconocimiento. Espera a que termine para copiar el resultado completo.",
+    "de": "Hier siehst du Vorbereitung, Fortschritt und Erkennungsstatus. Warte auf den Abschluss, bevor du das gesamte Ergebnis kopierst.",
+    "fr": "Cette zone affiche la préparation, la progression et l’état de la reconnaissance. Attendez la fin avant de copier le résultat complet.",
+    "pt": "Esta área mostra preparação, progresso e estado do reconhecimento. Aguarde a conclusão antes de copiar o resultado completo.",
+    "zh": "此区域显示准备、进度和识别状态。请等待完成后再复制完整结果。"
+  },
+  "Listen, review and copy": {
+    "es": "Escucha, revisa y copia",
+    "de": "Anhören, prüfen und kopieren",
+    "fr": "Écoutez, révisez et copiez",
+    "pt": "Ouça, reveja e copie",
+    "zh": "收听、校对并复制"
+  },
+  "Your full transcript appears here. Check names and numbers. Play only plays audio; highlighting follows the recording. Use Copy full text or Export to take the result with you, and select passages to save quotes.": {
+    "es": "Aquí aparecerá tu transcripción completa. Revisa nombres y cifras. Reproducir solo sirve para escuchar; el resaltado sigue el audio. Usa Copiar todo el texto o Exportar para llevarte el resultado y selecciona frases para guardar cuñas.",
+    "de": "Hier erscheint das vollständige Transkript. Prüfe Namen und Zahlen. Wiedergabe dient nur zum Anhören; die Markierung folgt dem Audio. Mit Gesamten Text kopieren oder Exportieren kannst du das Ergebnis weiterverwenden und Abschnitte als Zitate speichern.",
+    "fr": "Votre transcription complète apparaît ici. Vérifiez les noms et les chiffres. Lecture sert seulement à écouter ; le surlignage suit l’audio. Utilisez Copier tout le texte ou Exporter pour récupérer le résultat et sélectionnez des passages pour enregistrer des citations.",
+    "pt": "A transcrição completa aparece aqui. Confira nomes e números. Reproduzir serve apenas para ouvir; o destaque segue o áudio. Use Copiar todo o texto ou Exportar para levar o resultado e selecione passagens para guardar citações.",
+    "zh": "完整转写会显示在此处。请核对名称和数字。“播放”仅用于收听；高亮会跟随音频。可使用“复制完整文本”或“导出”获取结果，也可选取文字保存引文。"
+  },
+  "Welcome to Vocalia": {
+    "es": "Bienvenido a Vocalia",
+    "de": "Willkommen bei Vocalia",
+    "fr": "Bienvenue dans Vocalia",
+    "pt": "Bem-vindo ao Vocalia",
+    "zh": "欢迎使用 Vocalia"
+  },
+  "Welcome": {
+    "es": "Bienvenido",
+    "de": "Willkommen",
+    "fr": "Bienvenue",
+    "pt": "Bem-vindo",
+    "zh": "欢迎"
+  },
+  "Choose your language before starting.": {
+    "es": "Elige tu idioma antes de comenzar.",
+    "de": "Wähle vor dem Start deine Sprache.",
+    "fr": "Choisissez votre langue avant de commencer.",
+    "pt": "Escolha o seu idioma antes de começar.",
+    "zh": "开始前请选择您的语言。"
+  },
+  "Continue": {
+    "es": "Continuar",
+    "de": "Weiter",
+    "fr": "Continuer",
+    "pt": "Continuar",
+    "zh": "继续"
+  },
+  "Back": {
+    "es": "Atrás",
+    "de": "Zurück",
+    "fr": "Retour",
+    "pt": "Voltar",
+    "zh": "上一步"
+  },
+  "Next": {
+    "es": "Siguiente",
+    "de": "Weiter",
+    "fr": "Suivant",
+    "pt": "Seguinte",
+    "zh": "下一步"
+  },
+  "Skip": {
+    "es": "Omitir",
+    "de": "Überspringen",
+    "fr": "Passer",
+    "pt": "Ignorar",
+    "zh": "跳过"
+  },
+  "File added: click “Transcribe pending” to generate text. Play only lets you listen.": {
+    "es": "Archivo agregado: pulsa «Transcribir pendientes» para generar el texto. Reproducir solo permite escuchar.",
+    "de": "Datei hinzugefügt: Klicke auf Ausstehende transkribieren, um Text zu erzeugen. Wiedergabe dient nur zum Anhören.",
+    "fr": "Fichier ajouté : cliquez sur Transcrire la file pour générer le texte. Lecture sert uniquement à écouter.",
+    "pt": "Ficheiro adicionado: clique em Transcrever pendentes para gerar texto. Reproduzir apenas permite ouvir.",
+    "zh": "文件已添加：点击“转写待处理文件”生成文本。“播放”仅用于收听。"
+  },
+  "Files added. Click “Transcribe pending” to generate text.": {
+    "es": "Archivos agregados. Pulsa «Transcribir pendientes» para generar el texto.",
+    "de": "Dateien hinzugefügt. Klicke auf Ausstehende transkribieren, um Text zu erzeugen.",
+    "fr": "Fichiers ajoutés. Cliquez sur Transcrire la file pour générer le texte.",
+    "pt": "Ficheiros adicionados. Clique em Transcrever pendentes para gerar texto.",
+    "zh": "文件已添加。点击“转写待处理文件”生成文本。"
+  },
+  "Download the speaker models first.": {
+    "es": "Descarga primero los modelos de voces.",
+    "de": "Lade zuerst die Sprechermodelle herunter.",
+    "fr": "Téléchargez d’abord les modèles de voix.",
+    "pt": "Transfira primeiro os modelos de vozes.",
+    "zh": "请先下载说话人模型。"
+  },
+  "The download is incomplete or changed. Prepare the models again.": {
+    "es": "La descarga está incompleta o cambió. Vuelve a preparar los modelos.",
+    "de": "Der Download ist unvollständig oder hat sich geändert. Bereite die Modelle erneut vor.",
+    "fr": "Le téléchargement est incomplet ou a changé. Préparez les modèles à nouveau.",
+    "pt": "A transferência está incompleta ou mudou. Prepare os modelos novamente.",
+    "zh": "下载不完整或已发生变化。请重新准备模型。"
+  },
+  "No speech detected. Check the recording and audio language.": {
+    "es": "No se detectó voz. Comprueba el audio y el idioma.",
+    "de": "Keine Sprache erkannt. Prüfe die Aufnahme und die Audiosprache.",
+    "fr": "Aucune parole détectée. Vérifiez l’enregistrement et la langue audio.",
+    "pt": "Não foi detetada fala. Verifique a gravação e o idioma do áudio.",
+    "zh": "未检测到语音。请检查录音和音频语言。"
+  },
+  "Download or prepare the model first.": {
+    "es": "Descarga o prepara el modelo primero.",
+    "de": "Lade zuerst das Modell herunter oder bereite es vor.",
+    "fr": "Téléchargez ou préparez d’abord le modèle.",
+    "pt": "Transfira ou prepare primeiro o modelo.",
+    "zh": "请先下载或准备模型。"
+  },
+  "Connect the drive or relink the original file.": {
+    "es": "Conecta el disco o vuelve a vincular el archivo original.",
+    "de": "Verbinde das Laufwerk oder verknüpfe die Originaldatei erneut.",
+    "fr": "Connectez le disque ou reliez à nouveau le fichier original.",
+    "pt": "Ligue o disco ou volte a associar o ficheiro original.",
+    "zh": "请连接磁盘或重新关联原始文件。"
+  },
+  "Use a recording shorter than two hours with a readable duration.": {
+    "es": "Usa una grabación de menos de dos horas con duración legible.",
+    "de": "Verwende eine Aufnahme unter zwei Stunden mit lesbarer Dauer.",
+    "fr": "Utilisez un enregistrement de moins de deux heures dont la durée est lisible.",
+    "pt": "Use uma gravação com menos de duas horas e duração legível.",
+    "zh": "请使用时长少于两小时且时长信息可读取的录音。"
+  },
+  "The file contains no audio track.": {
+    "es": "El archivo no contiene una pista de audio.",
+    "de": "Die Datei enthält keine Audiospur.",
+    "fr": "Le fichier ne contient aucune piste audio.",
+    "pt": "O ficheiro não contém uma faixa de áudio.",
+    "zh": "文件不含音轨。"
+  },
+  "The job timed out. Try again with a smaller model.": {
+    "es": "El trabajo excedió el tiempo máximo. Puedes reintentarlo con un modelo menor.",
+    "de": "Zeitüberschreitung. Versuche es erneut mit einem kleineren Modell.",
+    "fr": "Le délai a été dépassé. Réessayez avec un modèle plus petit.",
+    "pt": "A tarefa excedeu o tempo limite. Tente novamente com um modelo menor.",
+    "zh": "任务已超时。请尝试使用更小的模型。"
+  },
+  "The engine exited (code %@).": {
+    "es": "El motor se cerró (código %@).",
+    "de": "Das Modell wurde beendet (Code %@).",
+    "fr": "Le moteur s’est arrêté (code %@).",
+    "pt": "O motor terminou (código %@).",
+    "zh": "引擎已退出（代码 %@）。"
+  },
+  "Vocalia is already running.": {
+    "es": "Vocalia ya está abierta.",
+    "de": "Vocalia läuft bereits.",
+    "fr": "Vocalia est déjà ouvert.",
+    "pt": "O Vocalia já está aberto.",
+    "zh": "Vocalia 已在运行。"
+  },
+  "Could not open history:": {
+    "es": "No se pudo abrir el historial:",
+    "de": "Verlauf konnte nicht geöffnet werden:",
+    "fr": "Impossible d’ouvrir l’historique :",
+    "pt": "Não foi possível abrir o histórico:",
+    "zh": "无法打开历史记录："
+  },
+  "Choose one of the six interface languages here. Reopen this tour from How to use Vocalia.": {
+    "es": "Elige aquí uno de los seis idiomas de la interfaz. Puedes repetir el recorrido desde Cómo usar Vocalia.",
+    "de": "Wähle hier eine der sechs Oberflächensprachen. Über Vocalia verwenden kannst du die Einführung erneut öffnen.",
+    "fr": "Choisissez ici l’une des six langues de l’interface. Rouvrez ce parcours avec Comment utiliser Vocalia.",
+    "pt": "Escolha aqui um dos seis idiomas da interface. Reabra o percurso em Como usar o Vocalia.",
+    "zh": "在此选择六种界面语言之一。可通过“如何使用 Vocalia”重新打开此引导。"
+  },
+  "Transcribe selected again": {
+    "es": "Volver a transcribir selección",
+    "de": "Auswahl erneut transkribieren",
+    "fr": "Retranscrire la sélection",
+    "pt": "Transcrever seleção novamente",
+    "zh": "重新转写所选文件"
+  },
+  "Transcribe this recording again? A copy of the current transcript will be saved in Revisions before replacing it.": {
+    "es": "¿Volver a transcribir esta grabación? Se guardará una copia del texto actual en Revisions antes de reemplazarlo.",
+    "de": "Diese Aufnahme erneut transkribieren? Vor dem Ersetzen wird eine Kopie des aktuellen Transkripts in Revisions gespeichert.",
+    "fr": "Retranscrire cet enregistrement ? Une copie de la transcription actuelle sera enregistrée dans Revisions avant son remplacement.",
+    "pt": "Transcrever esta gravação novamente? Será guardada uma cópia da transcrição atual em Revisions antes de a substituir.",
+    "zh": "重新转写此录音？替换前，当前转写文本的副本将保存在 Revisions 中。"
+  },
+  "Files will be added after the current transcription queue finishes.": {
+    "es": "Los archivos se agregarán al terminar la cola de transcripción actual.",
+    "de": "Die Dateien werden nach Abschluss der aktuellen Transkriptionswarteschlange hinzugefügt.",
+    "fr": "Les fichiers seront ajoutés à la fin de la file de transcription actuelle.",
+    "pt": "Os ficheiros serão adicionados quando a fila de transcrição atual terminar.",
+    "zh": "当前转写队列完成后将添加文件。"
+  }
+}

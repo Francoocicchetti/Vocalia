@@ -2,17 +2,17 @@
 
 [Español](WINDOWS.es.md) · [Overview](README.md)
 
-**[Download Vocalia 1.0.1 for Windows](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.1/Vocalia-1.0.1-Windows-x64-GuideFix-Setup.exe)**
+**[Download Vocalia 1.0.2 for Windows](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.2/Vocalia-1.0.2-Windows-x64-Setup.exe)**
 
 Source: `Vocalia-Windows-source.zip`. Extract it before running the build script.
 
-Vocalia 1.0.1 for Windows. Whisper recognition runs locally on your CPU. Model preparation downloads model assets; subsequent transcription loads local files in offline mode. Recordings are not uploaded.
+Vocalia 1.0.2 for Windows. Whisper recognition runs locally on your CPU. Model preparation downloads model assets; subsequent transcription loads local files in offline mode. Recordings are not uploaded.
 
 ## Install and use
 
-1. Download and run **Vocalia-1.0.1-Windows-x64-GuideFix-Setup.exe**. Follow the English/Spanish installer.
+1. Download and run **Vocalia-1.0.2-Windows-x64-Setup.exe**. Follow the English/Spanish installer.
 2. Open **Vocalia** from the Start menu. A desktop shortcut is optional. Python and administrator privileges are not required.
-3. Choose English or Español for the interface, and select the spoken language separately.
+3. Choose English, Spanish, German, French, Simplified Chinese or Portuguese for the interface, and select the spoken language separately.
 4. Choose a model and click **Download / prepare model**. Start with `small`; `medium` and `large-v3-turbo` require more memory and processing time. For larger models, a computer with at least 16 GB RAM is a practical starting point, not a measured minimum or performance guarantee.
 5. Add multiple OPUS, MP3, MP4, MOV, M4A or other supported files, or import a folder. Click **Transcribe pending**.
 6. Copy the complete transcript, follow the highlighted text while listening, or select a passage to save a quote. Export TXT, SRT or VTT.
@@ -21,7 +21,7 @@ Vocalia 1.0.1 for Windows. Whisper recognition runs locally on your CPU. Model p
 
 History, settings and models are stored under `%LOCALAPPDATA%\Vocalia`. **Restore last removed** recovers removed history entries. Original recordings are never deleted. Only one app instance can open the same history. Cancellation preserves text already recognized; pending files can be restarted from the beginning.
 
-Vocabulary provides hints, not automatic corrections. Timing follows the original recognized text. Rewriting a passage can break its alignment. TXT preserves full-text edits; SRT/VTT use the original timed segments. Speaker names on quotes are entered manually.
+Vocabulary provides hints, not automatic corrections. Timing follows the original recognized text. Rewriting a passage can break its alignment. TXT preserves full-text edits; SRT/VTT use the timed segments, including corrections made in Review. Speaker labels can be assigned by optional local analysis and renamed.
 
 Exports go to your chosen folder. A cloud-synced destination may upload exported documents through that separate service. The app has no transcription account or application analytics service. Model downloads contact the model provider.
 
@@ -32,7 +32,7 @@ Exports go to your chosen folder. A cloud-synced destination may upload exported
 - Transactional SQLite history, recoverable removal and ID-based editing.
 - Up to 10,000 files per import; recordings must have a readable duration below two hours. Protected, corrupt and audio-less files are rejected.
 - Speed and memory use depend on the processor, model and recording. No verified error rate for Chilean interviews is claimed.
-- No Apple Speech, Apple/Whisper comparison or automatic speaker separation in this edition.
+- Apple Speech is Mac-only. Windows compares two local Whisper models and uses optional sherpa-onnx speaker grouping.
 - Packaged tests run on Windows Server x64. They do not replace use testing on real Windows 11 hardware. Version 1.0 is not a certification of universal stability.
 - The executable has no Authenticode signature; Windows may show a reputation warning. Do not disable system-wide protections.
 
@@ -50,18 +50,11 @@ Before retrying a partial transcription, a JSON revision is saved under `%LOCALA
 
 Use the Setup.exe installer to avoid missing `python312.dll` errors caused by opening Vocalia directly inside the ZIP. It installs the complete app under `%LOCALAPPDATA%\Programs\Vocalia` and creates a Start menu shortcut. Uninstall through Windows Settings → Apps; history and downloaded models under `%LOCALAPPDATA%\Vocalia` are retained. The portable ZIP remains available for experienced users who extract every file first.
 
-The installer remains unsigned and Windows may show a reputation warning. Do not disable system-wide protections. If the error persists after using Setup.exe, report the exact error and Windows version; missing dependencies or security software may require separate diagnosis. Installer source and automated checks are in `.github/workflows/windows-installer.yml`.
-
-## New in 1.0.1
-
-- Choose English or Spanish before entering the workspace on first launch. Change the app language later inside Vocalia.
-- A replayable tutorial explains adding recordings, preparing a model, transcribing, reviewing and copying the full text.
-- Windows: **adding a recording does not transcribe it**. Click **Transcribe pending**. If the model is missing, accept its download; transcription then starts automatically.
-- Clear empty-queue, missing-model and worker-failure messages. Playback stops when transcription is requested and is unavailable while a job is running.
+The installer remains unsigned and Windows may show a reputation warning. Do not disable system-wide protections. If the error persists after using Setup.exe, report the exact error and Windows version; missing dependencies or security software may require separate diagnosis. Installer source and automated checks are in `.github/workflows/windows.yml`.
 
 
-## OPUS support in 1.0.1
+## Vocalia 1.0.2
 
-Use the downloads with **OPUS** in their filename. Both platforms accept `.opus` and Ogg files containing Opus (`.ogg`), including batch/folder import. No manual conversion or audio upload is needed. Windows uses its bundled decoder. Mac includes a local BSD-licensed Opus decoder and uses a temporary PCM copy for transcription and playback; normal app exit removes that copy and the original is preserved. Mac OPUS recordings must be under ten hours; Windows keeps its two-hour limit. Ogg/Vorbis is not included.
+The interface offers six languages. The interactive tour can be replayed. OPUS and Ogg/Opus remain supported. See the [version table and feature matrix](README.md).
 
-New downloads have checksums in **SHA256SUMS-GuideFix.txt**; the original 1.0.1 files remain available for reproducibility. The updated source is on the main branch and in **Vocalia-1.0.1-GuideFix-source.zip** in Releases. The tag's automatic Source code archives describe the original 1.0.1 build.
+Use **Review** to edit timed segments, mark them reviewed or restore their original wording. **Comparison** requires a second model different from the original; prepare it, then compare. **Speakers** downloads approximately 47 MB once; analyze a completed recording, listen to timed turns and assign names. Full text edited separately is preserved. The dictionary accepts up to 100 terms. Quote actions include plain copy, listening and TXT export. Speed can be changed from 0.75× to 2×. Drag files into the window; files added while processing are imported after the queue finishes and can then be transcribed. **Transcribe selected again** saves a JSON revision before replacing the text.

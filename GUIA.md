@@ -1,4 +1,4 @@
-# Vocalia 1.0.1
+# Vocalia 1.0.2
 
 [Instalación y avisos de macOS](INSTALL-MAC.es.md)
 
@@ -78,14 +78,13 @@ El historial, las correcciones y las cuñas se guardan en `~/Library/Application
 
 ## Abrir y recompilar
 
-Abre la app de esta carpeta o descomprime **Vocalia-1.0.1-macOS-AppleSilicon-GuideFix.zip**. Puedes arrastrarla a Aplicaciones. Requiere Apple Silicon y macOS 26 o posterior. Está compilada localmente y firmada para uso local; no está notarizada para distribución pública. No necesita micrófono para transcribir archivos.
+Abre la app de esta carpeta o descomprime **Vocalia-1.0.2-macOS-AppleSilicon.zip**. Puedes arrastrarla a Aplicaciones. Requiere Apple Silicon y macOS 26 o posterior. Está compilada localmente y firmada para uso local; no está notarizada para distribución pública. No necesita micrófono para transcribir archivos.
 
 El código está en este repositorio. `build.sh` recompila con Swift Package Manager usando las bibliotecas incluidas, ejecuta las pruebas y genera el ZIP. Necesita las herramientas de desarrollo de Apple. Las licencias de las bibliotecas se incluyen en el código y dentro de la app.
 
 Fuentes técnicas: [SpeechAnalyzer de Apple](https://developer.apple.com/documentation/speech/speechanalyzer), [Argmax: WhisperKit y SpeakerKit](https://github.com/argmaxinc/argmax-oss-swift), [SpeakerKit](https://www.argmaxinc.com/blog/speakerkit).
 
-## Compatibilidad OPUS en 1.0.1
 
-Descarga los archivos que incluyen **OPUS** en el nombre. Ambas versiones aceptan `.opus` y archivos Ogg que contienen Opus (`.ogg`), también por lotes y carpetas. No necesitas convertirlos ni subir el audio a un servidor. Mac incorpora un decodificador local y usa una copia PCM temporal para transcribir y escuchar; se elimina al cerrar normalmente la app y se conserva el original. OPUS en Mac admite grabaciones de menos de diez horas; Windows mantiene el límite de dos horas. No incluye Ogg/Vorbis.
+## Vocalia 1.0.2
 
-Los nuevos archivos se verifican con **SHA256SUMS-GuideFix.txt**. El código actualizado está en main y en **Vocalia-1.0.1-GuideFix-source.zip** de Releases; el Source code automático de la etiqueta corresponde a la compilación inicial.
+La interfaz ofrece seis idiomas. El tutorial interactivo se puede repetir. Se conserva la compatibilidad con OPUS y Ogg/Opus. Consulta la [tabla de versiones y funciones](README.es.md).

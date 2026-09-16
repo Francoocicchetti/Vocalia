@@ -455,6 +455,10 @@ enum AdvancedTests {
             check(found.files.count==120,"Carga 120 archivos recursivos sin duplicados")
             check(found.omitted>=2,"Omite archivos ajenos y enlaces circulares")
         }catch{check(false,"Carga múltiple")}
+        for (language, expected) in [("de", "Vollständiger Text"), ("fr", "Texte intégral"), ("pt", "Texto completo"), ("zh", "完整文本")] {
+            check(AppLanguage.translate("Texto completo", language:language)==expected, "Interfaz \(language) carga su catálogo")
+            check(!AppLanguage.translate("Archivo 2 de 4",language:language).contains("%@"), "Interfaz \(language) conserva valores dinámicos")
+        }
         print("\(n) pruebas avanzadas correctas")
     }
 }

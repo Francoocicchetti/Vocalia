@@ -449,11 +449,11 @@ struct TranscribeView: View {
     @State var showRemove = false
     @State var showDictionary = false
     @State var showTutorial = false
-    @AppStorage("guidedTour101Release") private var guidedTourCompleted = false
+    @AppStorage("guidedTour102Release") private var guidedTourCompleted = false
     @State var selection = NSRange(location: 0, length: 0)
     @State var quoteSpeaker = ""
     @State var followAudio = true
-    @AppStorage("uiLanguage") var uiLanguage = Locale.preferredLanguages.first?.hasPrefix("es") == true ? "es" : "en"
+    @AppStorage("uiLanguage") var uiLanguage = AppLanguage.system
     let accent = Color(red: 0.24, green: 0.28, blue: 0.66)
     var body: some View {
         VStack(spacing: 0) {
@@ -462,7 +462,7 @@ struct TranscribeView: View {
                     .resizable().scaledToFit().frame(width: 60, height: 60)
                 VStack(alignment: .leading, spacing: 4) { Text(L("Vocalia")).font(.system(size: 26, weight: .bold, design: .rounded)); Text(L("De la voz al texto. Dentro de tu Mac.")).foregroundStyle(.secondary) }
                 Spacer()
-                Button(uiLanguage == "es" ? "Cómo usar Vocalia" : "How to use Vocalia") { showTutorial = true }
+                Button(T("How to use Vocalia")) { showTutorial = true }
                 Label(L("100 % local"), systemImage: "lock.shield").foregroundStyle(accent).font(.system(size: 13, weight: .semibold))
             }.padding(22)
             Divider()
@@ -573,7 +573,7 @@ struct TranscribeView: View {
                     }
                 }.labelsHidden().frame(width:180).disabled(model.busy).tourTarget("audio")
                 Button(model.languageInstalled ? L("Idioma listo") : L("Descargar idioma")){model.prepareLanguage()}.disabled(model.busy || model.checkingLanguage || model.languageInstalled).tourTarget("prepare")
-                Picker(uiLanguage == "es" ? "Cambiar idioma" : "Change language",selection:$uiLanguage){Text(L("Español")).tag("es");Text(L("English")).tag("en")}.frame(width:185).disabled(model.busy).tourTarget("interface")
+                Picker(T("Change language"),selection:$uiLanguage){ForEach(AppLanguage.options,id:\.code){option in Text(option.name).tag(option.code)}}.frame(width:185).disabled(model.busy).tourTarget("interface")
                 Spacer()
                 Button(L("Diccionario (\(model.dictionary.count))")) {showDictionary=true}.disabled(model.busy)
             }

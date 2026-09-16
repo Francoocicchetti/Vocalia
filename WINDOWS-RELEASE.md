@@ -1,12 +1,11 @@
-English · [Español](https://github.com/Francoocicchetti/Vocalia/blob/main/WINDOWS.es.md)
+# Vocalia 1.0.2 for Windows
 
-Windows 11, Intel/AMD x64. This preview updates the app icon with a clean rounded frame and adds English-first documentation with a Spanish version.
+[Download the installer and read the Windows guide](WINDOWS.md).
 
-Extract the entire ZIP, open Vocalia.exe, and keep the _internal folder beside it. Choose your interface and audio languages, then download a model from the app. Recognition stays local. Includes batch import, full transcripts, quotes and playback highlighting. No Apple Speech or automatic speaker separation.
+Six interface languages, local Whisper transcription, segment review, comparison with a second model, optional speaker grouping, quotes, playback highlighting and speed controls. Windows 11 Intel/AMD x64; recordings under two hours. Initial model downloads need internet.
 
-The packaged application passed history, interface, worker-failure, Unicode-path and offline MP3/MP4/MOV/FLAC tests on Windows Server x64. Real Windows 11 hardware validation is still pending. The executable has no Authenticode signature. See the Windows guide for requirements and limits.
+[Español: descarga e instrucciones](WINDOWS.es.md).
 
-[Windows guide](https://github.com/Francoocicchetti/Vocalia/blob/main/WINDOWS.md)
+Seis idiomas de interfaz, transcripción local, revisión, comparación, voces, cuñas y reproducción sincronizada. Windows 11 Intel/AMD de 64 bits; grabaciones de menos de dos horas.
 
-### Español
-Versión preliminar para Windows 11 Intel/AMD. Nuevo icono recortado y documentación en inglés y español. Descomprime todo el ZIP, abre Vocalia.exe y conserva la carpeta _internal. Descarga un modelo desde la app; las grabaciones se procesan localmente. Incluye carga múltiple, texto completo, cuñas y resaltado. Sin motor Apple ni separación automática de voces. Pruebas superadas en Windows Server x64; pendiente validación de uso en equipos Windows 11 reales. Ejecutable sin firma Authenticode.
+Automated release tests use Windows Server x64; physical Windows 11 testing remains pending. The installer is not Authenticode-signed.

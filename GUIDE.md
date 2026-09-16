@@ -8,7 +8,7 @@
 
 Requires Apple Silicon and macOS 26 or later. Extract the Mac ZIP and move Vocalia.app to Applications. This release is locally signed and not notarized. If macOS blocks it, consult [Apple's instructions for apps from unidentified developers](https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unknown-developer-mh40616/mac); do not disable system-wide protections. File transcription does not need microphone access.
 
-Choose English or Español in **App language**. **Audio language** is independent: it lists the speech locales supported on your Mac. Select the spoken language and use **Download language** before transcribing. Apple manages that download. Whisper uses the language stored with each transcript, even if you later select another language for another recording. This is transcription, not translation. Native system messages follow macOS settings.
+Choose English, Spanish, German, French, Simplified Chinese or Portuguese in **App language**. **Audio language** is independent: it lists the speech locales supported on your Mac. Select the spoken language and use **Download language** before transcribing. Apple manages that download. Whisper uses the language stored with each transcript, even if you later select another language for another recording. This is transcription, not translation. Native system messages follow macOS settings.
 
 ## Import and transcribe
 
@@ -52,8 +52,7 @@ Review names, figures, overlapping voices and publishable quotations against the
 
 To build from source, run `zsh build.sh` with compatible Apple development tools and the macOS 26 SDK. The script builds the bundled dependencies, runs checks and produces a ZIP with license notices.
 
-## OPUS support in 1.0.1
 
-Use the downloads with **OPUS** in their filename. Both platforms accept `.opus` and Ogg files containing Opus (`.ogg`), including batch/folder import. No manual conversion or audio upload is needed. Windows uses its bundled decoder. Mac includes a local BSD-licensed Opus decoder and uses a temporary PCM copy for transcription and playback; normal app exit removes that copy and the original is preserved. Mac OPUS recordings must be under ten hours; Windows keeps its two-hour limit. Ogg/Vorbis is not included.
+## Vocalia 1.0.2
 
-New downloads have checksums in **SHA256SUMS-GuideFix.txt**; the original 1.0.1 files remain available for reproducibility. The updated source is on the main branch and in **Vocalia-1.0.1-GuideFix-source.zip** in Releases. The tag's automatic Source code archives describe the original 1.0.1 build.
+The interface offers six languages. The interactive tour can be replayed. OPUS and Ogg/Opus remain supported. See the [version table and feature matrix](README.md).

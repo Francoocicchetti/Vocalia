@@ -14,3 +14,5 @@ Original recordings are not modified. Temporary files are removed after normal c
 The public repository and app downloads contain no user history, personal interviews, real user transcripts or downloaded model weights. Windows tests use a public JFK speech excerpt from the official OpenAI Whisper test suite. That fixture is test-only and is not bundled with the executable.
 
 Do not attach sensitive recordings, source identities, transcripts or unreviewed logs to public issues.
+
+Windows optional speaker models are downloaded from the sherpa-onnx public release assets on GitHub. Speaker analysis and transcript comparison run locally. The additional speaker test downloads a public four-speaker fixture from the same provider, never user recordings.

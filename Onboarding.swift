@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct VocaliaStartView: View {
-    @AppStorage("languageChoice101Release") private var completed = false
+    @AppStorage("languageChoice102Release") private var completed = false
     var body: some View {
         if completed { TranscribeView() }
         else { VocaliaLanguageChoice { completed = true } }
@@ -9,17 +9,17 @@ struct VocaliaStartView: View {
 }
 
 struct VocaliaLanguageChoice: View {
-    @AppStorage("uiLanguage") private var language = Locale.preferredLanguages.first?.hasPrefix("es") == true ? "es" : "en"
+    @AppStorage("uiLanguage") private var language = AppLanguage.system
     var onFinish: () -> Void
     var body: some View {
         VStack(alignment: .leading, spacing: 24) {
             Text("Vocalia").font(.system(size: 32, weight: .bold, design: .rounded))
-            Text("Welcome / Bienvenido").font(.title2.bold())
-            Text("Choose your language before starting.\nElige tu idioma antes de comenzar.").foregroundStyle(.secondary)
-            Picker("Language / Idioma", selection: $language) {
-                Text("Español").tag("es"); Text("English").tag("en")
-            }.pickerStyle(.segmented)
-            HStack { Spacer(); Button("Continue / Continuar", action: onFinish).buttonStyle(.borderedProminent).keyboardShortcut(.defaultAction) }
+            Text(T("Welcome")).font(.title2.bold())
+            Text(T("Choose your language before starting.")).foregroundStyle(.secondary)
+            Picker(T("App language"), selection: $language) {
+                ForEach(AppLanguage.options,id:\.code) { option in Text(option.name).tag(option.code) }
+            }.pickerStyle(.menu)
+            HStack { Spacer(); Button(T("Continue"), action: onFinish).buttonStyle(.borderedProminent).keyboardShortcut(.defaultAction) }
         }.padding(40).frame(width: 480)
     }
 }
@@ -41,7 +41,7 @@ struct VocaliaCoachMarks: View {
     var language: String
     var onFinish: () -> Void
     @State private var index = 0
-    private var es: Bool { language == "es" }
+    private func text(_ value:String)->String {AppLanguage.interface(value,language:language)}
     private let steps: [(String,String,String,String,String)] = [
         ("add", "Agrega tus grabaciones", "Elige varios audios, videos o carpetas, incluidos OPUS. Agregarlos los deja pendientes: todavía no genera texto.", "Add your recordings", "Choose several recordings, videos or folders, including OPUS. Adding them puts them in the queue; it does not generate text yet."),
         ("audio", "Idioma de la grabación", "Elige el idioma que habla la persona. Este ajuste es independiente del idioma de los botones.", "Recording language", "Choose the language the person speaks. This is separate from the language of the buttons."),
@@ -49,7 +49,7 @@ struct VocaliaCoachMarks: View {
         ("run", "Aquí comienza la transcripción", "Después de agregar archivos y preparar el idioma, pulsa Transcribir pendientes. Vocalia procesará la cola y generará el texto.", "Start transcription here", "After adding files and preparing the language, click Transcribe pending files. Vocalia processes the queue and generates text."),
         ("status", "Sigue el progreso", "Aquí verás la preparación, el progreso y el estado del reconocimiento. Espera a que termine para copiar el resultado completo.", "Follow progress", "This area shows preparation, progress and recognition status. Wait for completion before copying the full result."),
         ("editor", "Escucha, revisa y copia", "Aquí aparecerá tu transcripción completa. Revisa nombres y cifras. Reproducir solo sirve para escuchar; el resaltado sigue el audio. Usa Copiar todo el texto o Exportar para llevarte el resultado y selecciona frases para guardar cuñas.", "Listen, review and copy", "Your full transcript appears here. Check names and numbers. Play only plays audio; highlighting follows the recording. Use Copy full text or Export to take the result with you, and select passages to save quotes."),
-        ("interface", "Cambia el idioma cuando quieras", "Aquí cambias los botones entre español e inglés. Puedes repetir este recorrido desde Cómo usar Vocalia.", "Change language any time", "Switch the buttons between English and Spanish here. Reopen this tour from How to use Vocalia.")
+        ("interface", "Cambia el idioma cuando quieras", "Aquí cambias los botones entre español e inglés. Puedes repetir este recorrido desde Cómo usar Vocalia.", "Change language any time", "Choose one of the six interface languages here. Reopen this tour from How to use Vocalia.")
     ]
     var body: some View {
         GeometryReader { proxy in
@@ -70,14 +70,14 @@ struct VocaliaCoachMarks: View {
                     HStack {
                         Text("\(index+1) / \(steps.count)").font(.caption).foregroundStyle(.secondary)
                         Spacer()
-                        Button(es ? "Omitir" : "Skip", action:onFinish).buttonStyle(.plain).keyboardShortcut(.cancelAction)
+                        Button(text("Skip"), action:onFinish).buttonStyle(.plain).keyboardShortcut(.cancelAction)
                     }
-                    Text(es ? step.1 : step.3).font(.headline)
-                    ScrollView { Text(es ? step.2 : step.4).font(.system(size:14)).frame(maxWidth:.infinity,alignment:.leading).fixedSize(horizontal:false,vertical:true) }
+                    Text(text(step.3)).font(.headline)
+                    ScrollView { Text(text(step.4)).font(.system(size:14)).frame(maxWidth:.infinity,alignment:.leading).fixedSize(horizontal:false,vertical:true) }
                     HStack {
-                        Button(es ? "Atrás" : "Back") { index -= 1 }.disabled(index == 0)
+                        Button(text("Back")) { index -= 1 }.disabled(index == 0)
                         Spacer()
-                        Button(index == steps.count-1 ? (es ? "Terminar" : "Done") : (es ? "Siguiente" : "Next")) {
+                        Button(index == steps.count-1 ? text("Done") : text("Next")) {
                             if index == steps.count-1 { onFinish() } else { index += 1 }
                         }.buttonStyle(.borderedProminent).keyboardShortcut(.defaultAction)
                     }

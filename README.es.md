@@ -1,101 +1,77 @@
 <p align="center"><img src="logo.png" width="128" alt="Icono de Vocalia"></p>
 
-# Vocalia 1.0.1
+# Vocalia 1.0.2
 
-**Transcripción local para periodistas: texto completo, cuñas y audio resaltado.**
+**Transcripción local para periodistas: texto completo, cuñas y reproducción con resaltado.**
 
 [English](README.md) · **Español**
 
-## Descargar la aplicación
+## Descargar
 
-### [↓ Descargar para Windows 11 — Intel / AMD](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.1/Vocalia-1.0.1-Windows-x64-GuideFix-Setup.exe)
+### [↓ Instalador para Windows 11 — Intel / AMD](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.2/Vocalia-1.0.2-Windows-x64-Setup.exe)
 
-### [↓ Descargar para MacBook / Mac — Apple Silicon](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.1/Vocalia-1.0.1-macOS-AppleSilicon-GuideFix.zip)
+### [↓ MacBook / Mac — Apple Silicon](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.2/Vocalia-1.0.2-macOS-AppleSilicon.zip)
 
-**[Ver la Release oficial 1.0 y todas las descargas](https://github.com/Francoocicchetti/Vocalia/releases/tag/v1.0.1)**
+[Todos los archivos y verificaciones de la versión 1.0.2](https://github.com/Francoocicchetti/Vocalia/releases/tag/v1.0.2)
 
-En la página de la Release, abre **Assets** y elige el instalador **Setup.exe** para Windows o el ZIP para Mac. **No descargues “Source code” para instalar la app.**
+| Equipo | Requisitos | Archivo |
+| --- | --- | --- |
+| Windows | Windows 11, Intel/AMD de 64 bits | `Vocalia-1.0.2-Windows-x64-Setup.exe` |
+| MacBook / Mac | Apple Silicon M1 o posterior, macOS 26+ | `Vocalia-1.0.2-macOS-AppleSilicon.zip` |
 
-- **Windows:** Windows 11 Intel/AMD de 64 bits. Descarga y ejecuta **Vocalia-1.0.1-Windows-x64-GuideFix-Setup.exe**, sigue el asistente y abre **Vocalia** desde Inicio. Puedes crear un acceso directo en el escritorio. [Guía Windows](WINDOWS.es.md).
-- **MacBook/Mac:** Apple Silicon M1 o posterior y macOS 26+. No admite Mac Intel. Descomprime y arrastra **Vocalia.app** a **Aplicaciones**. **[Cómo instalarla y usar “Abrir igualmente” si macOS la bloquea](INSTALL-MAC.es.md)**.
+Los archivos están en **Assets**, debajo de las notas de la versión. Descarga el instalador o el ZIP para Mac, no «Source code». No necesitas Python, Xcode, cuenta ni clave de API. Estos archivos no son compatibles con Mac Intel ni Windows ARM.
 
-No necesitas Python, Xcode, una cuenta de transcripción ni claves de API para usar las descargas. Elige el idioma de interfaz y audio, prepara los modelos y agrega tus archivos. Los modelos necesitan internet para descargarse; después el reconocimiento es local.
+## Instalar y comenzar
 
-## Estado de la versión
+1. **Windows:** ejecuta el instalador y abre Vocalia desde Inicio. El acceso directo de escritorio es opcional. Si eliges el ZIP portátil, extrae **toda la carpeta** y conserva `_internal` junto a `Vocalia.exe`. [Instrucciones](WINDOWS.es.md).
+2. **Mac:** descomprime el ZIP, arrastra Vocalia.app a Aplicaciones y ábrela. La app no está notarizada por Apple. Si macOS bloquea la primera apertura, sigue [Configuración del Sistema → Privacidad y seguridad → Abrir de todos modos](INSTALL-MAC.es.md). No desactives la protección general del sistema.
+3. Antes de entrar, elige **español, inglés, alemán, francés, chino simplificado o portugués**. La selección aparece una vez después de esta actualización. Luego puedes cambiarla dentro de la app.
+4. Elige por separado el **idioma hablado**, prepara/descarga el modelo, agrega archivos y pulsa **Transcribir pendientes**. Agregar o reproducir un archivo todavía no genera texto.
+5. Los globos del tutorial señalan los controles reales. Puedes repetirlos desde **Cómo usar Vocalia**. Copia el texto completo o revísalo escuchando el audio antes de guardar cuñas.
 
-1.0 unifica la numeración pública; las anteriores eran versiones de desarrollo. No implica certificación de Apple/Microsoft ni precisión perfecta. Mac tiene firma local sin notarización; Windows no tiene firma Authenticode. Las pruebas de Windows se ejecutan en Windows Server x64; falta validación de uso en Windows 11 real. Revisa nombres, cifras y citas contra el original.
+Internet se usa para descargar modelos. Las grabaciones y transcripciones se procesan localmente: Vocalia no las sube.
 
-## Funciones según la plataforma
+## Tabla de actualizaciones
 
-Ambas versiones incluyen carga múltiple, texto completo, resaltado, cuñas, diccionario y exportación TXT/SRT/VTT. Windows utiliza Whisper en CPU, acepta archivos de menos de dos horas y no incluye separación automática de voces ni comparación con Apple. [Guía Windows](WINDOWS.es.md).
+| Versión | Actualizaciones |
+| --- | --- |
+| **1.0** | Primera versión pública conjunta para Mac y Windows: transcripción local, varios archivos, texto completo editable, resaltado al reproducir, cuñas con fuente, exportación TXT/SRT/VTT e historial. |
+| **1.0.1** | Instalador de Windows y mejor guía para descargar el modelo e iniciar la transcripción; elección de idioma antes de entrar; OPUS y Ogg/Opus; tutorial con globos interactivos, repetir/omitir, restauración del selector inicial y corrección de superposición en Mac. Incluye las revisiones OPUS, Tour y GuideFix publicadas bajo 1.0.1. |
+| **1.0.2** | Seis idiomas de interfaz. Windows incorpora revisión de fragmentos, comparación con otro modelo, agrupación local de voces y nombres, escuchar/copiar/exportar cuñas, velocidad de reproducción y editor de diccionario. También permite arrastrar archivos, agregarlos al terminar una cola activa y volver a transcribir una selección guardando una copia previa. Documentación bilingüe y nuevas pruebas. |
 
-Las secciones siguientes describen las funciones de la edición nativa para Mac.
+[Historial detallado](CHANGELOG.es.md)
 
-## Qué incluye
+## Funciones por plataforma
 
-- OPUS, MP3, MP4, MOV, M4A, WAV y otros formatos compatibles con macOS.
-- Carga de muchos archivos o carpetas y procesamiento por cola.
-- Texto completo editable y exportación TXT, SRT y VTT.
-- Resaltado sincronizado y seguimiento de la reproducción.
-- Diccionario de nombres, instituciones y siglas.
-- Cuñas literales con fuente, hablante y tiempos.
-- Comparación opcional entre Apple Speech y Whisper.
-- Agrupación automática de voces con nombres editables.
-- Interfaz en español e inglés; selección independiente del idioma del audio.
-- Descarga del idioma antes de transcribir y modelos adicionales locales.
+| Función | Mac | Windows |
+| --- | --- | --- |
+| Seis idiomas, selector inicial y tutorial interactivo | Sí | Sí |
+| Varios archivos/carpetas, arrastrar y soltar, cola | Sí | Sí; lo agregado durante un proceso se incorpora al terminar la cola |
+| Texto completo, resaltado y velocidad de reproducción | Sí | Sí |
+| Revisión por fragmentos, originales y marcas de revisión | Sí | Sí |
+| Cuñas con fuente/tiempo, escuchar, copiar y exportar | Sí | Sí |
+| Diccionario y exportación TXT/SRT/VTT | Sí | Sí |
+| Comparación de transcripciones | Apple Speech y Whisper | Dos modelos Whisper locales diferentes |
+| Agrupación opcional de voces, intervalos y nombres | SpeakerKit | sherpa-onnx en CPU |
+| Motor principal | Apple Speech | Whisper en CPU |
+| Duración máxima por archivo | Principal: menos de 24 h; OPUS: menos de 10 h; motores adicionales: menos de 2 h | Menos de 2 h |
 
-## Primer uso
+En Windows, la agrupación de voces descarga aproximadamente 47 MB una vez. Pulsa **Preparar modelos de voces** y luego **Analizar voces** sobre una grabación terminada. Revisa los resultados cuando hay ruido o voces superpuestas. Para comparar, prepara un segundo modelo diferente. Estas funciones conservan el texto completo editado de forma independiente; los fragmentos se mantienen separados para revisión y subtítulos.
 
-1. Elige el idioma de los controles en **Interfaz**.
-2. Elige el idioma hablado en **Idioma del audio** y pulsa **Descargar idioma** si hace falta.
-3. Agrega archivos o carpetas y pulsa **Transcribir pendientes**.
-4. Revisa el texto y las citas contra el original antes de publicarlas.
+Se admiten MP3, MP4, MOV, M4A, WAV, FLAC, OPUS y otros formatos compatibles. Aquí `.ogg` significa Ogg con audio Opus. Los motores, rendimiento y algunos controles difieren: Apple Speech solo existe en macOS. El resaltado requiere texto que pueda alinearse con los tiempos. Revisa siempre nombres, cifras y citas contra el audio.
 
-Los modelos se descargan una vez cuando sean necesarios. Las grabaciones no se envían a servicios de transcripción. La app no necesita una cuenta ni una clave de API. Compartir este repositorio no comparte tu historial local.
+## Documentación y pruebas
 
-## Límites claros
+[Guía Mac](GUIA.md) · [Guía Windows](WINDOWS.es.md) · [Privacidad](PRIVACY.es.md) · [Compilaciones y pruebas](https://github.com/Francoocicchetti/Vocalia/actions/workflows/windows.yml)
 
-- La app nativa para Mac requiere Apple Silicon y macOS 26; no admite Mac Intel. La edición Windows tiene sus propios [requisitos y límites](WINDOWS.es.md).
-- La transcripción principal acepta grabaciones de menos de 24 horas; comparación y voces, de menos de 2 horas.
-- No promete precisión perfecta: revisa especialmente nombres, cifras y voces superpuestas.
-- Los fragmentos antiguos sin tiempos por palabra se resaltan por fragmento.
-- El texto completamente reescrito puede perder su correspondencia con el audio.
-- Los mensajes del sistema y sus menús nativos siguen el idioma de macOS.
+Las pruebas de Windows se ejecutan en Windows Server x64: app empaquetada, seis idiomas y tutorial, historial, errores/cancelación, reconocimiento real sin conexión de seis formatos, comparación, una grabación pública de cuatro voces, instalación, accesos directos y conservación de datos al reinstalar/desinstalar. Falta validación en equipos físicos Windows 11 Intel/AMD. En Mac se comprueban historial, sincronización, importación, traducciones y funciones de transcripción. Las pruebas no garantizan precisión perfecta ni ausencia de fallos.
 
-## Compilar
+La app de Mac tiene firma local y no está notarizada. Windows no tiene firma Authenticode. Las actualizaciones conservan la ubicación del historial. Guarda la versión anterior hasta probar la nueva con tu forma de trabajar.
 
-Necesitas las herramientas de desarrollo de Apple con SDK de macOS 26 o posterior y Swift 6.3 o compatible.
+## Código y licencias
 
-```sh
-zsh build.sh
-```
+El código para Mac está en los archivos Swift y `ui-translations.json`; se compila con `zsh build.sh` y las herramientas de Apple con SDK macOS 26. El de Windows está en `Vocalia-Windows-source.zip`; requiere Python 3.12 x64 y `build.ps1`, además de Inno Setup 6 para el instalador. La versión incluye un paquete con todo el código.
 
-El script compila las bibliotecas incluidas, ejecuta las pruebas y genera `dist/Vocalia.zip`. Las pruebas usan datos sintéticos y no requieren grabaciones personales ni descargar modelos. No se incluyen modelos de aprendizaje automático en este repositorio.
+Las dependencias incluyen sus licencias y avisos. Los modelos opcionales de voces de Windows usan segmentación pyannote (MIT) y embeddings 3D-Speaker (Apache-2.0). El código y logo propios de Vocalia aún no tienen una licencia general de código abierto.
 
-## Componentes y licencias
-
-Usa Apple SpeechAnalyzer, WhisperKit y SpeakerKit. Las fuentes de Argmax se incluyen con su [licencia](THIRD_PARTY_LICENSE), [avisos](THIRD_PARTY_NOTICES) y [revisión de origen](THIRD_PARTY_ORIGIN.txt). Los modelos conservan las condiciones de sus respectivos proveedores. No se ha asignado una licencia de código abierto al código propio ni al logo de Vocalia.
-
-Las bibliotecas de terceros, con sus fuentes completas y licencias, están en `Vendor.zip`. El script de compilación las extrae en una carpeta temporal. El código propio se puede consultar directamente en los archivos Swift de este repositorio.
-
-## Novedades de 1.0.1
-
-- Elige español o inglés antes de entrar al área de trabajo la primera vez. Después puedes cambiar el idioma dentro de Vocalia.
-- Tutorial que puedes volver a abrir: agregar audios, preparar el modelo, transcribir, revisar y copiar el texto completo.
-- Windows: **agregar un audio no lo transcribe**. Pulsa **Transcribir pendientes**. Si falta el modelo, acepta descargarlo; al terminar empieza la transcripción automáticamente.
-- Avisos claros si no hay pendientes, falta el modelo o falla el motor. Al solicitar una transcripción se detiene la reproducción; escuchar queda desactivado mientras hay un trabajo en curso.
-
-
-## Compatibilidad OPUS en 1.0.1
-
-Descarga los archivos que incluyen **OPUS** en el nombre. Ambas versiones aceptan `.opus` y archivos Ogg que contienen Opus (`.ogg`), también por lotes y carpetas. No necesitas convertirlos ni subir el audio a un servidor. Mac incorpora un decodificador local y usa una copia PCM temporal para transcribir y escuchar; se elimina al cerrar normalmente la app y se conserva el original. OPUS en Mac admite grabaciones de menos de diez horas; Windows mantiene el límite de dos horas. No incluye Ogg/Vorbis.
-
-Los nuevos archivos se verifican con **SHA256SUMS-GuideFix.txt**. El código actualizado está en main y en **Vocalia-1.0.1-GuideFix-source.zip** de Releases; el Source code automático de la etiqueta corresponde a la compilación inicial.
-
-## Guía interactiva
-
-Al entrar verás globos junto a los controles reales. Usa Siguiente, Atrás u Omitir; vuelve a abrirla con **Cómo usar Vocalia**. El idioma se elige antes de entrar la primera vez. La guía no inicia transcripciones ni modifica archivos. Las descargas con **GuideFix** incluyen también OPUS.
-
-## Corrección del inicio y la guía
-
-Las descargas **GuideFix** vuelven a mostrar la elección de idioma una vez al abrir esta actualización, también en instalaciones anteriores. Después se recuerda tu elección y puedes cambiarla dentro de la app. En Mac, los globos tienen fondo opaco y retiran el foco de los controles inferiores para impedir que sus bordes atraviesen el tutorial. La edición del fondo se pausa durante el recorrido y vuelve a activarse al cerrarlo.
+Para reportar un problema, [abre un issue](https://github.com/Francoocicchetti/Vocalia/issues) con sistema, versión, pasos, formato y duración aproximada. No publiques audios privados, transcripciones ni registros sin revisar.
