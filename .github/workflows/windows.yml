@@ -1,4 +1,4 @@
-name: Windows build and regression tests
+name: Vocalia 1.0 release checks
 on:
   workflow_dispatch:
   push:
@@ -8,7 +8,7 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: vocalia-windows
+  group: vocalia-release
   cancel-in-progress: true
 jobs:
   build:
@@ -20,29 +20,20 @@ jobs:
         with:
           python-version: '3.12'
           architecture: x64
-      - name: Extract reviewed source
+      - name: Extract release source
         shell: pwsh
         run: Expand-Archive Vocalia-Windows-source.zip -DestinationPath build-source
-      - name: Build and test packaged application
+      - name: Build and test Windows executable
         shell: pwsh
         run: ./build-source/Vocalia-Windows/build.ps1
-      - name: Save tested download
+      - name: Save tested Windows package
         uses: actions/upload-artifact@v4
         with:
-          name: Vocalia-Windows-11-x64-preview
+          name: Vocalia-1.0-Windows-x64
           path: |
-            build-source/Vocalia-Windows/Vocalia-Windows-11-x64-preview.zip
+            build-source/Vocalia-Windows/Vocalia-1.0-Windows-x64.zip
             build-source/Vocalia-Windows/SHA256SUMS-Windows.txt
           if-no-files-found: error
-      - name: Save build diagnostics
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: windows-build-diagnostics
-          path: |
-            build-source/Vocalia-Windows/build/Vocalia/warn-Vocalia.txt
-            build-source/Vocalia-Windows/gui-result.txt
-          if-no-files-found: ignore
   publish:
     needs: build
     runs-on: ubuntu-latest
@@ -52,15 +43,29 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
         with:
-          name: Vocalia-Windows-11-x64-preview
+          name: Vocalia-1.0-Windows-x64
           path: release
-      - name: Publish tested Windows preview
+      - name: Verify and assemble both platform downloads
+        shell: bash
+        run: |
+          sha256sum -c SHA256SUMS-Mac.txt
+          sed 's/\r$//' release/SHA256SUMS-Windows.txt | (cd release && sha256sum -c -)
+          cp Vocalia-1.0-macOS-AppleSilicon.zip DOWNLOAD-INSTRUCTIONS.txt release/
+          cd release
+          sha256sum Vocalia-1.0-*.zip > SHA256SUMS.txt
+      - name: Publish Vocalia 1.0 after all assets are ready
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
         shell: bash
         run: |
-          if ! gh release view windows-v0.1.1-preview >/dev/null 2>&1; then
-            gh release create windows-v0.1.1-preview --target "$GITHUB_SHA" --prerelease --title 'Vocalia for Windows 11 x64 — 0.1.1 preview' --notes-file WINDOWS-RELEASE.md
+          state=$(gh release view v1.0.0 --json isDraft --jq .isDraft 2>/dev/null || echo missing)
+          if [ "$state" = false ]; then
+            echo 'Version 1.0 is already published; use a new version for future changes.'
+            exit 1
           fi
-          gh release upload windows-v0.1.1-preview release/* --clobber
+          if [ "$state" = missing ]; then
+            gh release create v1.0.0 --target "$GITHUB_SHA" --draft --title 'Vocalia 1.0 — Download for Mac and Windows' --notes-file RELEASE-1.0.md
+          fi
+          gh release upload v1.0.0 release/Vocalia-1.0-*.zip release/SHA256SUMS.txt release/DOWNLOAD-INSTRUCTIONS.txt --clobber
+          gh release edit v1.0.0 --draft=false --latest
