@@ -8,7 +8,7 @@ Requiere **Apple Silicon (M1 o posterior) y macOS 26 o posterior**. Compruébalo
 
 ## Descargar e instalar
 
-1. Descarga **Vocalia-1.0.1-macOS-AppleSilicon-OPUS.zip** desde la Release oficial de Vocalia en GitHub.
+1. Descarga **Vocalia-1.0.1-macOS-AppleSilicon-Tour.zip** desde la Release oficial de Vocalia en GitHub.
 2. Abre el ZIP y arrastra **Vocalia.app** a **Aplicaciones**.
 3. Abre Vocalia desde Aplicaciones.
 

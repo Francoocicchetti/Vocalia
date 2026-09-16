@@ -2,7 +2,7 @@
 
 [Español](WINDOWS.es.md) · [Overview](README.md)
 
-**[Download Vocalia 1.0.1 for Windows](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.1/Vocalia-1.0.1-Windows-x64-OPUS-Setup.exe)**
+**[Download Vocalia 1.0.1 for Windows](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.1/Vocalia-1.0.1-Windows-x64-Tour-Setup.exe)**
 
 Source: `Vocalia-Windows-source.zip`. Extract it before running the build script.
 
@@ -10,7 +10,7 @@ Vocalia 1.0.1 for Windows. Whisper recognition runs locally on your CPU. Model p
 
 ## Install and use
 
-1. Download and run **Vocalia-1.0.1-Windows-x64-OPUS-Setup.exe**. Follow the English/Spanish installer.
+1. Download and run **Vocalia-1.0.1-Windows-x64-Tour-Setup.exe**. Follow the English/Spanish installer.
 2. Open **Vocalia** from the Start menu. A desktop shortcut is optional. Python and administrator privileges are not required.
 3. Choose English or Español for the interface, and select the spoken language separately.
 4. Choose a model and click **Download / prepare model**. Start with `small`; `medium` and `large-v3-turbo` require more memory and processing time. For larger models, a computer with at least 16 GB RAM is a practical starting point, not a measured minimum or performance guarantee.
@@ -64,4 +64,4 @@ The installer remains unsigned and Windows may show a reputation warning. Do not
 
 Use the downloads with **OPUS** in their filename. Both platforms accept `.opus` and Ogg files containing Opus (`.ogg`), including batch/folder import. No manual conversion or audio upload is needed. Windows uses its bundled decoder. Mac includes a local BSD-licensed Opus decoder and uses a temporary PCM copy for transcription and playback; normal app exit removes that copy and the original is preserved. Mac OPUS recordings must be under ten hours; Windows keeps its two-hour limit. Ogg/Vorbis is not included.
 
-New downloads have checksums in **SHA256SUMS-OPUS.txt**; the original 1.0.1 files remain available for reproducibility. The updated source is on the main branch and in **Vocalia-1.0.1-OPUS-source.zip** in Releases. The tag's automatic Source code archives describe the original 1.0.1 build.
+New downloads have checksums in **SHA256SUMS-Tour.txt**; the original 1.0.1 files remain available for reproducibility. The updated source is on the main branch and in **Vocalia-1.0.1-Tour-source.zip** in Releases. The tag's automatic Source code archives describe the original 1.0.1 build.

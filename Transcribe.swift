@@ -449,6 +449,7 @@ struct TranscribeView: View {
     @State var showRemove = false
     @State var showDictionary = false
     @State var showTutorial = false
+    @AppStorage("guidedTour101") private var guidedTourCompleted = false
     @State var selection = NSRange(location: 0, length: 0)
     @State var quoteSpeaker = ""
     @State var followAudio = true
@@ -482,7 +483,7 @@ struct TranscribeView: View {
                             Text(L("MP3 · MP4 · MOV · M4A · WAV · AIFF · FLAC · OPUS")).font(.system(size: 11)).foregroundStyle(.secondary)
                         }.frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
-                }
+                }.tourTarget("editor")
             }
             Divider()
             VStack(alignment: .leading, spacing: 8) {
@@ -497,8 +498,12 @@ struct TranscribeView: View {
                     if model.busy { Button(L("Cancelar")) { model.cancel() } }
                     else { Button { model.begin() } label: { Label(model.current?.complete == true ? L("Volver a transcribir") : L("Transcribir"), systemImage: "waveform") }.buttonStyle(.borderedProminent).tint(accent).controlSize(.large).disabled(model.current == nil) }
                 }
-            }.padding(16)
+            }.padding(16).tourTarget("status")
         }
+        .overlayPreferenceValue(TourAnchors.self) { anchors in
+            if showTutorial { VocaliaCoachMarks(anchors: anchors, language: uiLanguage) { showTutorial = false; guidedTourCompleted = true } }
+        }
+        .onAppear { if !guidedTourCompleted { showTutorial = true } }
         .frame(minWidth: 1100, minHeight: 800).background(Color(red: 0.975, green: 0.975, blue: 0.99)).preferredColorScheme(.light)
         .overlay { if targeted { RoundedRectangle(cornerRadius: 15).stroke(accent, lineWidth: 4).padding(5).allowsHitTesting(false) } }
         .onDrop(of: [UTType.fileURL.identifier], isTargeted: $targeted) { providers in
@@ -525,7 +530,6 @@ struct TranscribeView: View {
         .onChange(of: model.documents) { if !model.busy { model.persist() } }
         .onChange(of: model.compareEnabled) { model.saveOptions() }
         .onChange(of: model.voicesEnabled) { model.saveOptions() }
-        .sheet(isPresented: $showTutorial) { VocaliaTutorial { showTutorial = false } }
         .sheet(isPresented: $showDictionary) { DictionaryPane(model:model) }
         .alert("Vocalia", isPresented: Binding(get: { model.error != nil }, set: { if !$0 { model.error = nil } })) { Button(L("Entendido")) { model.error = nil } } message: { Text(L(model.error ?? "")) }
         .confirmationDialog(L("¿Quitar esta transcripción del historial? El audio original se conserva."), isPresented: $showRemove) { Button(L("Quitar del historial"), role: .destructive) { model.removeSelected() } }
@@ -533,7 +537,7 @@ struct TranscribeView: View {
     var sidebar: some View {
         VStack(alignment: .leading, spacing: 14) {
             HStack { Text(L("GRABACIONES · \(model.documents.count)")).font(.system(size: 11, weight: .bold)).foregroundStyle(.secondary); Spacer() }
-            Button { model.pick() } label: { Label(model.importing ? L("Buscando archivos…") : L("Agregar archivos o carpetas…"), systemImage:"plus") }.disabled(model.importing).controlSize(.large)
+            Button { model.pick() } label: { Label(model.importing ? L("Buscando archivos…") : L("Agregar archivos o carpetas…"), systemImage:"plus") }.disabled(model.importing).controlSize(.large).tourTarget("add")
             ScrollView {
                 VStack(spacing: 7) {
                     ForEach(model.documents) { doc in
@@ -547,7 +551,7 @@ struct TranscribeView: View {
                     }
                 }
             }
-            Button(L("Transcribir pendientes")) { model.begin(all: true) }.disabled(model.busy || !model.documents.contains { !$0.complete })
+            Button(L("Transcribir pendientes")) { model.begin(all: true) }.disabled(model.busy || !model.documents.contains { !$0.complete }).tourTarget("run")
             Button(L("Exportar todos los TXT")) { model.exportBatch() }.disabled(model.busy || !model.documents.contains { !$0.segments.isEmpty })
             Button(L("Quitar del historial…")) { showRemove = true }.buttonStyle(.link).disabled(model.busy || model.current == nil).font(.system(size: 11))
             Text(L("Puedes agregar muchos archivos o carpetas de una vez, incluso mientras se procesa la cola.\nLos originales se conservan.")).font(.system(size: 10)).foregroundStyle(.secondary)
@@ -562,9 +566,9 @@ struct TranscribeView: View {
                     ForEach(model.locales.map{$0.identifier.replacingOccurrences(of:"_",with:"-")}.filter{$0 != model.localeID},id:\.self){id in
                         Text(Locale(identifier:uiLanguage).localizedString(forIdentifier:id) ?? id).tag(id)
                     }
-                }.labelsHidden().frame(width:180).disabled(model.busy)
-                Button(model.languageInstalled ? L("Idioma listo") : L("Descargar idioma")){model.prepareLanguage()}.disabled(model.busy || model.checkingLanguage || model.languageInstalled)
-                Picker(uiLanguage == "es" ? "Cambiar idioma" : "Change language",selection:$uiLanguage){Text(L("Español")).tag("es");Text(L("English")).tag("en")}.frame(width:185).disabled(model.busy)
+                }.labelsHidden().frame(width:180).disabled(model.busy).tourTarget("audio")
+                Button(model.languageInstalled ? L("Idioma listo") : L("Descargar idioma")){model.prepareLanguage()}.disabled(model.busy || model.checkingLanguage || model.languageInstalled).tourTarget("prepare")
+                Picker(uiLanguage == "es" ? "Cambiar idioma" : "Change language",selection:$uiLanguage){Text(L("Español")).tag("es");Text(L("English")).tag("en")}.frame(width:185).disabled(model.busy).tourTarget("interface")
                 Spacer()
                 Button(L("Diccionario (\(model.dictionary.count))")) {showDictionary=true}.disabled(model.busy)
             }
