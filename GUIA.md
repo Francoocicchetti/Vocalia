@@ -1,4 +1,4 @@
-# Vocalia 1.0
+# Vocalia 1.0.1
 
 [Instalación y avisos de macOS](INSTALL-MAC.es.md)
 
@@ -78,7 +78,7 @@ El historial, las correcciones y las cuñas se guardan en `~/Library/Application
 
 ## Abrir y recompilar
 
-Abre la app de esta carpeta o descomprime **Vocalia-1.0-macOS-AppleSilicon.zip**. Puedes arrastrarla a Aplicaciones. Requiere Apple Silicon y macOS 26 o posterior. Está compilada localmente y firmada para uso local; no está notarizada para distribución pública. No necesita micrófono para transcribir archivos.
+Abre la app de esta carpeta o descomprime **Vocalia-1.0.1-macOS-AppleSilicon.zip**. Puedes arrastrarla a Aplicaciones. Requiere Apple Silicon y macOS 26 o posterior. Está compilada localmente y firmada para uso local; no está notarizada para distribución pública. No necesita micrófono para transcribir archivos.
 
 El código está en este repositorio. `build.sh` recompila con Swift Package Manager usando las bibliotecas incluidas, ejecuta las pruebas y genera el ZIP. Necesita las herramientas de desarrollo de Apple. Las licencias de las bibliotecas se incluyen en el código y dentro de la app.
 

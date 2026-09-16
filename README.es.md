@@ -1,6 +1,6 @@
 <p align="center"><img src="logo.png" width="128" alt="Icono de Vocalia"></p>
 
-# Vocalia 1.0
+# Vocalia 1.0.1
 
 **Transcripción local para periodistas: texto completo, cuñas y audio resaltado.**
 
@@ -8,15 +8,15 @@
 
 ## Descargar la aplicación
 
-### [↓ Descargar para Windows 11 — Intel / AMD](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.0/Vocalia-1.0-Windows-x64-Setup.exe)
+### [↓ Descargar para Windows 11 — Intel / AMD](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.1/Vocalia-1.0.1-Windows-x64-Setup.exe)
 
-### [↓ Descargar para MacBook / Mac — Apple Silicon](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.0/Vocalia-1.0-macOS-AppleSilicon.zip)
+### [↓ Descargar para MacBook / Mac — Apple Silicon](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.1/Vocalia-1.0.1-macOS-AppleSilicon.zip)
 
-**[Ver la Release oficial 1.0 y todas las descargas](https://github.com/Francoocicchetti/Vocalia/releases/tag/v1.0.0)**
+**[Ver la Release oficial 1.0 y todas las descargas](https://github.com/Francoocicchetti/Vocalia/releases/tag/v1.0.1)**
 
 En la página de la Release, abre **Assets** y elige el instalador **Setup.exe** para Windows o el ZIP para Mac. **No descargues “Source code” para instalar la app.**
 
-- **Windows:** Windows 11 Intel/AMD de 64 bits. Descarga y ejecuta **Vocalia-1.0-Windows-x64-Setup.exe**, sigue el asistente y abre **Vocalia** desde Inicio. Puedes crear un acceso directo en el escritorio. [Guía Windows](WINDOWS.es.md).
+- **Windows:** Windows 11 Intel/AMD de 64 bits. Descarga y ejecuta **Vocalia-1.0.1-Windows-x64-Setup.exe**, sigue el asistente y abre **Vocalia** desde Inicio. Puedes crear un acceso directo en el escritorio. [Guía Windows](WINDOWS.es.md).
 - **MacBook/Mac:** Apple Silicon M1 o posterior y macOS 26+. No admite Mac Intel. Descomprime y arrastra **Vocalia.app** a **Aplicaciones**. **[Cómo instalarla y usar “Abrir igualmente” si macOS la bloquea](INSTALL-MAC.es.md)**.
 
 No necesitas Python, Xcode, una cuenta de transcripción ni claves de API para usar las descargas. Elige el idioma de interfaz y audio, prepara los modelos y agrega tus archivos. Los modelos necesitan internet para descargarse; después el reconocimiento es local.
@@ -77,3 +77,11 @@ El script compila las bibliotecas incluidas, ejecuta las pruebas y genera `dist/
 Usa Apple SpeechAnalyzer, WhisperKit y SpeakerKit. Las fuentes de Argmax se incluyen con su [licencia](THIRD_PARTY_LICENSE), [avisos](THIRD_PARTY_NOTICES) y [revisión de origen](THIRD_PARTY_ORIGIN.txt). Los modelos conservan las condiciones de sus respectivos proveedores. No se ha asignado una licencia de código abierto al código propio ni al logo de Vocalia.
 
 Las bibliotecas de terceros, con sus fuentes completas y licencias, están en `Vendor.zip`. El script de compilación las extrae en una carpeta temporal. El código propio se puede consultar directamente en los archivos Swift de este repositorio.
+
+## Novedades de 1.0.1
+
+- Elige español o inglés antes de entrar al área de trabajo la primera vez. Después puedes cambiar el idioma dentro de Vocalia.
+- Tutorial que puedes volver a abrir: agregar audios, preparar el modelo, transcribir, revisar y copiar el texto completo.
+- Windows: **agregar un audio no lo transcribe**. Pulsa **Transcribir pendientes**. Si falta el modelo, acepta descargarlo; al terminar empieza la transcripción automáticamente.
+- Avisos claros si no hay pendientes, falta el modelo o falla el motor. Al solicitar una transcripción se detiene la reproducción; escuchar queda desactivado mientras hay un trabajo en curso.
+

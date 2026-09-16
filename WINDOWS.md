@@ -2,15 +2,15 @@
 
 [Español](WINDOWS.es.md) · [Overview](README.md)
 
-**[Download Vocalia 1.0 for Windows](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.0/Vocalia-1.0-Windows-x64-Setup.exe)**
+**[Download Vocalia 1.0.1 for Windows](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.1/Vocalia-1.0.1-Windows-x64-Setup.exe)**
 
 Source: `Vocalia-Windows-source.zip`. Extract it before running the build script.
 
-Vocalia 1.0 for Windows. Whisper recognition runs locally on your CPU. Model preparation downloads model assets; subsequent transcription loads local files in offline mode. Recordings are not uploaded.
+Vocalia 1.0.1 for Windows. Whisper recognition runs locally on your CPU. Model preparation downloads model assets; subsequent transcription loads local files in offline mode. Recordings are not uploaded.
 
 ## Install and use
 
-1. Download and run **Vocalia-1.0-Windows-x64-Setup.exe**. Follow the English/Spanish installer.
+1. Download and run **Vocalia-1.0.1-Windows-x64-Setup.exe**. Follow the English/Spanish installer.
 2. Open **Vocalia** from the Start menu. A desktop shortcut is optional. Python and administrator privileges are not required.
 3. Choose English or Español for the interface, and select the spoken language separately.
 4. Choose a model and click **Download / prepare model**. Start with `small`; `medium` and `large-v3-turbo` require more memory and processing time. For larger models, a computer with at least 16 GB RAM is a practical starting point, not a measured minimum or performance guarantee.
@@ -51,3 +51,11 @@ Before retrying a partial transcription, a JSON revision is saved under `%LOCALA
 Use the Setup.exe installer to avoid missing `python312.dll` errors caused by opening Vocalia directly inside the ZIP. It installs the complete app under `%LOCALAPPDATA%\Programs\Vocalia` and creates a Start menu shortcut. Uninstall through Windows Settings → Apps; history and downloaded models under `%LOCALAPPDATA%\Vocalia` are retained. The portable ZIP remains available for experienced users who extract every file first.
 
 The installer remains unsigned and Windows may show a reputation warning. Do not disable system-wide protections. If the error persists after using Setup.exe, report the exact error and Windows version; missing dependencies or security software may require separate diagnosis. Installer source and automated checks are in `.github/workflows/windows-installer.yml`.
+
+## New in 1.0.1
+
+- Choose English or Spanish before entering the workspace on first launch. Change the app language later inside Vocalia.
+- A replayable tutorial explains adding recordings, preparing a model, transcribing, reviewing and copying the full text.
+- Windows: **adding a recording does not transcribe it**. Click **Transcribe pending**. If the model is missing, accept its download; transcription then starts automatically.
+- Clear empty-queue, missing-model and worker-failure messages. Playback stops when transcription is requested and is unavailable while a job is running.
+

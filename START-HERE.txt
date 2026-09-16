@@ -3,16 +3,16 @@ VOCALIA 1.0 — MAC / MACBOOK
 Requires Apple Silicon (M1 or later) and macOS 26 or later.
 Drag Vocalia.app to Applications, then open it.
 If macOS cannot verify the developer, follow the official per-app opening instructions in our guide:
-https://github.com/Francoocicchetti/Vocalia/blob/v1.0.0/INSTALL-MAC.md
+https://github.com/Francoocicchetti/Vocalia/blob/v1.0.1/INSTALL-MAC.md
 
 Choose your interface language and audio language, prepare the model and add recordings.
-Full guide: https://github.com/Francoocicchetti/Vocalia/blob/v1.0.0/GUIDE.md
+Full guide: https://github.com/Francoocicchetti/Vocalia/blob/v1.0.1/GUIDE.md
 
 ESPAÑOL
 Requiere Apple Silicon (M1 o posterior) y macOS 26 o posterior.
 Arrastra Vocalia.app a Aplicaciones y ábrela.
 Si macOS no puede verificar al desarrollador, sigue la guía de primera apertura:
-https://github.com/Francoocicchetti/Vocalia/blob/v1.0.0/INSTALL-MAC.es.md
+https://github.com/Francoocicchetti/Vocalia/blob/v1.0.1/INSTALL-MAC.es.md
 
 Elige el idioma de interfaz y audio, prepara el modelo y agrega grabaciones.
-Guía: https://github.com/Francoocicchetti/Vocalia/blob/v1.0.0/GUIA.md
+Guía: https://github.com/Francoocicchetti/Vocalia/blob/v1.0.1/GUIA.md

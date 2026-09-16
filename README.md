@@ -1,6 +1,6 @@
 <p align="center"><img src="logo.png" width="128" alt="Vocalia app icon"></p>
 
-# Vocalia 1.0
+# Vocalia 1.0.1
 
 **Local transcription for journalists: complete transcripts, quotes and highlighted playback.**
 
@@ -8,22 +8,22 @@
 
 ## Download the app
 
-### [↓ Download for Windows 11 — Intel / AMD](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.0/Vocalia-1.0-Windows-x64-Setup.exe)
+### [↓ Download for Windows 11 — Intel / AMD](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.1/Vocalia-1.0.1-Windows-x64-Setup.exe)
 
-### [↓ Download for MacBook / Mac — Apple Silicon](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.0/Vocalia-1.0-macOS-AppleSilicon.zip)
+### [↓ Download for MacBook / Mac — Apple Silicon](https://github.com/Francoocicchetti/Vocalia/releases/download/v1.0.1/Vocalia-1.0.1-macOS-AppleSilicon.zip)
 
-**[View the official 1.0 Release and all downloads](https://github.com/Francoocicchetti/Vocalia/releases/tag/v1.0.0)**
+**[View the official 1.0 Release and all downloads](https://github.com/Francoocicchetti/Vocalia/releases/tag/v1.0.1)**
 
 | Your computer | Download this file | Requirements |
 | --- | --- | --- |
-| Windows PC | `Vocalia-1.0-Windows-x64-Setup.exe` | Windows 11, Intel/AMD 64-bit |
-| MacBook or Mac | `Vocalia-1.0-macOS-AppleSilicon.zip` | Apple Silicon M1 or later, macOS 26+ |
+| Windows PC | `Vocalia-1.0.1-Windows-x64-Setup.exe` | Windows 11, Intel/AMD 64-bit |
+| MacBook or Mac | `Vocalia-1.0.1-macOS-AppleSilicon.zip` | Apple Silicon M1 or later, macOS 26+ |
 
 On the Release page, the files are under **Assets**. **Download the Windows installer or the Mac ZIP, not “Source code”.** No Python, Xcode, transcription account or API key is required to run the downloaded app.
 
 ## Install and start
 
-- **Windows:** download and run **Vocalia-1.0-Windows-x64-Setup.exe**, follow the installer, then open **Vocalia** from the Start menu. A desktop shortcut is optional. No manual extraction is needed. [Windows guide](WINDOWS.md).
+- **Windows:** download and run **Vocalia-1.0.1-Windows-x64-Setup.exe**, follow the installer, then open **Vocalia** from the Start menu. A desktop shortcut is optional. No manual extraction is needed. [Windows guide](WINDOWS.md).
 - **Mac:** extract the ZIP, drag **Vocalia.app** to **Applications**, then open it. The app is not notarized by Apple; macOS may block its first launch. **[Mac installation and “Open Anyway” instructions](INSTALL-MAC.md)**.
 
 Choose your interface language and the spoken language, prepare/download a model, add recordings and start the queue. Model downloads need internet; subsequent recognition is local. Copy the full transcript at once or review it with audio highlighting.
@@ -66,3 +66,11 @@ Open an issue with your OS, app version, steps to reproduce and the file format/
 Mac uses Apple SpeechAnalyzer, WhisperKit and SpeakerKit; dependency sources are in `Vendor.zip`, with [license](THIRD_PARTY_LICENSE), [notices](THIRD_PARTY_NOTICES) and [origin](THIRD_PARTY_ORIGIN.txt). Windows uses PySide6, faster-whisper, CTranslate2, PyAV and ONNX Runtime; its package includes `licenses/` and third-party notices. Model providers retain their respective terms.
 
 No general open-source license has been assigned to Vocalia's own code or supplied logo. Third-party licenses apply to their respective components.
+
+## New in 1.0.1
+
+- Choose English or Spanish before entering the workspace on first launch. Change the app language later inside Vocalia.
+- A replayable tutorial explains adding recordings, preparing a model, transcribing, reviewing and copying the full text.
+- Windows: **adding a recording does not transcribe it**. Click **Transcribe pending**. If the model is missing, accept its download; transcription then starts automatically.
+- Clear empty-queue, missing-model and worker-failure messages. Playback stops when transcription is requested and is unavailable while a job is running.
+

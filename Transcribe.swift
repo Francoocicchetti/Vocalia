@@ -436,6 +436,7 @@ struct TranscribeView: View {
     @State var transcriptView = "completo"
     @State var showRemove = false
     @State var showDictionary = false
+    @State var showTutorial = false
     @State var selection = NSRange(location: 0, length: 0)
     @State var quoteSpeaker = ""
     @State var followAudio = true
@@ -448,6 +449,7 @@ struct TranscribeView: View {
                     .resizable().scaledToFit().frame(width: 60, height: 60)
                 VStack(alignment: .leading, spacing: 4) { Text(L("Vocalia")).font(.system(size: 26, weight: .bold, design: .rounded)); Text(L("De la voz al texto. Dentro de tu Mac.")).foregroundStyle(.secondary) }
                 Spacer()
+                Button(uiLanguage == "es" ? "Cómo usar Vocalia" : "How to use Vocalia") { showTutorial = true }
                 Label(L("100 % local"), systemImage: "lock.shield").foregroundStyle(accent).font(.system(size: 13, weight: .semibold))
             }.padding(22)
             Divider()
@@ -511,6 +513,7 @@ struct TranscribeView: View {
         .onChange(of: model.documents) { if !model.busy { model.persist() } }
         .onChange(of: model.compareEnabled) { model.saveOptions() }
         .onChange(of: model.voicesEnabled) { model.saveOptions() }
+        .sheet(isPresented: $showTutorial) { VocaliaTutorial { showTutorial = false } }
         .sheet(isPresented: $showDictionary) { DictionaryPane(model:model) }
         .alert("Vocalia", isPresented: Binding(get: { model.error != nil }, set: { if !$0 { model.error = nil } })) { Button(L("Entendido")) { model.error = nil } } message: { Text(L(model.error ?? "")) }
         .confirmationDialog(L("¿Quitar esta transcripción del historial? El audio original se conserva."), isPresented: $showRemove) { Button(L("Quitar del historial"), role: .destructive) { model.removeSelected() } }
@@ -549,7 +552,7 @@ struct TranscribeView: View {
                     }
                 }.labelsHidden().frame(width:180).disabled(model.busy)
                 Button(model.languageInstalled ? L("Idioma listo") : L("Descargar idioma")){model.prepareLanguage()}.disabled(model.busy || model.checkingLanguage || model.languageInstalled)
-                Picker(L("Interfaz"),selection:$uiLanguage){Text(L("Español")).tag("es");Text(L("English")).tag("en")}.frame(width:185).disabled(model.busy)
+                Picker(uiLanguage == "es" ? "Cambiar idioma" : "Change language",selection:$uiLanguage){Text(L("Español")).tag("es");Text(L("English")).tag("en")}.frame(width:185).disabled(model.busy)
                 Spacer()
                 Button(L("Diccionario (\(model.dictionary.count))")) {showDictionary=true}.disabled(model.busy)
             }
@@ -682,7 +685,7 @@ final class TranscribeDelegate: NSObject, NSApplicationDelegate {
 @main struct TranscribeApp: App {
     @NSApplicationDelegateAdaptor(TranscribeDelegate.self) var delegate
     init() { if CommandLine.arguments.contains("--self-test") { TranscribeTests.run(); AdvancedTests.run(); exit(0) } }
-    var body: some Scene { WindowGroup("Vocalia") { TranscribeView() }.defaultSize(width: 1100, height: 820).commands { CommandGroup(replacing: .newItem) {} } }
+    var body: some Scene { WindowGroup("Vocalia") { VocaliaStartView() }.defaultSize(width: 1100, height: 820).commands { CommandGroup(replacing: .newItem) {} } }
 }
 #endif
 enum TranscribeTests {
