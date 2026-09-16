@@ -5,7 +5,6 @@ on:
     branches: [main]
     paths:
       - 'Vocalia-Windows-source.zip'
-      - '.github/workflows/windows.yml'
 permissions:
   contents: read
 concurrency:
@@ -50,6 +49,7 @@ jobs:
     permissions:
       contents: write
     steps:
+      - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
         with:
           name: Vocalia-Windows-11-x64-preview
@@ -60,7 +60,7 @@ jobs:
           GH_REPO: ${{ github.repository }}
         shell: bash
         run: |
-          if ! gh release view windows-v0.1.0-preview >/dev/null 2>&1; then
-            gh release create windows-v0.1.0-preview --target "$GITHUB_SHA" --prerelease --title 'Vocalia para Windows 11 x64 — versión preliminar' --notes 'Windows 11 Intel/AMD. Descomprime todo el ZIP y abre Vocalia.exe. Motor Whisper local, interfaz español/inglés, importación múltiple, texto completo, cuñas y seguimiento del audio. Descarga inicial del modelo desde la app. Sin motor Apple ni separación automática de voces. Pruebas del ejecutable en Windows Server x64: historial, interfaz y transcripción de audio público. Pendiente validación de uso en equipos Windows 11 reales. Ejecutable sin firma Authenticode. Consulta WINDOWS.md para instrucciones y límites.'
+          if ! gh release view windows-v0.1.1-preview >/dev/null 2>&1; then
+            gh release create windows-v0.1.1-preview --target "$GITHUB_SHA" --prerelease --title 'Vocalia for Windows 11 x64 — 0.1.1 preview' --notes-file WINDOWS-RELEASE.md
           fi
-          gh release upload windows-v0.1.0-preview release/* --clobber
+          gh release upload windows-v0.1.1-preview release/* --clobber
