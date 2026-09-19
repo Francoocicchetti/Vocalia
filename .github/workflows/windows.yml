@@ -66,4 +66,7 @@ jobs:
           GH_REPO: ${{ github.repository }}
         shell: bash
         run: |
-          gh release create v0.0.5 --target "$GITHUB_SHA" --title "Vocalia 0.0.5 — Preview" --notes-file RELEASE-0.0.5.md --prerelease --latest=false release/Vocalia-0.0.5-*.zip release/Vocalia-0.0.5-*.exe release/SHA256SUMS-0.0.5.txt release/Windows-0.0.5-Validation.txt
+          echo "" >> RELEASE-0.0.5.md
+          echo "Installer revision source: [$GITHUB_SHA](https://github.com/$GITHUB_REPOSITORY/commit/$GITHUB_SHA). [Build and checks](https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID)." >> RELEASE-0.0.5.md
+          gh release upload v0.0.5 --clobber release/Vocalia-0.0.5-*.zip release/Vocalia-0.0.5-*.exe release/SHA256SUMS-0.0.5.txt release/Windows-0.0.5-Validation.txt
+          gh release edit v0.0.5 --title "Vocalia 0.0.5 — Preview · In-app updates" --notes-file RELEASE-0.0.5.md --prerelease --latest=false
