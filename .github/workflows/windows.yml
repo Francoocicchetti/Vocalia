@@ -1,4 +1,4 @@
-name: Vocalia 0.0.4 build and release checks
+name: Vocalia 0.0.5 build and release checks
 on:
   workflow_dispatch:
   push:
@@ -31,9 +31,9 @@ jobs:
         run: ./build-source/Vocalia-Windows/build_installer.ps1
       - uses: actions/upload-artifact@v4
         with:
-          name: Vocalia-0.0.4-Windows-x64
+          name: Vocalia-0.0.5-Windows-x64
           path: |
-            build-source/Vocalia-Windows/Vocalia-0.0.4-Windows-x64.zip
+            build-source/Vocalia-Windows/Vocalia-0.0.5-Windows-x64.zip
             build-source/Vocalia-Windows/SHA256SUMS-Windows.txt
             build-source/Vocalia-Windows/release/*
           if-no-files-found: error
@@ -46,7 +46,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
         with:
-          name: Vocalia-0.0.4-Windows-x64
+          name: Vocalia-0.0.5-Windows-x64
           path: release
       - name: Verify and assemble both platform downloads
         shell: bash
@@ -56,17 +56,14 @@ jobs:
           sed 's/\r$//' release/release/SHA256SUMS-Installer.txt | (cd release/release && sha256sum -c -)
           mv release/release/* release/
           rmdir release/release
-          cp Vocalia-0.0.4-macOS-AppleSilicon.zip Vocalia-0.0.4-source.zip release/
-          mv release/Windows-Installer-Validation.txt release/Windows-0.0.4-Validation.txt
+          cp Vocalia-0.0.5-macOS-AppleSilicon.zip Vocalia-0.0.5-source.zip release/
+          mv release/Windows-Installer-Validation.txt release/Windows-0.0.5-Validation.txt
           cd release
-          sha256sum Vocalia-0.0.4-*.zip Vocalia-0.0.4-*.exe > SHA256SUMS-0.0.4.txt
-      - name: Publish 0.0.4 only after all checks pass
+          sha256sum Vocalia-0.0.5-*.zip Vocalia-0.0.5-*.exe > SHA256SUMS-0.0.5.txt
+      - name: Publish 0.0.5 only after all checks pass
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
         shell: bash
         run: |
-          gh release create v0.0.4 --target "$GITHUB_SHA" --title "Vocalia 0.0.4 — Preview" --notes-file RELEASE-0.0.4.md --prerelease --latest=false release/Vocalia-0.0.4-*.zip release/Vocalia-0.0.4-*.exe release/SHA256SUMS-0.0.4.txt release/Windows-0.0.4-Validation.txt
-          for tag in v1.0.0 v1.0.1 v1.0.2 v1.0.3 v1.0.4; do
-            gh release edit "$tag" --prerelease --latest=false
-          done
+          gh release create v0.0.5 --target "$GITHUB_SHA" --title "Vocalia 0.0.5 — Preview" --notes-file RELEASE-0.0.5.md --prerelease --latest=false release/Vocalia-0.0.5-*.zip release/Vocalia-0.0.5-*.exe release/SHA256SUMS-0.0.5.txt release/Windows-0.0.5-Validation.txt
