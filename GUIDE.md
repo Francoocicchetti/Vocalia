@@ -1,6 +1,6 @@
 # Vocalia for Mac — user guide
 
-**Pre-release 0.0.4 · In development.** Vocalia is not a stable 1.0 release yet. This version replaces the previous 1.0.4 label while preserving features and data. Earlier table entries are historical prototype labels.
+**Pre-release 0.0.5 · In development.** Vocalia is not a stable 1.0 release yet. Earlier 1.x entries are historical prototype labels from before the numbering reset; existing history and features are preserved.
 
 [Installation and macOS security prompts](INSTALL-MAC.md)
 
@@ -55,7 +55,7 @@ Review names, figures, overlapping voices and publishable quotations against the
 To build from source, run `zsh build.sh` with compatible Apple development tools and the macOS 26 SDK. The script builds the bundled dependencies, runs checks and produces a ZIP with license notices.
 
 
-## Vocalia 0.0.4
+## Vocalia 0.0.5
 
 The interface offers six languages. The interactive tour can be replayed. OPUS and Ogg/Opus remain supported. See the [version table and feature matrix](README.md).
 
@@ -68,3 +68,13 @@ Decimal formatting follows the audio language, not the interface language. It ha
 ## Automatic transcription in 0.0.4
 
 New recordings start transcribing automatically when added or dropped. Files run sequentially; a missing model is downloaded first. Transcribe pending remains available to resume stopped files. Existing history and edits are not automatically reprocessed. Speaker analysis remains manual.
+
+## Library, review, Word and updates in 0.0.5
+
+- **Library and projects:** search a word or phrase across your local transcripts. Select a result and choose **Open result and listen**. Playback uses the matching segment interval; rewritten text without a reliable timing match is labeled **No exact audio position** and opens without inventing a timestamp. Up to 200 matches appear; narrow the search if necessary.
+- Assign a **Project**, comma-separated **Tags** and a **Recording date** (`YYYY-MM-DD`) to a selected recording, then **Save organization**. Filter by project, tag or date range. These are history metadata, not folders that move your recordings. Older recordings remain available; their creation/import date is used until a recording date is assigned.
+- **Review figures / Figures only:** collect the segments containing digits in the recognized or original text. Listen, correct and mark them reviewed using the existing review controls. This does not certify a number as correct or detect every number written as a word. An independently edited full transcript remains separate from segment edits; update that text too when necessary.
+- **Export Word:** select a transcript, choose its document title and date, tick the saved quotes to include, and save a `.docx`. The document contains the full edited transcript, project/tags if present, and chosen quotes with speaker, source filename and time. It does not include the private path to the original recording. No Word subscription is needed to export.
+- **Updates:** enable or disable automatic checks, or choose **Check now**. An anonymous GitHub release check runs at most once per day while the app is running, and only reports releases with a matching platform download. The dialog shows release notes, a download button and the release page. Recordings, transcript text, project names and history are never sent.
+- Update installation is **user initiated**: download, close Vocalia, then run the Windows installer in the existing location or replace the Mac app in Applications. Keep the same OS user and do not delete the history/data folder. History, quotes, metadata, models and settings remain outside the app. This is not a silent updater. Versions older than 0.0.5 must download this release manually once.
+

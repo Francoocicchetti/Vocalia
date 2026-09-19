@@ -13,3 +13,7 @@ El repositorio y las descargas no contienen historial, entrevistas personales, t
 No publiques grabaciones sensibles, identidades de fuentes, transcripciones ni registros sin revisar en los issues.
 
 Los modelos opcionales de voces de Windows se descargan de las versiones públicas de sherpa-onnx en GitHub. El análisis y la comparación se ejecutan localmente. La prueba de voces usa una grabación pública de cuatro hablantes del mismo proveedor, nunca entrevistas privadas.
+
+## Actualizaciones
+
+Desde 0.0.5, la app consulta opcionalmente las versiones públicas de GitHub una vez al día y al pulsar Buscar ahora. GitHub recibe la solicitud de red habitual (incluida tu dirección IP) y la versión de la app; no recibe grabaciones, texto, nombres de proyectos ni historial. Puedes desactivar las consultas automáticas en Actualizaciones. Descargar o abrir la página de una versión utiliza tu navegador. Proyectos, etiquetas y fechas se guardan en el mismo historial local. Los documentos Word se guardan únicamente donde tú elijas.

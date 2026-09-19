@@ -33,6 +33,9 @@ struct Transcript: Identifiable, Codable, Equatable, Sendable {
     var comparison: [ComparisonRow]? = nil
     var voiceIntervals: [VoiceInterval]? = nil
     var advancedStatus: String? = nil
+    var project:String? = nil
+    var tags:[String]? = nil
+    var recordedDate:String? = nil
 }
 enum TranscribeError: LocalizedError {
     case message(String)
@@ -172,7 +175,8 @@ enum AudioPrep {
     var current: Transcript? { selectedIndex.map { documents[$0] } }
     var totalWords: Int { current.map { TextExport.render($0, kind: "txt").split(whereSeparator: { $0.isWhitespace }).count } ?? 0 }
     init(storageOverride: URL? = nil) {
-        storage = storageOverride ?? FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0].appendingPathComponent("Franco Transcribe", isDirectory: true)
+        let qaPath = (Bundle.main.bundleIdentifier ?? "").hasPrefix("cl.vocalia.qa") ? Bundle.main.object(forInfoDictionaryKey:"VocaliaQAStorage") as? String : nil
+        storage = storageOverride ?? qaPath.map{URL(fileURLWithPath:$0,isDirectory:true)} ?? FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0].appendingPathComponent("Franco Transcribe", isDirectory: true)
         do {
             try FileManager.default.createDirectory(at: storage, withIntermediateDirectories: true)
             let history = storage.appendingPathComponent("transcripciones.json")
@@ -474,6 +478,10 @@ struct TranscribeView: View {
     @State var quoteSpeaker = ""
     @State var followAudio = true
     @AppStorage("uiLanguage") var uiLanguage = AppLanguage.system
+    @State private var showLibrary=false
+    @State private var showWord=false
+    @StateObject private var updates=UpdateManager()
+    @State private var pendingLibraryHit:LibraryHit?
     let accent = Color(red: 0.24, green: 0.28, blue: 0.66)
     var body: some View {
         VStack(spacing: 0) {
@@ -482,6 +490,8 @@ struct TranscribeView: View {
                     .resizable().scaledToFit().frame(width: 60, height: 60)
                 VStack(alignment: .leading, spacing: 4) { Text(L("Vocalia")).font(.system(size: 26, weight: .bold, design: .rounded)); Text(L("De la voz al texto. Dentro de tu Mac.")).foregroundStyle(.secondary) }
                 Spacer()
+                Button(T("Library and projects")){showLibrary=true}.disabled(model.busy)
+                Button(T("Updates")){updates.show=true}
                 Button(T("How to use Vocalia")) { showTutorial = true }
                 Label(L("100 % local"), systemImage: "lock.shield").foregroundStyle(accent).font(.system(size: 13, weight: .semibold))
             }.padding(22)
@@ -525,7 +535,8 @@ struct TranscribeView: View {
         .overlayPreferenceValue(TourAnchors.self) { anchors in
             if showTutorial { VocaliaCoachMarks(anchors: anchors, language: uiLanguage) { showTutorial = false; guidedTourCompleted = true } }
         }
-        .onAppear { if !guidedTourCompleted { showTutorial = true } }
+        .onAppear { if !guidedTourCompleted { showTutorial = true };updates.automaticCheck() }
+        .onReceive(Timer.publish(every:3600,on:.main,in:.common).autoconnect()){_ in updates.automaticCheck()}
         .onChange(of: showTutorial, initial: true) {
             if showTutorial { NSApp.keyWindow?.makeFirstResponder(nil) }
         }
@@ -550,11 +561,18 @@ struct TranscribeView: View {
         }
         .environment(\.locale,Locale(identifier:uiLanguage))
         .task { UserDefaults.standard.set(uiLanguage,forKey:"uiLanguage");await model.checkEngine(); await model.refreshAdvancedStatus() }
-        .onChange(of: model.selected) { model.stopPlayback();selection=NSRange(location:0,length:0);quoteSpeaker="" }
+        .onChange(of: model.selected) { model.stopPlayback();selection=NSRange(location:0,length:0);quoteSpeaker="";if let hit=pendingLibraryHit {pendingLibraryHit=nil;if let start=hit.start {model.play(at:start,until:hit.end)}} }
         .onChange(of: model.localeID) { UserDefaults.standard.set(model.localeID,forKey:"locale");Task { await model.checkEngine() } }
         .onChange(of: model.documents) { if !model.busy { model.persist() } }
         .onChange(of: model.compareEnabled) { model.saveOptions() }
         .onChange(of: model.voicesEnabled) { model.saveOptions() }
+        .sheet(isPresented:$showLibrary){LibraryPane(model:model){hit in
+            transcriptView="completo"
+            if model.selected==hit.document {if let start=hit.start{model.play(at:start,until:hit.end)}}
+            else{pendingLibraryHit=hit;model.selected=hit.document}
+        }}
+        .sheet(isPresented:$showWord){if let doc=model.current{WordPane(document:doc)}}
+        .sheet(isPresented:$updates.show){UpdatePane(manager:updates)}
         .sheet(isPresented: $showDictionary) { DictionaryPane(model:model) }
         .alert("Vocalia", isPresented: Binding(get: { model.error != nil }, set: { if !$0 { model.error = nil } })) { Button(L("Entendido")) { model.error = nil } } message: { Text(L(model.error ?? "")) }
         .confirmationDialog(L("¿Quitar esta transcripción del historial? El audio original se conserva."), isPresented: $showRemove) { Button(L("Quitar del historial"), role: .destructive) { model.removeSelected() } }
@@ -622,6 +640,7 @@ struct TranscribeView: View {
                 Picker(L("Vista de la transcripción"), selection: $transcriptView) {
                     Text(L("Texto completo")).tag("completo")
                     Text(L("Revisar")).tag("revision")
+                    Text(T("Figures only")).tag("cifras")
                     Text(L("Cuñas")).tag("cunas")
                     Text(L("Comparación")).tag("comparacion")
                     Text(L("Voces")).tag("voces")
@@ -631,7 +650,7 @@ struct TranscribeView: View {
                 if model.current?.complete == true {Button(L("Analizar voces / comparar")) {model.runAdvanced()}.disabled(model.busy || (!model.compareEnabled && !model.voicesEnabled))}
                 Spacer()
                 Button(L("Copiar todo el texto")) { model.copyText() }.buttonStyle(.borderedProminent).tint(accent).disabled(model.current?.segments.isEmpty != false)
-                Menu(L("Exportar")) { Button(L("Vincular original…")){model.relinkOriginal()}.disabled(model.busy); Divider(); Button(L("Texto (.txt)")) { model.export("txt") }; Button(L("Subtítulos (.srt)")) { model.export("srt") }; Button(L("WebVTT (.vtt)")) { model.export("vtt") } }.disabled(model.current?.segments.isEmpty != false).frame(width: 105)
+                Menu(L("Exportar")) { Button(T("Export Word")){showWord=true}.disabled(model.busy);Divider(); Button(L("Vincular original…")){model.relinkOriginal()}.disabled(model.busy); Divider(); Button(L("Texto (.txt)")) { model.export("txt") }; Button(L("Subtítulos (.srt)")) { model.export("srt") }; Button(L("WebVTT (.vtt)")) { model.export("vtt") } }.disabled(model.current?.segments.isEmpty != false).frame(width: 105)
             }.padding(.horizontal, 16).padding(.bottom, 12)
             Divider()
             if transcriptView == "cunas" {
@@ -687,7 +706,7 @@ struct TranscribeView: View {
                     }
                     ForEach(doc.segments) { segment in
                         let segmentBinding=model.segmentBinding(documentID:doc.id,snapshot:segment)
-                        if !onlyReview || !segment.reviewed {
+                        if (!onlyReview || !segment.reviewed) && (transcriptView != "cifras" || LibrarySearch.figures(segment)) {
                             VStack(alignment: .leading, spacing: 10) {
                                 HStack {
                                     Button { model.play(at: max(0, segment.start - 0.4)) } label: { Label(TextExport.clock(segment.start), systemImage: "play.circle") }.buttonStyle(.link).font(.system(size: 11, design: .monospaced))
@@ -735,7 +754,8 @@ final class TranscribeDelegate: NSObject, NSApplicationDelegate {
         if CommandLine.arguments.contains("--auto-import-test") {
             Task { @MainActor in await AdvancedTests.autoImport();exit(0) };RunLoop.main.run()
         }
-        if CommandLine.arguments.contains("--self-test") { TranscribeTests.run(); AdvancedTests.run(); exit(0) } }
+        if let i=CommandLine.arguments.firstIndex(of:"--library-fixture"),CommandLine.arguments.count>i+1{LibraryChecks.run(output:CommandLine.arguments[i+1]);exit(0)}
+        if CommandLine.arguments.contains("--self-test") { TranscribeTests.run(); AdvancedTests.run(); LibraryChecks.run(); exit(0) } }
     var body: some Scene { WindowGroup("Vocalia") { if let config = Bundle.main.url(forResource: "opus-qa", withExtension: "json") { OpusValidationView(config: config) } else { VocaliaStartView() } }.defaultSize(width: 1100, height: 820).commands { CommandGroup(replacing: .newItem) {} } }
 }
 #endif

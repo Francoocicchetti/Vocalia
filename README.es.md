@@ -1,8 +1,8 @@
 <p align="center"><img src="logo.png" width="128" alt="Icono de Vocalia"></p>
 
-# Vocalia 0.0.4
+# Vocalia 0.0.5
 
-**Versión preliminar 0.0.4 · En desarrollo.** Vocalia todavía no es una versión 1.0 estable. La numeración actual sustituye a la etiqueta anterior 1.0.4; conserva sus funciones y datos. Las entradas anteriores de la tabla son etiquetas históricas de prototipos.
+**Versión preliminar 0.0.5 · En desarrollo.** Vocalia todavía no es una versión 1.0 estable. Las entradas 1.x son etiquetas históricas anteriores al cambio de numeración; se conservan las funciones y el historial.
 
 **Transcripción local para periodistas: texto completo, cuñas y reproducción con resaltado.**
 
@@ -10,16 +10,16 @@
 
 ## Descargar
 
-### [↓ Instalador para Windows 11 — Intel / AMD](https://github.com/Francoocicchetti/Vocalia/releases/download/v0.0.4/Vocalia-0.0.4-Windows-x64-Setup.exe)
+### [↓ Instalador para Windows 11 — Intel / AMD](https://github.com/Francoocicchetti/Vocalia/releases/download/v0.0.5/Vocalia-0.0.5-Windows-x64-Setup.exe)
 
-### [↓ MacBook / Mac — Apple Silicon](https://github.com/Francoocicchetti/Vocalia/releases/download/v0.0.4/Vocalia-0.0.4-macOS-AppleSilicon.zip)
+### [↓ MacBook / Mac — Apple Silicon](https://github.com/Francoocicchetti/Vocalia/releases/download/v0.0.5/Vocalia-0.0.5-macOS-AppleSilicon.zip)
 
-[Todos los archivos y verificaciones de la versión 1.0.3](https://github.com/Francoocicchetti/Vocalia/releases/tag/v0.0.4)
+[Todos los archivos y verificaciones de la versión 0.0.5](https://github.com/Francoocicchetti/Vocalia/releases/tag/v0.0.5)
 
 | Equipo | Requisitos | Archivo |
 | --- | --- | --- |
-| Windows | Windows 11, Intel/AMD de 64 bits | `Vocalia-0.0.4-Windows-x64-Setup.exe` |
-| MacBook / Mac | Apple Silicon M1 o posterior, macOS 26+ | `Vocalia-0.0.4-macOS-AppleSilicon.zip` |
+| Windows | Windows 11, Intel/AMD de 64 bits | `Vocalia-0.0.5-Windows-x64-Setup.exe` |
+| MacBook / Mac | Apple Silicon M1 o posterior, macOS 26+ | `Vocalia-0.0.5-macOS-AppleSilicon.zip` |
 
 Los archivos están en **Assets**, debajo de las notas de la versión. Descarga el instalador o el ZIP para Mac, no «Source code». No necesitas Python, Xcode, cuenta ni clave de API. Estos archivos no son compatibles con Mac Intel ni Windows ARM.
 
@@ -42,6 +42,7 @@ Internet se usa para descargar modelos. Las grabaciones y transcripciones se pro
 | **1.0.2** | Seis idiomas de interfaz. Windows incorpora revisión de fragmentos, comparación con otro modelo, agrupación local de voces y nombres, escuchar/copiar/exportar cuñas, velocidad de reproducción y editor de diccionario. También permite arrastrar archivos, agregarlos al terminar una cola activa y volver a transcribir una selección guardando una copia previa. Documentación bilingüe y nuevas pruebas. |
 | **1.0.3** | Separación de voces solo manual, desactivada al iniciar Mac. Decimales explícitos en español como «9, coma, 5» pasan a «9,5»; se conserva el original, los tiempos y se marcan las cifras para revisión con audio. |
 | **0.0.4** | Las grabaciones nuevas se transcriben automáticamente al agregarlas o arrastrarlas. Se procesan una a una; si falta el modelo, se descarga primero. Transcribir pendientes permite retomar archivos detenidos. No se reprocesan automáticamente el historial ni las ediciones. El análisis de voces sigue siendo manual. |
+| **0.0.5** | Avisos de nuevas versiones y sus cambios; búsqueda en todas las transcripciones con escucha del fragmento; proyectos, etiquetas y fechas; vista de revisión de cifras; exportación Word del texto completo editado con cuñas seleccionadas. |
 
 [Historial detallado](CHANGELOG.es.md)
 
@@ -89,3 +90,13 @@ La corrección de decimales usa el idioma del audio, no el de la interfaz. Recon
 ## Transcripción automática en 0.0.4
 
 Las grabaciones nuevas se transcriben automáticamente al agregarlas o arrastrarlas. Se procesan una a una; si falta el modelo, se descarga primero. Transcribir pendientes permite retomar archivos detenidos. No se reprocesan automáticamente el historial ni las ediciones. El análisis de voces sigue siendo manual.
+
+## Biblioteca, revisión, Word y actualizaciones en 0.0.5
+
+- **Biblioteca y proyectos:** busca una palabra o frase en todas las transcripciones locales. Selecciona un resultado y pulsa **Abrir resultado y escuchar**. La reproducción utiliza el intervalo del fragmento coincidente. Si una edición no permite ubicarlo con seguridad, aparece **Sin posición exacta en el audio** y se abre sin inventar un tiempo. Se muestran hasta 200 coincidencias; puedes acotar la búsqueda.
+- Asigna un **Proyecto**, **Etiquetas separadas por comas** y una **Fecha de grabación** (`AAAA-MM-DD`) al archivo seleccionado; pulsa **Guardar organización**. Filtra por proyecto, etiqueta o rango de fechas. Son datos del historial: no mueven los originales. Las grabaciones anteriores siguen disponibles; se usa su fecha de creación/importación hasta asignar otra.
+- **Revisar cifras / Solo cifras:** reúne los fragmentos que contienen dígitos en el reconocimiento actual u original. Escúchalos, corrígelos y márcalos revisados con los controles existentes. No certifica que la cifra sea correcta ni detecta todos los números escritos con palabras. El texto completo editado de forma independiente se conserva separado de los fragmentos: corrígelo también cuando corresponda.
+- **Exportar Word:** selecciona una transcripción, elige título y fecha, marca las cuñas guardadas que quieras incluir y guarda el `.docx`. Contiene todo el texto editado, proyecto/etiquetas si existen y las cuñas elegidas con hablante, nombre del archivo y tiempo. No incluye la ruta privada de la grabación. No necesitas una suscripción a Word para exportar.
+- **Actualizaciones:** activa o desactiva la búsqueda automática, o consulta manualmente. La app consulta las versiones públicas en GitHub como máximo una vez al día mientras está abierta; solo ofrece versiones con una descarga para tu plataforma. Muestra novedades, descarga y página de la versión. Nunca envía grabaciones, transcripciones, proyectos ni historial.
+- La instalación es **voluntaria**: descarga, cierra Vocalia y ejecuta el instalador de Windows en la ubicación habitual o reemplaza la app en Aplicaciones en Mac. Conserva el mismo usuario del sistema y no borres la carpeta de datos. El historial, las cuñas, los proyectos, modelos y ajustes están fuera de la app y se conservan. No es un actualizador silencioso. Las versiones anteriores a 0.0.5 necesitan descargar esta versión manualmente una vez.
+

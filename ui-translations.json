@@ -1937,5 +1937,285 @@
     "fr": "Si un modèle manque, téléchargez-le une fois ; la transcription reprend dès qu’il est prêt. Les enregistrements restent sur cet ordinateur.",
     "pt": "Se faltar um modelo, baixe-o uma vez; a transcrição continua quando estiver pronto. As gravações ficam neste computador.",
     "zh": "如果缺少模型，请先下载一次；模型准备好后会继续转写。录音始终保留在本机。"
+  },
+  "Library and projects": {
+    "es": "Biblioteca y proyectos",
+    "de": "Bibliothek und Projekte",
+    "fr": "Bibliothèque et projets",
+    "pt": "Biblioteca e projetos",
+    "zh": "资料库与项目"
+  },
+  "Review figures": {
+    "es": "Revisar cifras",
+    "de": "Zahlen prüfen",
+    "fr": "Vérifier les chiffres",
+    "pt": "Revisar números",
+    "zh": "核对数字"
+  },
+  "Export Word": {
+    "es": "Exportar a Word",
+    "de": "Nach Word exportieren",
+    "fr": "Exporter vers Word",
+    "pt": "Exportar para Word",
+    "zh": "导出 Word"
+  },
+  "Updates": {
+    "es": "Actualizaciones",
+    "de": "Updates",
+    "fr": "Mises à jour",
+    "pt": "Atualizações",
+    "zh": "更新"
+  },
+  "Figures only": {
+    "es": "Solo cifras",
+    "de": "Nur Zahlen",
+    "fr": "Chiffres uniquement",
+    "pt": "Apenas números",
+    "zh": "仅数字"
+  },
+  "Search all transcripts": {
+    "es": "Buscar en todas las transcripciones",
+    "de": "Alle Transkripte durchsuchen",
+    "fr": "Rechercher dans toutes les transcriptions",
+    "pt": "Pesquisar em todas as transcrições",
+    "zh": "搜索所有转写"
+  },
+  "All projects": {
+    "es": "Todos los proyectos",
+    "de": "Alle Projekte",
+    "fr": "Tous les projets",
+    "pt": "Todos os projetos",
+    "zh": "所有项目"
+  },
+  "Filter by tag": {
+    "es": "Filtrar por etiqueta",
+    "de": "Nach Tag filtern",
+    "fr": "Filtrer par étiquette",
+    "pt": "Filtrar por etiqueta",
+    "zh": "按标签筛选"
+  },
+  "From YYYY-MM-DD": {
+    "es": "Desde AAAA-MM-DD",
+    "de": "Ab JJJJ-MM-TT",
+    "fr": "Depuis AAAA-MM-JJ",
+    "pt": "Desde AAAA-MM-DD",
+    "zh": "起始日期 YYYY-MM-DD"
+  },
+  "To YYYY-MM-DD": {
+    "es": "Hasta AAAA-MM-DD",
+    "de": "Bis JJJJ-MM-TT",
+    "fr": "Jusqu’au AAAA-MM-JJ",
+    "pt": "Até AAAA-MM-DD",
+    "zh": "结束日期 YYYY-MM-DD"
+  },
+  "Project": {
+    "es": "Proyecto",
+    "de": "Projekt",
+    "fr": "Projet",
+    "pt": "Projeto",
+    "zh": "项目"
+  },
+  "Tags": {
+    "es": "Etiquetas",
+    "de": "Tags",
+    "fr": "Étiquettes",
+    "pt": "Etiquetas",
+    "zh": "标签"
+  },
+  "Tags separated by commas": {
+    "es": "Etiquetas separadas por comas",
+    "de": "Tags durch Kommas getrennt",
+    "fr": "Étiquettes séparées par des virgules",
+    "pt": "Etiquetas separadas por vírgulas",
+    "zh": "用逗号分隔标签"
+  },
+  "Recording date YYYY-MM-DD": {
+    "es": "Fecha de grabación AAAA-MM-DD",
+    "de": "Aufnahmedatum JJJJ-MM-TT",
+    "fr": "Date de l’enregistrement AAAA-MM-JJ",
+    "pt": "Data da gravação AAAA-MM-DD",
+    "zh": "录音日期 YYYY-MM-DD"
+  },
+  "Save organization": {
+    "es": "Guardar organización",
+    "de": "Zuordnung speichern",
+    "fr": "Enregistrer le classement",
+    "pt": "Salvar organização",
+    "zh": "保存分类"
+  },
+  "Open result and listen": {
+    "es": "Abrir resultado y escuchar",
+    "de": "Ergebnis öffnen und anhören",
+    "fr": "Ouvrir le résultat et écouter",
+    "pt": "Abrir resultado e ouvir",
+    "zh": "打开结果并收听"
+  },
+  "Close": {
+    "es": "Cerrar",
+    "de": "Schließen",
+    "fr": "Fermer",
+    "pt": "Fechar",
+    "zh": "关闭"
+  },
+  "No exact audio position": {
+    "es": "Sin posición exacta en el audio",
+    "de": "Keine genaue Audioposition",
+    "fr": "Aucune position audio exacte",
+    "pt": "Sem posição exata no áudio",
+    "zh": "无法确定准确音频位置"
+  },
+  "Use a valid date in YYYY-MM-DD format.": {
+    "es": "Usa una fecha válida con formato AAAA-MM-DD.",
+    "de": "Gib ein gültiges Datum im Format JJJJ-MM-TT ein.",
+    "fr": "Saisissez une date valide au format AAAA-MM-JJ.",
+    "pt": "Use uma data válida no formato AAAA-MM-DD.",
+    "zh": "请输入有效日期，格式为 YYYY-MM-DD。"
+  },
+  "Document title": {
+    "es": "Título del documento",
+    "de": "Dokumenttitel",
+    "fr": "Titre du document",
+    "pt": "Título do documento",
+    "zh": "文档标题"
+  },
+  "Select saved quotes to include": {
+    "es": "Selecciona las cuñas guardadas que quieres incluir",
+    "de": "Gespeicherte Zitate zum Einfügen auswählen",
+    "fr": "Sélectionnez les citations enregistrées à inclure",
+    "pt": "Selecione as citações salvas a incluir",
+    "zh": "选择要包含的已保存引文"
+  },
+  "Full transcript": {
+    "es": "Transcripción completa",
+    "de": "Vollständiges Transkript",
+    "fr": "Transcription complète",
+    "pt": "Transcrição completa",
+    "zh": "完整转写"
+  },
+  "Selected quotes": {
+    "es": "Cuñas seleccionadas",
+    "de": "Ausgewählte Zitate",
+    "fr": "Citations sélectionnées",
+    "pt": "Citações selecionadas",
+    "zh": "所选引文"
+  },
+  "Save Word document": {
+    "es": "Guardar documento Word",
+    "de": "Word-Dokument speichern",
+    "fr": "Enregistrer le document Word",
+    "pt": "Salvar documento Word",
+    "zh": "保存 Word 文档"
+  },
+  "Word document saved.": {
+    "es": "Documento Word guardado.",
+    "de": "Word-Dokument gespeichert.",
+    "fr": "Document Word enregistré.",
+    "pt": "Documento Word salvo.",
+    "zh": "Word 文档已保存。"
+  },
+  "Select a transcript with text first.": {
+    "es": "Primero selecciona una transcripción con texto.",
+    "de": "Wähle zuerst ein Transkript mit Text.",
+    "fr": "Sélectionnez d’abord une transcription contenant du texte.",
+    "pt": "Primeiro selecione uma transcrição com texto.",
+    "zh": "请先选择有文字的转写。"
+  },
+  "Check for updates automatically": {
+    "es": "Buscar actualizaciones automáticamente",
+    "de": "Automatisch nach Updates suchen",
+    "fr": "Rechercher automatiquement les mises à jour",
+    "pt": "Buscar atualizações automaticamente",
+    "zh": "自动检查更新"
+  },
+  "Check now": {
+    "es": "Buscar ahora",
+    "de": "Jetzt prüfen",
+    "fr": "Vérifier maintenant",
+    "pt": "Verificar agora",
+    "zh": "立即检查"
+  },
+  "Update available": {
+    "es": "Actualización disponible",
+    "de": "Update verfügbar",
+    "fr": "Mise à jour disponible",
+    "pt": "Atualização disponível",
+    "zh": "有可用更新"
+  },
+  "Download update": {
+    "es": "Descargar actualización",
+    "de": "Update herunterladen",
+    "fr": "Télécharger la mise à jour",
+    "pt": "Baixar atualização",
+    "zh": "下载更新"
+  },
+  "Release details": {
+    "es": "Ver novedades",
+    "de": "Versionshinweise",
+    "fr": "Détails de la version",
+    "pt": "Detalhes da versão",
+    "zh": "版本详情"
+  },
+  "Later": {
+    "es": "Más tarde",
+    "de": "Später",
+    "fr": "Plus tard",
+    "pt": "Mais tarde",
+    "zh": "稍后"
+  },
+  "You have the latest available version.": {
+    "es": "Tienes la última versión disponible.",
+    "de": "Du hast die neueste verfügbare Version.",
+    "fr": "Vous avez la dernière version disponible.",
+    "pt": "Você tem a versão mais recente disponível.",
+    "zh": "你已安装最新可用版本。"
+  },
+  "Could not check updates. Check your internet connection and try again.": {
+    "es": "No se pudieron buscar actualizaciones. Revisa tu conexión e inténtalo de nuevo.",
+    "de": "Updates konnten nicht geprüft werden. Prüfe die Internetverbindung und versuche es erneut.",
+    "fr": "Impossible de vérifier les mises à jour. Vérifiez votre connexion et réessayez.",
+    "pt": "Não foi possível verificar atualizações. Confira sua conexão e tente novamente.",
+    "zh": "无法检查更新。请检查网络连接后重试。"
+  },
+  "Checks contact GitHub once a day. Recordings and transcripts are never sent.": {
+    "es": "La búsqueda consulta GitHub una vez al día. No envía grabaciones ni transcripciones.",
+    "de": "Die Prüfung kontaktiert GitHub einmal täglich. Aufnahmen und Transkripte werden nie gesendet.",
+    "fr": "La vérification contacte GitHub une fois par jour. Aucun enregistrement ni transcription n’est envoyé.",
+    "pt": "A verificação consulta o GitHub uma vez por dia. Gravações e transcrições nunca são enviadas.",
+    "zh": "每天向 GitHub 检查一次更新，绝不发送录音或转写内容。"
+  },
+  "Projects and tags organize your history without moving original files.": {
+    "es": "Los proyectos y etiquetas organizan el historial sin mover los archivos originales.",
+    "de": "Projekte und Tags organisieren den Verlauf, ohne Originaldateien zu verschieben.",
+    "fr": "Les projets et étiquettes organisent l’historique sans déplacer les fichiers originaux.",
+    "pt": "Projetos e etiquetas organizam o histórico sem mover os arquivos originais.",
+    "zh": "项目和标签用于整理历史记录，不会移动原始文件。"
+  },
+  "Up to 200 results. Dates refer to the recording date you assign.": {
+    "es": "Hasta 200 resultados. Las fechas corresponden a la fecha de grabación que asignas.",
+    "de": "Bis zu 200 Ergebnisse. Die Daten beziehen sich auf das zugewiesene Aufnahmedatum.",
+    "fr": "Jusqu’à 200 résultats. Les dates correspondent à la date d’enregistrement attribuée.",
+    "pt": "Até 200 resultados. As datas correspondem à data de gravação que você atribui.",
+    "zh": "最多显示 200 条结果。日期指你指定的录音日期。"
+  },
+  "A new version is available. Your local history and models are preserved when installing in the same location.": {
+    "es": "Hay una nueva versión. Tu historial y modelos locales se conservan al instalar en la misma ubicación.",
+    "de": "Eine neue Version ist verfügbar. Bei Installation am selben Ort bleiben Verlauf und Modelle erhalten.",
+    "fr": "Une nouvelle version est disponible. Une installation au même emplacement conserve l’historique et les modèles locaux.",
+    "pt": "Uma nova versão está disponível. Instalar no mesmo local preserva seu histórico e modelos locais.",
+    "zh": "有新版本可用。安装到相同位置会保留本地历史记录和模型。"
+  },
+  "Download the installer, close Vocalia, then run the installer. Do not delete the history folder.": {
+    "es": "Descarga el instalador, cierra Vocalia y ejecuta el instalador. No borres la carpeta del historial.",
+    "de": "Lade das Installationsprogramm herunter, schließe Vocalia und starte es. Lösche den Verlaufsordner nicht.",
+    "fr": "Téléchargez l’installateur, fermez Vocalia, puis lancez l’installateur. Ne supprimez pas le dossier de l’historique.",
+    "pt": "Baixe o instalador, feche o Vocalia e execute o instalador. Não exclua a pasta do histórico.",
+    "zh": "下载安装程序，关闭 Vocalia，然后运行安装程序。请勿删除历史记录文件夹。"
+  },
+  "Download the ZIP, close Vocalia, then replace the app in Applications. Your history and models are preserved.": {
+    "es": "Descarga el ZIP, cierra Vocalia y reemplaza la app en Aplicaciones. Se conservan tu historial y modelos.",
+    "de": "Lade die ZIP-Datei herunter, schließe Vocalia und ersetze die App im Programme-Ordner. Verlauf und Modelle bleiben erhalten.",
+    "fr": "Téléchargez le ZIP, fermez Vocalia, puis remplacez l’app dans Applications. L’historique et les modèles sont conservés.",
+    "pt": "Baixe o ZIP, feche o Vocalia e substitua o app em Aplicativos. Seu histórico e modelos são preservados.",
+    "zh": "下载 ZIP，关闭 Vocalia，然后替换“应用程序”中的应用。历史记录和模型将被保留。"
   }
 }

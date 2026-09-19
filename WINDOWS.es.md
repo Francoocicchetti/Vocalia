@@ -1,18 +1,18 @@
 # Vocalia para Windows 11 · Intel / AMD x64
 
-**Versión preliminar 0.0.4 · En desarrollo.** Vocalia todavía no es una versión 1.0 estable. La numeración actual sustituye a la etiqueta anterior 1.0.4; conserva sus funciones y datos. Las entradas anteriores de la tabla son etiquetas históricas de prototipos.
+**Versión preliminar 0.0.5 · En desarrollo.** Vocalia todavía no es una versión 1.0 estable. Las entradas 1.x son etiquetas históricas anteriores al cambio de numeración; se conservan las funciones y el historial.
 
 [English](WINDOWS.md) · [Inicio](README.es.md)
 
-**[Descargar Vocalia 0.0.4 para Windows](https://github.com/Francoocicchetti/Vocalia/releases/download/v0.0.4/Vocalia-0.0.4-Windows-x64-Setup.exe)**
+**[Descargar Vocalia 0.0.5 para Windows](https://github.com/Francoocicchetti/Vocalia/releases/download/v0.0.5/Vocalia-0.0.5-Windows-x64-Setup.exe)**
 
 Código: `Vocalia-Windows-source.zip`. Descomprímelo antes de ejecutar el script de compilación.
 
-Vocalia 0.0.4 para Windows. Transcripción local con Whisper: no envía grabaciones a un servidor. La primera preparación descarga el modelo; después la transcripción usa únicamente archivos locales.
+Vocalia 0.0.5 para Windows. Transcripción local con Whisper: no envía grabaciones a un servidor. La primera preparación descarga el modelo; después la transcripción usa únicamente archivos locales.
 
 ## Uso
 
-1. Descarga y ejecuta **Vocalia-0.0.4-Windows-x64-Setup.exe**. Sigue el instalador en español o inglés; al abrir la app podrás elegir entre seis idiomas.
+1. Descarga y ejecuta **Vocalia-0.0.5-Windows-x64-Setup.exe**. Sigue el instalador en español o inglés; al abrir la app podrás elegir entre seis idiomas.
 2. Abre **Vocalia** desde Inicio. El acceso directo en el escritorio es opcional. No necesita Python ni permisos de administrador.
 3. Elige español, inglés, alemán, francés, chino simplificado o portugués para la interfaz y el idioma hablado para el audio.
 4. Elige el modelo y pulsa Descargar / preparar modelo. `small` es la opción inicial equilibrada; `medium` y `large-v3-turbo` consumen más memoria y tiempo. Se recomienda probar small primero; para los modelos mayores conviene tener al menos 16 GB de RAM disponibles en el equipo. Esto es una orientación, no un mínimo de rendimiento medido.
@@ -50,7 +50,7 @@ Usa Setup.exe para evitar el error de `python312.dll` causado por abrir Vocalia 
 El instalador no tiene firma comercial y Windows puede mostrar un aviso de reputación. No desactives las protecciones del sistema. Si el error persiste después de usar Setup.exe, informa el mensaje exacto y tu versión de Windows: puede requerir otro diagnóstico. El código y las pruebas del instalador están en `.github/workflows/windows.yml`.
 
 
-## Vocalia 0.0.4
+## Vocalia 0.0.5
 
 La interfaz ofrece seis idiomas. El tutorial interactivo se puede repetir. Se conserva la compatibilidad con OPUS y Ogg/Opus. Consulta la [tabla de versiones y funciones](README.es.md).
 
@@ -65,3 +65,13 @@ La corrección de decimales usa el idioma del audio, no el de la interfaz. Recon
 ## Transcripción automática en 0.0.4
 
 Las grabaciones nuevas se transcriben automáticamente al agregarlas o arrastrarlas. Se procesan una a una; si falta el modelo, se descarga primero. Transcribir pendientes permite retomar archivos detenidos. No se reprocesan automáticamente el historial ni las ediciones. El análisis de voces sigue siendo manual.
+
+## Biblioteca, revisión, Word y actualizaciones en 0.0.5
+
+- **Biblioteca y proyectos:** busca una palabra o frase en todas las transcripciones locales. Selecciona un resultado y pulsa **Abrir resultado y escuchar**. La reproducción utiliza el intervalo del fragmento coincidente. Si una edición no permite ubicarlo con seguridad, aparece **Sin posición exacta en el audio** y se abre sin inventar un tiempo. Se muestran hasta 200 coincidencias; puedes acotar la búsqueda.
+- Asigna un **Proyecto**, **Etiquetas separadas por comas** y una **Fecha de grabación** (`AAAA-MM-DD`) al archivo seleccionado; pulsa **Guardar organización**. Filtra por proyecto, etiqueta o rango de fechas. Son datos del historial: no mueven los originales. Las grabaciones anteriores siguen disponibles; se usa su fecha de creación/importación hasta asignar otra.
+- **Revisar cifras / Solo cifras:** reúne los fragmentos que contienen dígitos en el reconocimiento actual u original. Escúchalos, corrígelos y márcalos revisados con los controles existentes. No certifica que la cifra sea correcta ni detecta todos los números escritos con palabras. El texto completo editado de forma independiente se conserva separado de los fragmentos: corrígelo también cuando corresponda.
+- **Exportar Word:** selecciona una transcripción, elige título y fecha, marca las cuñas guardadas que quieras incluir y guarda el `.docx`. Contiene todo el texto editado, proyecto/etiquetas si existen y las cuñas elegidas con hablante, nombre del archivo y tiempo. No incluye la ruta privada de la grabación. No necesitas una suscripción a Word para exportar.
+- **Actualizaciones:** activa o desactiva la búsqueda automática, o consulta manualmente. La app consulta las versiones públicas en GitHub como máximo una vez al día mientras está abierta; solo ofrece versiones con una descarga para tu plataforma. Muestra novedades, descarga y página de la versión. Nunca envía grabaciones, transcripciones, proyectos ni historial.
+- La instalación es **voluntaria**: descarga, cierra Vocalia y ejecuta el instalador de Windows en la ubicación habitual o reemplaza la app en Aplicaciones en Mac. Conserva el mismo usuario del sistema y no borres la carpeta de datos. El historial, las cuñas, los proyectos, modelos y ajustes están fuera de la app y se conservan. No es un actualizador silencioso. Las versiones anteriores a 0.0.5 necesitan descargar esta versión manualmente una vez.
+

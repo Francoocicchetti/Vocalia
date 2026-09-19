@@ -1,18 +1,18 @@
 # Vocalia for Windows 11 — Intel / AMD x64
 
-**Pre-release 0.0.4 · In development.** Vocalia is not a stable 1.0 release yet. This version replaces the previous 1.0.4 label while preserving features and data. Earlier table entries are historical prototype labels.
+**Pre-release 0.0.5 · In development.** Vocalia is not a stable 1.0 release yet. Earlier 1.x entries are historical prototype labels from before the numbering reset; existing history and features are preserved.
 
 [Español](WINDOWS.es.md) · [Overview](README.md)
 
-**[Download Vocalia 0.0.4 for Windows](https://github.com/Francoocicchetti/Vocalia/releases/download/v0.0.4/Vocalia-0.0.4-Windows-x64-Setup.exe)**
+**[Download Vocalia 0.0.5 for Windows](https://github.com/Francoocicchetti/Vocalia/releases/download/v0.0.5/Vocalia-0.0.5-Windows-x64-Setup.exe)**
 
 Source: `Vocalia-Windows-source.zip`. Extract it before running the build script.
 
-Vocalia 0.0.4 for Windows. Whisper recognition runs locally on your CPU. Model preparation downloads model assets; subsequent transcription loads local files in offline mode. Recordings are not uploaded.
+Vocalia 0.0.5 for Windows. Whisper recognition runs locally on your CPU. Model preparation downloads model assets; subsequent transcription loads local files in offline mode. Recordings are not uploaded.
 
 ## Install and use
 
-1. Download and run **Vocalia-0.0.4-Windows-x64-Setup.exe**. Follow the English/Spanish installer.
+1. Download and run **Vocalia-0.0.5-Windows-x64-Setup.exe**. Follow the English/Spanish installer.
 2. Open **Vocalia** from the Start menu. A desktop shortcut is optional. Python and administrator privileges are not required.
 3. Choose English, Spanish, German, French, Simplified Chinese or Portuguese for the interface, and select the spoken language separately.
 4. Choose a model and click **Download / prepare model**. Start with `small`; `medium` and `large-v3-turbo` require more memory and processing time. For larger models, a computer with at least 16 GB RAM is a practical starting point, not a measured minimum or performance guarantee.
@@ -55,7 +55,7 @@ Use the Setup.exe installer to avoid missing `python312.dll` errors caused by op
 The installer remains unsigned and Windows may show a reputation warning. Do not disable system-wide protections. If the error persists after using Setup.exe, report the exact error and Windows version; missing dependencies or security software may require separate diagnosis. Installer source and automated checks are in `.github/workflows/windows.yml`.
 
 
-## Vocalia 0.0.4
+## Vocalia 0.0.5
 
 The interface offers six languages. The interactive tour can be replayed. OPUS and Ogg/Opus remain supported. See the [version table and feature matrix](README.md).
 
@@ -70,3 +70,13 @@ Decimal formatting follows the audio language, not the interface language. It ha
 ## Automatic transcription in 0.0.4
 
 New recordings start transcribing automatically when added or dropped. Files run sequentially; a missing model is downloaded first. Transcribe pending remains available to resume stopped files. Existing history and edits are not automatically reprocessed. Speaker analysis remains manual.
+
+## Library, review, Word and updates in 0.0.5
+
+- **Library and projects:** search a word or phrase across your local transcripts. Select a result and choose **Open result and listen**. Playback uses the matching segment interval; rewritten text without a reliable timing match is labeled **No exact audio position** and opens without inventing a timestamp. Up to 200 matches appear; narrow the search if necessary.
+- Assign a **Project**, comma-separated **Tags** and a **Recording date** (`YYYY-MM-DD`) to a selected recording, then **Save organization**. Filter by project, tag or date range. These are history metadata, not folders that move your recordings. Older recordings remain available; their creation/import date is used until a recording date is assigned.
+- **Review figures / Figures only:** collect the segments containing digits in the recognized or original text. Listen, correct and mark them reviewed using the existing review controls. This does not certify a number as correct or detect every number written as a word. An independently edited full transcript remains separate from segment edits; update that text too when necessary.
+- **Export Word:** select a transcript, choose its document title and date, tick the saved quotes to include, and save a `.docx`. The document contains the full edited transcript, project/tags if present, and chosen quotes with speaker, source filename and time. It does not include the private path to the original recording. No Word subscription is needed to export.
+- **Updates:** enable or disable automatic checks, or choose **Check now**. An anonymous GitHub release check runs at most once per day while the app is running, and only reports releases with a matching platform download. The dialog shows release notes, a download button and the release page. Recordings, transcript text, project names and history are never sent.
+- Update installation is **user initiated**: download, close Vocalia, then run the Windows installer in the existing location or replace the Mac app in Applications. Keep the same OS user and do not delete the history/data folder. History, quotes, metadata, models and settings remain outside the app. This is not a silent updater. Versions older than 0.0.5 must download this release manually once.
+

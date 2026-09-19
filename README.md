@@ -1,8 +1,8 @@
 <p align="center"><img src="logo.png" width="128" alt="Vocalia app icon"></p>
 
-# Vocalia 0.0.4
+# Vocalia 0.0.5
 
-**Pre-release 0.0.4 · In development.** Vocalia is not a stable 1.0 release yet. This version replaces the previous 1.0.4 label while preserving features and data. Earlier table entries are historical prototype labels.
+**Pre-release 0.0.5 · In development.** Vocalia is not a stable 1.0 release yet. Earlier 1.x entries are historical prototype labels from before the numbering reset; existing history and features are preserved.
 
 **Local transcription for journalists: complete transcripts, quotes and highlighted playback.**
 
@@ -10,16 +10,16 @@
 
 ## Download
 
-### [↓ Windows 11 — Intel / AMD installer](https://github.com/Francoocicchetti/Vocalia/releases/download/v0.0.4/Vocalia-0.0.4-Windows-x64-Setup.exe)
+### [↓ Windows 11 — Intel / AMD installer](https://github.com/Francoocicchetti/Vocalia/releases/download/v0.0.5/Vocalia-0.0.5-Windows-x64-Setup.exe)
 
-### [↓ MacBook / Mac — Apple Silicon](https://github.com/Francoocicchetti/Vocalia/releases/download/v0.0.4/Vocalia-0.0.4-macOS-AppleSilicon.zip)
+### [↓ MacBook / Mac — Apple Silicon](https://github.com/Francoocicchetti/Vocalia/releases/download/v0.0.5/Vocalia-0.0.5-macOS-AppleSilicon.zip)
 
-[All 0.0.4 downloads and checksums](https://github.com/Francoocicchetti/Vocalia/releases/tag/v0.0.4)
+[All 0.0.5 downloads and checksums](https://github.com/Francoocicchetti/Vocalia/releases/tag/v0.0.5)
 
 | Computer | Requirements | What to download |
 | --- | --- | --- |
-| Windows PC | Windows 11, Intel/AMD 64-bit | `Vocalia-0.0.4-Windows-x64-Setup.exe` |
-| MacBook / Mac | Apple Silicon M1 or later, macOS 26+ | `Vocalia-0.0.4-macOS-AppleSilicon.zip` |
+| Windows PC | Windows 11, Intel/AMD 64-bit | `Vocalia-0.0.5-Windows-x64-Setup.exe` |
+| MacBook / Mac | Apple Silicon M1 or later, macOS 26+ | `Vocalia-0.0.5-macOS-AppleSilicon.zip` |
 
 Find the downloads under **Assets**, below the release notes. **Use the installer or Mac ZIP, not “Source code”.** No Python, Xcode, account or API key is needed to run the app. Windows ARM and Intel Macs are not supported by these builds.
 
@@ -42,6 +42,7 @@ The interface language and recording language are independent. Initial model dow
 | **1.0.2** | Six interface languages on both platforms. Windows gains segment review, a second-model comparison, optional local speaker grouping and naming, quote listening/plain copy/export, playback speed and dictionary editor. Also adds drag-and-drop, deferred imports while the queue runs, and retranscription of a selected recording with a saved revision. Updated bilingual guides and regression checks. |
 | **1.0.3** | Speaker separation is manual only, disabled at startup on Mac. Explicit spoken Spanish decimals such as “9, coma, 5” become “9,5”; original recognition is retained, timing is preserved and figures are flagged for listening/review. |
 | **0.0.4** | New recordings start transcribing automatically when added or dropped. Files run sequentially; a missing model is downloaded first. Transcribe pending remains available to resume stopped files. Existing history and edits are not automatically reprocessed. Speaker analysis remains manual. |
+| **0.0.5** | In-app update notices and release notes; cross-transcript search with timed playback; projects, tags and recording dates; a figures-only review view; Word export with the complete edited text and selected quotes. |
 
 [Detailed changelog](CHANGELOG.md) · [Historial en español](CHANGELOG.es.md)
 
@@ -95,3 +96,13 @@ Decimal formatting follows the audio language, not the interface language. It ha
 ## Automatic transcription in 0.0.4
 
 New recordings start transcribing automatically when added or dropped. Files run sequentially; a missing model is downloaded first. Transcribe pending remains available to resume stopped files. Existing history and edits are not automatically reprocessed. Speaker analysis remains manual.
+
+## Library, review, Word and updates in 0.0.5
+
+- **Library and projects:** search a word or phrase across your local transcripts. Select a result and choose **Open result and listen**. Playback uses the matching segment interval; rewritten text without a reliable timing match is labeled **No exact audio position** and opens without inventing a timestamp. Up to 200 matches appear; narrow the search if necessary.
+- Assign a **Project**, comma-separated **Tags** and a **Recording date** (`YYYY-MM-DD`) to a selected recording, then **Save organization**. Filter by project, tag or date range. These are history metadata, not folders that move your recordings. Older recordings remain available; their creation/import date is used until a recording date is assigned.
+- **Review figures / Figures only:** collect the segments containing digits in the recognized or original text. Listen, correct and mark them reviewed using the existing review controls. This does not certify a number as correct or detect every number written as a word. An independently edited full transcript remains separate from segment edits; update that text too when necessary.
+- **Export Word:** select a transcript, choose its document title and date, tick the saved quotes to include, and save a `.docx`. The document contains the full edited transcript, project/tags if present, and chosen quotes with speaker, source filename and time. It does not include the private path to the original recording. No Word subscription is needed to export.
+- **Updates:** enable or disable automatic checks, or choose **Check now**. An anonymous GitHub release check runs at most once per day while the app is running, and only reports releases with a matching platform download. The dialog shows release notes, a download button and the release page. Recordings, transcript text, project names and history are never sent.
+- Update installation is **user initiated**: download, close Vocalia, then run the Windows installer in the existing location or replace the Mac app in Applications. Keep the same OS user and do not delete the history/data folder. History, quotes, metadata, models and settings remain outside the app. This is not a silent updater. Versions older than 0.0.5 must download this release manually once.
+

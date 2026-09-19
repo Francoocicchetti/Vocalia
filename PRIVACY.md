@@ -16,3 +16,7 @@ The public repository and app downloads contain no user history, personal interv
 Do not attach sensitive recordings, source identities, transcripts or unreviewed logs to public issues.
 
 Windows optional speaker models are downloaded from the sherpa-onnx public release assets on GitHub. Speaker analysis and transcript comparison run locally. The additional speaker test downloads a public four-speaker fixture from the same provider, never user recordings.
+
+## Update checks
+
+Starting with 0.0.5, optional release checks contact the public GitHub API once a day and when you choose Check now. GitHub receives the normal network request (including your IP address) and app version, never recordings, transcript text, project names or history. Disable automatic checks in Updates. Downloading or opening release details uses your browser. Projects, tags and recording dates are stored in the same local history. Word exports are written only to your chosen destination.
