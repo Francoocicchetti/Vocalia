@@ -2217,5 +2217,103 @@
     "fr": "Téléchargez le ZIP, fermez Vocalia, puis remplacez l’app dans Applications. L’historique et les modèles sont conservés.",
     "pt": "Baixe o ZIP, feche o Vocalia e substitua o app em Aplicativos. Seu histórico e modelos são preservados.",
     "zh": "下载 ZIP，关闭 Vocalia，然后替换“应用程序”中的应用。历史记录和模型将被保留。"
+  },
+  "Update Vocalia": {
+    "es": "Actualizar Vocalia",
+    "de": "Vocalia aktualisieren",
+    "fr": "Mettre à jour Vocalia",
+    "pt": "Atualizar Vocalia",
+    "zh": "更新 Vocalia"
+  },
+  "Update now": {
+    "es": "Actualizar ahora",
+    "de": "Jetzt aktualisieren",
+    "fr": "Mettre à jour maintenant",
+    "pt": "Atualizar agora",
+    "zh": "立即更新"
+  },
+  "Install update": {
+    "es": "Instalar actualización",
+    "de": "Update installieren",
+    "fr": "Installer la mise à jour",
+    "pt": "Instalar atualização",
+    "zh": "安装更新"
+  },
+  "Install and restart": {
+    "es": "Instalar y reiniciar",
+    "de": "Installieren und neu starten",
+    "fr": "Installer et redémarrer",
+    "pt": "Instalar e reiniciar",
+    "zh": "安装并重启"
+  },
+  "Downloading update…": {
+    "es": "Descargando actualización…",
+    "de": "Update wird heruntergeladen…",
+    "fr": "Téléchargement de la mise à jour…",
+    "pt": "Baixando atualização…",
+    "zh": "正在下载更新…"
+  },
+  "Your history, quotes and models will be preserved.": {
+    "es": "Se conservarán tu historial, cuñas y modelos.",
+    "de": "Verlauf, Zitate und Modelle bleiben erhalten.",
+    "fr": "Votre historique, vos citations et vos modèles seront conservés.",
+    "pt": "Seu histórico, citações e modelos serão preservados.",
+    "zh": "将保留历史记录、引文和模型。"
+  },
+  "Download and install from Vocalia. Your history, quotes and models stay on this computer.": {
+    "es": "Descarga e instala desde Vocalia. Tu historial, cuñas y modelos se conservan en este equipo.",
+    "de": "Direkt in Vocalia herunterladen und installieren. Verlauf, Zitate und Modelle bleiben auf diesem Computer.",
+    "fr": "Téléchargez et installez depuis Vocalia. Historique, citations et modèles restent sur cet ordinateur.",
+    "pt": "Baixe e instale pelo Vocalia. Histórico, citações e modelos permanecem neste computador.",
+    "zh": "直接在 Vocalia 中下载和安装。历史记录、引文和模型保留在此电脑上。"
+  },
+  "Update verified. Installing will close Vocalia and open the setup wizard.": {
+    "es": "Actualización verificada. Al instalar se cerrará Vocalia y se abrirá el asistente de instalación.",
+    "de": "Update geprüft. Die Installation schließt Vocalia und öffnet den Installationsassistenten.",
+    "fr": "Mise à jour vérifiée. L’installation fermera Vocalia et ouvrira l’assistant.",
+    "pt": "Atualização verificada. A instalação fechará o Vocalia e abrirá o assistente.",
+    "zh": "更新已验证。安装将关闭 Vocalia 并打开安装向导。"
+  },
+  "Update verified. Ready to install and restart.": {
+    "es": "Actualización verificada. Lista para instalar y reiniciar.",
+    "de": "Update geprüft. Bereit zur Installation und zum Neustart.",
+    "fr": "Mise à jour vérifiée. Prête à installer et à redémarrer.",
+    "pt": "Atualização verificada. Pronta para instalar e reiniciar.",
+    "zh": "更新已验证，可以安装并重启。"
+  },
+  "Wait for transcription and imports to finish before installing.": {
+    "es": "Espera a que terminen la transcripción y la importación antes de instalar.",
+    "de": "Warte vor der Installation, bis Transkription und Import beendet sind.",
+    "fr": "Attendez la fin de la transcription et de l’importation avant d’installer.",
+    "pt": "Aguarde o fim da transcrição e da importação antes de instalar.",
+    "zh": "请等待转录和导入完成后再安装。"
+  },
+  "Could not download or verify the update. Try again.": {
+    "es": "No se pudo descargar o verificar la actualización. Inténtalo de nuevo.",
+    "de": "Das Update konnte nicht heruntergeladen oder geprüft werden. Versuche es erneut.",
+    "fr": "Impossible de télécharger ou de vérifier la mise à jour. Réessayez.",
+    "pt": "Não foi possível baixar ou verificar a atualização. Tente novamente.",
+    "zh": "无法下载或验证更新，请重试。"
+  },
+  "Could not start installation. Vocalia has not been changed.": {
+    "es": "No se pudo iniciar la instalación. Vocalia no se ha modificado.",
+    "de": "Die Installation konnte nicht gestartet werden. Vocalia wurde nicht geändert.",
+    "fr": "Impossible de démarrer l’installation. Vocalia n’a pas été modifié.",
+    "pt": "Não foi possível iniciar a instalação. O Vocalia não foi alterado.",
+    "zh": "无法开始安装，Vocalia 未被修改。"
+  },
+  "Move Vocalia to a writable Applications folder before updating.": {
+    "es": "Mueve Vocalia a una carpeta Aplicaciones donde tengas permiso de escritura antes de actualizar.",
+    "de": "Verschiebe Vocalia vor dem Update in einen beschreibbaren Programme-Ordner.",
+    "fr": "Déplacez Vocalia dans un dossier Applications accessible en écriture avant la mise à jour.",
+    "pt": "Mova o Vocalia para uma pasta Aplicativos com permissão de gravação antes de atualizar.",
+    "zh": "更新前请将 Vocalia 移到具有写入权限的“应用程序”文件夹。"
+  },
+  "Preparing installation…": {
+    "es": "Preparando instalación…",
+    "de": "Installation wird vorbereitet…",
+    "fr": "Préparation de l’installation…",
+    "pt": "Preparando instalação…",
+    "zh": "正在准备安装…"
   }
 }

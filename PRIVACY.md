@@ -19,4 +19,6 @@ Windows optional speaker models are downloaded from the sherpa-onnx public relea
 
 ## Update checks
 
-Starting with 0.0.5, optional release checks contact the public GitHub API once a day and when you choose Check now. GitHub receives the normal network request (including your IP address) and app version, never recordings, transcript text, project names or history. Disable automatic checks in Updates. Downloading or opening release details uses your browser. Projects, tags and recording dates are stored in the same local history. Word exports are written only to your chosen destination.
+Starting with 0.0.5, optional release checks contact the public GitHub API once a day and when you choose Check now. GitHub receives the normal network request (including your IP address) and app version, never recordings, transcript text, project names or history. Disable automatic checks in Updates. Opening release details uses your browser; update packages download inside the app. Projects, tags and recording dates are stored in the same local history. Word exports are written only to your chosen destination.
+
+When you choose Update now, Vocalia downloads the official GitHub package inside the app and verifies its SHA256 digest. No history or recordings are sent. Only the application is replaced after you choose to install; the data folder is preserved.

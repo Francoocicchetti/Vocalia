@@ -491,7 +491,7 @@ struct TranscribeView: View {
                 VStack(alignment: .leading, spacing: 4) { Text(L("Vocalia")).font(.system(size: 26, weight: .bold, design: .rounded)); Text(L("De la voz al texto. Dentro de tu Mac.")).foregroundStyle(.secondary) }
                 Spacer()
                 Button(T("Library and projects")){showLibrary=true}.disabled(model.busy)
-                Button(T("Updates")){updates.show=true}
+                Button(T("Update Vocalia")){updates.show=true;updates.check()}
                 Button(T("How to use Vocalia")) { showTutorial = true }
                 Label(L("100 % local"), systemImage: "lock.shield").foregroundStyle(accent).font(.system(size: 13, weight: .semibold))
             }.padding(22)
@@ -572,7 +572,7 @@ struct TranscribeView: View {
             else{pendingLibraryHit=hit;model.selected=hit.document}
         }}
         .sheet(isPresented:$showWord){if let doc=model.current{WordPane(document:doc)}}
-        .sheet(isPresented:$updates.show){UpdatePane(manager:updates)}
+        .sheet(isPresented:$updates.show){UpdatePane(manager:updates,model:model)}
         .sheet(isPresented: $showDictionary) { DictionaryPane(model:model) }
         .alert("Vocalia", isPresented: Binding(get: { model.error != nil }, set: { if !$0 { model.error = nil } })) { Button(L("Entendido")) { model.error = nil } } message: { Text(L(model.error ?? "")) }
         .confirmationDialog(L("¿Quitar esta transcripción del historial? El audio original se conserva."), isPresented: $showRemove) { Button(L("Quitar del historial"), role: .destructive) { model.removeSelected() } }
@@ -746,6 +746,10 @@ final class TranscribeDelegate: NSObject, NSApplicationDelegate {
 @main struct TranscribeApp: App {
     @NSApplicationDelegateAdaptor(TranscribeDelegate.self) var delegate
     init() {
+        if let i=CommandLine.arguments.firstIndex(of:"--apply-update"),CommandLine.arguments.count>i+1{exit(UpdateInstall.apply(config:URL(fileURLWithPath:CommandLine.arguments[i+1])))}
+        if let i=CommandLine.arguments.firstIndex(of:"--update-download-test"),CommandLine.arguments.count>i+1{Task{do{try await UpdateInstall.downloadTest(manifest:URL(fileURLWithPath:CommandLine.arguments[i+1]));exit(0)}catch{print(error);exit(1)}};RunLoop.main.run()}
+        if let i=CommandLine.arguments.firstIndex(of:"--update-package-test"),CommandLine.arguments.count>i+1{do{try UpdateInstall.packageTest(archive:URL(fileURLWithPath:CommandLine.arguments[i+1]));exit(0)}catch{print(error);exit(1)}}
+        if CommandLine.arguments.contains("--update-self-test"){do{try UpdateInstall.tests();exit(0)}catch{print(error);exit(1)}}
         if let index = CommandLine.arguments.firstIndex(of: "--opus-self-test"), CommandLine.arguments.count > index + 2 {
             let source = CommandLine.arguments[index+1], output = CommandLine.arguments[index+2]
             Task { @MainActor in await OpusChecks.run(source: source, output: output) }

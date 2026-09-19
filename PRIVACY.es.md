@@ -16,4 +16,6 @@ Los modelos opcionales de voces de Windows se descargan de las versiones públic
 
 ## Actualizaciones
 
-Desde 0.0.5, la app consulta opcionalmente las versiones públicas de GitHub una vez al día y al pulsar Buscar ahora. GitHub recibe la solicitud de red habitual (incluida tu dirección IP) y la versión de la app; no recibe grabaciones, texto, nombres de proyectos ni historial. Puedes desactivar las consultas automáticas en Actualizaciones. Descargar o abrir la página de una versión utiliza tu navegador. Proyectos, etiquetas y fechas se guardan en el mismo historial local. Los documentos Word se guardan únicamente donde tú elijas.
+Desde 0.0.5, la app consulta opcionalmente las versiones públicas de GitHub una vez al día y al pulsar Buscar ahora. GitHub recibe la solicitud de red habitual (incluida tu dirección IP) y la versión de la app; no recibe grabaciones, texto, nombres de proyectos ni historial. Puedes desactivar las consultas automáticas en Actualizaciones. Abrir la página de una versión utiliza tu navegador; los paquetes se descargan dentro de la app. Proyectos, etiquetas y fechas se guardan en el mismo historial local. Los documentos Word se guardan únicamente donde tú elijas.
+
+Al pulsar Actualizar ahora, Vocalia descarga el paquete oficial de GitHub dentro de la app y verifica su suma SHA256. No envía historial ni archivos de audio. Solo se sustituye la aplicación después de elegir instalar; la carpeta de datos se conserva.
