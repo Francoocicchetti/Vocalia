@@ -9,6 +9,7 @@ actor LocalEngines {
     static let shared = LocalEngines()
     let root: URL
     private var whisper: WhisperKit?
+    private var whisperKey=""
     private var speakerKit: SpeakerKit?
     private var paths: [String:String] = [:]
     init(root: URL? = nil) {
@@ -17,23 +18,26 @@ actor LocalEngines {
     }
     private func savePaths() throws { try FileManager.default.createDirectory(at: root, withIntermediateDirectories: true); try JSONEncoder().encode(paths).write(to: root.appendingPathComponent("locations.json"), options: .atomic) }
     func readyDescription() -> String {
-        let a = paths["whisper"].map { FileManager.default.fileExists(atPath:$0) } ?? false
+        let a = paths[UserDefaults.standard.bool(forKey:"fullWhisper") ? "whisperFull" : "whisper"].map { FileManager.default.fileExists(atPath:$0) } ?? false
         let b = paths["speakers"].map { FileManager.default.fileExists(atPath:$0) } ?? false
         return "Whisper: \(a ? "descargado" : "por descargar") · Voces: \(b ? "descargado" : "por descargar")"
     }
     func prepare(compare: Bool, voices: Bool, update: @escaping @Sendable (String,Double) -> Void) async throws {
         try FileManager.default.createDirectory(at: root, withIntermediateDirectories: true)
-        if compare && whisper == nil {
+        let full=UserDefaults.standard.bool(forKey:"fullWhisper")
+        let key=full ? "whisperFull" : "whisper"
+        if compare && (whisper == nil || whisperKey != key) {
+            whisper=nil
             var folder: URL
-            if let saved = paths["whisper"], FileManager.default.fileExists(atPath:saved) { folder = URL(fileURLWithPath:saved) }
+            if let saved = paths[key], FileManager.default.fileExists(atPath:saved) { folder = URL(fileURLWithPath:saved) }
             else {
                 update("Descargando Whisper para comparar dentro del Mac…",0)
-                folder = try await WhisperKit.download(variant:"large-v3-v20240930_626MB",downloadBase:root.appendingPathComponent("Whisper"),progressCallback:{ p in update("Descargando Whisper: \(Int(p.fractionCompleted*100)) %",p.fractionCompleted) })
-                paths["whisper"] = folder.path; try savePaths()
+                folder = try await WhisperKit.download(variant:full ? "large-v3_947MB" : "large-v3-v20240930_626MB",downloadBase:root.appendingPathComponent("Whisper"),progressCallback:{ p in update("Descargando Whisper: \(Int(p.fractionCompleted*100)) %",p.fractionCompleted) })
+                paths[key] = folder.path; try savePaths()
             }
             try Task.checkCancellation()
             update("Preparando Whisper para este Mac…",0.95)
-            whisper = try await WhisperKit(WhisperKitConfig(modelFolder:folder.path,tokenizerFolder:root.appendingPathComponent("Tokenizer"),verbose:false,prewarm:true,load:true,download:false))
+            whisper = try await WhisperKit(WhisperKitConfig(modelFolder:folder.path,tokenizerFolder:root.appendingPathComponent("Tokenizer"),verbose:false,prewarm:true,load:true,download:false));whisperKey=key
         }
         if voices && speakerKit == nil {
             let saved = paths["speakers"].flatMap { FileManager.default.fileExists(atPath:$0) ? $0 : nil }

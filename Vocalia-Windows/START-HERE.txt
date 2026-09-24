@@ -1,0 +1,8 @@
+Vocalia 0.0.5 — PRE-RELEASE / VERSIÓN PRELIMINAR
+Vocalia 0.0.5 — Mac
+Extract the ZIP, move Vocalia.app to Applications, then open it.
+macOS 26+, Apple Silicon M1 or later.
+If blocked: System Settings > Privacy & Security > Open Anyway.
+Full instructions: https://github.com/Francoocicchetti/Vocalia/blob/main/INSTALL-MAC.md
+Español: https://github.com/Francoocicchetti/Vocalia/blob/main/INSTALL-MAC.es.md
+Choose your interface and audio languages, then add files to start transcription automatically.

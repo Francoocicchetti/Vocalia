@@ -122,3 +122,12 @@ El botón **Actualizar Vocalia** descarga dentro de la app, muestra el progreso,
 
 Se mantiene la versión pública **0.0.5**: compilación **18** en Mac y versión de archivo **0.0.5.1** en Windows. El código completo actual está en `Vocalia-0.0.5-source.zip`; la etiqueta original `v0.0.5` y los archivos “Source code” que genera GitHub conservan la publicación inicial. La ejecución de compilación enlazada identifica el código exacto de estos instaladores.
 
+
+## Revisar audio en 0.0.6 (preliminar)
+
+- Activa **Pulsar palabras para escuchar** para reproducir desde una palabra con tiempos. Desactívalo para editar sin iniciar el audio. Arrastrar para seleccionar no inicia la reproducción.
+- **Repetir audio** repite la grabación. Selecciona palabras y usa **Repetir selección** para escuchar esa parte en bucle. Pausa o desactiva la repetición al terminar; cambiar de grabación la restablece.
+- **Limpiar audio** crea una copia local aparte. Activa **Usar audio limpio** para escucharla o volver a transcribir la grabación seleccionada. Conserva el original; el texto actual solo cambia si vuelves a transcribir, con su respaldo habitual.
+- Mac: **Whisper large-v3 (más lento)** elige el modelo mayor para comparar. Windows: selecciona **large-v3** en la lista. Descárgalo con los controles de preparación existentes. Un modelo mayor no garantiza mejores nombres o cifras.
+
+La publicación de 0.0.6 requiere que pasen las compilaciones nativas de ambos sistemas.

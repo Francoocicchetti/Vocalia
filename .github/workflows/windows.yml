@@ -1,44 +1,61 @@
-name: Vocalia 0.0.5 build and release checks
+name: Vocalia 0.0.6 build and release checks
 on:
   workflow_dispatch:
+  pull_request:
   push:
     branches: [main]
     paths:
-      - 'Vocalia-Windows-source.zip'
+      - '*.swift'
+      - 'Info.plist'
+      - 'build.sh'
+      - 'tools/**'
+      - 'ui-translations.json'
+      - 'Vocalia-Windows/**'
+      - '.github/workflows/windows.yml'
 permissions:
   contents: read
 concurrency:
-  group: vocalia-release
+  group: vocalia-${{ github.ref }}
   cancel-in-progress: true
 jobs:
-  build:
+  windows:
     runs-on: windows-2025
-    timeout-minutes: 40
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
           architecture: x64
-      - name: Extract release source
+      - name: Test and package Windows
         shell: pwsh
-        run: Expand-Archive Vocalia-Windows-source.zip -DestinationPath build-source
-      - name: Test six languages, history, OPUS, comparison and speaker grouping in the packaged app
+        run: ./Vocalia-Windows/build.ps1
+      - name: Verify installer and upgrade preserving user data
         shell: pwsh
-        run: ./build-source/Vocalia-Windows/build.ps1
-      - name: Test installer, shortcuts, reinstall and data-preserving uninstall
-        shell: pwsh
-        run: ./build-source/Vocalia-Windows/build_installer.ps1
+        run: ./Vocalia-Windows/build_installer.ps1
       - uses: actions/upload-artifact@v4
         with:
-          name: Vocalia-0.0.5-Windows-x64
+          name: Windows-0.0.6
           path: |
-            build-source/Vocalia-Windows/Vocalia-0.0.5-Windows-x64.zip
-            build-source/Vocalia-Windows/SHA256SUMS-Windows.txt
-            build-source/Vocalia-Windows/release/*
+            Vocalia-Windows/Vocalia-0.0.6-Windows-x64.zip
+            Vocalia-Windows/release/*.exe
+            Vocalia-Windows/release/Windows-Installer-Validation.txt
+          if-no-files-found: error
+  mac:
+    runs-on: macos-26
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build signed Mac package and test audio, history and updater
+        run: zsh build.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Mac-0.0.6
+          path: dist/Vocalia-0.0.6-macOS-AppleSilicon.zip
           if-no-files-found: error
   publish:
-    needs: build
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: [windows, mac]
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -46,27 +63,22 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
         with:
-          name: Vocalia-0.0.5-Windows-x64
-          path: release
-      - name: Verify and assemble both platform downloads
-        shell: bash
+          name: Windows-0.0.6
+          path: release/windows
+      - uses: actions/download-artifact@v4
+        with:
+          name: Mac-0.0.6
+          path: release/mac
+      - name: Assemble tested packages and exact source
         run: |
-          sha256sum -c SHA256SUMS-Mac.txt
-          sed 's/\r$//' release/SHA256SUMS-Windows.txt | (cd release && sha256sum -c -)
-          sed 's/\r$//' release/release/SHA256SUMS-Installer.txt | (cd release/release && sha256sum -c -)
-          mv release/release/* release/
-          rmdir release/release
-          cp Vocalia-0.0.5-macOS-AppleSilicon.zip Vocalia-0.0.5-source.zip release/
-          mv release/Windows-Installer-Validation.txt release/Windows-0.0.5-Validation.txt
-          cd release
-          sha256sum Vocalia-0.0.5-*.zip Vocalia-0.0.5-*.exe > SHA256SUMS-0.0.5.txt
-      - name: Publish 0.0.5 only after all checks pass
+          mkdir -p release/final
+          find release/windows release/mac -type f -exec cp {} release/final/ \;
+          python3 tools/package_source.py release/final/Vocalia-0.0.6-source.zip
+          cd release/final
+          sha256sum *.zip *.exe > SHA256SUMS-0.0.6.txt
+      - name: Publish preview after both platforms pass
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
-        shell: bash
         run: |
-          echo "" >> RELEASE-0.0.5.md
-          echo "Installer revision source: [$GITHUB_SHA](https://github.com/$GITHUB_REPOSITORY/commit/$GITHUB_SHA). [Build and checks](https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID)." >> RELEASE-0.0.5.md
-          gh release upload v0.0.5 --clobber release/Vocalia-0.0.5-*.zip release/Vocalia-0.0.5-*.exe release/SHA256SUMS-0.0.5.txt release/Windows-0.0.5-Validation.txt
-          gh release edit v0.0.5 --title "Vocalia 0.0.5 — Preview · In-app updates" --notes-file RELEASE-0.0.5.md --prerelease --latest=false
+          gh release create v0.0.6 --target "$GITHUB_SHA" --title "Vocalia 0.0.6 — Preview · Audio review" --notes-file RELEASE-0.0.6.md --prerelease --latest=false release/final/*

@@ -88,11 +88,11 @@ enum UpdateInstall {
         try fm.copyItem(at:Bundle.main.bundleURL,to:target)
         let history=work.appendingPathComponent("history.json");try Data("keep history".utf8).write(to:history)
         let size=(try fm.attributesOfItem(atPath:archive.path)[.size] as! NSNumber).int64Value
-        let release=AppRelease(version:"0.0.5",notes:"",download:URL(string:ReleaseCheck.repo)!,page:URL(string:ReleaseCheck.repo)!,digest:"sha256:"+(try hash(archive)),size:size)
+        let release=AppRelease(version:ReleaseCheck.version,notes:"",download:URL(string:ReleaseCheck.repo)!,page:URL(string:ReleaseCheck.repo)!,digest:"sha256:"+(try hash(archive)),size:size)
         let plan=try prepare(archive:archive,release:release,target:target,work:work,parent:Int32.max)
         let config=work.appendingPathComponent("plan.json");try JSONEncoder().encode(plan).write(to:config)
         guard apply(config:config,relaunch:false)==0 else{throw failure("Package installation test failed")}
-        try validateBundle(target,version:"0.0.5");precondition(fm.fileExists(atPath:plan.backup));precondition((try! String(contentsOf:history,encoding:.utf8))=="keep history")
+        try validateBundle(target,version:ReleaseCheck.version);precondition(fm.fileExists(atPath:plan.backup));precondition((try! String(contentsOf:history,encoding:.utf8))=="keep history")
         print("PASS: signed package extraction, verification, installation, rollback copy and history retention")
     }
     static func tests()throws {
@@ -106,7 +106,7 @@ enum UpdateInstall {
         do{try replace(plan,move:{a,b in if a==stage{throw failure("Simulated replacement failure")};try FileManager.default.moveItem(at:a,to:b)})}catch{failed=true}
         precondition(failed && (try! String(contentsOf:target,encoding:.utf8))=="old")
         try replace(plan);precondition((try! String(contentsOf:target,encoding:.utf8))=="new" && (try! String(contentsOf:backup,encoding:.utf8))=="old")
-        let release=AppRelease(version:"0.0.5",notes:"",download:URL(string:ReleaseCheck.repo)!,page:URL(string:ReleaseCheck.repo)!,digest:"sha256:"+(try hash(target)),size:3)
+        let release=AppRelease(version:ReleaseCheck.version,notes:"",download:URL(string:ReleaseCheck.repo)!,page:URL(string:ReleaseCheck.repo)!,digest:"sha256:"+(try hash(target)),size:3)
         try verify(target,release:release);try Data("bad".utf8).write(to:target)
         failed=false;do{try verify(target,release:release)}catch{failed=true};precondition(failed)
         precondition((try! String(contentsOf:history,encoding:.utf8))=="preserved quotes and transcripts")

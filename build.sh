@@ -14,7 +14,15 @@ export CLANG_MODULE_CACHE_PATH="$BUILD_DIR/module-cache"
 export SWIFT_MODULECACHE_PATH="$BUILD_DIR/module-cache"
 swift build --package-path "$BUILD_SOURCE" --scratch-path "$BUILD_DIR/build" --cache-path "$BUILD_DIR/cache" --config-path "$BUILD_DIR/config" --security-path "$BUILD_DIR/security" --disable-sandbox -c release
 unzip -q "$SOURCE_DIR/OpusDecoder-source.zip" -d "$BUILD_DIR"
-sh "$BUILD_DIR/decoder/build.sh"
+sh "$SOURCE_DIR/tools/build_opus.sh" "$BUILD_DIR/decoder"
+"$BUILD_DIR/decoder/opusdecode" "$SOURCE_DIR/Vocalia-Windows/test-speech.opus" "$BUILD_DIR/opus-check.wav"
+python3 - "$BUILD_DIR/opus-check.wav" <<'PY'
+import sys, wave
+with wave.open(sys.argv[1], 'rb') as audio:
+    assert audio.getframerate() == 48000 and audio.getnchannels() == 1
+    assert 10 < audio.getnframes() / audio.getframerate() < 12
+print('PASS: bundled OPUS decoder produces complete mono PCM')
+PY
 mkdir -p "$APP_DIR/Contents/MacOS" "$APP_DIR/Contents/Resources/Licencias"
 cp "$SOURCE_DIR/Info.plist" "$APP_DIR/Contents/Info.plist"
 cp "$SOURCE_DIR/ui-translations.json" "$APP_DIR/Contents/Resources/"
@@ -28,8 +36,11 @@ codesign --force --sign - "$APP_DIR/Contents/MacOS/opusdecode"
 codesign --force --sign - "$APP_DIR"
 "$APP_DIR/Contents/MacOS/Transcribe" --self-test
 "$APP_DIR/Contents/MacOS/Transcribe" --auto-import-test
+"$APP_DIR/Contents/MacOS/Transcribe" --audio-review-test "$SOURCE_DIR/Vocalia-Windows/test-speech.opus"
+"$APP_DIR/Contents/MacOS/Transcribe" --update-self-test
 codesign --verify --deep --strict "$APP_DIR"
-ditto -c -k --norsrc --keepParent "$APP_DIR" "$OUTPUT_DIR/Vocalia-0.0.5-macOS-AppleSilicon.zip"
+ditto -c -k --norsrc --keepParent "$APP_DIR" "$OUTPUT_DIR/Vocalia-0.0.6-macOS-AppleSilicon.zip"
 cp "$SOURCE_DIR/START-HERE.txt" "$BUILD_DIR/START-HERE.txt"
-(cd "$BUILD_DIR" && /usr/bin/zip -q "$OUTPUT_DIR/Vocalia-0.0.5-macOS-AppleSilicon.zip" START-HERE.txt)
-echo "Build ready: $OUTPUT_DIR/Vocalia-0.0.5-macOS-AppleSilicon.zip"
+(cd "$BUILD_DIR" && /usr/bin/zip -q "$OUTPUT_DIR/Vocalia-0.0.6-macOS-AppleSilicon.zip" START-HERE.txt)
+"$APP_DIR/Contents/MacOS/Transcribe" --update-package-test "$OUTPUT_DIR/Vocalia-0.0.6-macOS-AppleSilicon.zip"
+echo "Build ready: $OUTPUT_DIR/Vocalia-0.0.6-macOS-AppleSilicon.zip"

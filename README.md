@@ -1,8 +1,8 @@
 <p align="center"><img src="logo.png" width="128" alt="Vocalia app icon"></p>
 
-# Vocalia 0.0.5
+# Vocalia 0.0.6
 
-**Pre-release 0.0.5 · In development.** Vocalia is not a stable 1.0 release yet. Earlier 1.x entries are historical prototype labels from before the numbering reset; existing history and features are preserved.
+**Pre-release 0.0.6 · In development.** Vocalia is not a stable 1.0 release yet. Earlier 1.x entries are historical prototype labels from before the numbering reset; existing history and features are preserved.
 
 **Local transcription for journalists: complete transcripts, quotes and highlighted playback.**
 
@@ -10,16 +10,16 @@
 
 ## Download
 
-### [↓ Windows 11 — Intel / AMD installer](https://github.com/Francoocicchetti/Vocalia/releases/download/v0.0.5/Vocalia-0.0.5-Windows-x64-Setup.exe)
+### [↓ Windows 11 — Intel / AMD installer](https://github.com/Francoocicchetti/Vocalia/releases/download/v0.0.6/Vocalia-0.0.6-Windows-x64-Setup.exe)
 
-### [↓ MacBook / Mac — Apple Silicon](https://github.com/Francoocicchetti/Vocalia/releases/download/v0.0.5/Vocalia-0.0.5-macOS-AppleSilicon.zip)
+### [↓ MacBook / Mac — Apple Silicon](https://github.com/Francoocicchetti/Vocalia/releases/download/v0.0.6/Vocalia-0.0.6-macOS-AppleSilicon.zip)
 
-[All 0.0.5 downloads and checksums](https://github.com/Francoocicchetti/Vocalia/releases/tag/v0.0.5)
+[All 0.0.6 downloads and checksums](https://github.com/Francoocicchetti/Vocalia/releases/tag/v0.0.6)
 
 | Computer | Requirements | What to download |
 | --- | --- | --- |
-| Windows PC | Windows 11, Intel/AMD 64-bit | `Vocalia-0.0.5-Windows-x64-Setup.exe` |
-| MacBook / Mac | Apple Silicon M1 or later, macOS 26+ | `Vocalia-0.0.5-macOS-AppleSilicon.zip` |
+| Windows PC | Windows 11, Intel/AMD 64-bit | `Vocalia-0.0.6-Windows-x64-Setup.exe` |
+| MacBook / Mac | Apple Silicon M1 or later, macOS 26+ | `Vocalia-0.0.6-macOS-AppleSilicon.zip` |
 
 Find the downloads under **Assets**, below the release notes. **Use the installer or Mac ZIP, not “Source code”.** No Python, Xcode, account or API key is needed to run the app. Windows ARM and Intel Macs are not supported by these builds.
 
@@ -43,6 +43,7 @@ The interface language and recording language are independent. Initial model dow
 | **1.0.3** | Speaker separation is manual only, disabled at startup on Mac. Explicit spoken Spanish decimals such as “9, coma, 5” become “9,5”; original recognition is retained, timing is preserved and figures are flagged for listening/review. |
 | **0.0.4** | New recordings start transcribing automatically when added or dropped. Files run sequentially; a missing model is downloaded first. Transcribe pending remains available to resume stopped files. Existing history and edits are not automatically reprocessed. Speaker analysis remains manual. |
 | **0.0.5** | In-app update notices and release notes; cross-transcript search with timed playback; projects, tags and recording dates; a figures-only review view; Word export with the complete edited text and selected quotes. |
+| **0.0.6** | Click timed words to play; whole-recording or selection loops; gentle local cleanup in a separate copy; optional Whisper large-v3 and more word-confidence review flags on Windows. |
 
 [Detailed changelog](CHANGELOG.md) · [Historial en español](CHANGELOG.es.md)
 
@@ -71,7 +72,7 @@ MP3, MP4, MOV, M4A, WAV, FLAC, OPUS and other supported formats can be imported.
 - [Guía para Mac](GUIA.md) · [Guía para Windows](WINDOWS.es.md) · [Privacidad](PRIVACY.es.md)
 - [Build and test runs](https://github.com/Francoocicchetti/Vocalia/actions/workflows/windows.yml)
 
-Mac source is in the Swift files and `ui-translations.json`. Run `zsh build.sh` using Apple's development tools and a macOS 26 SDK. Windows source is in `Vocalia-Windows-source.zip`: extract it and run `powershell -File build.ps1` on Windows x64 with Python 3.12. `build_installer.ps1` additionally requires Inno Setup 6. The complete source bundle is attached to the release.
+Mac source is in the Swift files and `ui-translations.json`. Run `zsh build.sh` using Apple's development tools and a macOS 26 SDK. Windows source is in the `Vocalia-Windows/` folder: run `powershell -File build.ps1` on Windows x64 with Python 3.12. `build_installer.ps1` additionally requires Inno Setup 6. The complete source bundle is attached to the release.
 
 Windows release checks run on Windows Server x64, including the packaged app, six-language tour, history editing, canceled/failed workers, real offline recognition of FLAC/MP3/MP4/MOV/OPUS/Ogg, second-model comparison, a public four-speaker recording, installer hashes, shortcuts and reinstall/uninstall data preservation. They do not replace testing on physical Windows 11 Intel/AMD machines. Mac checks cover history bindings, playback alignment, imports, localization and transcript features. These checks do not guarantee perfect recognition or absence of bugs.
 
@@ -114,7 +115,7 @@ The **Update Vocalia** button now downloads the update inside the app, shows pro
 - **Windows:** after verification, choose **Install update**. Vocalia saves edits, closes and starts its local setup wizard in the current installation folder. Complete the wizard to reopen Vocalia. Installation is blocked while transcription or imports are running.
 - **Mac:** choose **Install and restart**. Vocalia prepares and verifies the new application, saves history, replaces only the app and reopens it. A previous-app copy is kept beside the installed app for recovery. Vocalia must be in a writable Applications folder, outside a mounted image or an App Translocation location. System security protections are not disabled.
 - History, quotes, projects, settings and model folders stay in their existing locations. Cancelling a download or failing verification does not change the installed app. Mac replacement failures attempt to restore the prior app.
-- **One-time transition:** users of the original 0.0.5 must install this revised 0.0.5 once using the download links above. That original build cannot install this same-version revision itself. Future higher-numbered releases can be downloaded and installed through the new button.
+- **One-time transition:** users of the original 0.0.5 must install the current preview once using the download links above. That original build cannot install this same-version revision itself. Future higher-numbered releases can be downloaded and installed through the new button.
 
-The public version remains **0.0.5**. This revision uses Mac build **18** and Windows file version **0.0.5.1**. The current complete source is `Vocalia-0.0.5-source.zip`; the original `v0.0.5` Git tag and GitHub-generated “Source code” snapshots remain the initial release. See the linked build run for the exact revision used for these installers.
+Current preview: **0.0.6**, Mac build **19**, Windows file version **0.0.6.0**. The release includes the exact source used for both packages.
 

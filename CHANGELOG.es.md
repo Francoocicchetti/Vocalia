@@ -1,5 +1,14 @@
 # Vocalia changelog
 
+## 0.0.6 — Preliminar
+
+- Pulsar palabras para escuchar; repetir el audio completo o una selección.
+- Limpieza local opcional de retumbes y volumen, conservando originales y tiempos.
+- Whisper large-v3 opcional; diccionario y revisión por baja confianza de palabras en Windows.
+- Conversión PCM directa en Mac y controles en seis idiomas.
+- La publicación requiere que pasen las compilaciones nativas de ambos sistemas.
+
+
 **Versión preliminar 0.0.5 · En desarrollo.** Vocalia todavía no es una versión 1.0 estable. Las entradas 1.x son etiquetas históricas anteriores al cambio de numeración; se conservan las funciones y el historial.
 
 ## Tabla de actualizaciones

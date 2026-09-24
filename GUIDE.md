@@ -90,3 +90,12 @@ The **Update Vocalia** button now downloads the update inside the app, shows pro
 
 The public version remains **0.0.5**. This revision uses Mac build **18** and Windows file version **0.0.5.1**. The current complete source is `Vocalia-0.0.5-source.zip`; the original `v0.0.5` Git tag and GitHub-generated “Source code” snapshots remain the initial release. See the linked build run for the exact revision used for these installers.
 
+
+## Audio review in 0.0.6 (preview)
+
+- Leave **Click words to play** on to listen from a timed word. Switch it off to edit without starting playback. Dragging to select text does not start playback.
+- Choose **Repeat audio** for the whole recording, or select timed words and choose **Repeat selection**. Pause or turn repetition off when finished. Changing recordings clears the loop.
+- **Clean audio** creates a separate local copy. Enable **Use cleaned audio** to listen to it, or deliberately transcribe the selected recording again. Existing text stays in place until retranscription; normal revision backups still apply.
+- On Mac, **Whisper large-v3 (slower)** selects the larger comparison model. On Windows, choose **large-v3** in the model list. Download it using the existing model preparation controls. Model size alone does not guarantee better names or figures.
+
+See [validation status](QA-0.0.6.md). The 0.0.6 release is gated on both native platform build jobs.

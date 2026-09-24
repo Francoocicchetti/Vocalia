@@ -127,9 +127,9 @@ enum LibraryChecks {
         if let output{try! data.write(to:URL(fileURLWithPath:output),options:.atomic)}
         func release(_ version:String,_ date:String)->[String:Any]{let file="Vocalia-\(version)-macOS-AppleSilicon.zip";return ["tag_name":"v"+version,"published_at":date,"draft":false,"html_url":ReleaseCheck.repo+"/releases/tag/v"+version,"body":"Changes","assets":[["name":file,"browser_download_url":ReleaseCheck.repo+"/releases/download/v"+version+"/"+file]]]}
         precondition(ReleaseCheck.select([release("1.0.4","2026-09-16T00:00:00Z")])==nil)
-        precondition(ReleaseCheck.select([release("0.0.5","2026-09-18T00:00:00Z")])==nil)
-        precondition(ReleaseCheck.select([release("0.0.6","2026-09-18T00:00:00Z")])?.version=="0.0.6")
-        var evil=release("0.0.6","2026-09-18T00:00:00Z");evil["assets"]=[["name":"Vocalia-0.0.6-macOS-AppleSilicon.zip","browser_download_url":"https://example.com/app.zip"]];precondition(ReleaseCheck.select([evil])==nil)
+        precondition(ReleaseCheck.select([release("0.0.6","2026-09-18T00:00:00Z")])==nil)
+        precondition(ReleaseCheck.select([release("0.0.7","2026-09-18T00:00:00Z")])?.version=="0.0.7")
+        var evil=release("0.0.7","2026-09-18T00:00:00Z");evil["assets"]=[["name":"Vocalia-0.0.7-macOS-AppleSilicon.zip","browser_download_url":"https://example.com/app.zip"]];precondition(ReleaseCheck.select([evil])==nil)
         precondition(LibrarySearch.figures(doc.segments[0]))
         print("PASS: library search, timings, edits, metadata migration, figures, Word archive and trusted update selection")
     }
