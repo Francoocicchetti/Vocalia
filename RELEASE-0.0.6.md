@@ -4,8 +4,8 @@ Local audio review for journalists. Your recordings stay on your computer.
 
 ## Downloads
 
-- **Windows 11, Intel/AMD:** `Vocalia-0.0.6-Windows-x64-Setup.exe` below. Run the installer; it preserves your history and models.
-- **Mac, Apple Silicon, macOS 26+:** `Vocalia-0.0.6-macOS-AppleSilicon.zip` below. Extract and move Vocalia to Applications. If macOS blocks this unsigned preview, follow [the Mac installation guide](https://github.com/Francoocicchetti/Vocalia/blob/main/INSTALL-MAC.md).
+- **[Download for Windows 11 — Intel/AMD](https://github.com/Francoocicchetti/Vocalia/releases/download/v0.0.6/Vocalia-0.0.6-Windows-x64-Setup.exe).** Run the installer; it preserves your history and models.
+- **[Download for Mac — Apple Silicon, macOS 26+](https://github.com/Francoocicchetti/Vocalia/releases/download/v0.0.6/Vocalia-0.0.6-macOS-AppleSilicon.zip).** Extract and move Vocalia to Applications. If macOS blocks this unsigned preview, follow [the Mac installation guide](https://github.com/Francoocicchetti/Vocalia/blob/main/INSTALL-MAC.md).
 - Existing revised 0.0.5 installations: choose **Update Vocalia** inside the app.
 
 ## Changes
@@ -19,6 +19,10 @@ Local audio review for journalists. Your recordings stay on your computer.
 - Controls translated into Spanish, English, German, French, Chinese and Portuguese.
 
 This is a preview. No measured universal accuracy gain is claimed; model choice and cleanup can help some recordings and hurt others. Compare with the original before quoting.
+
+## Validation
+
+Publication requires both native [build and test jobs](https://github.com/Francoocicchetti/Vocalia/actions/workflows/windows.yml) to pass. Checks cover actual packaged Windows transcription in six audio/video formats, Qt interactions, audio review, history compatibility, Mac OPUS decoding/cleanup, and installation/update preservation. The Windows runner is Windows Server 2025 x64; physical Windows 11 Intel/AMD playback and recognition on representative Chilean Spanish interviews still need field evaluation.
 
 ## Español
 

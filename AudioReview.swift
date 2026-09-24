@@ -72,9 +72,10 @@ enum AudioCleanup {
         let folder=FileManager.default.temporaryDirectory.appendingPathComponent("Vocalia-clean-"+UUID().uuidString)
         try FileManager.default.createDirectory(at:folder,withIntermediateDirectories:true)
         defer{try? FileManager.default.removeItem(at:folder)}
-        let duration=try await AVURLAsset(url:source).load(.duration).seconds
+        let playable=try await OpusAudio.shared.playable(source)
+        let duration=try await AVURLAsset(url:playable).load(.duration).seconds
         guard duration.isFinite,duration>0,duration<7200 else{throw TranscribeError.message(T("Audio cleanup supports recordings shorter than two hours."))}
-        let prepared=try await AudioPrep.convert(source,into:folder.appendingPathComponent("input.caf"),progress:{_ in})
+        let prepared=try await AudioPrep.convert(playable,into:folder.appendingPathComponent("input.caf"),progress:{_ in})
         let filtered=folder.appendingPathComponent("filtered.caf"),output=folder.appendingPathComponent("output.wav")
         let format=AVAudioFormat(commonFormat:.pcmFormatFloat32,sampleRate:16000,channels:1,interleaved:false)!
         var peak:Float=0
@@ -200,6 +201,16 @@ enum AudioReviewChecks {
         }
         let decoded=try JSONDecoder().decode([Transcript].self,from:state)
         try check(decoded[0].cleanedSource==nil && decoded[0].segments==doc.segments,"Old history remains compatible")
+        if let index=CommandLine.arguments.firstIndex(of:"--audio-review-test"),CommandLine.arguments.count>index+1 {
+            let fixture=URL(fileURLWithPath:CommandLine.arguments[index+1])
+            let before=try Data(contentsOf:fixture),destination=folder.appendingPathComponent("clean-opus.wav")
+            try await AudioCleanup.create(fixture,target:destination)
+            let cleanedOpus=try AVAudioFile(forReading:destination)
+            try check(cleanedOpus.processingFormat.sampleRate==16000 && cleanedOpus.length==176000,"OPUS cleanup preserves the fixture's 11-second timeline")
+            let unchanged=try Data(contentsOf:fixture)
+            try check(before==unchanged,"OPUS cleanup preserves original bytes")
+            try? FileManager.default.removeItem(at:OpusAudio.temporaryRoot)
+        }
         print("Audio review checks passed")
     }
 }
