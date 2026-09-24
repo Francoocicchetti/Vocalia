@@ -8,6 +8,7 @@ on:
       - '*.swift'
       - 'Info.plist'
       - 'build.sh'
+      - 'tools/**'
       - 'ui-translations.json'
       - 'Vocalia-Windows/**'
       - '.github/workflows/windows.yml'

@@ -11,9 +11,9 @@ Status: preview candidate. Publication is gated on both native GitHub build jobs
 - Real local transcription through the Windows engine code with a public English speech fixture, using the tiny model: FLAC, MP3, MP4, MOV, OPUS and OGG; malformed audio rejected without terminating the editor.
 - Mac update-package test checks checksum, extraction, signature, replacement, backup and preservation of separate history in an isolated directory. It never replaces a user's installed app.
 
-## Remaining before release
+## Native CI and remaining evaluation
 
-- Run the committed GitHub workflow on Windows 11 x64 and macOS 26; it builds both packages and tests Windows installation/upgrade/uninstall.
+- Both native jobs must pass on the release commit: Windows Server 2025 x64 and macOS 26 Apple Silicon. The Windows job passed on the first candidate, including packaged recognition and installation/upgrade/uninstall. The Mac job caught an OPUS static archive linking issue; the build now compiles the four pinned upstream opusfile sources directly and tests a decoded OPUS fixture before packaging.
 - Exercise native playback on Windows hardware. Offscreen Qt tests on Mac do not establish Windows hardware compatibility.
 - Evaluate recognition on representative Chilean Spanish interviews with verified reference transcripts. The optional large-v3 model has not been benchmarked in this update; no measured accuracy improvement is claimed.
 - Publish only after both platform jobs pass. The workflow publishes a preview from main only.
