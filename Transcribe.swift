@@ -36,6 +36,7 @@ struct Transcript: Identifiable, Codable, Equatable, Sendable {
     var project:String? = nil
     var tags:[String]? = nil
     var recordedDate:String? = nil
+    var cleanedSource:String? = nil
 }
 enum TranscribeError: LocalizedError {
     case message(String)
@@ -80,6 +81,11 @@ enum TextExport {
 struct PreparedAudio: Sendable { let url: URL; let duration: Double; let offset: Double; let multipleTracks: Bool }
 enum AudioPrep {
     static func convert(_ source: URL, into target: URL, progress: @escaping @Sendable (Double) async -> Void) async throws -> PreparedAudio {
+        // Read uncompressed audio directly; AVAssetReader can refuse valid PCM
+        // files on some macOS builds. PCM files have no video timeline offsets.
+        if ["wav","caf","aiff","aif"].contains(source.pathExtension.lowercased()) {
+            return try await convertPCM(source,into:target,progress:progress)
+        }
         if OpusAudio.needsDecoding(source) {
             let decoded = try await OpusAudio.shared.playable(source)
             return try await convert(decoded, into: target, progress: progress)
@@ -143,6 +149,13 @@ enum AudioPrep {
     @Published var downloadProgress: Progress?
     @Published var isPlaying = false
     @Published var playbackTime: Double = 0
+    @Published var loopStart:Double?
+    @Published var loopEnd:Double?
+    @Published var clickToPlay=true
+    @Published var useCleanedAudio=false
+    @Published var fullWhisper=UserDefaults.standard.bool(forKey:"fullWhisper")
+    var endObservation:NSObjectProtocol?
+    var loadedAudioPath:String?
     @Published var playbackRate: Float = 1
     @Published var locales: [Locale] = []
     @Published var localeID = UserDefaults.standard.string(forKey: "locale") ?? "es-CL"
@@ -156,6 +169,7 @@ enum AudioPrep {
     @Published var batchFinished = 0
     @Published var importing = false
     var processingQueue = false
+    var transcriptionSources:[UUID:String]=[:]
     var playbackEnd: Double?
     var playbackRequest=UUID()
     var downloadObservation:NSKeyValueObservation?
@@ -295,6 +309,7 @@ enum AudioPrep {
     func begin(ids:[UUID]) {
         guard !busy,!checkingLanguage else { return }
         guard !ids.isEmpty else { return }
+        transcriptionSources=Dictionary(uniqueKeysWithValues:documents.filter{ids.contains($0.id)}.map{($0.id,$0.id==selected ? audioSource($0) : $0.source)})
         busy = true; processingQueue=true; queue=ids; batchTotal=ids.count;batchFinished=0; progress = 0; stopPlayback()
         for i in documents.indices where ids.contains(documents[i].id) {documents[i].state="En cola"}
         UserDefaults.standard.set(vocabulary, forKey: "vocabulary"); UserDefaults.standard.set(localeID, forKey: "locale")
@@ -315,14 +330,14 @@ enum AudioPrep {
             }
             let cancelled=Task.isCancelled
             for i in documents.indices where queue.contains(documents[i].id) {documents[i].state="Pendiente"}
-            queue=[];processingQueue=false;activeID=nil
+            queue=[];transcriptionSources=[:];processingQueue=false;activeID=nil
             if !cancelled {status="Lote terminado: \(batchFinished) archivos procesados. Revisa el estado de cada grabación."}
             busy = false; downloadProgress = nil; downloadObservation=nil; analyzer = nil; task = nil;persist()
         }
     }
     func transcribe(_ id: UUID) async throws {
         guard let index = documents.firstIndex(where: { $0.id == id }) else { return }
-        let source = URL(fileURLWithPath: documents[index].source)
+        let source = URL(fileURLWithPath: transcriptionSources[id] ?? documents[index].source)
         guard FileManager.default.isReadableFile(atPath: source.path) else { throw TranscribeError.message("No puedo leer el archivo original. Vuelve a conectarlo o agrégalo desde su nueva ubicación.") }
         status = "Preparando el reconocimiento local…"
         await checkEngine()
@@ -421,23 +436,35 @@ enum AudioPrep {
     func copyText() { guard let doc = current else { return }; NSPasteboard.general.clearContents(); NSPasteboard.general.setString(TextExport.render(doc, kind: "txt"), forType: .string); status = "Transcripción completa copiada. Lista para pegar de una vez." }
     func stopPlayback() { playbackRequest=UUID();player?.pause(); isPlaying = false;playbackEnd=nil }
     func play(at seconds: Double? = nil, until end:Double? = nil) {
-        guard let source = current?.source else { return }
-        guard FileManager.default.isReadableFile(atPath:source) else {error="No encuentro el audio original. Conecta el disco o usa Vincular original para elegirlo en su nueva ubicación.";return}
+        guard let doc=current else{return}
+        let source=doc.source,audioPath=audioSource(doc)
+        if end != nil {loopStart=nil;loopEnd=nil}
+        let seconds = seconds ?? ((player?.currentItem?.duration.seconds ?? .infinity) <= playbackTime + 0.05 ? 0 : nil)
+        guard FileManager.default.isReadableFile(atPath:audioPath) else {error="No encuentro el audio original. Conecta el disco o usa Vincular original para elegirlo en su nueva ubicación.";return}
         stopPlayback()
         let request=playbackRequest
         Task {
           do {
-            let playable = try await OpusAudio.shared.playable(URL(fileURLWithPath: source))
+            let playable = try await OpusAudio.shared.playable(URL(fileURLWithPath: audioPath))
             guard self.current?.source == source, self.playbackRequest == request else { return }
-        if loadedSource != source {
+        if loadedSource != source || loadedAudioPath != audioPath {
             playbackTime=0
             if let observation { player?.removeTimeObserver(observation) }
-            player = AVPlayer(url: playable); loadedSource = source
+            if let endObservation {NotificationCenter.default.removeObserver(endObservation)}
+            player = AVPlayer(url: playable); loadedSource = source;loadedAudioPath=audioPath
+            endObservation=NotificationCenter.default.addObserver(forName:.AVPlayerItemDidPlayToEndTime,object:player?.currentItem,queue:.main){[weak self] _ in
+                Task{@MainActor in
+                    guard let self,self.loadedSource==source else{return}
+                    self.isPlaying=false
+                    if let start=self.loopStart {self.play(at:start)}
+                }
+            }
             observation = player?.addPeriodicTimeObserver(forInterval: CMTime(seconds: 0.1, preferredTimescale: 600), queue: .main) { [weak self] time in
                 MainActor.assumeIsolated {
                     guard self?.loadedSource==source else{return}
                     self?.playbackTime = time.seconds.isFinite ? time.seconds : 0; self?.isPlaying = (self?.player?.rate ?? 0) > 0
                     if let end=self?.playbackEnd,time.seconds>=end {self?.stopPlayback()}
+                    else if self?.isPlaying == true,let start=self?.loopStart,let end=self?.loopEnd,time.seconds>=end {self?.play(at:start)}
                 }
             }
         }
@@ -459,7 +486,7 @@ enum AudioPrep {
         let panel=NSOpenPanel();panel.allowedContentTypes=[.audio,.movie,UTType(filenameExtension:"opus") ?? .data,UTType(filenameExtension:"ogg") ?? .data];panel.allowsMultipleSelection=false
         panel.message=L("Elige el mismo audio o video en su nueva ubicación. Los tiempos guardados corresponden a esa grabación.");panel.prompt=L("Vincular original")
         if panel.runModal() == .OK,let url=panel.url {
-            stopPlayback();documents[i].source=url.path;persist();status="Original vinculado. Tu texto y tus cuñas se conservan."
+            stopPlayback();useCleanedAudio=false;documents[i].cleanedSource=nil;documents[i].source=url.path;persist();status="Original vinculado. Tu texto y tus cuñas se conservan."
         }
     }
     func removeSelected() { guard !busy, let selected else { return }; stopPlayback(); self.selected=nil; documents.removeAll { $0.id == selected }; self.selected = documents.last?.id; persist() }
@@ -561,7 +588,7 @@ struct TranscribeView: View {
         }
         .environment(\.locale,Locale(identifier:uiLanguage))
         .task { UserDefaults.standard.set(uiLanguage,forKey:"uiLanguage");await model.checkEngine(); await model.refreshAdvancedStatus() }
-        .onChange(of: model.selected) { model.stopPlayback();selection=NSRange(location:0,length:0);quoteSpeaker="";if let hit=pendingLibraryHit {pendingLibraryHit=nil;if let start=hit.start {model.play(at:start,until:hit.end)}} }
+        .onChange(of: model.selected) { model.stopPlayback();model.loopStart=nil;model.loopEnd=nil;model.useCleanedAudio=false;selection=NSRange(location:0,length:0);quoteSpeaker="";if let hit=pendingLibraryHit {pendingLibraryHit=nil;if let start=hit.start {model.play(at:start,until:hit.end)}} }
         .onChange(of: model.localeID) { UserDefaults.standard.set(model.localeID,forKey:"locale");Task { await model.checkEngine() } }
         .onChange(of: model.documents) { if !model.busy { model.persist() } }
         .onChange(of: model.compareEnabled) { model.saveOptions() }
@@ -619,10 +646,12 @@ struct TranscribeView: View {
             Text(L("Separa términos con comas. Ayudan al reconocimiento; revisa nombres y cifras al terminar.")).font(.system(size: 10)).foregroundStyle(.secondary)
             HStack(spacing:14) {
                 Toggle(L("Comparar con Whisper"),isOn:$model.compareEnabled).toggleStyle(.checkbox)
+
                 Toggle(T("Speaker analysis: manual"),isOn:$model.voicesEnabled).help(T("Speaker separation only runs when you select it and click Analyze speakers / compare. It never runs after transcription.")).toggleStyle(.checkbox)
                 Spacer()
                 Button(L("Preparar modelos")) {model.prepareAdvancedModels()}
             }.font(.system(size:11)).disabled(model.busy)
+            Toggle(T("Whisper full model (slower)"),isOn:$model.fullWhisper).toggleStyle(.checkbox).font(.system(size:11)).disabled(model.busy).onChange(of:model.fullWhisper){UserDefaults.standard.set(model.fullWhisper,forKey:"fullWhisper");Task{model.advancedModelStatus=await LocalEngines.shared.readyDescription()}}
             Text(L(model.advancedModelStatus)).font(.system(size:10)).foregroundStyle(.secondary)
         }
     }
@@ -632,10 +661,28 @@ struct TranscribeView: View {
             HStack {
                 VStack(alignment: .leading, spacing: 4) { Text(doc.name).font(.headline).lineLimit(1); Text(L("\(model.totalWords) palabras · \(TextExport.clock(doc.duration))")).font(.system(size: 11)).foregroundStyle(.secondary) }
                 Spacer()
-                Button { model.isPlaying ? model.stopPlayback() : model.play() } label: { Image(systemName: model.isPlaying ? "pause.fill" : "play.fill") }.help(L("Escuchar el original"))
+                Button { model.isPlaying ? model.stopPlayback() : model.play() } label: { Image(systemName: model.isPlaying ? "pause.fill" : "play.fill") }.help(model.useCleanedAudio ? T("Use cleaned audio") : L("Escuchar el original"))
                 Text(TextExport.clock(model.playbackTime)).font(.system(size: 11, design: .monospaced))
                 Picker(L("Velocidad"), selection: $model.playbackRate) { Text(L("0,75×")).tag(Float(0.75)); Text(L("1×")).tag(Float(1)); Text(L("1,25×")).tag(Float(1.25)) }.labelsHidden().frame(width: 75).onChange(of: model.playbackRate) { if model.isPlaying { model.player?.rate = model.playbackRate } }
             }.padding(16)
+            HStack {
+                Menu(T("Repeat audio")) {
+                    Button(T("Repeat audio")){model.repeatAudio()}
+                    Button(T("Repeat selection")){
+                        if let times=AudioWordMap.selection(selection,document:doc,visible:TextExport.render(doc,kind:"txt")){model.repeatAudio(start:times.0,end:times.1)}
+                        else{model.status=T("Select unchanged words with timestamps to repeat them.")}
+                    }
+                    Button(T("Stop repeating")){model.loopStart=nil;model.loopEnd=nil}
+                }.frame(width:145)
+                if model.loopStart != nil {Image(systemName:"repeat").foregroundStyle(accent)}
+                Toggle(T("Click words to play"),isOn:$model.clickToPlay).toggleStyle(.checkbox)
+                Spacer()
+                Button(T("Clean audio")){model.cleanAudio()}.help(T("Gentle rumble removal and volume normalization. Keeps the original and all timings. Does not remove other speakers or repair clipped speech."))
+                Toggle(T("Use cleaned audio"),isOn:$model.useCleanedAudio).toggleStyle(.checkbox)
+                    .disabled(doc.cleanedSource.map{!FileManager.default.isReadableFile(atPath:$0)} ?? true)
+                    .help(T("Listen or transcribe again using the cleaned copy. Existing text stays unchanged until you transcribe again."))
+                    .onChange(of:model.useCleanedAudio){model.stopPlayback();model.loopStart=nil;model.loopEnd=nil}
+            }.font(.system(size:11)).padding(.horizontal,16).padding(.bottom,10).disabled(model.busy)
             HStack {
                 Picker(L("Vista de la transcripción"), selection: $transcriptView) {
                     Text(L("Texto completo")).tag("completo")
@@ -672,7 +719,7 @@ struct TranscribeView: View {
                             Toggle(L("Seguir audio"),isOn:$followAudio).toggleStyle(.checkbox).font(.system(size:11))
                             Button(L("Guardar TXT")) { model.export("txt") }
                         }
-                        SelectableTranscript(text: model.textBinding(for:doc),selection:$selection,editable:!model.busy && !showTutorial,document:doc,playbackTime:model.loadedSource==doc.source ? model.playbackTime : nil,playing:model.isPlaying,followAudio:followAudio)
+                        SelectableTranscript(text: model.textBinding(for:doc),selection:$selection,editable:!model.busy && !showTutorial,document:doc,playbackTime:model.loadedSource==doc.source ? model.playbackTime : nil,playing:model.isPlaying,followAudio:followAudio,clickToPlay:model.clickToPlay,onWordClick:model.clickWord)
                         .font(.system(size: 16)).lineSpacing(7).scrollContentBackground(.hidden)
                         .padding(16).background(.white, in: RoundedRectangle(cornerRadius: 12))
                         .overlay(RoundedRectangle(cornerRadius: 12).stroke(accent.opacity(0.10)))
@@ -759,6 +806,7 @@ final class TranscribeDelegate: NSObject, NSApplicationDelegate {
             Task { @MainActor in await AdvancedTests.autoImport();exit(0) };RunLoop.main.run()
         }
         if let i=CommandLine.arguments.firstIndex(of:"--library-fixture"),CommandLine.arguments.count>i+1{LibraryChecks.run(output:CommandLine.arguments[i+1]);exit(0)}
+        if CommandLine.arguments.contains("--audio-review-test") {Task{do{try await AudioReviewChecks.run();exit(0)}catch{print(error);exit(1)}};RunLoop.main.run()}
         if CommandLine.arguments.contains("--self-test") { TranscribeTests.run(); AdvancedTests.run(); LibraryChecks.run(); exit(0) } }
     var body: some Scene { WindowGroup("Vocalia") { if let config = Bundle.main.url(forResource: "opus-qa", withExtension: "json") { OpusValidationView(config: config) } else { VocaliaStartView() } }.defaultSize(width: 1100, height: 820).commands { CommandGroup(replacing: .newItem) {} } }
 }

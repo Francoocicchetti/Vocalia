@@ -1,6 +1,6 @@
-Vocalia 0.0.5 — PRE-RELEASE / VERSIÓN PRELIMINAR
-https://github.com/Francoocicchetti/Vocalia/releases/tag/v0.0.5
-Windows 11 Intel/AMD: Vocalia-0.0.5-Windows-x64-Setup.exe
-Mac Apple Silicon, macOS 26+: Vocalia-0.0.5-macOS-AppleSilicon.zip
+Vocalia 0.0.6 — PRE-RELEASE / VERSIÓN PRELIMINAR
+https://github.com/Francoocicchetti/Vocalia/releases/tag/v0.0.6
+Windows 11 Intel/AMD: Vocalia-0.0.6-Windows-x64-Setup.exe
+Mac Apple Silicon, macOS 26+: Vocalia-0.0.6-macOS-AppleSilicon.zip
 The automatic Source code downloads are not installers.
 Close Vocalia before upgrading; keep the same user and data folder to preserve history.

@@ -4,7 +4,7 @@ import AppKit
 
 struct AppRelease:Identifiable,Sendable {var version:String;var notes:String;var download:URL;var page:URL;var digest:String="";var size:Int64=0;var id:String{version}}
 enum ReleaseCheck {
-    static let version="0.0.5"
+    static let version="0.0.6"
     static let repo="https://github.com/Francoocicchetti/Vocalia"
     static func numbers(_ value:String)->[Int]? {
         let v=value.hasPrefix("v") ? String(value.dropFirst()):value

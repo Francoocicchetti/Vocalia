@@ -1,8 +1,8 @@
 # Instalar Vocalia 1.0.1 en Mac
 
-**Versión preliminar 0.0.5 · En desarrollo.** Vocalia todavía no es una versión 1.0 estable. Se conservan las funciones y el historial de versiones anteriores. Las entradas anteriores de la tabla son etiquetas históricas de prototipos.
+**Versión preliminar 0.0.6 · En desarrollo.** Vocalia todavía no es una versión 1.0 estable. Se conservan las funciones y el historial de versiones anteriores. Las entradas anteriores de la tabla son etiquetas históricas de prototipos.
 
-[English](INSTALL-MAC.md) · [Descargas](https://github.com/Francoocicchetti/Vocalia/releases/tag/v0.0.5)
+[English](INSTALL-MAC.md) · [Descargas](https://github.com/Francoocicchetti/Vocalia/releases/tag/v0.0.6)
 
 ## Compatibilidad
 
@@ -10,7 +10,7 @@ Requiere **Apple Silicon (M1 o posterior) y macOS 26 o posterior**. Compruébalo
 
 ## Descargar e instalar
 
-1. Descarga **Vocalia-0.0.5-macOS-AppleSilicon.zip** desde la Release oficial de Vocalia en GitHub.
+1. Descarga **Vocalia-0.0.6-macOS-AppleSilicon.zip** desde la Release oficial de Vocalia en GitHub.
 2. Abre el ZIP y arrastra **Vocalia.app** a **Aplicaciones**.
 3. Abre Vocalia desde Aplicaciones.
 
@@ -35,6 +35,6 @@ La descarga inicial de modelos necesita internet. Después el reconocimiento fun
 
 Cierra la app anterior y reemplaza Vocalia.app en Aplicaciones. Conserva la carpeta Application Support. El identificador y la ubicación del historial no cambian. **1.0 es la numeración pública**, que reemplaza etiquetas de desarrollo como 2.2.1; no borra tu historial. Conserva una copia de tus exportaciones importantes antes de actualizar.
 
-## Transcripción automática en 0.0.5
+## Transcripción automática en 0.0.6
 
 Las grabaciones nuevas se transcriben automáticamente al agregarlas o arrastrarlas. Se procesan una a una; si falta el modelo, se descarga primero. Transcribir pendientes permite retomar archivos detenidos. No se reprocesan automáticamente el historial ni las ediciones. El análisis de voces sigue siendo manual.

@@ -1,5 +1,14 @@
 # Vocalia changelog
 
+## 0.0.6 — Preview
+
+- Word click seeks, whole-recording and selection loops.
+- Optional local rumble reduction and level normalization; originals and timing preserved.
+- Optional Whisper large-v3, dictionary hotword hints and low-word-confidence review on Windows.
+- Mac direct PCM conversion and six-language controls.
+- See [preview notes](RELEASE-0.0.6.md) for limitations. Publication requires both native platform jobs to pass.
+
+
 **Pre-release 0.0.5 · In development.** Vocalia is not a stable 1.0 release yet. Earlier 1.x entries are historical prototype labels from before the numbering reset; existing history and features are preserved.
 
 ## Version history

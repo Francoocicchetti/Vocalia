@@ -12,3 +12,13 @@ transcripciones.json
 revision-*.json
 Models/
 Vendor/
+
+__pycache__/
+*.pyc
+Vocalia-Windows/dist/
+Vocalia-Windows/build/
+Vocalia-Windows/release/
+Vocalia-Windows/installer.iss
+Vocalia-Windows/gui-result.txt
+
+:memory:.ses*

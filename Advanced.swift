@@ -126,10 +126,12 @@ struct SelectableTranscript: NSViewRepresentable {
     var playbackTime:Double?
     var playing:Bool
     var followAudio:Bool
+    var clickToPlay:Bool
+    var onWordClick:(Int)->Void
     func makeCoordinator()->Coordinator {Coordinator(self)}
     func makeNSView(context:Context)->NSScrollView {
         let scroll=NSScrollView();scroll.hasVerticalScroller=true;scroll.borderType = .noBorder;scroll.drawsBackground=false
-        let view=NSTextView();view.isRichText=false;view.isAutomaticQuoteSubstitutionEnabled=false;view.isAutomaticDashSubstitutionEnabled=false;view.isAutomaticTextReplacementEnabled=false;view.isAutomaticSpellingCorrectionEnabled=false
+        let view=PlaybackTextView();view.isRichText=false;view.isAutomaticQuoteSubstitutionEnabled=false;view.isAutomaticDashSubstitutionEnabled=false;view.isAutomaticTextReplacementEnabled=false;view.isAutomaticSpellingCorrectionEnabled=false
         view.font=NSFont.systemFont(ofSize:16);view.textColor = .labelColor;view.backgroundColor = .white;view.textContainerInset=NSSize(width:16,height:16)
         view.isVerticallyResizable=true;view.isHorizontallyResizable=false;view.autoresizingMask=[.width];view.textContainer?.widthTracksTextView=true;view.delegate=context.coordinator
         scroll.documentView=view;return scroll
@@ -139,6 +141,7 @@ struct SelectableTranscript: NSViewRepresentable {
         guard let view=scroll.documentView as? NSTextView else{return}
         if view.string != text {let old=view.selectedRange();context.coordinator.updating=true;view.string=text;let length=(text as NSString).length;view.setSelectedRange(NSRange(location:min(old.location,length),length:min(old.length,max(0,length-old.location))));context.coordinator.updating=false}
         view.isEditable=editable
+        if let playerView=view as? PlaybackTextView {playerView.clickToPlay=clickToPlay;playerView.onWordClick=onWordClick}
         let coordinator=context.coordinator
         if coordinator.cachedSegments != document.segments || coordinator.documentID != document.id {
             coordinator.cachedSegments=document.segments;coordinator.documentID=document.id
