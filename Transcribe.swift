@@ -139,6 +139,8 @@ enum AudioPrep {
 @MainActor final class TranscriptionModel: ObservableObject {
     @Published var documents: [Transcript] = []
     @Published var selected: UUID?
+    @Published var batchSelection=Set<UUID>()
+    @Published var lastRemovedBatch:[Transcript]=[]
     var importGeneration = 0
     @Published var busy = false
     @Published var status = "Agrega una grabación para empezar."
@@ -200,6 +202,7 @@ enum AudioPrep {
                 selected = documents.first?.id
             }
         } catch { self.error = "No se pudo cargar el historial local: \(error.localizedDescription)" }
+        if let data=try? Data(contentsOf:storage.appendingPathComponent("last-removed-group.json")),let removed=try? JSONDecoder().decode([Transcript].self,from:data){lastRemovedBatch=removed}
     }
     // SwiftUI may retain a binding after its row was deleted or reordered.
     // Resolve identity for every access; never retain an array index in an editor.
@@ -489,7 +492,7 @@ enum AudioPrep {
             stopPlayback();useCleanedAudio=false;documents[i].cleanedSource=nil;documents[i].source=url.path;persist();status="Original vinculado. Tu texto y tus cuñas se conservan."
         }
     }
-    func removeSelected() { guard !busy, let selected else { return }; stopPlayback(); self.selected=nil; documents.removeAll { $0.id == selected }; self.selected = documents.last?.id; persist() }
+    func removeSelected() { if let selected{removeBatch([selected])} }
 }
 
 struct TranscribeView: View {
@@ -498,6 +501,7 @@ struct TranscribeView: View {
     @State var onlyReview = false
     @State var transcriptView = "completo"
     @State var showRemove = false
+    @State var removalIDs=Set<UUID>()
     @State var showDictionary = false
     @State var showTutorial = false
     @AppStorage("guidedTour102Release") private var guidedTourCompleted = false
@@ -553,7 +557,7 @@ struct TranscribeView: View {
                     Spacer()
                     if model.processingQueue { Text(L("Archivo \(model.batchFinished+1) de \(model.batchTotal)")).font(.system(size:11)).foregroundStyle(.secondary) }
                     if model.busy { Button(L("Cancelar")) { model.cancel() } }
-                    else { Button { model.begin() } label: { Label(model.current?.complete == true ? L("Volver a transcribir") : L("Transcribir"), systemImage: "waveform") }.buttonStyle(.borderedProminent).tint(accent).controlSize(.large).disabled(model.current == nil) }
+                    else { Button { model.begin() } label: { Label(T(model.current?.complete == true ? "Retranscribe open audio" : "Transcribe open audio"), systemImage: "waveform") }.buttonStyle(.borderedProminent).tint(accent).controlSize(.large).disabled(model.current == nil) }
                 }
             }.padding(16).tourTarget("status")
         }
@@ -602,15 +606,18 @@ struct TranscribeView: View {
         .sheet(isPresented:$updates.show){UpdatePane(manager:updates,model:model)}
         .sheet(isPresented: $showDictionary) { DictionaryPane(model:model) }
         .alert("Vocalia", isPresented: Binding(get: { model.error != nil }, set: { if !$0 { model.error = nil } })) { Button(L("Entendido")) { model.error = nil } } message: { Text(L(model.error ?? "")) }
-        .confirmationDialog(L("¿Quitar esta transcripción del historial? El audio original se conserva."), isPresented: $showRemove) { Button(L("Quitar del historial"), role: .destructive) { model.removeSelected() } }
+        .confirmationDialog(T("Remove {count} recordings from history? Original files are kept. You can restore the last removed group.").replacingOccurrences(of:"{count}",with:String(removalIDs.count)), isPresented: $showRemove, titleVisibility:.visible) { Button(T("Remove selection from history…"), role: .destructive) { model.removeBatch(removalIDs) } }
     }
     var sidebar: some View {
         VStack(alignment: .leading, spacing: 14) {
             HStack { Text(L("GRABACIONES · \(model.documents.count)")).font(.system(size: 11, weight: .bold)).foregroundStyle(.secondary); Spacer() }
             Button { model.pick() } label: { Label(model.importing ? L("Buscando archivos…") : L("Agregar archivos o carpetas…"), systemImage:"plus") }.disabled(model.importing).controlSize(.large).tourTarget("add")
+            BatchControls(model:model)
             ScrollView {
                 VStack(spacing: 7) {
                     ForEach(model.documents) { doc in
+                        HStack(spacing:4) {
+                        Toggle(T("Select recording")+" "+doc.name,isOn:Binding(get:{model.batchSelection.contains(doc.id)},set:{if $0{model.batchSelection.insert(doc.id)}else{model.batchSelection.remove(doc.id)}})).labelsHidden().toggleStyle(.checkbox).disabled(model.busy || model.importing)
                         Button { model.selected = doc.id } label: {
                             HStack(alignment: .top, spacing: 9) {
                                 Image(systemName: doc.complete ? "checkmark.circle" : "waveform").foregroundStyle(accent)
@@ -618,12 +625,13 @@ struct TranscribeView: View {
                                 Spacer(minLength: 0)
                             }.padding(11).frame(maxWidth: .infinity, alignment: .leading).background(model.selected == doc.id ? accent.opacity(0.12) : .clear, in: RoundedRectangle(cornerRadius: 10))
                         }.buttonStyle(.plain)
+                        }
                     }
                 }
             }
             Button(L("Transcribir pendientes")) { model.begin(all: true) }.disabled(model.busy || !model.documents.contains { !$0.complete }).tourTarget("run")
             Button(L("Exportar todos los TXT")) { model.exportBatch() }.disabled(model.busy || !model.documents.contains { !$0.segments.isEmpty })
-            Button(L("Quitar del historial…")) { showRemove = true }.buttonStyle(.link).disabled(model.busy || model.current == nil).font(.system(size: 11))
+            Button(L("Quitar del historial…")) { removalIDs=model.checkedDocuments.isEmpty ? Set(model.selected.map{[$0]} ?? []) : Set(model.checkedDocuments.map(\.id));showRemove = true }.buttonStyle(.link).disabled(model.busy || model.importing || (model.current == nil && model.checkedDocuments.isEmpty)).font(.system(size: 11))
             Text(L("Puedes agregar muchos archivos o carpetas de una vez, incluso mientras se procesa la cola.\nLos originales se conservan.")).font(.system(size: 10)).foregroundStyle(.secondary)
         }.padding(16)
     }
@@ -796,6 +804,7 @@ final class TranscribeDelegate: NSObject, NSApplicationDelegate {
         if let i=CommandLine.arguments.firstIndex(of:"--apply-update"),CommandLine.arguments.count>i+1{exit(UpdateInstall.apply(config:URL(fileURLWithPath:CommandLine.arguments[i+1])))}
         if let i=CommandLine.arguments.firstIndex(of:"--update-download-test"),CommandLine.arguments.count>i+1{Task{do{try await UpdateInstall.downloadTest(manifest:URL(fileURLWithPath:CommandLine.arguments[i+1]));exit(0)}catch{print(error);exit(1)}};RunLoop.main.run()}
         if let i=CommandLine.arguments.firstIndex(of:"--update-package-test"),CommandLine.arguments.count>i+1{do{try UpdateInstall.packageTest(archive:URL(fileURLWithPath:CommandLine.arguments[i+1]));exit(0)}catch{print(error);exit(1)}}
+        if CommandLine.arguments.contains("--batch-self-test"){do{try BatchChecks.run();exit(0)}catch{print(error);exit(1)}}
         if CommandLine.arguments.contains("--update-self-test"){do{try UpdateInstall.tests();exit(0)}catch{print(error);exit(1)}}
         if let index = CommandLine.arguments.firstIndex(of: "--opus-self-test"), CommandLine.arguments.count > index + 2 {
             let source = CommandLine.arguments[index+1], output = CommandLine.arguments[index+2]

@@ -1,5 +1,9 @@
 # Vocalia changelog
 
+## 0.0.7 — Preview · 2026-10-02
+
+Seleccionar todos o marcar grabaciones; quitar y restaurar un grupo; transcribir, exportar TXT/SRT/VTT/Word o asignar un proyecto a la selección. Los originales se conservan.
+
 ## 0.0.6 — Preliminar
 
 - Pulsar palabras para escuchar; repetir el audio completo o una selección.

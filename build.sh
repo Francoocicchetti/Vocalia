@@ -35,12 +35,13 @@ xattr -cr "$APP_DIR"
 codesign --force --sign - "$APP_DIR/Contents/MacOS/opusdecode"
 codesign --force --sign - "$APP_DIR"
 "$APP_DIR/Contents/MacOS/Transcribe" --self-test
+"$APP_DIR/Contents/MacOS/Transcribe" --batch-self-test
 "$APP_DIR/Contents/MacOS/Transcribe" --auto-import-test
 "$APP_DIR/Contents/MacOS/Transcribe" --audio-review-test "$SOURCE_DIR/Vocalia-Windows/test-speech.opus"
 "$APP_DIR/Contents/MacOS/Transcribe" --update-self-test
 codesign --verify --deep --strict "$APP_DIR"
-ditto -c -k --norsrc --keepParent "$APP_DIR" "$OUTPUT_DIR/Vocalia-0.0.6-macOS-AppleSilicon.zip"
+ditto -c -k --norsrc --keepParent "$APP_DIR" "$OUTPUT_DIR/Vocalia-0.0.7-macOS-AppleSilicon.zip"
 cp "$SOURCE_DIR/START-HERE.txt" "$BUILD_DIR/START-HERE.txt"
-(cd "$BUILD_DIR" && /usr/bin/zip -q "$OUTPUT_DIR/Vocalia-0.0.6-macOS-AppleSilicon.zip" START-HERE.txt)
-"$APP_DIR/Contents/MacOS/Transcribe" --update-package-test "$OUTPUT_DIR/Vocalia-0.0.6-macOS-AppleSilicon.zip"
-echo "Build ready: $OUTPUT_DIR/Vocalia-0.0.6-macOS-AppleSilicon.zip"
+(cd "$BUILD_DIR" && /usr/bin/zip -q "$OUTPUT_DIR/Vocalia-0.0.7-macOS-AppleSilicon.zip" START-HERE.txt)
+"$APP_DIR/Contents/MacOS/Transcribe" --update-package-test "$OUTPUT_DIR/Vocalia-0.0.7-macOS-AppleSilicon.zip"
+echo "Build ready: $OUTPUT_DIR/Vocalia-0.0.7-macOS-AppleSilicon.zip"

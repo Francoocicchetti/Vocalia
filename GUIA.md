@@ -131,3 +131,9 @@ Se mantiene la versión pública **0.0.5**: compilación **18** en Mac y versió
 - Mac: **Whisper large-v3 (más lento)** elige el modelo mayor para comparar. Windows: selecciona **large-v3** en la lista. Descárgalo con los controles de preparación existentes. Un modelo mayor no garantiza mejores nombres o cifras.
 
 La publicación de 0.0.6 requiere que pasen las compilaciones nativas de ambos sistemas.
+
+## Trabajar con varias grabaciones
+
+Marca las casillas junto a las grabaciones o pulsa **Seleccionar todos**. El contador indica cuántas están seleccionadas. **Acciones para la selección** permite transcribir pendientes seleccionados, volver a transcribir el grupo, asignar un proyecto, exportar TXT/SRT/VTT/Word o quitar el grupo del historial. Abrir una grabación no cambia las casillas marcadas. **Desmarcar todos** vacía la selección.
+
+Quitar un grupo pide confirmación y nunca borra los archivos originales. **Restaurar último grupo eliminado** recupera el grupo, con sus ediciones y cuñas, incluso después de reiniciar. Las acciones se desactivan durante la importación o el procesamiento. Volver a transcribir pide confirmación y guarda una revisión previa. La exportación crea archivos separados sin sobrescribir exportaciones existentes.

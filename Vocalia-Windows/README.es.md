@@ -1,8 +1,8 @@
 <p align="center"><img src="logo.png" width="128" alt="Icono de Vocalia"></p>
 
-# Vocalia 0.0.6
+# Vocalia 0.0.7
 
-**Versión preliminar 0.0.6 · En desarrollo.** Vocalia todavía no es una versión 1.0 estable. Las entradas 1.x son etiquetas históricas anteriores al cambio de numeración; se conservan las funciones y el historial.
+**Versión preliminar 0.0.7 · En desarrollo.** Vocalia todavía no es una versión 1.0 estable. Las entradas 1.x son etiquetas históricas anteriores al cambio de numeración; se conservan las funciones y el historial.
 
 **Transcripción local para periodistas: texto completo, cuñas y reproducción con resaltado.**
 
@@ -10,16 +10,16 @@
 
 ## Descargar
 
-### [↓ Instalador para Windows 11 — Intel / AMD](https://github.com/Francoocicchetti/Vocalia/releases/download/v0.0.6/Vocalia-0.0.6-Windows-x64-Setup.exe)
+### [↓ Instalador para Windows 11 — Intel / AMD](https://github.com/Francoocicchetti/Vocalia/releases/download/v0.0.7/Vocalia-0.0.7-Windows-x64-Setup.exe)
 
-### [↓ MacBook / Mac — Apple Silicon](https://github.com/Francoocicchetti/Vocalia/releases/download/v0.0.6/Vocalia-0.0.6-macOS-AppleSilicon.zip)
+### [↓ MacBook / Mac — Apple Silicon](https://github.com/Francoocicchetti/Vocalia/releases/download/v0.0.7/Vocalia-0.0.7-macOS-AppleSilicon.zip)
 
-[Todos los archivos y verificaciones de la versión 0.0.6](https://github.com/Francoocicchetti/Vocalia/releases/tag/v0.0.6)
+[Todos los archivos y verificaciones de la versión 0.0.7](https://github.com/Francoocicchetti/Vocalia/releases/tag/v0.0.7)
 
 | Equipo | Requisitos | Archivo |
 | --- | --- | --- |
-| Windows | Windows 11, Intel/AMD de 64 bits | `Vocalia-0.0.6-Windows-x64-Setup.exe` |
-| MacBook / Mac | Apple Silicon M1 o posterior, macOS 26+ | `Vocalia-0.0.6-macOS-AppleSilicon.zip` |
+| Windows | Windows 11, Intel/AMD de 64 bits | `Vocalia-0.0.7-Windows-x64-Setup.exe` |
+| MacBook / Mac | Apple Silicon M1 o posterior, macOS 26+ | `Vocalia-0.0.7-macOS-AppleSilicon.zip` |
 
 Los archivos están en **Assets**, debajo de las notas de la versión. Descarga el instalador o el ZIP para Mac, no «Source code». No necesitas Python, Xcode, cuenta ni clave de API. Estos archivos no son compatibles con Mac Intel ni Windows ARM.
 
@@ -44,6 +44,7 @@ Internet se usa para descargar modelos. Las grabaciones y transcripciones se pro
 | **0.0.4** | Las grabaciones nuevas se transcriben automáticamente al agregarlas o arrastrarlas. Se procesan una a una; si falta el modelo, se descarga primero. Transcribir pendientes permite retomar archivos detenidos. No se reprocesan automáticamente el historial ni las ediciones. El análisis de voces sigue siendo manual. |
 | **0.0.5** | Avisos de nuevas versiones y sus cambios; búsqueda en todas las transcripciones con escucha del fragmento; proyectos, etiquetas y fechas; vista de revisión de cifras; exportación Word del texto completo editado con cuñas seleccionadas. |
 | **0.0.6** | Clic en palabras para escuchar; repetición completa o de una selección; limpieza local suave en una copia; Whisper large-v3 opcional y más señales para revisar palabras en Windows. |
+| **0.0.7** | Seleccionar todos o marcar grabaciones; quitar y restaurar un grupo; transcribir, exportar TXT/SRT/VTT/Word o asignar un proyecto a la selección. Los originales se conservan. |
 
 [Historial detallado](CHANGELOG.es.md)
 
@@ -111,5 +112,5 @@ El botón **Actualizar Vocalia** descarga dentro de la app, muestra el progreso,
 - El historial, las cuñas, proyectos, ajustes y modelos permanecen en sus ubicaciones habituales. Cancelar o fallar la verificación no modifica la app instalada. Si falla el reemplazo en Mac, intenta restaurar la app anterior.
 - **Transición por única vez:** quien tenga la primera 0.0.5 debe instalar una vez la versión preliminar actual usando los enlaces de descarga. La primera 0.0.5 no puede instalar por sí sola una revisión con el mismo número. Las futuras versiones con numeración superior se podrán descargar e instalar con el nuevo botón.
 
-Versión preliminar actual: **0.0.6**, compilación **19** en Mac y versión de archivo **0.0.6.0** en Windows. La publicación incluye el código exacto de ambos paquetes.
+Versión preliminar actual: **0.0.7**, compilación **20** en Mac y versión de archivo **0.0.7.0** en Windows. La publicación incluye el código exacto de ambos paquetes.
 

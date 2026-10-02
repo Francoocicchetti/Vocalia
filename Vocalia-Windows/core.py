@@ -185,16 +185,36 @@ class Store:
         with self.db:
             self.db.execute('UPDATE documents SET data=? WHERE id=? AND removed=0', (json.dumps(doc, ensure_ascii=False), doc['id']))
 
-    def remove(self, ident):
+    def remove_many(self, ids):
+        ids=set(ids)
+        current=[d['id'] for d in self.documents() if d['id'] in ids]
+        if not current:return []
         with self.db:
-            self.db.execute('UPDATE documents SET removed=? WHERE id=? AND removed=0', (time.time_ns(), ident))
+            stamp=max(time.time_ns(),self.db.execute('SELECT COALESCE(MAX(removed),0)+1 FROM documents').fetchone()[0])
+            self.db.executemany('UPDATE documents SET removed=? WHERE id=? AND removed=0',[(stamp,i) for i in current])
+        return current
+
+    def remove(self, ident):
+        self.remove_many([ident])
+
+    def undo_remove_many(self):
+        stamp=self.db.execute('SELECT MAX(removed) FROM documents WHERE removed>0').fetchone()[0]
+        if stamp is None:return []
+        ids=[row[0] for row in self.db.execute('SELECT id FROM documents WHERE removed=? ORDER BY rowid',(stamp,))]
+        with self.db:self.db.execute('UPDATE documents SET removed=0 WHERE removed=?',(stamp,))
+        return ids
 
     def undo_remove(self):
-        row = self.db.execute('SELECT id FROM documents WHERE removed>0 ORDER BY removed DESC, rowid DESC LIMIT 1').fetchone()
-        if row:
-            with self.db:
-                self.db.execute('UPDATE documents SET removed=0 WHERE id=?', row)
-            return row[0]
+        ids=self.undo_remove_many()
+        return ids[0] if ids else None
+
+    def assign_project(self, ids, project):
+        ids=set(ids)
+        with self.db:
+            for doc in self.documents():
+                if doc['id'] not in ids:continue
+                doc['project']=project.strip()[:120]
+                self.db.execute('UPDATE documents SET data=? WHERE id=? AND removed=0',(json.dumps(doc,ensure_ascii=False),doc['id']))
 
     def setting(self, key, fallback=None):
         row = self.db.execute('SELECT value FROM settings WHERE key=?', (key,)).fetchone()

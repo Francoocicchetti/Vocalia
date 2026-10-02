@@ -6,8 +6,8 @@ if (!(Test-Path $compiler)) { throw 'Inno Setup compiler missing from runner' }
 [Setup]
 AppId=Vocalia.Windows
 AppName=Vocalia
-AppVersion=0.0.6
-AppVerName=Vocalia 0.0.6
+AppVersion=0.0.7
+AppVerName=Vocalia 0.0.7
 AppPublisher=Francoocicchetti
 AppPublisherURL=https://github.com/Francoocicchetti/Vocalia
 AppSupportURL=https://github.com/Francoocicchetti/Vocalia/issues
@@ -21,7 +21,7 @@ MinVersion=10.0.22000
 UninstallDisplayIcon={app}\Vocalia.exe
 SetupIconFile=Vocalia.ico
 OutputDir=release
-OutputBaseFilename=Vocalia-0.0.6-Windows-x64-Setup
+OutputBaseFilename=Vocalia-0.0.7-Windows-x64-Setup
 Compression=lzma2
 SolidCompression=yes
 WizardStyle=modern
@@ -43,7 +43,7 @@ Filename: "{app}\Vocalia.exe"; Description: "{cm:LaunchProgram,Vocalia}"; Flags:
 & $compiler installer.iss
 if ($LASTEXITCODE) { throw 'Installer build failed' }
 $ErrorActionPreference = 'Stop'
-$setup = (Resolve-Path release/Vocalia-0.0.6-Windows-x64-Setup.exe).Path
+$setup = (Resolve-Path release/Vocalia-0.0.7-Windows-x64-Setup.exe).Path
 $target = Join-Path $env:LOCALAPPDATA 'Programs\Vocalia'
 $data = Join-Path $env:LOCALAPPDATA 'Vocalia'
 New-Item -ItemType Directory -Path $data -Force | Out-Null
@@ -54,13 +54,13 @@ function Install-App {
   if ($process.ExitCode -ne 0) { throw "Installation failed: $($process.ExitCode)" }
 }
 # Verify the upgrade over the previously distributed build.
-$previous = Join-Path $env:TEMP 'Vocalia-previous-0.0.5.exe'
-Invoke-WebRequest 'https://github.com/Francoocicchetti/Vocalia/releases/download/v0.0.5/Vocalia-0.0.5-Windows-x64-Setup.exe' -OutFile $previous
+$previous = Join-Path $env:TEMP 'Vocalia-previous-0.0.6.exe'
+Invoke-WebRequest 'https://github.com/Francoocicchetti/Vocalia/releases/download/v0.0.6/Vocalia-0.0.6-Windows-x64-Setup.exe' -OutFile $previous
 $old = Start-Process $previous -ArgumentList '/VERYSILENT /SUPPRESSMSGBOXES /NORESTART /SP-' -Wait -PassThru
 if ($old.ExitCode -ne 0) { throw 'Previous-version installation failed' }
 Install-App
-if ((Get-Item (Join-Path $target 'Vocalia.exe')).VersionInfo.ProductVersion -ne '0.0.6') { throw 'Upgrade did not replace the old executable' }
-if ((Get-Item (Join-Path $target 'Vocalia.exe')).VersionInfo.FileVersion -ne '0.0.6.0') { throw 'Installer revision did not replace original 0.0.6 executable' }
+if ((Get-Item (Join-Path $target 'Vocalia.exe')).VersionInfo.ProductVersion -ne '0.0.7') { throw 'Upgrade did not replace the old executable' }
+if ((Get-Item (Join-Path $target 'Vocalia.exe')).VersionInfo.FileVersion -ne '0.0.7.0') { throw 'Installer revision did not replace original 0.0.7 executable' }
 $source = (Resolve-Path dist/Vocalia).Path
 $files = Get-ChildItem $source -Recurse -File
 foreach ($file in $files) {
@@ -88,5 +88,5 @@ if ($uninstall.ExitCode -ne 0) { throw 'Uninstall failed' }
 if (Test-Path (Join-Path $target 'Vocalia.exe')) { throw 'Uninstall left application executable' }
 if (!(Test-Path $marker)) { throw 'Uninstall removed user data' }
 if (Test-Path (Join-Path ([Environment]::GetFolderPath('Programs')) 'Vocalia.lnk')) { throw 'Uninstall left Start menu shortcut' }
-"PASS: $($files.Count) installed files match the published ZIP; installed GUI, shortcuts, upgrade from 0.0.5 to 0.0.6, reinstall and data-preserving uninstall." | Set-Content release/Windows-Installer-Validation.txt
-(Get-FileHash $setup -Algorithm SHA256).Hash.ToLower() + '  Vocalia-0.0.6-Windows-x64-Setup.exe' | Set-Content release/SHA256SUMS-Installer.txt
+"PASS: $($files.Count) installed files match the published ZIP; installed GUI, shortcuts, upgrade from 0.0.6 to 0.0.7, reinstall and data-preserving uninstall." | Set-Content release/Windows-Installer-Validation.txt
+(Get-FileHash $setup -Algorithm SHA256).Hash.ToLower() + '  Vocalia-0.0.7-Windows-x64-Setup.exe' | Set-Content release/SHA256SUMS-Installer.txt

@@ -1,8 +1,8 @@
 <p align="center"><img src="logo.png" width="128" alt="Vocalia app icon"></p>
 
-# Vocalia 0.0.6
+# Vocalia 0.0.7
 
-**Pre-release 0.0.6 · In development.** Vocalia is not a stable 1.0 release yet. Earlier 1.x entries are historical prototype labels from before the numbering reset; existing history and features are preserved.
+**Pre-release 0.0.7 · In development.** Vocalia is not a stable 1.0 release yet. Earlier 1.x entries are historical prototype labels from before the numbering reset; existing history and features are preserved.
 
 **Local transcription for journalists: complete transcripts, quotes and highlighted playback.**
 
@@ -10,16 +10,16 @@
 
 ## Download
 
-### [↓ Windows 11 — Intel / AMD installer](https://github.com/Francoocicchetti/Vocalia/releases/download/v0.0.6/Vocalia-0.0.6-Windows-x64-Setup.exe)
+### [↓ Windows 11 — Intel / AMD installer](https://github.com/Francoocicchetti/Vocalia/releases/download/v0.0.7/Vocalia-0.0.7-Windows-x64-Setup.exe)
 
-### [↓ MacBook / Mac — Apple Silicon](https://github.com/Francoocicchetti/Vocalia/releases/download/v0.0.6/Vocalia-0.0.6-macOS-AppleSilicon.zip)
+### [↓ MacBook / Mac — Apple Silicon](https://github.com/Francoocicchetti/Vocalia/releases/download/v0.0.7/Vocalia-0.0.7-macOS-AppleSilicon.zip)
 
-[All 0.0.6 downloads and checksums](https://github.com/Francoocicchetti/Vocalia/releases/tag/v0.0.6)
+[All 0.0.7 downloads and checksums](https://github.com/Francoocicchetti/Vocalia/releases/tag/v0.0.7)
 
 | Computer | Requirements | What to download |
 | --- | --- | --- |
-| Windows PC | Windows 11, Intel/AMD 64-bit | `Vocalia-0.0.6-Windows-x64-Setup.exe` |
-| MacBook / Mac | Apple Silicon M1 or later, macOS 26+ | `Vocalia-0.0.6-macOS-AppleSilicon.zip` |
+| Windows PC | Windows 11, Intel/AMD 64-bit | `Vocalia-0.0.7-Windows-x64-Setup.exe` |
+| MacBook / Mac | Apple Silicon M1 or later, macOS 26+ | `Vocalia-0.0.7-macOS-AppleSilicon.zip` |
 
 Find the downloads under **Assets**, below the release notes. **Use the installer or Mac ZIP, not “Source code”.** No Python, Xcode, account or API key is needed to run the app. Windows ARM and Intel Macs are not supported by these builds.
 
@@ -44,6 +44,7 @@ The interface language and recording language are independent. Initial model dow
 | **0.0.4** | New recordings start transcribing automatically when added or dropped. Files run sequentially; a missing model is downloaded first. Transcribe pending remains available to resume stopped files. Existing history and edits are not automatically reprocessed. Speaker analysis remains manual. |
 | **0.0.5** | In-app update notices and release notes; cross-transcript search with timed playback; projects, tags and recording dates; a figures-only review view; Word export with the complete edited text and selected quotes. |
 | **0.0.6** | Click timed words to play; whole-recording or selection loops; gentle local cleanup in a separate copy; optional Whisper large-v3 and more word-confidence review flags on Windows. |
+| **0.0.7** | Select all or check individual recordings; remove and restore a group; transcribe, export TXT/SRT/VTT/Word, or assign a project to the selection. Original files stay intact. |
 
 [Detailed changelog](CHANGELOG.md) · [Historial en español](CHANGELOG.es.md)
 
@@ -117,5 +118,5 @@ The **Update Vocalia** button now downloads the update inside the app, shows pro
 - History, quotes, projects, settings and model folders stay in their existing locations. Cancelling a download or failing verification does not change the installed app. Mac replacement failures attempt to restore the prior app.
 - **One-time transition:** users of the original 0.0.5 must install the current preview once using the download links above. That original build cannot install this same-version revision itself. Future higher-numbered releases can be downloaded and installed through the new button.
 
-Current preview: **0.0.6**, Mac build **19**, Windows file version **0.0.6.0**. The release includes the exact source used for both packages.
+Current preview: **0.0.7**, Mac build **20**, Windows file version **0.0.7.0**. The release includes the exact source used for both packages.
 

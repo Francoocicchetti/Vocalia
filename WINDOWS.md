@@ -1,18 +1,18 @@
 # Vocalia for Windows 11 — Intel / AMD x64
 
-**Pre-release 0.0.6 · In development.** Vocalia is not a stable 1.0 release yet. Earlier 1.x entries are historical prototype labels from before the numbering reset; existing history and features are preserved.
+**Pre-release 0.0.7 · In development.** Vocalia is not a stable 1.0 release yet. Earlier 1.x entries are historical prototype labels from before the numbering reset; existing history and features are preserved.
 
 [Español](WINDOWS.es.md) · [Overview](README.md)
 
-**[Download Vocalia 0.0.6 for Windows](https://github.com/Francoocicchetti/Vocalia/releases/download/v0.0.6/Vocalia-0.0.6-Windows-x64-Setup.exe)**
+**[Download Vocalia 0.0.7 for Windows](https://github.com/Francoocicchetti/Vocalia/releases/download/v0.0.7/Vocalia-0.0.7-Windows-x64-Setup.exe)**
 
 Source: the `Vocalia-Windows/` folder in the repository or the complete source archive attached to the release.
 
-Vocalia 0.0.6 for Windows. Whisper recognition runs locally on your CPU. Model preparation downloads model assets; subsequent transcription loads local files in offline mode. Recordings are not uploaded.
+Vocalia 0.0.7 for Windows. Whisper recognition runs locally on your CPU. Model preparation downloads model assets; subsequent transcription loads local files in offline mode. Recordings are not uploaded.
 
 ## Install and use
 
-1. Download and run **Vocalia-0.0.6-Windows-x64-Setup.exe**. Follow the English/Spanish installer.
+1. Download and run **Vocalia-0.0.7-Windows-x64-Setup.exe**. Follow the English/Spanish installer.
 2. Open **Vocalia** from the Start menu. A desktop shortcut is optional. Python and administrator privileges are not required.
 3. Choose English, Spanish, German, French, Simplified Chinese or Portuguese for the interface, and select the spoken language separately.
 4. Choose a model and click **Download / prepare model**. Start with `small`; `medium` and `large-v3-turbo` require more memory and processing time. For larger models, a computer with at least 16 GB RAM is a practical starting point, not a measured minimum or performance guarantee.
@@ -90,5 +90,5 @@ The **Update Vocalia** button now downloads the update inside the app, shows pro
 - History, quotes, projects, settings and model folders stay in their existing locations. Cancelling a download or failing verification does not change the installed app. Mac replacement failures attempt to restore the prior app.
 - **One-time transition:** users of the original 0.0.5 must install the current preview once using the download links above. That original build cannot install this same-version revision itself. Future higher-numbered releases can be downloaded and installed through the new button.
 
-Current preview: **0.0.6**, Mac build **19**, Windows file version **0.0.6.0**. The release includes the exact source used for both packages.
+Current preview: **0.0.7**, Mac build **19**, Windows file version **0.0.7.0**. The release includes the exact source used for both packages.
 

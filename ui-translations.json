@@ -1232,11 +1232,11 @@
     "zh": "转写待处理文件"
   },
   "Restore last removed": {
-    "es": "Recuperar última eliminada",
-    "de": "Entfernen rückgängig",
-    "fr": "Annuler la suppression",
-    "pt": "Restaurar última remoção",
-    "zh": "恢复最近移除的记录"
+    "es": "Restaurar último grupo",
+    "de": "Letzte Gruppe wiederherstellen",
+    "fr": "Restaurer le dernier groupe",
+    "zh": "恢复上次移除的组",
+    "pt": "Restaurar último grupo"
   },
   "Change language": {
     "es": "Cambiar idioma",
@@ -2420,5 +2420,152 @@
     "fr": "Le nettoyage prend en charge les enregistrements de moins de deux heures.",
     "zh": "音频清理支持不到两小时的录音。",
     "pt": "A limpeza admite gravações com menos de duas horas."
+  },
+  "Select all": {
+    "es": "Seleccionar todos",
+    "de": "Alle auswählen",
+    "fr": "Tout sélectionner",
+    "zh": "全选",
+    "pt": "Selecionar todos"
+  },
+  "Clear selection": {
+    "es": "Desmarcar todos",
+    "de": "Auswahl aufheben",
+    "fr": "Tout désélectionner",
+    "zh": "取消全选",
+    "pt": "Desmarcar todos"
+  },
+  "{count} selected": {
+    "es": "{count} seleccionados",
+    "de": "{count} ausgewählt",
+    "fr": "{count} sélectionnés",
+    "zh": "已选 {count} 项",
+    "pt": "{count} selecionados"
+  },
+  "Actions for selection": {
+    "es": "Acciones para la selección",
+    "de": "Aktionen für die Auswahl",
+    "fr": "Actions sur la sélection",
+    "zh": "所选项目操作",
+    "pt": "Ações para a seleção"
+  },
+  "Select recording": {
+    "es": "Seleccionar grabación",
+    "de": "Aufnahme auswählen",
+    "fr": "Sélectionner cet enregistrement",
+    "zh": "选择录音",
+    "pt": "Selecionar gravação"
+  },
+  "Transcribe selected pending": {
+    "es": "Transcribir pendientes seleccionados",
+    "de": "Ausstehende Auswahl transkribieren",
+    "fr": "Transcrire la sélection en attente",
+    "zh": "转写所选待处理录音",
+    "pt": "Transcrever pendentes selecionados"
+  },
+  "Transcribe selection again…": {
+    "es": "Volver a transcribir la selección…",
+    "de": "Auswahl erneut transkribieren…",
+    "fr": "Retranscrire la sélection…",
+    "zh": "重新转写所选录音…",
+    "pt": "Transcrever novamente a seleção…"
+  },
+  "Assign project…": {
+    "es": "Asignar proyecto…",
+    "de": "Projekt zuweisen…",
+    "fr": "Attribuer un projet…",
+    "zh": "分配项目…",
+    "pt": "Atribuir projeto…"
+  },
+  "Project (blank removes assignment)": {
+    "es": "Proyecto (vacío quita la asignación)",
+    "de": "Projekt (leer entfernt die Zuweisung)",
+    "fr": "Projet (vide pour retirer l’attribution)",
+    "zh": "项目（留空取消分配）",
+    "pt": "Projeto (em branco remove a atribuição)"
+  },
+  "Remove selection from history…": {
+    "es": "Quitar selección del historial…",
+    "de": "Auswahl aus Verlauf entfernen…",
+    "fr": "Retirer la sélection de l’historique…",
+    "zh": "从历史记录移除所选项目…",
+    "pt": "Remover seleção do histórico…"
+  },
+  "Restore last removed group": {
+    "es": "Restaurar último grupo",
+    "de": "Letzte Gruppe wiederherstellen",
+    "fr": "Restaurer le dernier groupe",
+    "zh": "恢复上次移除的组",
+    "pt": "Restaurar último grupo"
+  },
+  "Remove {count} recordings from history? Original files are kept. You can restore the last removed group.": {
+    "es": "¿Quitar {count} grabaciones del historial? Se conservan los archivos originales. Puedes restaurar el último grupo eliminado.",
+    "de": "{count} Aufnahmen aus dem Verlauf entfernen? Originaldateien bleiben erhalten. Die letzte entfernte Gruppe kann wiederhergestellt werden.",
+    "fr": "Retirer {count} enregistrements de l’historique ? Les fichiers originaux sont conservés. Le dernier groupe retiré peut être restauré.",
+    "zh": "从历史记录中移除 {count} 段录音？原始文件将保留，可恢复上次移除的组。",
+    "pt": "Remover {count} gravações do histórico? Os arquivos originais são mantidos. Você pode restaurar o último grupo removido."
+  },
+  "Transcribe {count} selected recordings again? Existing text will be backed up before replacement.": {
+    "es": "¿Volver a transcribir las {count} grabaciones seleccionadas? Se guardará una copia del texto actual antes de reemplazarlo.",
+    "de": "{count} ausgewählte Aufnahmen erneut transkribieren? Der bisherige Text wird vor dem Ersetzen gesichert.",
+    "fr": "Retranscrire les {count} enregistrements sélectionnés ? Le texte actuel sera sauvegardé avant son remplacement.",
+    "zh": "重新转写所选的 {count} 段录音？替换前将备份现有文本。",
+    "pt": "Transcrever novamente as {count} gravações selecionadas? O texto atual será salvo antes da substituição."
+  },
+  "No text to export in the selection.": {
+    "es": "La selección no tiene texto para exportar.",
+    "de": "Die Auswahl enthält keinen exportierbaren Text.",
+    "fr": "La sélection ne contient aucun texte à exporter.",
+    "zh": "所选项目没有可导出的文本。",
+    "pt": "A seleção não tem texto para exportar."
+  },
+  "Selection exported. Existing files were kept.": {
+    "es": "Selección exportada. Se conservaron los archivos existentes.",
+    "de": "Auswahl exportiert. Vorhandene Dateien wurden beibehalten.",
+    "fr": "Sélection exportée. Les fichiers existants sont conservés.",
+    "zh": "所选项目已导出，现有文件已保留。",
+    "pt": "Seleção exportada. Os arquivos existentes foram mantidos."
+  },
+  "Export selection: TXT": {
+    "es": "Exportar selección: TXT",
+    "de": "Auswahl exportieren: TXT",
+    "fr": "Exporter la sélection : TXT",
+    "zh": "导出所选项目：TXT",
+    "pt": "Exportar seleção: TXT"
+  },
+  "Export selection: SRT": {
+    "es": "Exportar selección: SRT",
+    "de": "Auswahl exportieren: SRT",
+    "fr": "Exporter la sélection : SRT",
+    "zh": "导出所选项目：SRT",
+    "pt": "Exportar seleção: SRT"
+  },
+  "Export selection: VTT": {
+    "es": "Exportar selección: VTT",
+    "de": "Auswahl exportieren: VTT",
+    "fr": "Exporter la sélection : VTT",
+    "zh": "导出所选项目：VTT",
+    "pt": "Exportar seleção: VTT"
+  },
+  "Export selection: DOCX": {
+    "es": "Exportar selección: DOCX",
+    "de": "Auswahl exportieren: DOCX",
+    "fr": "Exporter la sélection : DOCX",
+    "zh": "导出所选项目：DOCX",
+    "pt": "Exportar seleção: DOCX"
+  },
+  "Retranscribe open audio": {
+    "es": "Retranscribir audio abierto",
+    "de": "Offene Aufnahme transkribieren",
+    "fr": "Retranscrire l’audio ouvert",
+    "zh": "重新转写当前录音",
+    "pt": "Retranscrever áudio aberto"
+  },
+  "Transcribe open audio": {
+    "es": "Transcribir audio abierto",
+    "de": "Offene Aufnahme transkribieren",
+    "fr": "Transcrire l’audio ouvert",
+    "zh": "转写当前录音",
+    "pt": "Transcrever áudio aberto"
   }
 }

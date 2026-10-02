@@ -1,6 +1,6 @@
 """Anonymous, bounded GitHub release checks; never sends local file data."""
 import json,re,urllib.request,datetime
-VERSION='0.0.6'
+VERSION='0.0.7'
 REPOSITORY='https://github.com/Francoocicchetti/Vocalia'
 API='https://api.github.com/repos/Francoocicchetti/Vocalia/releases?per_page=30'
 EPOCH='2026-09-17T00:00:00Z' # Earlier 1.x tags were prototype labels before the numbering reset.

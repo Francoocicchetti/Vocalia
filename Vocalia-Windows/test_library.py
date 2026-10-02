@@ -28,13 +28,13 @@ class LibraryTests(unittest.TestCase):
         for name in z.namelist():ET.fromstring(z.read(name))
         xml=z.read('word/document.xml').decode();self.assertIn('Texto editado &amp; &lt;completo&gt;',xml);self.assertIn('Cuña elegida',xml);self.assertIn('00:00:02–00:00:06',xml);self.assertNotIn('/private/',xml)
         self.assertIn('w:val="Title"',xml);self.assertIn('w:val="Heading1"',xml)
-    def release(self,tag='v0.0.7',date='2026-09-18T12:00:00Z'):
+    def release(self,tag='v0.0.8',date='2026-09-18T12:00:00Z'):
         filename='Vocalia-'+tag[1:]+'-Windows-x64-Setup.exe'
         return dict(tag_name=tag,published_at=date,draft=False,prerelease=True,html_url=REPOSITORY+'/releases/tag/'+tag,body='Changes',assets=[dict(name=filename,browser_download_url=REPOSITORY+'/releases/download/'+tag+'/'+filename)])
     def test_update_version_reset_and_trusted_links(self):
-        self.assertEqual(choose_release([self.release()])['version'],'0.0.7')
+        self.assertEqual(choose_release([self.release()])['version'],'0.0.8')
         self.assertIsNone(choose_release([self.release('v1.0.4','2026-09-16T20:00:00Z')]))
-        self.assertIsNone(choose_release([self.release('v0.0.6')]))
+        self.assertIsNone(choose_release([self.release('v0.0.7')]))
         r=self.release();r['assets'][0]['browser_download_url']='https://malicious.example/setup.exe';self.assertIsNone(choose_release([r]))
         r=self.release();r['draft']=True;self.assertIsNone(choose_release([r]))
         self.assertEqual(choose_release([self.release(),self.release('v0.0.10')])['version'],'0.0.10')
