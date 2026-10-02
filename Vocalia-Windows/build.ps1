@@ -17,7 +17,9 @@ $env:VOCALIA_SMOKE_RESULT = Join-Path $PSScriptRoot 'gui-result.txt'
 Remove-Item $env:VOCALIA_SMOKE_RESULT -ErrorAction SilentlyContinue
 $env:VOCALIA_E2E_FIXTURE = Join-Path $PSScriptRoot 'test-speech.opus'
 $gui = Start-Process -FilePath dist/Vocalia/Vocalia.exe -ArgumentList '--smoke-test' -Wait -PassThru
-if ($gui.ExitCode -ne 0 -or !(Test-Path $env:VOCALIA_SMOKE_RESULT)) { throw 'Packaged GUI regression test failed' }
+if (Test-Path $env:VOCALIA_SMOKE_RESULT) { Get-Content $env:VOCALIA_SMOKE_RESULT }
+if ($gui.ExitCode -ne 0 -or !(Test-Path $env:VOCALIA_SMOKE_RESULT)) { throw "Packaged GUI regression test failed (exit $($gui.ExitCode))" }
+if ((Get-Content $env:VOCALIA_SMOKE_RESULT -Raw).Trim() -ne 'PASS') { throw 'Packaged GUI assertions failed' }
 python smoke_engine.py (Join-Path $PSScriptRoot 'dist/Vocalia/Vocalia.exe')
 if ($LASTEXITCODE) { throw 'Packaged transcription test failed' }
 python smoke_advanced.py (Join-Path $PSScriptRoot 'dist/Vocalia/Vocalia.exe')

@@ -915,6 +915,8 @@ def main(smoke=False):
                 window.close();app.exit(0)
             except Exception:
                 import traceback
+                report=traceback.format_exc()
+                if os.environ.get("VOCALIA_SMOKE_RESULT"):Path(os.environ["VOCALIA_SMOKE_RESULT"]).write_text("FAIL\n"+report,encoding="utf-8")
                 traceback.print_exc();app.exit(1)
         QTimer.singleShot(200, test_gui)
     return app.exec()
@@ -926,4 +928,10 @@ if __name__ == '__main__':
     if len(sys.argv)>2 and sys.argv[1]=='--worker':
         from engine import run
         sys.exit(run(sys.argv[2]))
-    sys.exit(main('--smoke-test' in sys.argv))
+    try:
+        sys.exit(main('--smoke-test' in sys.argv))
+    except Exception:
+        import traceback
+        if '--smoke-test' in sys.argv and os.environ.get('VOCALIA_SMOKE_RESULT'):
+            Path(os.environ['VOCALIA_SMOKE_RESULT']).write_text('FAIL\n'+traceback.format_exc(),encoding='utf-8')
+        raise
