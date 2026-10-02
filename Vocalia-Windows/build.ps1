@@ -22,5 +22,5 @@ python smoke_engine.py (Join-Path $PSScriptRoot 'dist/Vocalia/Vocalia.exe')
 if ($LASTEXITCODE) { throw 'Packaged transcription test failed' }
 python smoke_advanced.py (Join-Path $PSScriptRoot 'dist/Vocalia/Vocalia.exe')
 if ($LASTEXITCODE) { throw 'Packaged comparison/speaker test failed' }
-Compress-Archive -Path dist/Vocalia -DestinationPath Vocalia-0.0.6-Windows-x64.zip -Force
-(Get-FileHash Vocalia-0.0.6-Windows-x64.zip -Algorithm SHA256).Hash + '  Vocalia-0.0.6-Windows-x64.zip' | Set-Content SHA256SUMS-Windows.txt
+Compress-Archive -Path dist/Vocalia -DestinationPath Vocalia-0.0.7-Windows-x64.zip -Force
+(Get-FileHash Vocalia-0.0.7-Windows-x64.zip -Algorithm SHA256).Hash + '  Vocalia-0.0.7-Windows-x64.zip' | Set-Content SHA256SUMS-Windows.txt

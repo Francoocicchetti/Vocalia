@@ -1,5 +1,9 @@
 # Vocalia changelog
 
+## 0.0.7 — Preview · 2026-10-02
+
+Select all or check individual recordings; remove and restore a group; transcribe, export TXT/SRT/VTT/Word, or assign a project to the selection. Original files stay intact.
+
 ## 0.0.6 — Preview
 
 - Word click seeks, whole-recording and selection loops.

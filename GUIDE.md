@@ -99,3 +99,9 @@ The public version remains **0.0.5**. This revision uses Mac build **18** and Wi
 - On Mac, **Whisper large-v3 (slower)** selects the larger comparison model. On Windows, choose **large-v3** in the model list. Download it using the existing model preparation controls. Model size alone does not guarantee better names or figures.
 
 See [validation status](QA-0.0.6.md). The 0.0.6 release is gated on both native platform build jobs.
+
+## Work with several recordings
+
+Check the boxes beside recordings, or press **Select all**. The count shows exactly how many recordings are selected. **Actions for selection** can transcribe selected pending files, transcribe the selection again, assign a project, export TXT/SRT/VTT/Word, or remove the selection from history. Opening a recording does not change the checked group. Clear selection unchecks all boxes.
+
+Removing a group asks for confirmation and never deletes original audio/video files. **Restore last removed group** recovers the last group, including edited text and quotes, even after restarting. Batch actions are disabled while importing or processing. Retranscription asks for confirmation and saves previous text in revisions. Exports create separate files and do not overwrite existing exports.

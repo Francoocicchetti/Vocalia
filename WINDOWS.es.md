@@ -1,18 +1,18 @@
 # Vocalia para Windows 11 · Intel / AMD x64
 
-**Versión preliminar 0.0.6 · En desarrollo.** Vocalia todavía no es una versión 1.0 estable. Las entradas 1.x son etiquetas históricas anteriores al cambio de numeración; se conservan las funciones y el historial.
+**Versión preliminar 0.0.7 · En desarrollo.** Vocalia todavía no es una versión 1.0 estable. Las entradas 1.x son etiquetas históricas anteriores al cambio de numeración; se conservan las funciones y el historial.
 
 [English](WINDOWS.md) · [Inicio](README.es.md)
 
-**[Descargar Vocalia 0.0.6 para Windows](https://github.com/Francoocicchetti/Vocalia/releases/download/v0.0.6/Vocalia-0.0.6-Windows-x64-Setup.exe)**
+**[Descargar Vocalia 0.0.7 para Windows](https://github.com/Francoocicchetti/Vocalia/releases/download/v0.0.7/Vocalia-0.0.7-Windows-x64-Setup.exe)**
 
 Código: carpeta `Vocalia-Windows/` del repositorio o del paquete de código completo adjunto a la versión.
 
-Vocalia 0.0.6 para Windows. Transcripción local con Whisper: no envía grabaciones a un servidor. La primera preparación descarga el modelo; después la transcripción usa únicamente archivos locales.
+Vocalia 0.0.7 para Windows. Transcripción local con Whisper: no envía grabaciones a un servidor. La primera preparación descarga el modelo; después la transcripción usa únicamente archivos locales.
 
 ## Uso
 
-1. Descarga y ejecuta **Vocalia-0.0.6-Windows-x64-Setup.exe**. Sigue el instalador en español o inglés; al abrir la app podrás elegir entre seis idiomas.
+1. Descarga y ejecuta **Vocalia-0.0.7-Windows-x64-Setup.exe**. Sigue el instalador en español o inglés; al abrir la app podrás elegir entre seis idiomas.
 2. Abre **Vocalia** desde Inicio. El acceso directo en el escritorio es opcional. No necesita Python ni permisos de administrador.
 3. Elige español, inglés, alemán, francés, chino simplificado o portugués para la interfaz y el idioma hablado para el audio.
 4. Elige el modelo y pulsa Descargar / preparar modelo. `small` es la opción inicial equilibrada; `medium` y `large-v3-turbo` consumen más memoria y tiempo. Se recomienda probar small primero; para los modelos mayores conviene tener al menos 16 GB de RAM disponibles en el equipo. Esto es una orientación, no un mínimo de rendimiento medido.
@@ -85,5 +85,5 @@ El botón **Actualizar Vocalia** descarga dentro de la app, muestra el progreso,
 - El historial, las cuñas, proyectos, ajustes y modelos permanecen en sus ubicaciones habituales. Cancelar o fallar la verificación no modifica la app instalada. Si falla el reemplazo en Mac, intenta restaurar la app anterior.
 - **Transición por única vez:** quien tenga la primera 0.0.5 debe instalar una vez la versión preliminar actual usando los enlaces de descarga. La primera 0.0.5 no puede instalar por sí sola una revisión con el mismo número. Las futuras versiones con numeración superior se podrán descargar e instalar con el nuevo botón.
 
-Versión preliminar actual: **0.0.6**, compilación **19** en Mac y versión de archivo **0.0.6.0** en Windows. La publicación incluye el código exacto de ambos paquetes.
+Versión preliminar actual: **0.0.7**, compilación **19** en Mac y versión de archivo **0.0.7.0** en Windows. La publicación incluye el código exacto de ambos paquetes.
 

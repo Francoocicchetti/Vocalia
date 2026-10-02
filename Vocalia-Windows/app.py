@@ -1,4 +1,4 @@
-"""Vocalia 0.0.6 for Windows. UI and storage stay outside the speech process."""
+"""Vocalia 0.0.7 for Windows. UI and storage stay outside the speech process."""
 import json
 import os
 import subprocess
@@ -23,7 +23,7 @@ def command(job):
 
 ES = {
     'tutorial': 'Cómo usar Vocalia', 'no_pending': 'No hay archivos pendientes. Agrega una grabación nueva para transcribir.', 'prepare_question': 'Primero hay que descargar el modelo de voz. ¿Descargarlo ahora y transcribir los archivos pendientes al terminar? Solo se descarga el modelo; tus grabaciones no se envían.', 'empty_import': 'No se agregaron archivos nuevos compatibles. Comprueba si ya están en el historial.', 'no_speech': 'No se detectó voz. Revisa el audio y el idioma seleccionado.',
-    'title': 'Vocalia 0.0.6 · Windows', 'add': 'Agregar archivos', 'folder': 'Agregar carpeta',
+    'title': 'Vocalia 0.0.7 · Windows', 'add': 'Agregar archivos', 'folder': 'Agregar carpeta',
     'run': 'Transcribir pendientes', 'cancel': 'Cancelar', 'remove': 'Quitar del historial',
     'undo': 'Recuperar última eliminada', 'language': 'Idioma del audio', 'interface': 'Cambiar idioma',
     'model': 'Modelo local', 'prepare': 'Descargar / preparar modelo', 'ready': 'Modelo listo',
@@ -50,9 +50,9 @@ ES = {
 }
 EN = {
     'tutorial': 'How to use Vocalia', 'no_pending': 'No pending files. Add a new recording to transcribe.', 'prepare_question': 'The speech model needs to be downloaded first. Download it now and transcribe pending files when it is ready? Only the model is downloaded; your recordings are not uploaded.', 'empty_import': 'No new supported files were added. Check whether they are already in your history.', 'no_speech': 'No speech detected. Check the recording and selected audio language.',
-    'title': 'Vocalia 0.0.6 · Windows', 'add': 'Add files', 'folder': 'Add folder',
+    'title': 'Vocalia 0.0.7 · Windows', 'add': 'Add files', 'folder': 'Add folder',
     'run': 'Transcribe pending', 'cancel': 'Cancel', 'remove': 'Remove from history',
-    'undo': 'Restore last removed', 'language': 'Audio language', 'interface': 'Change language',
+    'undo': 'Restore last removed group', 'language': 'Audio language', 'interface': 'Change language',
     'model': 'Local model', 'prepare': 'Download / prepare model', 'ready': 'Model ready',
     'terms': 'Dictionary: names, places and acronyms separated by commas',
     'text': 'Full text', 'quotes': 'Quotes', 'copy': 'Copy full text', 'export': 'Export',
@@ -76,7 +76,7 @@ EN = {
 }
 
 ES.update({'review': 'Revisar', 'comparison': 'Comparación', 'voices': 'Voces', 'only_review': 'Solo sin revisar', 'review_note': 'Revisa cada fragmento con el audio. La bandera indica baja confianza, no una medición de precisión. Los cambios actualizan los subtítulos; el texto completo editado se conserva.', 'reviewed': 'Revisado', 'save': 'Guardar', 'restore_original': 'Restaurar original', 'compare_note': 'Compara dos modelos locales de Whisper. Se resaltan las diferencias; ninguna lectura se considera automáticamente correcta. Descarga el segundo modelo antes de comparar.', 'prepare_second': 'Preparar segundo modelo', 'compare_run': 'Comparar grabación', 'differences_only': 'Solo diferencias', 'copy_second': 'Copiar segunda transcripción', 'voices_note': 'Agrupa voces automáticamente y después asígnales nombres. Las etiquetas corresponden a esta grabación y pueden confundirse con ruido o voces superpuestas. Indica la cantidad si la conoces.', 'prepare_voices': 'Descargar modelos de voces', 'analyze_voices': 'Analizar voces', 'assign_name': 'Asignar nombre', 'quote_plain': 'Copiar cita', 'quote_listen': 'Escuchar cuña', 'export_quotes': 'Exportar cuñas', 'dictionary': 'Diccionario personal', 'automatic': 'Automática', 'speaker_count': 'Cantidad de voces', 'speed': 'Velocidad de reproducción', 'voices_ready': 'Modelos de voces listos. El análisis funciona sin conexión.', 'voices_missing': 'Descarga primero los modelos de voces. Solo se descargan modelos; tus audios no se envían.', 'different_model': 'Elige un modelo diferente al usado en la transcripción original.', 'prepare_second_first': 'Pulsa Preparar segundo modelo antes de comparar.', 'dictionary_note': 'Un término por línea, hasta 100. Se usan como contexto al transcribir, sin reemplazar palabras automáticamente.', 'analyzing_voices': 'Analizando voces en este equipo…', 'limitations': 'Windows: reconocimiento y voces locales. Revisa las etiquetas y las citas con el original.', 'export_note': 'TXT conserva tus ediciones. SRT/VTT usan los fragmentos de Revisar.'})
-EN.update({'retranscribe':'Transcribe selected again','retranscribe_confirm':'Transcribe this recording again? A copy of the current transcript will be saved in Revisions before replacing it.','import_queued':'Files will be added after the current transcription queue finishes.','review': 'Review', 'comparison': 'Comparison', 'voices': 'Speakers', 'only_review': 'Only unreviewed', 'review_note': 'Review flags indicate low recognition confidence or figures to check against the audio. They are not accuracy scores.', 'reviewed': 'Reviewed', 'save': 'Save', 'restore_original': 'Restore original', 'compare_note': 'Compare two local Whisper models. Differences are highlighted; neither reading is automatically correct. Download the second model before comparing.', 'prepare_second': 'Prepare second model', 'compare_run': 'Compare recording', 'differences_only': 'Differences only', 'copy_second': 'Copy second transcript', 'voices_note': 'Group speakers automatically, then assign names. Labels belong to this recording and may be wrong with noise or overlapping speech. Set the count if you know it.', 'prepare_voices': 'Download speaker models', 'analyze_voices': 'Analyze speakers', 'assign_name': 'Assign name', 'quote_plain': 'Copy quote', 'quote_listen': 'Listen to quote', 'export_quotes': 'Export quotes', 'dictionary': 'Personal dictionary', 'automatic': 'Automatic', 'speaker_count': 'Speaker count', 'speed': 'Playback speed', 'voices_ready': 'Speaker models ready. Analysis works offline.', 'voices_missing': 'Download the speaker models first. Only models are downloaded; recordings are not uploaded.', 'different_model': 'Choose a model different from the original transcript model.', 'prepare_second_first': 'Choose Prepare second model before comparing.', 'dictionary_note': 'One term per line, up to 100. Terms provide transcription context without automatically replacing words.', 'analyzing_voices': 'Analyzing speakers on this computer…', 'limitations': 'Windows: local recognition and speaker analysis. Check labels and quotes against the original.', 'export_note': 'TXT preserves your edits. SRT/VTT use segments from Review.'})
+EN.update({'retranscribe':'Retranscribe open audio','retranscribe_confirm':'Transcribe this recording again? A copy of the current transcript will be saved in Revisions before replacing it.','import_queued':'Files will be added after the current transcription queue finishes.','review': 'Review', 'comparison': 'Comparison', 'voices': 'Speakers', 'only_review': 'Only unreviewed', 'review_note': 'Review flags indicate low recognition confidence or figures to check against the audio. They are not accuracy scores.', 'reviewed': 'Reviewed', 'save': 'Save', 'restore_original': 'Restore original', 'compare_note': 'Compare two local Whisper models. Differences are highlighted; neither reading is automatically correct. Download the second model before comparing.', 'prepare_second': 'Prepare second model', 'compare_run': 'Compare recording', 'differences_only': 'Differences only', 'copy_second': 'Copy second transcript', 'voices_note': 'Group speakers automatically, then assign names. Labels belong to this recording and may be wrong with noise or overlapping speech. Set the count if you know it.', 'prepare_voices': 'Download speaker models', 'analyze_voices': 'Analyze speakers', 'assign_name': 'Assign name', 'quote_plain': 'Copy quote', 'quote_listen': 'Listen to quote', 'export_quotes': 'Export quotes', 'dictionary': 'Personal dictionary', 'automatic': 'Automatic', 'speaker_count': 'Speaker count', 'speed': 'Playback speed', 'voices_ready': 'Speaker models ready. Analysis works offline.', 'voices_missing': 'Download the speaker models first. Only models are downloaded; recordings are not uploaded.', 'different_model': 'Choose a model different from the original transcript model.', 'prepare_second_first': 'Choose Prepare second model before comparing.', 'dictionary_note': 'One term per line, up to 100. Terms provide transcription context without automatically replacing words.', 'analyzing_voices': 'Analyzing speakers on this computer…', 'limitations': 'Windows: local recognition and speaker analysis. Check labels and quotes against the original.', 'export_note': 'TXT preserves your edits. SRT/VTT use segments from Review.'})
 
 
 def main(smoke=False):
@@ -165,7 +165,10 @@ def main(smoke=False):
                 return obj
             button('tutorial', left, self.tutorial)
             button('add', left, self.add_files);button('folder', left, self.add_folder)
-            self.list = QListWidget();left.addWidget(self.list, 1)
+            self.list = QListWidget()
+            from bulk_ui import BulkUI
+            self.bulk=BulkUI(self,left)
+            left.addWidget(self.list, 1)
             button('run', left, self.begin);button('retranscribe', left, self.retranscribe);button('batch_export', left, self.export_all)
             button('remove', left, self.remove_doc);button('undo', left, self.undo_remove)
             splitter.addWidget(side)
@@ -244,6 +247,7 @@ def main(smoke=False):
             self.follow.setText(self.t('follow'));self.tabs.setTabText(0, self.t('text'));self.tabs.setTabText(1, self.t('quotes'))
             self.editor.setPlaceholderText(tr('New recordings start automatically. Use Transcribe pending to resume a stopped recording.',self.language))
             self.export_note.setText(self.t('export_note'));self.limits.setText(self.t('limitations'))
+            if hasattr(self,'bulk'):self.bulk.retranslate()
             if hasattr(self,'audio_review'):self.audio_review.retranslate()
             if hasattr(self,'features'):self.features.retranslate()
             if hasattr(self,'library_ui'):self.library_ui.retranslate()
@@ -273,6 +277,7 @@ def main(smoke=False):
             store.set_setting('model', self.model.currentText());self.update_readiness()
 
         def set_busy(self, busy):
+            self.bulk.set_busy(busy)
             for key in ['run','retranscribe','prepare','remove','undo','relink','play','listen']:
                 self.buttons[key].setEnabled(not busy)
             self.buttons['cancel'].setEnabled(busy)
@@ -288,14 +293,17 @@ def main(smoke=False):
         def refresh(self, selected=None):
             selected = selected or self.selected
             self.list.blockSignals(True);self.list.clear()
+            self.bulk.ids.intersection_update(d['id'] for d in store.documents())
             target = None
             for doc in store.documents():
                 row = QListWidgetItem(doc['name'] + '\n' + self.t(doc['status']))
                 row.setData(Qt.ItemDataRole.UserRole, doc['id']);self.list.addItem(row)
+                self.bulk.configure(row)
                 if doc['id'] == selected:target = row
             if target is None and self.list.count():target = self.list.item(0)
             self.list.setCurrentItem(target);self.list.blockSignals(False)
             self.selection_changed(target, None)
+            self.bulk.update_count()
 
         def selection_changed(self, item, previous):
             self.flush_edit()
@@ -533,15 +541,24 @@ def main(smoke=False):
             if self.proc:self.proc.kill()
 
         def remove_doc(self):
-            if self.proc or not self.selected:return
-            if QMessageBox.question(self, 'Vocalia', self.t('remove_confirm')) != QMessageBox.StandardButton.Yes:return
-            self.remove_id(self.selected)
+            ids=self.bulk.selected_ids() or ([self.selected] if self.selected else [])
+            self.bulk.remove(ids)
+
+        def remove_ids(self, ids):
+            if self.proc or self.queue or self.bulk.busy:return
+            self.flush_edit()
+            removed=store.remove_many(ids)
+            if self.selected in removed:
+                self.media.stop();self.audio_review.reset();self.loaded_source=None;self.play_until=None;self.selected=None
+            self.bulk.ids.difference_update(removed);self.refresh()
 
         def remove_id(self, ident):
-            self.flush_edit();self.media.stop();self.selected = None;store.remove(ident);self.refresh()
+            self.remove_ids([ident])
 
         def undo_remove(self):
-            ident = store.undo_remove();self.refresh(ident)
+            if self.proc or self.queue or self.bulk.busy:return
+            self.flush_edit();ids=store.undo_remove_many()
+            self.bulk.ids=set(ids);self.refresh(ids[0] if ids else None)
 
         def seek_slider(self):
             self.audio_review.repeat.setChecked(False)
@@ -672,6 +689,21 @@ def main(smoke=False):
                 assert store.get(b['id'])['text']=='' and store.get(a['id']) is None
                 window.remove_id(b['id']);assert not store.documents()
                 window.undo_remove();assert len(store.documents())==1
+                # Checkboxes survive refresh without changing the open transcript.
+                d=new_document('bulk-one.opus');d['text']='Keep this edit'
+                e=new_document('bulk-two.mp3');store.add(d);store.add(e);window.refresh(b['id'])
+                window.bulk.select(True);assert len(window.bulk.selected_ids())==3 and window.selected==b['id']
+                window.bulk.select(False);assert not window.bulk.selected_ids()
+                for i in range(window.list.count()):
+                    row=window.list.item(i)
+                    if row.data(Qt.ItemDataRole.UserRole) in (d['id'],e['id']):row.setCheckState(Qt.CheckState.Checked)
+                window.refresh(b['id']);assert set(window.bulk.selected_ids())=={d['id'],e['id']}
+                window.bulk.set_busy(True);window.bulk.select(False);window.remove_ids([d['id']])
+                assert store.get(d['id']) and not window.bulk.button.isEnabled()
+                window.bulk.set_busy(False);window.remove_ids(window.bulk.selected_ids())
+                assert len(store.documents())==1 and window.selected==b['id']
+                window.undo_remove();assert len(store.documents())==3 and store.get(d['id'])['text']=='Keep this edit'
+                window.bulk.select(False)
                 window.interface.setCurrentIndex(1);assert window.buttons['add'].text()=='Add files'
                 window.interface.setCurrentIndex(0);assert window.buttons['add'].text()=='Agregar archivos'
                 # Check recovery from an abruptly terminated worker and from cancellation.
@@ -848,9 +880,9 @@ def main(smoke=False):
                 assert not window.library_ui.checking
                 from PySide6.QtGui import QDesktopServices
                 opened=[];old_open=QDesktopServices.openUrl;QDesktopServices.openUrl=lambda url:opened.append(url.toString())
-                update=dict(version='0.0.6',notes='Changes',download='https://github.com/Francoocicchetti/Vocalia/releases/download/v0.0.6/Vocalia-0.0.6-Windows-x64-Setup.exe',url='https://github.com/Francoocicchetti/Vocalia/releases/tag/v0.0.6')
+                update=dict(version='0.0.7',notes='Changes',download='https://github.com/Francoocicchetti/Vocalia/releases/download/v0.0.7/Vocalia-0.0.7-Windows-x64-Setup.exe',url='https://github.com/Francoocicchetti/Vocalia/releases/tag/v0.0.7')
                 def inspect_update():
-                    dialog=app.activeModalWidget();assert '0.0.6' in dialog.windowTitle()
+                    dialog=app.activeModalWidget();assert '0.0.7' in dialog.windowTitle()
                     assert dialog.findChild(QTextEdit).toPlainText()=='Changes'
                     if os.environ.get('VOCALIA_QA_IMAGES'):dialog.grab().save(str(Path(os.environ['VOCALIA_QA_IMAGES'])/'update-dialog.png'))
                     for b in dialog.findChildren(QPushButton):
