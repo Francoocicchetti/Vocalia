@@ -501,6 +501,7 @@ struct TranscribeView: View {
     @State var onlyReview = false
     @State var transcriptView = "completo"
     @State var showRemove = false
+    @State var removalIDs=Set<UUID>()
     @State var showDictionary = false
     @State var showTutorial = false
     @AppStorage("guidedTour102Release") private var guidedTourCompleted = false
@@ -556,7 +557,7 @@ struct TranscribeView: View {
                     Spacer()
                     if model.processingQueue { Text(L("Archivo \(model.batchFinished+1) de \(model.batchTotal)")).font(.system(size:11)).foregroundStyle(.secondary) }
                     if model.busy { Button(L("Cancelar")) { model.cancel() } }
-                    else { Button { model.begin() } label: { Label(model.current?.complete == true ? L("Volver a transcribir") : L("Transcribir"), systemImage: "waveform") }.buttonStyle(.borderedProminent).tint(accent).controlSize(.large).disabled(model.current == nil) }
+                    else { Button { model.begin() } label: { Label(T(model.current?.complete == true ? "Retranscribe open audio" : "Transcribe open audio"), systemImage: "waveform") }.buttonStyle(.borderedProminent).tint(accent).controlSize(.large).disabled(model.current == nil) }
                 }
             }.padding(16).tourTarget("status")
         }
@@ -605,7 +606,7 @@ struct TranscribeView: View {
         .sheet(isPresented:$updates.show){UpdatePane(manager:updates,model:model)}
         .sheet(isPresented: $showDictionary) { DictionaryPane(model:model) }
         .alert("Vocalia", isPresented: Binding(get: { model.error != nil }, set: { if !$0 { model.error = nil } })) { Button(L("Entendido")) { model.error = nil } } message: { Text(L(model.error ?? "")) }
-        .confirmationDialog(L("¿Quitar esta transcripción del historial? El audio original se conserva."), isPresented: $showRemove) { Button(L("Quitar del historial"), role: .destructive) { model.removeSelected() } }
+        .confirmationDialog(T("Remove {count} recordings from history? Original files are kept. You can restore the last removed group.").replacingOccurrences(of:"{count}",with:String(removalIDs.count)), isPresented: $showRemove, titleVisibility:.visible) { Button(T("Remove selection from history…"), role: .destructive) { model.removeBatch(removalIDs) } }
     }
     var sidebar: some View {
         VStack(alignment: .leading, spacing: 14) {
@@ -630,7 +631,7 @@ struct TranscribeView: View {
             }
             Button(L("Transcribir pendientes")) { model.begin(all: true) }.disabled(model.busy || !model.documents.contains { !$0.complete }).tourTarget("run")
             Button(L("Exportar todos los TXT")) { model.exportBatch() }.disabled(model.busy || !model.documents.contains { !$0.segments.isEmpty })
-            Button(L("Quitar del historial…")) { showRemove = true }.buttonStyle(.link).disabled(model.busy || model.current == nil).font(.system(size: 11))
+            Button(L("Quitar del historial…")) { removalIDs=model.checkedDocuments.isEmpty ? Set(model.selected.map{[$0]} ?? []) : Set(model.checkedDocuments.map(\.id));showRemove = true }.buttonStyle(.link).disabled(model.busy || model.importing || (model.current == nil && model.checkedDocuments.isEmpty)).font(.system(size: 11))
             Text(L("Puedes agregar muchos archivos o carpetas de una vez, incluso mientras se procesa la cola.\nLos originales se conservan.")).font(.system(size: 10)).foregroundStyle(.secondary)
         }.padding(16)
     }

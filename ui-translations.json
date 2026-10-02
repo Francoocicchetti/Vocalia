@@ -2560,5 +2560,12 @@
     "fr": "Retranscrire l’audio ouvert",
     "zh": "重新转写当前录音",
     "pt": "Retranscrever áudio aberto"
+  },
+  "Transcribe open audio": {
+    "es": "Transcribir audio abierto",
+    "de": "Offene Aufnahme transkribieren",
+    "fr": "Transcrire l’audio ouvert",
+    "zh": "转写当前录音",
+    "pt": "Transcrever áudio aberto"
   }
 }
