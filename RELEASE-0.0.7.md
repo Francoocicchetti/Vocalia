@@ -16,6 +16,7 @@ Select several recordings and work with them together, on Mac and Windows.
 - **Actions for selection:** transcribe selected pending recordings, transcribe the group again, assign a project, export separate TXT/SRT/VTT/Word documents, or remove the group from history.
 - Removal asks for confirmation with the selected count. **Original audio/video files are never deleted.** Restore the last removed group, including edits and quotes, even after restarting the app.
 - Retranscription asks for confirmation and saves previous text as revisions. Exports keep existing files instead of overwriting them. Word exports include each recording's saved quotes.
+- Pin the audio decoder to its validated version: a newer incompatible dependency broke fresh Windows builds during testing. Existing installed 0.0.6 packages are unaffected.
 - Bulk actions are disabled during importing or processing. All new controls are available in the six interface languages.
 
 Both native build jobs must pass before publication, including batch recovery, stale editor callbacks, selected-only exports, existing transcription/audio checks and installer upgrades. The Windows CI machine runs Windows Server 2025 x64; this remains a preview and does not guarantee compatibility with every Windows 11 device.
